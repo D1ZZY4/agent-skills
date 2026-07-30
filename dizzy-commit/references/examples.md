@@ -74,3 +74,56 @@ the new NFC port doc in the port-rom file maps, following a270f09.
 Drops the now-redundant prompt/info-1.md and info-2.md content that
 was already merged elsewhere.
 ```
+
+## Bad: malformed co-author trailer, wall-of-text body (real failure mode)
+
+```
+fix(skills): add missing references/ line to 3 README.md structure trees
+
+rom, kernel, and debug README.md structure listings omitted the references/ directory that AGENTS.md for those domains already declares and that disk has (selinux-repair with 17 files, or a .gitkeep placeholder for the other two). Synced README.md to match AGENTS.md folder maps.
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+```
+
+Broken in two ways: the body crams three separate facts (what's missing, what selinux-repair
+already has as the working pattern, what the fix does) into one dense sentence instead of
+Markdown bullets; and the trailer casing is wrong, `Co-Authored-By` instead of
+`Co-authored-by`. Fixed version:
+
+```
+fix(skills): add missing references/ to 3 README trees
+
+rom, kernel, and debug README.md structure listings omitted
+references/, which their AGENTS.md already declares.
+
+- selinux-repair has 17 files in references/, used as the pattern
+- rom, kernel, debug only need a .gitkeep placeholder for now
+
+Synced all three README.md files to match their AGENTS.md folder
+maps.
+
+Co-authored-by: Claude <noreply@anthropic.com>
+```
+
+## Bad: en dash breaks a copy-pasted command
+
+```
+docs(readme): add LFS clone instructions
+
+Recommended clone command with [en dash]recurse-submodules or git lfs
+clone. Users without git-lfs can still use the skill docs, only
+binary assets are affected.
+```
+
+The flag rendered with an en dash (U+2013) standing in for the leading two hyphens of
+`--recurse-submodules`, shown above as `[en dash]` since the literal character shouldn't be
+pasted even in an illustration of the bug. Copied straight into a terminal, an en dash there
+fails to parse as the flag it's supposed to be. Fixed version uses plain ASCII hyphens:
+
+```
+docs(readme): add LFS clone instructions
+
+Recommend cloning with --recurse-submodules or using git lfs clone.
+Users without git-lfs can still read the skill docs, only binary
+assets are affected.
+```

@@ -50,7 +50,7 @@ Full detail for Step 3 in SKILL.md.
   bullets is a sign the commit itself should have been split, not that the body needs more
   lines. If you catch yourself listing filenames one after another with no synthesis, stop and
   compress it into what actually changed conceptually.
-- No em dashes and no emoji in the body either. Same rule as the subject line.
+- No em dashes, en dashes, or emoji in the body either. Same rules as the subject line.
 - Wrap prose around 72 characters.
 - Reference issues at the end when relevant: `Closes #42`, `Refs #17`.
 - Breaking changes, security fixes, data migrations, and reverts always get a fuller body.
@@ -62,7 +62,7 @@ Full detail for Step 3 in SKILL.md.
 - Inline prose like "As requested by..." or "Generated with X", use the `Co-authored-by`
   trailer instead (see below) rather than mentioning AI involvement in the subject or body
 - Any emoji, under any circumstance
-- Any em dash, under any circumstance
+- Any em dash or en dash, under any circumstance
 - The words `phase`, `session`, `iteration`, `step`
 - Generic AI summaries like "Update documentation" or "Address findings from audit"
 

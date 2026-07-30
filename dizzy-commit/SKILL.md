@@ -74,7 +74,10 @@ up.
 Read `references/commit-execution.md` for exactly how to construct the commit so subject and
 body never get squashed into one run-on string. Short version: use `git commit -F` with a
 temp file for anything with a body (which is every commit), and verify with `git log -1`
-afterward that subject and body actually rendered as two separate blocks.
+afterward that subject and body actually rendered as two separate blocks. If a
+`Co-authored-by` trailer is included, re-read that exact line character by character before
+committing, it must match `Co-authored-by: Name <email>` precisely, this is the single most
+commonly botched line in the whole message.
 
 After each commit (or batch of commits for a multi-concern diff), before declaring the task
 or session done, always run:
@@ -104,7 +107,11 @@ Reject and rewrite any commit message (yours or the user's) that:
 - Contains an em dash, en dash, or emoji anywhere in the subject or body
 - Renders a command-line flag or path with a smart-punctuation dash instead of plain ASCII
   hyphens, breaking it if copied and pasted
-- Has a `Co-authored-by` trailer with wrong casing or missing angle brackets around the email
+- Has a `Co-authored-by` trailer with wrong casing or missing angle brackets around the email.
+  Check the literal string before finishing: it must read exactly `Co-authored-by: Name
+  <email>`. Wrong: `Co-Authored-By: Name email` or `Co-Authored-By: Name <email>` (capital A,
+  capital B) or `Co-authored-by: Name email` (no angle brackets). Right: `Co-authored-by: Name
+  <email>`, nothing else
 - Duplicates a commit that already exists in recent history for the same change
 - Isn't written in English
 - Contains `phase`, `session`, `iteration`, `step` (including numbered variants)
@@ -120,9 +127,9 @@ On "caveman commit", "/caveman-commit", or "terse commit": compress the body to 
 minimum, one Markdown line or one short bullet stating the why, but never drop it entirely.
 Body is still mandatory. Breaking changes, security fixes, migrations, and reverts still get a
 fuller body regardless of mode. Same format, scope requirement, and banned words and
-characters (em dash, emoji) still apply. In caveman mode, only output the message as a code
-block, don't stage or commit. "stop caveman-commit" or "normal mode" reverts to the full
-workflow above.
+characters (em dash, en dash, emoji) still apply. In caveman mode, only output the message as
+a code block, don't stage or commit. "stop caveman-commit" or "normal mode" reverts to the
+full workflow above.
 
 ## Bundled references
 
