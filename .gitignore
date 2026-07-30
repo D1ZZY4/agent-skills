@@ -1,0 +1,63 @@
+# --- Agent / environment state (don't ship local agent config or caches) ---
+.local/
+.cache/
+.config/
+.agents/
+attached_assets/
+prompt/
+PROGRESS.md
+
+# --- Replit-specific ---
+.replit
+replit.nix
+.upm/
+.pythonlibs/
+.breakpoints
+
+# --- Editor / IDE ---
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# --- Python ---
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+
+# --- Node (in case tooling/scripts add JS later) ---
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# --- Secrets / environment ---
+.env
+.env.*
+*.pem
+*.key
+!template/**/*.key
+
+# --- Build / run artifacts ---
+out/
+.repo/
+*.log
+!scripts/**/tests/**/*.log
+selinux-captures/
+selinux-artifact-review/
+debug_logs_*/
+/tmp/
+
+# --- Packaging output ---
+*.skill
+dist/
+build/
+
+# --- OS junk ---
+Thumbs.db
+.claude/
