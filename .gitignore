@@ -58,6 +58,9 @@ debug_logs_*/
 dist/
 build/
 
+# --- Separate repo (linked worktree / symlink target) ---
+/android-development/
+
 # --- OS junk ---
 Thumbs.db
 .claude/
