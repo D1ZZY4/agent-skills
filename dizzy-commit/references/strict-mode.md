@@ -39,7 +39,8 @@ instead. The pattern is the same, only the identity changes.
 - **Banned words: `phase`, `session`, `iteration`, `step`.** Plan-document words, not change
   descriptions.
 - **No generic AI summaries** like "Update agent documentation while refreshing..." or
-  "Address findings from audit." Write the actual change.
+  "Address findings from audit." Write the actual change. A `Co-authored-by` trailer for an
+  agentic tool is still fine here, see `message-style.md` for the format.
 - **Derive the message from the real diff**, never from a checklist or plan document.
 - **Verify before committing.** Run the project's typecheck, lint, and build commands before
   each commit. A failing build means the commit is incomplete.
