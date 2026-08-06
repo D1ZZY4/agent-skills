@@ -21,3 +21,4 @@ If the output is not empty:
 - [ ] `git diff --stat` was inspected when changes exist
 - [ ] `git diff --cached --stat` was inspected when staged changes exist
 - [ ] Remaining changes were reported or explicitly approved for commit
+- [ ] Any remaining dirty files are pre-existing user work or were explicitly kept

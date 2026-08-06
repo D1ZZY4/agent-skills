@@ -55,10 +55,10 @@ call (see `references/selection-and-query-writing.md` for why and for good/bad q
 examples). Use the returned docs to answer, including relevant code examples, and mention the
 library version when it's relevant to the answer.
 
-Cap yourself at 3 Context7 operations total per question, counting library resolution, docs
-fetches, and retries. If multiple libraries or concepts are involved, prioritize the highest
-impact query within that budget. If you still don't have what you need after 3 operations,
-answer with the best information you have and say so, don't keep retrying indefinitely.
+Read `references/risk-and-budget.md` before choosing the operation budget. Use three operations
+as the default for a normal question, but allow a documented increase when the user explicitly
+asks about multiple libraries, a migration, security-sensitive behavior, or a version-specific
+breaking change. Every retry and fetch still counts, and the budget must remain finite.
 
 ## Step 3: Handle failures honestly
 
@@ -81,7 +81,7 @@ asked for.
   when Context7 (MCP or CLI) is available and wasn't tried
 - Narrating "let me use Context7" or similar before every call, just do it
 - Combining multiple distinct concepts into one query instead of splitting per concept
-- Retrying more than 3 times per question instead of using the best result available
+- Retrying beyond the finite risk-tier budget instead of using the best result available
 - Silently falling back to training data on a tool failure or quota error without telling the
   user
 - Using this skill for refactoring, from-scratch scripts with no library involved, business
@@ -93,5 +93,7 @@ asked for.
 - `references/mcp-mode.md`: full detail for MCP mode, tool names, selection, error handling.
 - `references/cli-mode.md`: full detail for CLI mode, commands, auth, error handling.
 - `references/selection-and-query-writing.md`: shared library selection and query rules.
+- `references/risk-and-budget.md`: risk tiers and adaptive operation budgets.
 - `references/cli-skills-management.md`: install/search/suggest/generate skills via `ctx7`.
 - `references/setup.md`: configuring Context7 MCP or CLI + Skills mode for an editor.
+- `references/agent-adapters.md`: optional target-agent setup and installation locations.

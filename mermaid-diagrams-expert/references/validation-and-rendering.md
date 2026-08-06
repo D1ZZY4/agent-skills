@@ -7,14 +7,23 @@ render, or renders with a subtly wrong structure, and never notice.
 ## Validate before delivering, when possible
 
 If a compatible Mermaid renderer is already available, render the diagram rather than trusting
-the syntax on sight:
+the syntax on sight. First identify the renderer and version, then check that it supports the
+diagram type and configuration being used:
 
 ```bash
 mmdc -i diagram.mmd -o diagram.svg
 ```
 
-Do not install packages, invoke a network-backed `npx` fallback, or start Docker merely to
-validate a diagram. Ask for approval before setting up a renderer.
+Do not install packages, invoke a network-backed fallback, or start Docker merely to validate a
+diagram. Ask for approval before setting up a renderer. If approval is given for a temporary
+Mermaid CLI invocation, use the current package explicitly:
+
+```bash
+npx @mermaid-js/mermaid-cli@latest -i diagram.mmd -o diagram.svg
+```
+
+This is a reference command only. It must not run implicitly, and the target project must not be
+changed just to validate a diagram.
 
 A clean exit with an output file means the syntax parsed. An error output means something in
 the diagram is invalid, fix it before presenting the diagram as finished rather than handing
@@ -59,7 +68,8 @@ diagrams are consumed as rendered Markdown, not exported images.
   PNG/SVG export, also the fastest way to manually sanity-check a diagram if no local
   rendering tool is available.
 - **Mermaid CLI**: use an existing installation with `mmdc -i input.mmd -o output.png`
-  (or `.svg`, `.pdf`). Installation requires explicit approval.
+  (or `.svg`, `.pdf`). If a temporary setup is explicitly approved, use the current
+  `@mermaid-js/mermaid-cli@latest` package runner shown above.
 - **Docker**: a user-approved alternative when a local renderer is unavailable. Do not start
   Docker implicitly.
 
@@ -71,3 +81,14 @@ directly in Markdown, no image export required for these. VS Code renders them w
 for anything going into a repo, wiki, or doc on one of these platforms, and only reach for
 image export when the diagram needs to go somewhere that doesn't render Markdown (a
 slide deck, a PDF report, an email).
+
+## Confidentiality and renderer boundaries
+
+Do not paste proprietary architecture, credentials, personal data, or private source code into
+an online renderer or public diagram service. Prefer a local renderer for confidential material,
+or anonymize labels and values before using a network service. Treat Mermaid Live and any
+third-party renderer as an external data boundary and obtain approval before sending content
+outside the repository.
+
+The diagram authoring syntax is portable, but renderer behavior is not. Record the target
+renderer, version, and any optional icon or layout packs when reproducibility matters.

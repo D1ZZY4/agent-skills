@@ -79,9 +79,10 @@ npx ctx7@latest docs /vercel/next.js "middleware for route protection" | grep -A
 
 ## Call budget
 
-Run at most 3 Context7 operations total per question. Count every `library` resolution, `docs`
-fetch, and retry toward the same budget. If multiple libraries are involved, prioritize them
-within the budget and report what was not checked.
+Read `risk-and-budget.md` for the operation budget. Three operations is the default. A
+documented increase to five or seven is allowed only for medium- or high-risk questions, when
+each additional operation has a clear purpose. Count every `library` resolution, `docs` fetch,
+and retry toward the same finite budget.
 
 ## Authentication
 

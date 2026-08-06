@@ -18,22 +18,14 @@ skill, or authenticate merely because a documentation task mentions Context7. Pe
 only after the user explicitly requests it and confirms the target and mode. Do not use
 `--yes` by default.
 
+These are reference commands only. The exact target flags and configuration locations are
+host-specific. Read `agent-adapters.md` and the target agent's current documentation before
+running one.
+
 ```bash
 npx ctx7@latest setup                     # interactive, prompts for mode then agent/target
 npx ctx7@latest setup --mcp               # skip the prompt, use MCP server mode
 npx ctx7@latest setup --cli               # skip the prompt, use CLI + Skills mode
-
-# MCP mode, target a specific agent
-npx ctx7@latest setup --claude            # Claude Code only
-npx ctx7@latest setup --cursor            # Cursor only
-npx ctx7@latest setup --opencode          # OpenCode only
-
-# CLI + Skills mode, target a specific install location
-npx ctx7@latest setup --cli --claude      # Claude Code (~/.claude/skills)
-npx ctx7@latest setup --cli --cursor      # Cursor (~/.cursor/skills)
-npx ctx7@latest setup --cli --universal   # universal (~/.agents/skills)
-npx ctx7@latest setup --cli --antigravity # Antigravity (~/.config/agent/skills)
-
 npx ctx7@latest setup --project           # configure the current project instead of globally
 ```
 
@@ -49,8 +41,7 @@ generates a new API key after login. `--oauth` only applies to MCP mode.
 ## What gets written
 
 **MCP mode:**
-- An MCP server entry in the agent's config file (`.mcp.json` for Claude, `.cursor/mcp.json`
-  for Cursor, `.opencode.json` for OpenCode)
+- An MCP server entry in the target agent's documented config file
 - A Context7 rule file instructing the agent to use Context7 for library docs
 - A `context7-mcp`-style skill in the agent's skills directory
 

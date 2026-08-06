@@ -68,8 +68,9 @@ diagramType
 
 ## Step 3: Validate before delivering
 
-Read `references/validation-and-rendering.md` for the full detail. Short version: review the
-diagram against the source model, then render or lint it if an existing compatible tool is
+Read `references/validation-and-rendering.md` and `references/renderer-adapters.md` for the
+full detail. Identify the target renderer and version before choosing syntax, then review the
+diagram against the source model and render or lint it if an existing compatible tool is
 available. Do not install packages or start Docker merely to validate a diagram unless the user
 approves that setup. If rendering is unavailable, perform static syntax and structure review and
 say that visual rendering was not verified.
@@ -109,3 +110,5 @@ say that visual rendering was not verified.
 - `references/advanced-features.md`: themes, styling, configuration, layout options.
 - `references/validation-and-rendering.md`: how to check a diagram before delivering it, plus
   export and rendering options.
+- `references/renderer-adapters.md`: target-platform, renderer, version, and confidentiality
+  boundaries.

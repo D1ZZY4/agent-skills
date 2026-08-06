@@ -27,8 +27,8 @@ Common places these live:
 - A dedicated content style guide (`docs/content-style.md`, `CONTENT_GUIDE.md`).
 - A section inside a broader contributing or style guide (`CONTRIBUTING.md`,
   `STYLE_GUIDE.md`).
-- A `.agents/rules/` or `.cursor/rules/` style convention file, if the project uses that
-  pattern for AI agent instructions.
+- A host-specific agent rules or conventions file, if the project's agent integration documents
+  one.
 
 ## How to apply it
 
