@@ -124,7 +124,7 @@ maps.
 Co-authored-by: Claude <noreply@anthropic.com>
 ```
 
-## Bad: en dash breaks a copy-pasted command
+## Bad: en dash replaces the hyphens in a command flag
 
 ```
 docs(readme): add LFS clone instructions
@@ -134,10 +134,11 @@ clone. Users without git-lfs can still use the skill docs, only
 binary assets are affected.
 ```
 
-The flag rendered with an en dash (U+2013) standing in for the leading two hyphens of
-`--recurse-submodules`, shown above as `[en dash]` since the literal character shouldn't be
-pasted even in an illustration of the bug. Copied straight into a terminal, an en dash there
-fails to parse as the flag it's supposed to be. Fixed version uses plain ASCII hyphens:
+The problem is not using an en dash as punctuation. The flag incorrectly replaces the leading
+two ASCII hyphens of `--recurse-submodules` with one en dash (U+2013), shown above as
+`[en dash]` so the broken character is clear without presenting it as a valid command. Copied
+straight into a terminal, that replacement fails to parse as the flag it is supposed to be.
+The fixed version preserves the plain ASCII hyphens:
 
 ```
 docs(readme): add LFS clone instructions

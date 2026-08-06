@@ -24,14 +24,11 @@ Full detail for Step 3 in SKILL.md.
 - No trailing period
 - No em dashes, ever. Not in the subject, not in the body, not anywhere in a commit message.
   Use a comma, colon, period, or parentheses instead.
-- No en dashes either (Unicode U+2013, a shorter dash than an em dash but still not a plain
-  hyphen), and no other smart-punctuation substitute for a plain ASCII hyphen (`-`) or double
-  hyphen (`--`). This is not just a style preference: if a command-line flag like
-  `--recurse-submodules` gets rendered with U+2013 in place of the two literal hyphens, the
-  command is broken the moment someone copies and pastes it, it won't parse as the flag it
-  looks like. Any literal shell command, flag, or path inside a commit message must use plain
-  ASCII hyphens, always, no exceptions, double check any line containing `--` before it goes
-  into the message.
+- En dashes (Unicode U+2013) are allowed when used as normal punctuation. They must not
+  replace the plain ASCII hyphens required by a literal command, flag, or path. For example,
+  `--recurse-submodules` must keep its two ASCII hyphens or it will break when copied and
+  pasted into a terminal. Double check any line containing a command or path before putting
+  it into the message.
 - No emoji, ever. Not even if it seems fitting or the project uses them elsewhere.
 - English only, always, regardless of the language the conversation is in
 
@@ -50,7 +47,8 @@ Full detail for Step 3 in SKILL.md.
   bullets is a sign the commit itself should have been split, not that the body needs more
   lines. If you catch yourself listing filenames one after another with no synthesis, stop and
   compress it into what actually changed conceptually.
-- No em dashes, en dashes, or emoji in the body either. Same rules as the subject line.
+- No em dashes or emoji in the body either. En dashes are allowed as normal punctuation;
+  literal commands, flags, and paths must still use plain ASCII hyphens.
 - Wrap prose around 72 characters.
 - Reference issues at the end when relevant: `Closes #42`, `Refs #17`.
 - Breaking changes, security fixes, data migrations, and reverts always get a fuller body.
@@ -62,7 +60,7 @@ Full detail for Step 3 in SKILL.md.
 - Inline prose like "As requested by..." or "Generated with X", use the `Co-authored-by`
   trailer instead (see below) rather than mentioning AI involvement in the subject or body
 - Any emoji, under any circumstance
-- Any em dash or en dash, under any circumstance
+- Any em dash, under any circumstance
 - The words `phase`, `session`, `iteration`, `step`
 - Generic AI summaries like "Update documentation" or "Address findings from audit"
 

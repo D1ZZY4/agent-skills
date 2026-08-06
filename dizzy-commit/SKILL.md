@@ -110,9 +110,10 @@ Reject and rewrite any commit message (yours or the user's) that:
 - Has the subject and body run together with no blank line between them
 - Contains a literal `\n` or similar escape sequence as visible text instead of a real line
   break
-- Contains an em dash, en dash, or emoji anywhere in the subject or body
-- Renders a command-line flag or path with a smart-punctuation dash instead of plain ASCII
-  hyphens, breaking it if copied and pasted
+- Contains an em dash or emoji anywhere in the subject or body
+- Replaces the plain ASCII hyphens required by a command-line flag or path with a smart
+  punctuation dash, breaking it if copied and pasted. An en dash is allowed as normal
+  punctuation outside literal commands, flags, and paths.
 - Has a `Co-authored-by` trailer missing the angle brackets around the email, this genuinely
   breaks recognition. Wrong: `Co-authored-by: Name email`. Right: `Co-authored-by: Name
   <email>`. Casing (`Co-authored-by` vs `Co-Authored-By`) is case-insensitive per the git
@@ -133,9 +134,10 @@ On "caveman commit", "/caveman-commit", or "terse commit": compress the body to 
 minimum, one Markdown line or one short bullet stating the why, but never drop it entirely.
 Body is still mandatory. Breaking changes, security fixes, migrations, and reverts still get a
 fuller body regardless of mode. Same format, scope requirement, and banned words and
-characters (em dash, en dash, emoji) still apply. In caveman mode, only output the message as
-a code block, don't stage or commit. "stop caveman-commit" or "normal mode" reverts to the
-full workflow above.
+characters (em dash, emoji) still apply. An en dash is allowed as normal punctuation, but
+literal commands, flags, and paths must retain their plain ASCII hyphens. In caveman mode,
+only output the message as a code block, don't stage or commit. "stop caveman-commit" or
+"normal mode" reverts to the full workflow above.
 
 ## Bundled references
 

@@ -29,9 +29,10 @@ instead. The pattern is the same, only the identity changes.
 - **English only.** Every part of the commit message (subject, body, comments), no exceptions.
 - **Scope required.** Every subject line uses `type(scope): summary`. No bare `type: summary`.
 - **Body required.** Every commit gets a Markdown body explaining the why, never subject-only.
-- **No em dashes or en dashes.** Not in the subject, not in the body, not anywhere in the
-  message, including inside literal shell commands or flags. Use a comma, colon, period, or
-  parentheses instead.
+- **No em dashes.** Not in the subject, not in the body, not anywhere in the message. En
+  dashes are allowed as normal punctuation, but literal shell commands, flags, and paths must
+  keep the plain ASCII hyphens they require. Use a comma, colon, period, or parentheses
+  instead of an em dash.
 - **No emoji.** Not in the subject, not in the body, ever.
 - **One concern per commit.** Must be reversible without losing unrelated work. If you find
   yourself writing "and also," split it.

@@ -7,14 +7,16 @@ Full detail for Step 4 in SKILL.md.
 Never use an em dash (Unicode U+2014, the long dash) anywhere in UI copy, in any language,
 under any circumstance. Not in buttons, not in error messages, not in empty states, not in
 tooltips, not in confirmation dialogs, not in draft copy, not in a "just this once, it reads
-better here" exception. This applies to the em dash character itself and to any typographic
-substitute being used the same way (an en dash, U+2013, standing in for an em dash, for
-example). When a sentence seems to want an em dash, restructure it instead:
+better here" exception. When a sentence seems to want an em dash, restructure it instead:
 
 - Use a period and split into two sentences.
 - Use a comma if the pause is light.
 - Use a colon if what follows explains or elaborates on what came before.
 - Use parentheses if it's a genuine aside.
+
+An en dash (U+2013) is allowed when it has its own meaning, such as a numeric range
+("9:00–17:00") or a relationship ("input–output"). Do not use an en dash where a regular
+ASCII hyphen is required in a technical string, identifier, command, or flag.
 
 Example: "Your file was too large, try compressing it first" instead of a version built
 around an em dash. If a rewrite keeps reaching for an em dash no matter how it's restructured,

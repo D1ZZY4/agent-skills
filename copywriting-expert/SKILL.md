@@ -54,8 +54,9 @@ right one per language.
 ## Step 4: Formatting and punctuation
 
 Read `references/formatting-and-punctuation.md`. This includes an explicit, absolute rule:
-no em dashes anywhere in UI copy, under any circumstance. Full detail and the rest of the
-punctuation rules (capitalization, ellipses, Oxford comma policy) are in that file.
+no em dashes anywhere in UI copy, under any circumstance. En dashes are allowed when used
+correctly as punctuation. Full detail and the rest of the punctuation rules (capitalization,
+ellipses, Oxford comma policy) are in that file.
 
 ## Step 5: Check against examples and anti-patterns
 
