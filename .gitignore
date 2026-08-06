@@ -2,7 +2,13 @@
 .local/
 .cache/
 .config/
-.agents/
+.agents/*
+!.agents/skills/
+.agents/skills/*
+!.agents/skills/context7-expert
+!.agents/skills/copywriting-expert
+!.agents/skills/dizzy-commit
+!.agents/skills/mermaid-diagrams-expert
 .claude/
 attached_assets/
 prompt/
@@ -47,8 +53,8 @@ yarn-error.log*
 # --- Build / run artifacts ---
 out/
 .repo/
+scripts/
 *.log
-!scripts/**/tests/**/*.log
 selinux-captures/
 selinux-artifact-review/
 debug_logs_*/

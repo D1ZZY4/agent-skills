@@ -17,7 +17,15 @@ Before applying the general defaults in the rest of this skill, check for a proj
 content style guide in likely locations:
 
 ```bash
-find . -iname "*copywriting*" -o -iname "*content-style*" -o -iname "*voice-and-tone*" 2>/dev/null
+find . \
+  \( -iname "*copywriting*" -o -iname "*content-style*" -o -iname "*voice-and-tone*" \
+     -o -iname "CONTENT_GUIDE.md" -o -iname "STYLE_GUIDE.md" \
+     -o -iname "CONTRIBUTING.md" \) \
+  -not -path "./.git/*" \
+  -not -path "./node_modules/*" \
+  -not -path "./dist/*" \
+  -not -path "./build/*" \
+  -print 2>/dev/null
 ```
 
 Common places these live:

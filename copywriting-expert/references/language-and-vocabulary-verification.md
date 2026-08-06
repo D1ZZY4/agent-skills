@@ -95,10 +95,11 @@ surface. Never invent a citation or imply that a source was consulted when it wa
 
 ## How to actually do this in practice
 
-Use the web search and web fetch tools directly rather than answering from memory when
-verification is warranted: search for the specific word or construction plus the authoritative
-source's name (for example, "sistem KBBI" or "loanword spelling KBBI"), or fetch the
-dictionary site directly if a URL pattern is known. This is a normal, expected part of writing
-or auditing copy in any language other than pure, common-knowledge English, not an extra step
-to skip for speed. Getting a single word wrong in shipped UI copy is a visible, repeated,
-permanent mistake in a way that few other kinds of errors are.
+Use an available authoritative lookup mechanism rather than answering from memory when verification
+is warranted. This can be an approved web search or fetch tool, a dictionary database, or a
+trusted language resource already available in the environment. Search for the specific word or
+construction plus the authority's name, such as "sistem KBBI" or "loanword spelling KBBI", rather
+than relying on a generic result. This is a normal, expected part of writing or auditing copy in
+any language other than pure, common-knowledge English, not an extra step to skip for speed.
+Getting a single word wrong in shipped UI copy is a visible, repeated, permanent mistake in a way
+that few other kinds of errors are.

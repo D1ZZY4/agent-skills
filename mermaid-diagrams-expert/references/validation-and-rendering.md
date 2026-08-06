@@ -31,9 +31,11 @@ over syntax that was never actually checked.
 
 If no rendering tool is available in the environment, say so plainly rather than silently
 skipping validation, the same honesty principle as any other tool-unavailable situation:
-present the diagram, but note it hasn't been rendered and to verify at
-[mermaid.live](https://mermaid.live) before relying on it, especially for anything going into
-a PR or shared doc.
+present the diagram, but note it hasn't been rendered. An online editor such as
+[mermaid.live](https://mermaid.live) is a verification option for non-confidential diagrams;
+obtain approval before sending private architecture, source code, personal data, or credentials
+outside the repository. Verify the result before relying on it, especially for anything going
+into a PR or shared doc.
 
 ## Common pitfalls
 
@@ -73,14 +75,14 @@ diagrams are consumed as rendered Markdown, not exported images.
 - **Docker**: a user-approved alternative when a local renderer is unavailable. Do not start
   Docker implicitly.
 
-## Where diagrams render natively, no export needed
+## Where diagrams may render without export
 
-GitHub, GitLab, Notion, Obsidian, and Confluence all render fenced ` ```mermaid ` code blocks
-directly in Markdown, no image export required for these. VS Code renders them with the
-"Markdown Preview Mermaid Support" extension. Default to embedding as a Markdown code block
-for anything going into a repo, wiki, or doc on one of these platforms, and only reach for
-image export when the diagram needs to go somewhere that doesn't render Markdown (a
-slide deck, a PDF report, an email).
+Many versions of GitHub, GitLab, Notion, Obsidian, and Confluence support fenced ` ```mermaid `
+code blocks, while VS Code commonly relies on the "Markdown Preview Mermaid Support" extension.
+Feature support varies by platform, renderer version, and configuration. Verify the target before
+using advanced syntax. Default to embedding a Markdown code block when the target supports the
+selected diagram type, and use image export only when the destination does not render compatible
+Mermaid syntax, such as a slide deck, PDF report, or email.
 
 ## Confidentiality and renderer boundaries
 

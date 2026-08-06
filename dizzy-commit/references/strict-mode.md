@@ -41,8 +41,9 @@ public unless the user explicitly instructs it.
   findings from audit." Write the actual change. A `Co-authored-by` trailer for an agentic tool
   is still fine when the provider supplied a valid identity.
 - **Derive the message from the real diff**, never from a checklist or plan document.
-- **Verify before committing.** Run the project's typecheck, lint, and build commands before
-  each commit. A failing build means the commit is incomplete.
+- **Verify before committing.** Run the project's declared and relevant verification commands
+  before each commit. If a typecheck, lint, or build command is unavailable or not relevant,
+  report that it was skipped. A failing available check means the commit is incomplete.
 - **Never amend or squash commits already pushed to the configured upstream** unless explicitly
   instructed. Rewriting public history breaks the branch for everyone.
 

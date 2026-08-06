@@ -31,9 +31,9 @@ Before doing anything else, check what's actually available in this environment:
   MCP mode. Read `references/mcp-mode.md`.
 - **No MCP tools, but a shell/bash tool and an installed `ctx7` CLI are available**: use CLI
   mode. Read `references/cli-mode.md`.
-- **No MCP tools and no installed CLI**: use the transient `npx` fallback only when network
-  access and package execution are permitted for this request. Do not install globally or
-  change project configuration just to answer a documentation question.
+- **No MCP tools and no installed CLI**: ask before using the transient `npx` fallback unless
+  network-backed package execution was already explicitly approved for this request. Do not
+  install globally or change project configuration just to answer a documentation question.
 - **Neither is available**: say so plainly, answer from training knowledge, and flag that the
   answer may be outdated for fast-moving libraries. Never silently pretend training data is
   current.

@@ -107,6 +107,8 @@ architecture-beta
 
 **Default icons:** `cloud`, `database`, `disk`, `internet`, `server`
 
+> Compatibility: custom icons, icon packs, and some service shapes are renderer-dependent. Use the default set when the target capabilities are unknown.
+
 **Custom icons:** Use any of 200,000+ icons from iconify.design:
 
 ```mermaid

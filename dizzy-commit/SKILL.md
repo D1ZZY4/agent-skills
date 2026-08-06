@@ -1,9 +1,9 @@
 ---
 name: dizzy-commit
 description: >
-  Enforce disciplined Conventional Commits when the user explicitly asks to commit, push,
-  stage, or use this skill. When work is uncommitted at the end of a task, inspect and report
-  it, but never commit or discard changes automatically.
+  Guide safe, repository-aware Git commits and pushes, using Conventional Commits when required
+  by the repository or requested by the user. When work is uncommitted at the end of a task,
+  inspect and report it, but never commit or discard changes automatically.
 ---
 
 # Dizzy Commit
@@ -91,9 +91,9 @@ was unavailable.
 ## Step 5: Stage and commit only after explicit approval
 
 Read `references/commit-execution.md` for exactly how to construct the commit so subject and
-body never get squashed into one run-on string. Short version: use `git commit -F` with a
-temp file when the resolved policy requires a body, and verify with `git log -1` afterward that
-the subject and body rendered correctly. If a
+body never get squashed into one run-on string, and read `references/push-and-upstream.md` before
+pushing. Short version: use `git commit -F` with a temp file when the resolved policy requires a
+body, and verify with `git log -1` afterward that the subject and body rendered correctly. If a
 `Co-authored-by` trailer is included, double check the angle brackets around the email before
 committing, that's the part that actually breaks recognition if missing.
 
@@ -163,6 +163,7 @@ only output the message as a code block, don't stage or commit. "stop caveman-co
 - `references/host-adapters.md`: optional Git host and upstream conventions.
 - `references/message-style.md`: full detail for Step 3, subject/body rules and type table.
 - `references/commit-execution.md`: full detail for Step 5, how to construct the commit safely.
+- `references/push-and-upstream.md`: remote, upstream, branch, and push safety.
 - `references/examples.md`: worked good and bad examples, including a real failure case.
 - `references/strict-mode.md`: policy-driven strict checks and no-amend rule for
   repos that require it. Read only when strict mode applies.

@@ -30,7 +30,7 @@ Full detail for Step 3 in SKILL.md.
 - No emoji, ever. Not even if it seems fitting or the project uses them elsewhere.
 - Follow the repository's documented commit language or the user's explicit preference.
 
-## Body: mandatory, always Markdown
+## Body: policy- and complexity-dependent
 
 - Add a body when repository policy requires it or when the change is non-trivial. Explain the
   why in a sentence or two whenever the diff does not make it obvious. A subject-only commit is

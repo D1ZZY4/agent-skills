@@ -2,7 +2,8 @@
 
 Full detail for when no Context7 MCP server is connected but a shell/bash tool is available.
 Prefer an already-installed `ctx7` CLI. A transient `npx` invocation is a fallback only when
-network access and package execution are permitted for the current request.
+network access and package execution are permitted for the current request. If that permission
+has not already been given, ask before using the network-backed fallback.
 
 ## Running commands
 
@@ -13,7 +14,7 @@ ctx7 library <name> "<query>"
 ctx7 docs <libraryId> "<query>"
 ```
 
-If it is not installed, ask before using the network-backed fallback:
+If it is not installed and network-backed package execution has been approved, use the fallback:
 
 ```bash
 npx ctx7@latest library <name> "<query>"

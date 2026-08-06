@@ -39,6 +39,7 @@ Different UI surfaces need different copy patterns:
 - **Error messages**: `references/error-messages.md`
 - **Empty states**: `references/empty-states.md`
 - **Confirmation and destructive-action dialogs**: `references/confirmation-dialogs.md`
+- **Accessibility and localization**: `references/accessibility-and-localization.md`
 
 ## Step 3: Verify the language itself, don't guess
 
@@ -85,6 +86,8 @@ types before finalizing anything.
 - `references/error-messages.md`: how to write an error message that actually helps.
 - `references/empty-states.md`: what an empty state needs to do beyond saying "nothing here".
 - `references/confirmation-dialogs.md`: confirmation and destructive-action copy.
+- `references/accessibility-and-localization.md`: accessible names, status copy, and localization
+  constraints.
 - `references/language-and-vocabulary-verification.md`: verifying word choice and grammar
   against authoritative per-language sources instead of guessing.
 - `references/formatting-and-punctuation.md`: the em dash ban and other punctuation rules.

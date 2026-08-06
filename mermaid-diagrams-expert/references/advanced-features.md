@@ -2,6 +2,8 @@
 
 Advanced configuration, styling, theming, and other powerful features for creating professional diagrams.
 
+> Compatibility note: frontmatter, ELK layout, click handlers, icon packs, and theme options vary by renderer. Read `renderer-adapters.md` and verify the target before relying on advanced syntax.
+
 ## Frontmatter Configuration
 
 Add YAML configuration at the top of diagrams:
