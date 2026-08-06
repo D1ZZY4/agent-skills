@@ -72,10 +72,11 @@ If the work was done with an agentic coding tool (Claude Code, Codex, Kimi, Gemi
 similar) and that provider supplies an official noreply GitHub email for the agent, it's fine
 to add a `Co-authored-by` trailer at the very end of the body, after everything else,
 including any issue references. This is standard git practice, not an AI summary. Format
-(illustrative only, use whatever real address the tool actually provides):
+(illustrative only, use whatever real address the tool actually provides, and the actual
+specific model/version that did the work):
 
 ```
-Co-authored-by: <agent name> <the agent's actual noreply address>
+Co-authored-by: <specific model name and version> <the agent's actual noreply address>
 ```
 
 Rules for this trailer:
@@ -98,6 +99,14 @@ Rules for this trailer:
   <noreply@anthropic.com>`, still write the canonical casing by default even though this
   works, for consistency
 - Only use an email the provider actually issued for this purpose, never invent one.
+- **Use the specific model name and version, not just the generic tool name.** `Claude Sonnet
+  5` or `Claude Opus 4.8` tells a future reader more than a bare `Claude` does, since
+  different models and versions have different quirks, and knowing exactly which one produced
+  a commit helps with debugging patterns later. If a non-default configuration is relevant and
+  known (an extended context window, a specific reasoning mode), it's fine to note it in
+  parentheses after the name, for example `Claude Opus 4.8 (1M context)`. Don't guess or round
+  this information, only include what's actually known to be true for the session that did
+  the work, an unlabeled generic name is better than a fabricated specific one.
 - It goes at the bottom, as its own line, after a blank line separating it from the rest of
   the body. Never woven into a sentence.
 - Which tool gets credited, and in what exact name/email format, is up to whichever

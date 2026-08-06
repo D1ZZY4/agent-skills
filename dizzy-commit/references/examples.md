@@ -11,6 +11,23 @@ to reduce LTE bandwidth on cold-launch screens.
 Closes #128
 ```
 
+## Good, specific model name in the co-author trailer
+
+```
+fix(ui): count free-tier oauth connections on providers list
+
+Free-tier cards hardcoded apikey for stats and toggle, so oauth
+connections were invisible on the providers list despite showing
+on the detail page. Use dualAuthTypes per provider instead.
+
+Co-authored-by: Claude Sonnet 5 <noreply@anthropic.com>
+```
+
+Naming the specific model and version, not just a bare "Claude", tells a future reader
+exactly which model produced the commit, useful when debugging model-specific patterns later.
+A non-default configuration (extended context, a specific mode) can go in parentheses after
+the name when it's actually known, never guessed.
+
 ## Good, strict mode
 
 Two unrelated dark-mode fixes, split into two commits. See `strict-mode.md` for the author
