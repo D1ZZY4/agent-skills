@@ -8,9 +8,10 @@ description: >
   architecture, a database schema, an API or auth flow, a process or decision tree, a class
   or domain model, or a project timeline would genuinely be clearer as a diagram than as
   prose, and any time producing a persistent diagram for a README, PR, wiki, or design doc,
-  since Mermaid renders natively in GitHub, GitLab, Notion, and Obsidian and stays
-  version-controlled alongside the code it documents. This is for diagrams that live in
-  repos and docs, distinct from a one-off inline visual for the current conversation.
+  when the target renderer supports the selected Mermaid version and diagram features, and
+  stays version-controlled alongside the code it documents. Verify the actual target platform
+  instead of assuming identical support everywhere. This is for diagrams that live in repos and
+  docs, distinct from a one-off inline visual for the current conversation.
 ---
 
 # Mermaid Diagrams Expert
@@ -67,12 +68,11 @@ diagramType
 
 ## Step 3: Validate before delivering
 
-Read `references/validation-and-rendering.md` for the full detail. Short version: Mermaid
-fails silently on unknown syntax and unescaped special characters, a broken diagram often
-still "renders" as something, just not what was intended. If a way to actually render or lint
-the diagram is available (a bash tool with `npx @mermaid-js/mermaid-cli`, or any Mermaid-aware
-preview), use it before presenting the diagram as finished, rather than delivering untested
-syntax on faith.
+Read `references/validation-and-rendering.md` for the full detail. Short version: review the
+diagram against the source model, then render or lint it if an existing compatible tool is
+available. Do not install packages or start Docker merely to validate a diagram unless the user
+approves that setup. If rendering is unavailable, perform static syntax and structure review and
+say that visual rendering was not verified.
 
 ## Step 4: Deliver appropriately
 

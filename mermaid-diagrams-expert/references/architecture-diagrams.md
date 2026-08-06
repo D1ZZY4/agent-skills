@@ -101,12 +101,13 @@ architecture-beta
 
 ### Using @iconify-json Icon Packs
 
-Use npm icon packs with Mermaid CLI for a wide variety of technology logos:
+Use already-installed icon packs with Mermaid CLI for a wide variety of technology logos:
 
 ```bash
-npm install @iconify-json/logos @mermaid-js/mermaid-cli
 mmdc --iconPacks @iconify-json/logos -i ./diagram.mmd -o ./output.svg
 ```
+
+Installing icon packs or Mermaid CLI changes the environment and requires explicit approval.
 
 Use icons with the `logos:` prefix:
 
@@ -124,7 +125,7 @@ architecture-beta
 
 **Popular icon packs:**
 
-| Icon Pack                    | Description                                   | Install                            |
+| Icon Pack                    | Description                                   | Package                            |
 | ---------------------------- | --------------------------------------------- | ---------------------------------- |
 | `@iconify-json/logos`        | Technology brands (Docker, AWS, GitHub, etc.) | `npm i @iconify-json/logos`        |
 | `@iconify-json/bi`           | Bootstrap icons                               | `npm i @iconify-json/bi`           |

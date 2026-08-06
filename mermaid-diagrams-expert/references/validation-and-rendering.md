@@ -6,19 +6,15 @@ render, or renders with a subtly wrong structure, and never notice.
 
 ## Validate before delivering, when possible
 
-If a bash or shell tool is available, actually render the diagram rather than trusting the
-syntax on sight:
+If a compatible Mermaid renderer is already available, render the diagram rather than trusting
+the syntax on sight:
 
 ```bash
-npm install -g @mermaid-js/mermaid-cli   # once, if not already present
 mmdc -i diagram.mmd -o diagram.svg
 ```
 
-or without a global install:
-
-```bash
-npx @mermaid-js/mermaid-cli -i diagram.mmd -o diagram.svg
-```
+Do not install packages, invoke a network-backed `npx` fallback, or start Docker merely to
+validate a diagram. Ask for approval before setting up a renderer.
 
 A clean exit with an output file means the syntax parsed. An error output means something in
 the diagram is invalid, fix it before presenting the diagram as finished rather than handing
@@ -62,10 +58,10 @@ diagrams are consumed as rendered Markdown, not exported images.
 - **[Mermaid Live Editor](https://mermaid.live)**: online editor with instant preview and
   PNG/SVG export, also the fastest way to manually sanity-check a diagram if no local
   rendering tool is available.
-- **Mermaid CLI**: `npm install -g @mermaid-js/mermaid-cli`, then
-  `mmdc -i input.mmd -o output.png` (or `.svg`, `.pdf`).
-- **Docker**: `docker run --rm -v $(pwd):/data minlag/mermaid-cli -i /data/input.mmd -o
-  /data/output.png`, useful when a local Node install isn't available or desired.
+- **Mermaid CLI**: use an existing installation with `mmdc -i input.mmd -o output.png`
+  (or `.svg`, `.pdf`). Installation requires explicit approval.
+- **Docker**: a user-approved alternative when a local renderer is unavailable. Do not start
+  Docker implicitly.
 
 ## Where diagrams render natively, no export needed
 

@@ -81,6 +81,18 @@ or standard word choice. Use them to supplement, for example checking how a comp
 name is conventionally styled, but defer to the actual language authority (KBBI, a proper
 dictionary, a national language academy) for anything about the language itself.
 
+## If authoritative lookup is unavailable
+
+Do not present uncertain wording as verified. Use this fallback order:
+
+1. The project's approved terminology and existing product copy.
+2. A trusted local dictionary or language resource already available in the environment.
+3. A clearly labeled best-effort suggestion with the uncertain term or construction flagged.
+
+Report that authoritative verification was not available and ask for review when the wording
+affects legal meaning, safety, accessibility, localization quality, or a high-visibility
+surface. Never invent a citation or imply that a source was consulted when it was not.
+
 ## How to actually do this in practice
 
 Use the web search and web fetch tools directly rather than answering from memory when

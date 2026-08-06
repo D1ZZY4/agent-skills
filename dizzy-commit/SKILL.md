@@ -1,21 +1,24 @@
 ---
 name: dizzy-commit
 description: >
-  Enforce disciplined Conventional Commits and a clean working tree on every git commit.
-  Use this skill proactively, not only when the user explicitly says "commit" or names the
-  skill. Trigger it any time you finish a coding task and the working tree has uncommitted
-  changes, any time the user says "commit", "git commit", "push", "stage", "/commit",
-  "caveman commit", "strict commit", "dizzy-commit", or a clear synonym, and any time you are
-  about to end a turn or session with dirty working tree state. Applies natively in any
-  project, with a stricter mode available for projects that require a fixed commit author and
-  extra banned-word rules.
+  Enforce disciplined Conventional Commits when the user explicitly asks to commit, push,
+  stage, or use this skill. When work is uncommitted at the end of a task, inspect and report
+  it, but never commit or discard changes automatically.
 ---
 
 # Dizzy Commit
 
-Everything this skill needs is bundled here. No repo setup, no external rules file to check.
+Everything this skill needs is bundled here. No separate commit-policy file is required.
 This file is the workflow index. Details live in `references/`, load the specific file for
-the step you're on rather than guessing.
+the step you're on rather than guessing. Inspect the repository's own tooling and contribution
+rules before applying verification or message-policy assumptions.
+
+## Safety boundary
+
+Inspecting a dirty working tree is always allowed. Staging, committing, restoring, deleting,
+or cleaning files requires an explicit user request or confirmation. Treat pre-existing changes
+as user-owned unless ownership is clear. Never use `git checkout -- <file>` or `git clean -fd`
+to force a clean tree.
 
 ## Two modes
 
@@ -25,16 +28,16 @@ the step you're on rather than guessing.
   `references/strict-mode.md` for the extra constraints and apply them on top of default mode,
   not instead of it.
 
-If unsure which mode applies, ask once, or default to the global rules. They're a safe
-baseline either way.
+If the user explicitly requests a commit but does not specify strict mode, use the default
+rules. If no commit request was made, inspect and report dirty changes without staging,
+committing, restoring, or deleting them.
 
-## Step 0: Trigger proactively
+## Step 0: Inspect proactively, mutate only with approval
 
 Don't wait for the exact word "commit" or the skill name. Read `references/proactive-trigger.md`
-for the full check-in flow (when to check in, the Yes/No/custom question, the follow-up about
-whether context is needed). Short version: if you just finished coding and the tree is dirty,
-check in before ending your turn; if the user already asked for a commit, skip straight to
-Step 1.
+for the full inspection and confirmation flow. If the tree is dirty, inspect ownership and
+report the changes. Ask whether to commit if the user has not already requested it. Never treat
+a dirty tree as permission to stage, commit, restore, or delete files.
 
 ## Step 1: Inspect the diff
 
@@ -64,12 +67,14 @@ enumerated file-by-file changelog.
 
 ## Step 4: Verify before committing
 
-Run whatever verification the project actually has (check `package.json` scripts, `Makefile`,
-etc.). Common defaults: `pnpm typecheck`, `pnpm lint`, `pnpm build`. If any fail, report the
-errors and do not commit until fixed. Skip silently only if the project has none of these set
-up.
+Detect the repository's project type, package manager, lockfile, and declared scripts before
+running verification. Check `package.json`, `Makefile`, `pyproject.toml`, `Cargo.toml`, or
+equivalent project configuration as applicable. Run only commands that are actually declared
+or clearly supported by the repository. Do not assume pnpm. If verification fails, report the
+errors and do not commit until fixed. If no verification command exists, say that verification
+was unavailable.
 
-## Step 5: Stage, commit, clean the tree
+## Step 5: Stage and commit only after explicit approval
 
 Read `references/commit-execution.md` for exactly how to construct the commit so subject and
 body never get squashed into one run-on string. Short version: use `git commit -F` with a
@@ -78,17 +83,19 @@ afterward that subject and body actually rendered as two separate blocks. If a
 `Co-authored-by` trailer is included, double check the angle brackets around the email before
 committing, that's the part that actually breaks recognition if missing.
 
-After each commit (or batch of commits for a multi-concern diff), before declaring the task
-or session done, always run:
+Stage and commit only after the user explicitly asks for it or confirms the check-in request.
+Before staging, distinguish changes made during this task from pre-existing user changes. If
+ownership is unclear, stop and ask. Never use restore or clean commands to force a clean tree.
+After each commit, verify the requested changes and run:
 
 ```bash
 git status --short
 ```
 
-Output must be empty. Every remaining file is either committed or intentionally discarded
-(`git checkout -- <file>` / `git clean -fd`). No "trivial leftover" exception. See
-`references/clean-tree-checklist.md` for the full checklist. An unattended platform (Replit,
-CI, etc.) may otherwise auto-commit leftovers with a message that violates every rule above.
+If files remain, report them and their ownership. A non-empty tree is acceptable when it
+contains pre-existing user work or changes the user has intentionally kept. Never run
+`git checkout -- <file>` or `git clean -fd` without explicit, file-specific confirmation.
+See `references/clean-tree-checklist.md` for the full checklist.
 
 ## Anti-patterns to reject
 

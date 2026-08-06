@@ -29,8 +29,11 @@ Before doing anything else, check what's actually available in this environment:
 - **MCP tools present** (a Context7 MCP server is connected, tools with names like
   `resolve-library-id` and `get-library-docs` or `query-docs` appear in the tool list): use
   MCP mode. Read `references/mcp-mode.md`.
-- **No MCP tools, but a shell/bash tool is available**: use CLI mode via `npx ctx7@latest`.
-  Read `references/cli-mode.md`.
+- **No MCP tools, but a shell/bash tool and an installed `ctx7` CLI are available**: use CLI
+  mode. Read `references/cli-mode.md`.
+- **No MCP tools and no installed CLI**: use the transient `npx` fallback only when network
+  access and package execution are permitted for this request. Do not install globally or
+  change project configuration just to answer a documentation question.
 - **Neither is available**: say so plainly, answer from training knowledge, and flag that the
   answer may be outdated for fast-moving libraries. Never silently pretend training data is
   current.
@@ -52,9 +55,10 @@ call (see `references/selection-and-query-writing.md` for why and for good/bad q
 examples). Use the returned docs to answer, including relevant code examples, and mention the
 library version when it's relevant to the answer.
 
-Cap yourself at 3 resolve/fetch calls total per question. If you still don't have what you
-need after 3, answer with the best information you have and say so, don't keep retrying
-indefinitely.
+Cap yourself at 3 Context7 operations total per question, counting library resolution, docs
+fetches, and retries. If multiple libraries or concepts are involved, prioritize the highest
+impact query within that budget. If you still don't have what you need after 3 operations,
+answer with the best information you have and say so, don't keep retrying indefinitely.
 
 ## Step 3: Handle failures honestly
 
