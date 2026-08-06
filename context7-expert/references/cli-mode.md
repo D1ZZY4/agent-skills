@@ -30,8 +30,8 @@ CLI version when reproducibility matters.
 npx ctx7@latest library "Next.js" "How to set up app router with middleware"
 ```
 
-You MUST run this first to get a valid library ID, UNLESS the user already gave one directly
-in `/org/project` or `/org/project/version` format.
+You MUST run this first to get a valid library ID, UNLESS the user already gave one directly in
+`/org/project` or `/org/project/version` format.
 
 - Use the library's proper official name and punctuation ("Next.js" not "nextjs",
   "Customer.io" not "customerio", "Three.js" not "threejs"). If results look wrong, try an
@@ -98,18 +98,17 @@ If a command fails with a quota error ("Monthly quota reached" or "quota exceede
 
 1. Tell the user their Context7 quota is exhausted, plainly.
 2. Mention authentication as an optional user-controlled remedy, without initiating it.
-3. If the user cannot or does not want to authenticate, answer from training knowledge and clearly
-   note it may be outdated.
+3. If the user cannot or does not want to authenticate, answer from training knowledge and
+   clearly note it may be outdated.
 
 Never silently fall back to training data, always say why Context7 wasn't used.
 
 ## Common mistakes to avoid
 
 - Library IDs require a `/` prefix, `/facebook/react` not `facebook/react`
-- Always resolve first, `npx ctx7@latest docs react "hooks"` fails without a valid ID from
-  the `library` step
-- Use descriptive queries, not single words, `"React useEffect cleanup function"` not
-  `"hooks"`
+- Always resolve first, `npx ctx7@latest docs react "hooks"` fails without a valid ID from the
+  `library` step
+- Use descriptive queries, not single words, `"React useEffect cleanup function"` not `"hooks"`
 - One topic per query, split multi-concept questions into separate `docs` calls per concept,
   unless the question is specifically about how the concepts interact
 - Never put sensitive information (API keys, passwords, credentials) in a query

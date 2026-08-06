@@ -41,10 +41,9 @@ Alias: `ctx7 ss pdf`
 
 ## Suggest
 
-Auto-detects the current project's dependencies (reads `package.json`,
-`requirements.txt`, `pyproject.toml`, `Cargo.toml`, `go.mod`, `Gemfile`) and recommends
-relevant skills from the registry. Falls back to suggesting a manual `skills search` if no
-dependencies are detected.
+Auto-detects the current project's dependencies (reads `package.json`, `requirements.txt`,
+`pyproject.toml`, `Cargo.toml`, `go.mod`, `Gemfile`) and recommends relevant skills from the
+registry. Falls back to suggesting a manual `skills search` if no dependencies are detected.
 
 ```bash
 npx ctx7@latest skills suggest           # scan current project, install to project
