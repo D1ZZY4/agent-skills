@@ -3,6 +3,7 @@
 .cache/
 .config/
 .agents/
+.claude/
 attached_assets/
 prompt/
 PROGRESS.md
@@ -63,4 +64,3 @@ build/
 
 # --- OS junk ---
 Thumbs.db
-.claude/
