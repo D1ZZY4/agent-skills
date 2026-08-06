@@ -75,7 +75,7 @@ Drops the now-redundant prompt/info-1.md and info-2.md content that
 was already merged elsewhere.
 ```
 
-## Bad: malformed co-author trailer, wall-of-text body (real failure mode)
+## Bad: wall-of-text body (real failure mode)
 
 ```
 fix(skills): add missing references/ line to 3 README.md structure trees
@@ -85,10 +85,12 @@ rom, kernel, and debug README.md structure listings omitted the references/ dire
 Co-Authored-By: Claude <noreply@anthropic.com>
 ```
 
-Broken in two ways: the body crams three separate facts (what's missing, what selinux-repair
-already has as the working pattern, what the fix does) into one dense sentence instead of
-Markdown bullets; and the trailer casing is wrong, `Co-Authored-By` instead of
-`Co-authored-by`. Fixed version:
+The real bug here is the body: three separate facts (what's missing, what selinux-repair
+already has as the working pattern, what the fix does) crammed into one dense sentence
+instead of Markdown bullets. The trailer's `Co-Authored-By` casing looks off compared to the
+canonical `Co-authored-by`, but it's not actually broken, git trailer keys are
+case-insensitive, so this still gets recognized. Still worth matching the canonical casing for
+consistency. Fixed version:
 
 ```
 fix(skills): add missing references/ to 3 README trees

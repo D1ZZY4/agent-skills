@@ -75,9 +75,8 @@ Read `references/commit-execution.md` for exactly how to construct the commit so
 body never get squashed into one run-on string. Short version: use `git commit -F` with a
 temp file for anything with a body (which is every commit), and verify with `git log -1`
 afterward that subject and body actually rendered as two separate blocks. If a
-`Co-authored-by` trailer is included, re-read that exact line character by character before
-committing, it must match `Co-authored-by: Name <email>` precisely, this is the single most
-commonly botched line in the whole message.
+`Co-authored-by` trailer is included, double check the angle brackets around the email before
+committing, that's the part that actually breaks recognition if missing.
 
 After each commit (or batch of commits for a multi-concern diff), before declaring the task
 or session done, always run:
@@ -107,11 +106,11 @@ Reject and rewrite any commit message (yours or the user's) that:
 - Contains an em dash, en dash, or emoji anywhere in the subject or body
 - Renders a command-line flag or path with a smart-punctuation dash instead of plain ASCII
   hyphens, breaking it if copied and pasted
-- Has a `Co-authored-by` trailer with wrong casing or missing angle brackets around the email.
-  Check the literal string before finishing: it must read exactly `Co-authored-by: Name
-  <email>`. Wrong: `Co-Authored-By: Name email` or `Co-Authored-By: Name <email>` (capital A,
-  capital B) or `Co-authored-by: Name email` (no angle brackets). Right: `Co-authored-by: Name
-  <email>`, nothing else
+- Has a `Co-authored-by` trailer missing the angle brackets around the email, this genuinely
+  breaks recognition. Wrong: `Co-authored-by: Name email`. Right: `Co-authored-by: Name
+  <email>`. Casing (`Co-authored-by` vs `Co-Authored-By`) is case-insensitive per the git
+  trailer spec and still works either way, but default to the canonical lowercase-after-C
+  form for consistency
 - Duplicates a commit that already exists in recent history for the same change
 - Isn't written in English
 - Contains `phase`, `session`, `iteration`, `step` (including numbered variants)

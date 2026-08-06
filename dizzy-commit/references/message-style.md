@@ -80,14 +80,23 @@ Co-authored-by: <agent name> <the agent's actual noreply address>
 
 Rules for this trailer:
 
-- **Exact format, no exceptions**: `Co-authored-by: Name <email>`. The casing is exactly
-  `Co-authored-by`, lowercase `a` in "authored", lowercase `b` in "by", capital `C`. Not
-  `Co-Authored-By`, not `CO-AUTHORED-BY`, not any other casing variant.
-- **The email is always wrapped in angle brackets**, `<email>`, never bare. A trailer without
-  the brackets is not a valid git trailer and won't be recognized as co-authorship by GitHub
-  or git tooling, it'll just look like broken text sitting at the end of the commit.
-- Wrong: `Co-Authored-By: Claude noreply@anthropic.com` (wrong casing, missing brackets)
-- Right: `Co-authored-by: Claude <noreply@anthropic.com>`
+- **Canonical format**: `Co-authored-by: Name <email>`, capital `C`, lowercase everything
+  else. This is the exact casing GitHub's own documentation uses every time it shows the
+  format, so it's the default to write.
+- **Casing is not functionally required, but stay consistent anyway.** Git trailer keys are
+  case-insensitive per the trailer spec, so `Co-Authored-By` or other casing variants are
+  still recognized as the same trailer by git and GitHub, a differently-cased trailer is not
+  actually broken. Default to the canonical casing above regardless, for consistency across
+  the project's history, not because the alternative fails.
+- **The email must be wrapped in angle brackets**, `<email>`, never bare. This part is
+  functionally required: a trailer without the brackets is not a valid trailer at all and
+  won't be recognized as co-authorship by GitHub or git tooling, it'll just look like plain
+  text sitting at the end of the commit.
+- Not valid, missing brackets: `Co-authored-by: Claude noreply@anthropic.com`
+- Valid, canonical casing: `Co-authored-by: Claude <noreply@anthropic.com>`
+- Valid, non-canonical casing but still recognized: `Co-Authored-By: Claude
+  <noreply@anthropic.com>`, still write the canonical casing by default even though this
+  works, for consistency
 - Only use an email the provider actually issued for this purpose, never invent one.
 - It goes at the bottom, as its own line, after a blank line separating it from the rest of
   the body. Never woven into a sentence.

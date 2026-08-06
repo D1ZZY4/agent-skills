@@ -72,9 +72,11 @@ git log -1
 Confirm three things: the subject and body rendered as two visually separate blocks with a
 blank line between them, not one run-on paragraph; there's no literal `\n` text sitting
 anywhere in the message (that means the escape-sequence bug happened, not a real newline); and
-if a `Co-authored-by` trailer is present, it reads exactly `Co-authored-by: Name <email>`
-with correct casing and angle brackets, not any malformed variant. If any check fails, the
-commit needs to be amended before moving on (only if not yet pushed; see the
+if a `Co-authored-by` trailer is present, the email is wrapped in angle brackets, `<email>`,
+since that part is what actually breaks recognition if missing. Casing of the trailer key
+itself is case-insensitive per the git trailer spec and works either way, default to
+`Co-authored-by` for consistency but it's not a functional bug if it varies. If the brackets
+are missing, the commit needs to be amended before moving on (only if not yet pushed; see the
 no-amend-after-push rule in `strict-mode.md` when strict mode is active).
 
 ## Author identity
