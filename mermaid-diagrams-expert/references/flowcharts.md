@@ -1,6 +1,7 @@
 # Flowcharts
 
-Flowcharts visualize processes, algorithms, decision trees, and user journeys. They show step-by-step progression through a system or workflow.
+Flowcharts visualize processes, algorithms, decision trees, and user journeys. They show
+step-by-step progression through a system or workflow.
 
 ## Basic Syntax
 

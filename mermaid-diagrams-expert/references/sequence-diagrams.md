@@ -1,6 +1,7 @@
 # Sequence Diagrams
 
-Sequence diagrams show interactions between participants over time. They're ideal for API flows, authentication sequences, and system component interactions.
+Sequence diagrams show interactions between participants over time. They're ideal for API
+flows, authentication sequences, and system component interactions.
 
 ## Basic Syntax
 

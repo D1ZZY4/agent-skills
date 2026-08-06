@@ -1,6 +1,7 @@
 # C4 Model Diagrams
 
-The C4 model provides a hierarchical way to visualize software architecture at different levels of abstraction: Context, Containers, Components, and Code.
+The C4 model provides a hierarchical way to visualize software architecture at different
+levels of abstraction: Context, Containers, Components, and Code.
 
 ## C4 Model Levels
 
@@ -327,11 +328,13 @@ C4Container
 
 ## Best Practices
 
-1. **Use appropriate level** - Context for stakeholders, Container for architects, Component for developers
+1. **Use appropriate level** - Context for stakeholders, Container for architects, Component
+   for developers
 2. **Keep it focused** - One system per Context diagram, one container per Component diagram
 3. **Show key relationships** - Don't clutter with every possible connection
 4. **Use consistent naming** - Same names across all diagram levels
-5. **Add technology details** - Specify frameworks, languages, protocols at Container/Component level
+5. **Add technology details** - Specify frameworks, languages, protocols at Container/Component
+   level
 6. **Update regularly** - Keep diagrams in sync with architecture
 7. **Use boundaries** - Group related containers/components logically
 8. **Document protocols** - Show communication methods (REST, gRPC, messaging)
