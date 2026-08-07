@@ -3,12 +3,6 @@
 .cache/
 .config/
 .agents/*
-!.agents/skills/
-.agents/skills/*
-!.agents/skills/context7-expert
-!.agents/skills/copywriting-expert
-!.agents/skills/dizzy-commit
-!.agents/skills/mermaid-diagrams-expert
 .claude/
 attached_assets/
 prompt/
