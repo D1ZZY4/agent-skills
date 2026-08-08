@@ -8,18 +8,22 @@ render, or renders with a subtly wrong structure, and never notice.
 
 If a compatible Mermaid renderer is already available, render the diagram rather than trusting
 the syntax on sight. First identify the renderer and version, then check that it supports the
-diagram type and configuration being used:
+diagram type and configuration being used. For a local Mermaid CLI, inspect the executable and
+version before rendering:
 
 ```bash
+command -v mmdc
+mmdc --version
 mmdc -i diagram.mmd -o diagram.svg
 ```
 
 Do not install packages, invoke a network-backed fallback, or start Docker merely to validate a
 diagram. Ask for approval before setting up a renderer. If approval is given for a temporary
-Mermaid CLI invocation, use the current package explicitly:
+Mermaid CLI invocation, use the package version supported by the target project. Pin the version
+for reproducibility:
 
 ```bash
-npx @mermaid-js/mermaid-cli@latest -i diagram.mmd -o diagram.svg
+npx @mermaid-js/mermaid-cli@<pinned-version> -i diagram.mmd -o diagram.svg
 ```
 
 This is a reference command only. It must not run implicitly, and the target project must not be

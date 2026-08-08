@@ -3,6 +3,11 @@
 The C4 model provides a hierarchical way to visualize software architecture at different
 levels of abstraction: Context, Containers, Components, and Code.
 
+`C4Context`, `C4Container`, and `C4Component` are renderer-dependent extensions rather than
+universally supported core Mermaid syntax. Confirm that the target renderer and version support
+the C4 extension before using these blocks. If they are unavailable, use a flowchart or regular
+architecture diagram with explicit system boundaries.
+
 ## C4 Model Levels
 
 1. **System Context** - Shows the system and its users/external systems

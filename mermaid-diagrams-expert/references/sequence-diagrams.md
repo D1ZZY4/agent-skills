@@ -211,6 +211,7 @@ Add clickable links:
 ```mermaid
 sequenceDiagram
     participant A as Service A
+    participant B as Service B
     link A: Dashboard @ https://dashboard.example.com
     link A: API Docs @ https://docs.example.com
     

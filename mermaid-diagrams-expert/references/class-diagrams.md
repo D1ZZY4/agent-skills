@@ -85,7 +85,7 @@ One class depends on another, often as a parameter or local variable.
 
 ```mermaid
 classDiagram
-    OrderProcessor <.. PaymentGateway
+    OrderProcessor ..> PaymentGateway
 ```
 
 ### Realization/Implementation (`<|..`)
