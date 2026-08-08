@@ -67,9 +67,9 @@ actual diff.
 ## Step 2: Group and stage safely
 
 Read `references/staging-and-gitignore.md` for the full rules. Short version: group changed
-files by logical concern (one commit per concern, split unrelated changes), and never stage
-or commit a file covered by `.gitignore`, checking with `git check-ignore -v <file>` before
-adding anything.
+files by logical concern, recommend separate commits for unrelated concerns, and never add a new
+untracked file covered by `.gitignore`. Tracked files remain tracked even if a later ignore rule
+matches them. Check `git check-ignore -v <file>` before adding untracked files.
 
 ## Step 3: Write the message
 
@@ -118,7 +118,7 @@ Reject and rewrite any commit message (yours or the user's) that:
 - Has no scope when the resolved commit policy requires one, or uses a misleading scope
 - Has no body when the resolved commit policy requires one, or omits the why for a non-trivial
   change
-- Includes a file that's covered by `.gitignore`
+- Adds a new untracked file that's covered by `.gitignore`
 - Cites an ignored or untracked file (like a local rules doc) as the authority for a change,
   instead of paraphrasing the actual rule into the message
 - Reads like an exhaustive file-by-file changelog dump instead of a concise explanation

@@ -5,9 +5,9 @@ Full detail for the staging part of Step 2 in SKILL.md.
 ## Group by logical concern
 
 Group changed files by concern: one bug fix, one refactor, one feature, one docs update. If
-the diff spans unrelated areas, split into multiple commits. Never bundle unrelated changes,
-even if asked to "commit everything at once." Warn the user and offer to split; if they
-insist, generate one commit per concern anyway.
+the diff spans unrelated areas, recommend splitting into multiple commits. Explain the tradeoff
+and ask a focused question when the user explicitly requests one combined commit; follow that
+instruction when it is safe and the combined change has a coherent purpose.
 
 ## Never cite an ignored or untracked file as authority in the message
 
@@ -35,7 +35,7 @@ git ls-files --error-unmatch <the file being cited>
   a style guide, a set of project rules), that's a signal it likely shouldn't be gitignored at
   all, flag that to the user as a separate observation rather than silently working around it.
 
-## Never stage or commit a gitignored file
+## Never add a new ignored file
 
 Before staging anything, check whether it's ignored:
 
@@ -45,14 +45,16 @@ git check-ignore -v <file>
 
 Rules:
 
-- If a file is ignored, it stays out of the commit, full stop. This is true even if its
-  content was the source of an edit that landed somewhere else.
+- A new untracked file matched by `.gitignore` stays out of the commit, full stop.
+- A file already tracked by Git remains eligible for normal modifications even if a later
+  `.gitignore` rule matches it. Treat deletion, untracking, or broad ignore-rule changes as
+  separate operations requiring the user's explicit instruction.
 - If content originated from an ignored path (for example, a file inside an ignored folder
   was used as the basis for changes made to a tracked file elsewhere), that's fine, the
   tracked result can be committed. But the ignored file itself never gets added, and this
   should be mentioned to the user rather than silently decided either way.
-- If something looks like it should be ignored but isn't (a `.gitignore` gap), or looks like
-  it shouldn't be ignored but is, flag it and ask instead of guessing.
+- If something looks like it should be ignored but isn't (a `.gitignore` gap), or looks like it
+  shouldn't be ignored but is untracked and ignored, flag it and ask instead of guessing.
 - Run `git status --short` right before staging, not just at the start of the task, since
   files can appear or change state partway through a session.
 

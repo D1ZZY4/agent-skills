@@ -8,8 +8,10 @@ to be typed before thinking about this.
 - **You just finished a coding task** (wrote, edited, or generated files) and the working tree
   now has uncommitted changes. Before ending your turn, run `git status --short`, inspect
   ownership, and report the changes. Ask for commit approval using the flow below.
-- **The user explicitly asked to commit, push, or stage** (or a clear synonym, or named this
-  skill directly). Skip the check-in entirely, go straight to Step 1 in SKILL.md.
+- **The user explicitly asked to commit or stage** (or a clear synonym, or named this skill
+  directly). Skip the check-in entirely, go straight to Step 1 in SKILL.md. A push request also
+  authorizes inspecting push state, but pushing remains a separate explicit operation covered by
+  `push-and-upstream.md`.
 - **You're about to end a session or declare a task done** and the tree is dirty. Check in
   before finishing, don't just leave it dirty and move on to something else.
 
@@ -32,7 +34,7 @@ to be typed before thinking about this.
    - **Custom answer**: follow what the user actually asked for instead of the binary Yes/No
      flow. Treat it as an explicit instruction, not as a request that still needs the two
      questions above.
-3. Once confirmed, proceed through the commit workflow. If ownership is unclear, an ignored
+3. Once confirmed, proceed through the commit workflow. If ownership is unclear, a new ignored
    file is involved, or cleanup would be destructive, stop and ask a focused question instead
    of making the change.
 

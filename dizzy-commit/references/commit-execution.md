@@ -51,17 +51,20 @@ Each `-m` becomes its own paragraph, separated by a blank line automatically.
 
 ## Method 2: file plus `-F` (preferred for anything multi-line or with bullets)
 
-Safer, since it avoids shell quoting issues entirely:
+Safer, since it avoids shell quoting issues entirely. Use a unique temporary path and clean it up
+after the commit:
 
 ```bash
-cat > /tmp/commit-msg.txt << 'EOF'
+msg_file="$(mktemp)"
+trap 'rm -f "$msg_file"' EXIT
+cat > "$msg_file" << 'EOF'
 type(scope): summary
 
 Body explaining why, in Markdown.
 - bullet one
 - bullet two
 EOF
-git commit -F /tmp/commit-msg.txt
+git commit -F "$msg_file"
 ```
 
 ## Always verify after committing
