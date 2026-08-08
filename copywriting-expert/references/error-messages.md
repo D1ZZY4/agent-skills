@@ -43,6 +43,11 @@ without leaking implementation detail: "We couldn't save your changes, try again
 If an error code or reference ID is useful for support purposes, it's fine to include it, but
 as a small secondary detail, not as the primary message the user reads first.
 
+Keep privacy and security boundaries in mind as well. Do not reveal whether an account exists,
+personal data belonging to another user, internal paths, secrets, tokens, authorization details,
+or operational clues that would help an attacker. For authentication and permission failures,
+use the least revealing message that still gives the legitimate user a safe next step.
+
 ## Recoverable vs unrecoverable errors need different framing
 
 - **Recoverable** (a form field is wrong, a temporary network blip): frame it as something to

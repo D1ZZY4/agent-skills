@@ -2,12 +2,12 @@
 
 Full detail for Step 4 in SKILL.md.
 
-## No em dashes, ever, explicit and absolute
+## Em dash policy
 
-Never use an em dash (Unicode U+2014, the long dash) anywhere in UI copy, in any language,
-under any circumstance. Not in buttons, not in error messages, not in empty states, not in
-tooltips, not in confirmation dialogs, not in draft copy, not in a "just this once, it reads
-better here" exception. When a sentence seems to want an em dash, restructure it instead:
+This repository's project preference is to avoid em dashes (Unicode U+2014) in generated UI copy.
+When no project-specific rule exists, treat this as a strong default, but follow an explicit
+project style guide for quoted, legal, or localized content that must preserve the character.
+When a sentence seems to want an em dash, restructure it instead:
 
 - Use a period and split into two sentences.
 - Use a comma if the pause is light.

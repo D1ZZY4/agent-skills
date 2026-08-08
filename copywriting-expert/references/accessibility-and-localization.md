@@ -14,6 +14,13 @@ product that may be translated.
 - Make status messages understandable when read out of context by a screen reader. Include the
   result and, when useful, the next action.
 - Do not encode meaning only through color, position, capitalization, or punctuation.
+- Ensure dialogs have a visible or programmatic label, move focus into the dialog when it opens,
+  return focus to the triggering control when it closes, and keep keyboard order logical.
+- Announce asynchronous success and error states through the product's live-region or status
+  pattern. Do not rely on a visual toast alone, and keep important status text available long
+  enough to be read.
+- Test the resulting copy with the project's supported assistive technologies when the surface
+  is high-impact or frequently used.
 
 ## Localization-ready copy
 

@@ -39,6 +39,7 @@ Different UI surfaces need different copy patterns:
 - **Error messages**: `references/error-messages.md`
 - **Empty states**: `references/empty-states.md`
 - **Confirmation and destructive-action dialogs**: `references/confirmation-dialogs.md`
+- **Toasts and onboarding**: `references/toasts-and-onboarding.md`
 - **Accessibility and localization**: `references/accessibility-and-localization.md`
 
 ## Step 3: Verify the language itself, don't guess
@@ -54,15 +55,20 @@ right one per language.
 
 ## Step 4: Formatting and punctuation
 
-Read `references/formatting-and-punctuation.md`. This includes an explicit, absolute rule:
-no em dashes anywhere in UI copy, under any circumstance. En dashes are allowed when used
-correctly as punctuation. Full detail and the rest of the punctuation rules (capitalization,
-ellipses, Oxford comma policy) are in that file.
+Read `references/formatting-and-punctuation.md`. This repository's project preference is to
+avoid em dashes in generated copy. If a project's own source of truth explicitly requires
+preserving an em dash in quoted or localized content, follow that project rule and disclose the
+exception. En dashes are allowed when used correctly as punctuation. Full detail and the rest
+of the punctuation rules are in that file.
 
 ## Step 5: Check against examples and anti-patterns
 
 Read `references/examples-and-anti-patterns.md` for worked good/bad examples across component
 types before finalizing anything.
+
+For an audit, report the component or surface, severity, evidence, proposed rewrite, and any
+unverified language or accessibility concern. Mark unresolved uncertainty instead of presenting
+an assumption as a verified fact.
 
 ## Anti-patterns to reject
 
@@ -86,6 +92,7 @@ types before finalizing anything.
 - `references/error-messages.md`: how to write an error message that actually helps.
 - `references/empty-states.md`: what an empty state needs to do beyond saying "nothing here".
 - `references/confirmation-dialogs.md`: confirmation and destructive-action copy.
+- `references/toasts-and-onboarding.md`: success feedback, undo actions, and first-run guidance.
 - `references/accessibility-and-localization.md`: accessible names, status copy, and localization
   constraints.
 - `references/language-and-vocabulary-verification.md`: verifying word choice and grammar

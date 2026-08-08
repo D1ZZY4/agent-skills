@@ -8,7 +8,7 @@ A confirmation dialog exists to make sure the user understands what's about to h
 it happens, irreversibly in many cases. State the actual consequence, not a generic warning:
 
 - Weak: "Are you sure?"
-- Better: "This will permanently delete the project and all its files. This can't be undone."
+- Better: "This will permanently delete the project and all its files. This cannot be undone."
 
 Generic confirmation copy trains users to click through without reading, since it never tells
 them anything they didn't already know from clicking the button. Specific copy earns the
