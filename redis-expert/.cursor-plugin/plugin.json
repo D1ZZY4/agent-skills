@@ -1,7 +1,7 @@
 {
   "name": "redis-expert",
   "version": "1.0.0",
-  "description": "All-in-one Redis expertise: data modeling and key naming, client connections and performance, clustering and replication, Redis Search including vector and hybrid search and RAG, observability and incident triage, production security hardening, and semantic caching for LLM responses via LangCache. Merged from 7 official Redis domain skills into one.",
+  "description": "Adapted all-in-one Redis expertise: data modeling and key naming, client connections and performance, clustering and replication, Redis Search including vector and hybrid search and RAG, observability and incident triage, production security hardening, and semantic caching for LLM responses via LangCache. Merged from 7 official Redis domain skills into one.",
   "author": {
     "name": "Redis",
     "email": "support@redis.com"

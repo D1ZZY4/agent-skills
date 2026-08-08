@@ -8,8 +8,8 @@ description: >
   LangCache. Use whenever designing, writing, reviewing, or debugging anything that touches
   Redis: choosing a data structure, naming keys, configuring a client, sharding across a
   cluster, building or tuning a search index, monitoring or diagnosing performance, hardening
-  a deployment, or caching LLM completions. Sourced from Redis, Inc.'s official agent-skills
-  repository (github.com/redis/agent-skills, MIT licensed), merged into one skill so the
+  a deployment, or caching LLM completions. Adapted from Redis, Inc.'s official agent-skills
+  repository (https://github.com/redis/agent-skills, MIT licensed), merged into one skill so the
   right domain loads automatically without picking between seven separate ones.
 ---
 
@@ -17,9 +17,10 @@ description: >
 
 This file is the workflow index. Details live in `references/<domain>/`, organized by the
 same seven domains as the original official skills this was merged from. Load the specific
-file for the domain and topic in question rather than guessing. Nothing about the underlying
-technical content was rewritten from the original official source, only the routing,
-formatting, and packaging.
+file for the domain and topic in question rather than guessing. The retained technical guidance
+follows the upstream material where available. This package adds cross-domain routing, proactive
+triggering, and house formatting, and may add qualifiers where the aggregate needs to
+distinguish Redis versions, modules, clients, or deployment models.
 
 ## Step 0: Trigger proactively
 
@@ -91,8 +92,10 @@ Three query commands: `FT.SEARCH` for direct document retrieval (the default cho
 lexical (BM25) and vector similarity in one fused query. `FT.CREATE` always needs an explicit
 `PREFIX` and should use `DIALECT 2`. Pick the narrowest field type for the access pattern,
 `TAG` for exact-match filtering is roughly 10x faster than misusing `TEXT` for it. For vector
-fields, `DIM` and `DISTANCE_METRIC` must exactly match the embedding model, a mismatch
-produces silent garbage results, not an error. `HNSW` for production-scale approximate search,
+fields, `DIM` must match the embedding model and the distance metric must match the retrieval
+design. Depending on the Redis, module, and client versions, a dimension mismatch may be rejected
+at index or query time, while a metric or model mismatch can degrade relevance without an obvious
+application error. `HNSW` for production-scale approximate search,
 `FLAT` for small exact-match corpora. Zero-downtime schema changes go through index aliases,
 never repoint application queries at a raw index name directly.
 
@@ -115,13 +118,15 @@ See `references/observability/metrics.md` and `references/observability/commands
 
 ## Security: production hardening
 
-Always authenticate and pair it with TLS, a production Redis with no password is the most
-common breach pattern. Prefer per-application ACL users with the minimum commands and key
-patterns they actually need over one shared `requirepass`, so a leaked credential has a
-bounded blast radius. Restrict network exposure with `bind`, `protected-mode yes`, and
-firewall rules limiting access to application subnets, `bind 0.0.0.0` with
-`protected-mode no` exposes Redis to the entire network. Consider renaming or disabling
-destructive commands (`FLUSHALL`, `DEBUG`, `CONFIG`) in production.
+For production deployments, authenticate and use TLS according to the managed service or
+self-hosted topology. A production Redis with no authentication is a common breach pattern.
+Prefer per-application ACL users with the minimum commands and key patterns they actually need
+over one shared `requirepass`, so a leaked credential has a bounded blast radius. Restrict
+network exposure with `bind`, `protected-mode yes`, and firewall rules limiting access to
+application subnets. `bind 0.0.0.0` with `protected-mode no` exposes Redis to the entire network.
+Prefer ACL restrictions and network controls for destructive commands (`FLUSHALL`, `DEBUG`,
+`CONFIG`). If command renaming or disabling is also used, verify client and operational tooling
+compatibility because it can break expected command names.
 
 See `references/security/auth.md`, `references/security/acls.md`, and
 `references/security/network.md`.
@@ -129,9 +134,10 @@ See `references/security/auth.md`, `references/security/acls.md`, and
 ## Semantic cache: caching LLM responses with LangCache
 
 Cache-aside pattern in front of any LLM call: search the cache by prompt similarity first, on
-a hit return the stored response, on a miss call the LLM and store the result. The similarity
-threshold trades precision for hit rate, 0.95+ for customer-facing answers where a wrong
-response is costly, 0.9 as a balanced default, 0.8 for loose internal/exploratory matching.
+a hit return the stored response, on a miss call the LLM and store the result. Similarity
+thresholds are workload and embedding-model heuristics, not portable defaults. Start
+conservatively, then calibrate them against an evaluation set while considering privacy, tenant
+isolation, TTL, invalidation, and poisoning risk.
 Never share one cache across unrelated task types (a code question and a password-reset
 question are semantically distinct even if the format is similar), use separate cache IDs or
 attribute-based filtering per task.
@@ -180,12 +186,11 @@ Organized by domain, matching the seven original official skills:
   (`redis-core.json`, `redis-search.json`, and so on), preserved unmodified in content, kept
   for reference and in case a tool wants the original per-domain metadata rather than the
   merged one.
-- `evals/core/`: the official Redis eval suite that shipped with the original `redis-core`
-  skill (prompts, expected outputs, and benchmark baselines used to validate the skill's own
-  quality). Only `redis-core` had an eval suite among the 7 originals, relocated here under
-  the same domain-folder naming convention used in `references/` for consistency.
+- No evaluation suite is bundled in this aggregate. Validate Redis-specific guidance against the
+  target Redis version, modules, client library, and deployment model before treating it as an
+  authoritative implementation contract.
 
-Original source: github.com/redis/agent-skills (MIT licensed, Redis, Inc.). This merge
-reorganizes seven separate skills into one, adds proactive triggering and cross-domain
-routing, and applies house formatting rules, the underlying technical guidance is preserved
-from the official source.
+Original source: https://github.com/redis/agent-skills (MIT licensed, Redis, Inc.). This merge
+reorganizes seven separate skills into one, adds proactive triggering and cross-domain routing,
+and applies house formatting rules. The upstream repository remains the authority for provenance;
+the target Redis version and deployment documentation remain the authority for runtime behavior.
