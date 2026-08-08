@@ -5,9 +5,10 @@ search, suggest, list, remove, or generate AI coding skills through the `ctx7` C
 are Markdown files that teach AI coding agents best practices, patterns, and workflows for a
 specific library or task, the same shape as this skill itself.
 
-All commands in this reference are mutating operations. Confirm the requested target and scope
-before running them. Never add `--all`, `--global`, or a removal command based only on a
-dependency scan or a proactive suggestion.
+Installation, suggestion, generation, and removal commands are mutating operations. Confirm the
+requested target and scope before running them. Search, list, and info commands are read-only
+inspection unless the CLI version documents otherwise. Never add `--all`, `--global`, or a
+removal command based only on a dependency scan or a proactive suggestion.
 
 ## Install
 

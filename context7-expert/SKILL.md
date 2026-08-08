@@ -53,7 +53,9 @@ user already gave an exact ID in `/org/project` or `/org/project/version` format
 Query using the resolved ID, one concept per query, never combine unrelated topics into one
 call (see `references/selection-and-query-writing.md` for why and for good/bad query
 examples). Use the returned docs to answer, including relevant code examples, and mention the
-library version when it's relevant to the answer.
+library version when it's relevant to the answer. For implementation-affecting lookups, include
+the selected ID, indexed version, query, access mode, and exact-versus-closest version status so
+the answer can be reproduced and audited.
 
 Read `references/risk-and-budget.md` before choosing the operation budget. Use three operations
 as the default for a normal question, but allow a documented increase when the user explicitly

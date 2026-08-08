@@ -7,6 +7,17 @@ has not already been given, ask before using the network-backed fallback.
 
 ## Running commands
 
+Before choosing a command, probe the local CLI without changing the project:
+
+```bash
+command -v ctx7
+ctx7 --version
+```
+
+If the executable is missing or the version check fails, treat the CLI as unavailable. Use the
+transient `npx` fallback only when network-backed package execution is already approved, and
+record that fallback was used.
+
 If `ctx7` is installed, use it directly:
 
 ```bash
@@ -54,8 +65,9 @@ npx ctx7@latest docs /vercel/next.js "How to set up app router"
 npx ctx7@latest docs /vercel/next.js/v14.3.0-canary.87 "How to set up app router"
 ```
 
-The available versions are listed in the `library` command's output, use the closest match to
-whatever the user specified.
+The available versions are listed in the `library` command's output. Prefer an exact match. If
+none exists, use the closest match only when it is relevant, and explicitly report that the
+indexed version was a closest match rather than the exact version requested.
 
 ## Step 2: Query documentation
 
@@ -102,6 +114,10 @@ If a command fails with a quota error ("Monthly quota reached" or "quota exceede
    clearly note it may be outdated.
 
 Never silently fall back to training data, always say why Context7 wasn't used.
+
+For any lookup that affects implementation, record the selected library ID, indexed version (or
+`latest indexed`), query, access mode (`MCP`, installed CLI, or `npx`), and whether the result
+was exact-version or closest-version documentation.
 
 ## Common mistakes to avoid
 

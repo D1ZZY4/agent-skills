@@ -55,6 +55,9 @@ other. Combined queries dilute ranking and return shallow results for every topi
 - Include relevant code examples straight from the docs.
 - Mention the library version when it's relevant to the answer, especially if the user asked
   about a specific version.
+- For implementation-affecting lookups, report the selected library ID, indexed version (or
+  `latest indexed`), query, access mode, and whether the version was an exact match. If a
+  closest indexed version was used, say so explicitly.
 
 ## Error handling
 
