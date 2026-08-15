@@ -1,9 +1,10 @@
 # Skills Management via ctx7
 
-Not triggered by documentation questions, only when the user explicitly asks to install,
+Not triggered by documentation questions. Use only when the user explicitly asks to install,
 search, suggest, list, remove, or generate AI coding skills through the `ctx7` CLI. Skills here
 are Markdown files that teach AI coding agents best practices, patterns, and workflows for a
-specific library or task, the same shape as this skill itself.
+specific library or task, the same shape as this skill itself. Covers install, search, suggest,
+generate, list, remove, and info commands.
 
 Installation, suggestion, generation, and removal commands are mutating operations. Confirm the
 requested target and scope before running them. Search, list, and info commands are read-only

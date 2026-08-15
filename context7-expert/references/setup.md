@@ -1,7 +1,8 @@
 # Setup
 
-Not triggered by documentation questions, only when the user explicitly asks to set up or
-configure Context7 for their editor or coding agent.
+Not triggered by documentation questions. Use only when the user explicitly asks to set up or
+configure Context7 for their editor or coding agent. Covers setup modes, authentication, what
+gets written, and how to choose between MCP and CLI modes.
 
 ## ctx7 setup
 

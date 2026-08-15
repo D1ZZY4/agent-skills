@@ -1,101 +1,100 @@
 ---
 name: context7-expert
+version: "1.5.0"
 description: >
-  Fetch current, version-accurate documentation for any library, framework, SDK, API, CLI
-  tool, or cloud service via Context7, instead of answering from training data that may be
-  outdated. Use proactively and silently, not only when the user says "context7" or "use
-  context7". Trigger for setup, config, API signature, or "how do I" questions naming a
-  library, before writing or fixing code that calls a specific library's API without full
-  certainty it's current, whenever a version is mentioned, and whenever confidence is anything
-  less than certain. Applies even to well-known libraries (React, Next.js, Prisma, Express,
-  Tailwind, Django, Spring Boot) since APIs drift between versions. Not for refactoring,
-  from-scratch scripts with no library involved, business logic debugging, general code
-  review, or library-independent programming concepts.
+  Retrieve current, version-accurate documentation for libraries, frameworks, SDKs, APIs,
+  CLIs, and cloud services through Context7 when authoritative, current documentation matters.
+  Trigger for version-sensitive setup, configuration, API signatures, migration questions,
+  dependency-specific code, or uncertainty about a named technology. Prefer project-local
+  documentation and explicitly supplied versions when they are more authoritative. Do not
+  invoke for library-independent programming concepts, ordinary refactors, or code whose
+  correctness does not depend on external API behavior.
+license: MIT
+metadata:
+  version: 1.5.0
+  author: D1ZYY4
+  priority: high
 ---
 
 # Context7 Expert
 
-This file is the workflow index. Details live in `references/`, load the specific file for
-the mode or step you're on rather than guessing.
+This file is the routing and decision layer. Load only the reference needed for the current step.
 
-## Step 0: Trigger proactively, and pick the right mode silently
+## Step 0: Decide whether current documentation is actually needed
 
-Don't wait for the word "context7" to be typed, and don't narrate that you're about to use it,
-just do it. Read `references/proactive-trigger.md` for the full trigger conditions and the
-confidence threshold for when training data is good enough on its own.
+Use this skill when the answer could be wrong because an API, CLI, SDK, framework, service,
+or version has changed. Strong triggers include a named dependency plus a concrete API question,
+a version number, migration work, generated code against an external API, or uncertainty about
+the current signature.
 
-Before doing anything else, check what's actually available in this environment:
+Do not use documentation lookup as ritual. If the task is pure reasoning, refactoring, or
+language syntax that does not depend on a third-party API, skip it.
 
-- **MCP tools present** (a Context7 MCP server is connected, tools with names like
-  `resolve-library-id` and `get-library-docs` or `query-docs` appear in the tool list): use
-  MCP mode. Read `references/mcp-mode.md`.
-- **No MCP tools, but a shell/bash tool and an installed `ctx7` CLI are available**: use CLI
-  mode. Read `references/cli-mode.md`.
-- **No MCP tools and no installed CLI**: ask before using the transient `npx` fallback unless
-  network-backed package execution was already explicitly approved for this request. Do not
-  install globally or change project configuration just to answer a documentation question.
-- **Neither is available**: say so plainly, answer from training knowledge, and flag that the
-  answer may be outdated for fast-moving libraries. Never silently pretend training data is
-  current.
+## Step 1: Choose the strongest available source
 
-Don't ask the user which mode to use, detect it from what's actually available and proceed.
+Use this evidence order:
 
-## Step 1: Resolve the library
+1. Repository-local documentation and lockfiles, when they define the project's actual version.
+2. Official vendor documentation for that exact product and version.
+3. Context7's indexed documentation for the requested library or platform.
+4. Other primary sources only when the above are unavailable.
 
-Both modes are a two-step process: resolve the library name to an exact ID first, then fetch
-docs with that ID. Read `references/selection-and-query-writing.md` for the shared selection
-criteria (name match, description relevance, code snippet count, source reputation, benchmark
-score) and query-writing rules that apply to both modes. Skip the resolve step only when the
-user already gave an exact ID in `/org/project` or `/org/project/version` format.
+Never silently substitute a different major version because it is easier to find.
 
-## Step 2: Fetch and use the documentation
+## Step 2: Choose the available Context7 mode
 
-Query using the resolved ID, one concept per query, never combine unrelated topics into one
-call (see `references/selection-and-query-writing.md` for why and for good/bad query
-examples). Use the returned docs to answer, including relevant code examples, and mention the
-library version when it's relevant to the answer. For implementation-affecting lookups, include
-the selected ID, indexed version, query, access mode, and exact-versus-closest version status so
-the answer can be reproduced and audited.
+- **MCP available**: use the Context7 MCP tools. Read `references/mcp-mode.md`.
+- **CLI available**: use the installed `ctx7` CLI. Read `references/cli-mode.md`.
+- **Neither available**: read `references/risk-and-budget.md` before considering a network-backed fallback.
+  Do not invent an installation state or execute an unapproved transient package command.
 
-Read `references/risk-and-budget.md` before choosing the operation budget. Use three operations
-as the default for a normal question, but allow a documented increase when the user explicitly
-asks about multiple libraries, a migration, security-sensitive behavior, or a version-specific
-breaking change. Every retry and fetch still counts, and the budget must remain finite.
+## Step 3: Resolve the technology precisely
 
-## Step 3: Handle failures honestly
+Identify the product/library, ecosystem, and relevant version before querying. If the project
+contains a lockfile or manifest, use it to constrain the lookup. If multiple similarly named
+libraries exist, disambiguate before fetching docs.
 
-If a call fails, returns nothing useful, or a quota/rate limit is hit, don't silently fall
-back to training data. Tell the user what happened and that the answer that follows (if any)
-is from training knowledge and may be outdated. See the error-handling section in
-`references/mcp-mode.md` or `references/cli-mode.md` for mode-specific detail.
+## Step 4: Fetch narrowly and apply the result
 
-## Bonus: managing skills and setup via the CLI
+Query for the exact task, not "everything about the library". Prefer primary API/reference
+sections and version-specific migration notes. When documentation conflicts with memory,
+trust the verified documentation.
 
-The `ctx7` CLI does more than fetch docs, it can also install, search, and generate other
-skills, and configure Context7 MCP for an editor. These aren't triggered by documentation
-questions, only by explicit requests to manage skills or set up Context7 itself. Read
-`references/cli-skills-management.md` and `references/setup.md` when that's what's being
-asked for.
+When writing code, preserve the project's existing API style and dependency version. Do not
+upgrade a dependency merely because newer documentation was found.
 
-## Anti-patterns to reject
+## Step 5: Report uncertainty honestly
 
-- Answering an API/config/setup question about a specific library from training data alone
-  when Context7 (MCP or CLI) is available and wasn't tried
-- Narrating "let me use Context7" or similar before every call, just do it
-- Combining multiple distinct concepts into one query instead of splitting per concept
-- Retrying beyond the finite risk-tier budget instead of using the best result available
-- Silently falling back to training data on a tool failure or quota error without telling the
-  user
-- Using this skill for refactoring, from-scratch scripts with no library involved, business
-  logic debugging, or general code review, none of that is documentation lookup
+If the source does not answer the question, say what was verified and what remains uncertain.
+Do not fabricate a method, option, version, or compatibility claim.
+
+## Anti-patterns
+
+- Looking up documentation after already committing to an API from memory.
+- Mixing examples from different major versions.
+- Treating Context7 output as proof that the project has that dependency installed.
+- Upgrading dependencies solely to make an example work.
+- Querying broad documentation when one targeted reference would suffice.
+- Claiming a tool was used when it was not available.
 
 ## Bundled references
 
-- `references/proactive-trigger.md`: full trigger conditions and confidence threshold.
-- `references/mcp-mode.md`: full detail for MCP mode, tool names, selection, error handling.
-- `references/cli-mode.md`: full detail for CLI mode, commands, auth, error handling.
-- `references/selection-and-query-writing.md`: shared library selection and query rules.
-- `references/risk-and-budget.md`: risk tiers and adaptive operation budgets.
-- `references/cli-skills-management.md`: install/search/suggest/generate skills via `ctx7`.
-- `references/setup.md`: configuring Context7 MCP or CLI + Skills mode for an editor.
-- `references/agent-adapters.md`: optional target-agent setup and installation locations.
+- `references/proactive-trigger.md`: when to activate Context7 without waiting for the user to
+  name it, the confidence threshold, and what not to narrate.
+- `references/selection-and-query-writing.md`: how to pick the best library match and write good
+  scoped queries.
+- `references/mcp-mode.md`: MCP tool name variance, resolve/fetch mechanics, result handling, and
+  error recovery.
+- `references/cli-mode.md`: CLI command shape, resolve/fetch mechanics, version-specific IDs,
+  optional flags, authentication, error handling, and common mistakes.
+- `references/risk-and-budget.md`: operation budget tiers, when to increase budget, and rules for
+  counting operations.
+- `references/agent-adapters.md`: generic adapter contract, known examples, and portability rule
+  for host-specific configuration.
+- `references/setup.md`: setup modes, authentication, what gets written, and how to choose between
+  MCP and CLI modes.
+- `references/cli-skills-management.md`: install, search, suggest, generate, list, remove, and info
+  commands for `ctx7` skills.
+- `references/verification-and-failure.md`: verify the smallest controlling fact, prefer primary
+  sources, distinguish checked from unchecked, safe static fallback, and never invent execution or
+  compatibility.

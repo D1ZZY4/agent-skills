@@ -1,9 +1,11 @@
 # CLI Mode
 
-Full detail for when no Context7 MCP server is connected but a shell/bash tool is available.
-Prefer an already-installed `ctx7` CLI. A transient `npx` invocation is a fallback only when
-network access and package execution are permitted for the current request. If that permission
-has not already been given, ask before using the network-backed fallback.
+For when no Context7 MCP server is connected but a shell/bash tool is available. Prefer an
+already-installed `ctx7` CLI. A transient `npx` invocation is a fallback only when network
+access and package execution are permitted for the current request. If that permission has not
+already been given, ask before using the network-backed fallback. Covers command shape,
+resolve/fetch mechanics, version-specific IDs, optional flags, authentication, error handling,
+and common mistakes.
 
 ## Running commands
 

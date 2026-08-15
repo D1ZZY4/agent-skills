@@ -1,7 +1,7 @@
 # Library Selection and Query Writing
 
-Shared by both `mcp-mode.md` and `cli-mode.md`, the resolve/fetch mechanics differ by mode but
-these criteria are identical either way.
+Shared by both `mcp-mode.md` and `cli-mode.md`. The resolve/fetch mechanics differ by mode, but
+the selection criteria and query-writing rules are identical in both.
 
 ## Result fields to weigh
 

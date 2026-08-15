@@ -1,7 +1,8 @@
 # Agent Adapters
 
 The Context7 workflow is agent-neutral. MCP and CLI are capabilities; the host agent's config
-file and skill directory are adapter details.
+file and skill directory are adapter details. Covers the generic adapter contract, known examples,
+and the portability rule for host-specific configuration.
 
 ## Generic adapter contract
 

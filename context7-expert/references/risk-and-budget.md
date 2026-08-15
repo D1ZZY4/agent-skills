@@ -1,7 +1,8 @@
 # Risk and Operation Budget
 
 Context7 lookups need a finite budget, but one fixed number is not appropriate for every
-question. Choose the smallest budget that can answer the question reliably.
+question. Choose the smallest budget that can answer the question reliably. Replaces any
+hardcoded budget rule with a risk-tiered approach.
 
 ## Risk tiers
 

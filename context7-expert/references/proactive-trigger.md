@@ -1,8 +1,8 @@
 # Proactive Trigger and Confidence Threshold
 
-Full detail for Step 0 in SKILL.md. This is the part the original Context7 rule files got
-wrong: they described *what* the skill does but not *when to reach for it without being
-asked*, which is why it kept requiring an explicit "use context7" instead of activating on
+When to activate Context7 without waiting for the user to name it. The original Context7 rule
+files got this wrong: they described *what* the skill does but not *when to reach for it without
+being asked*, which is why it kept requiring an explicit "use context7" instead of activating on
 its own.
 
 ## Trigger even without the word "context7" or a direct question

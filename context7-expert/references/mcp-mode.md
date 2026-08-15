@@ -1,7 +1,8 @@
 # MCP Mode
 
-Full detail for when a Context7 MCP server is connected and its tools appear directly in the
-tool list.
+For when a Context7 MCP server is connected and its tools appear directly in the tool list.
+Covers tool-name variance, resolve/fetch mechanics, result handling, and error recovery for
+MCP-backed lookups.
 
 ## Tool name variance
 
