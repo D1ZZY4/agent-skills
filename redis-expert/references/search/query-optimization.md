@@ -1,6 +1,6 @@
 # Write Performant Queries
 
-This reference is performance-focused, syntax details live in [query-syntax.md](query-syntax.md), vector queries in [vector-query.md](vector-query.md), aggregate pipelines in [aggregate-pipeline.md](aggregate-pipeline.md). The lever is the same in every case: narrow the candidate set as early as possible, return as little as possible, and use indexed sort paths.
+Performance-focused. Syntax details live in [query-syntax.md](query-syntax.md), vector queries in [vector-query.md](vector-query.md), aggregate pipelines in [aggregate-pipeline.md](aggregate-pipeline.md). The lever is the same in every case: narrow the candidate set as early as possible, return as little as possible, and use indexed sort paths.
 
 **Correct:** Pre-filter, sort on `SORTABLE` fields, return only what you use.
 

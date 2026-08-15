@@ -1,7 +1,7 @@
 
 # RedisVL, Redis Search quick reference
 
-This reference covers the **search / index / query surface** of RedisVL, the higher-level, schema-first Python SDK that builds on `redis-py`. It shows how RedisVL *expresses* the canonical CLI form via `IndexSchema`, `SearchIndex`, the query classes, and the `FilterExpression` DSL. It does not re-explain the query DSL grammar, that lives in [`../search-syntax-primitives.md`](../search-syntax-primitives.md).
+Covers the **search / index / query surface** of RedisVL, the higher-level, schema-first Python SDK that builds on `redis-py`. Shows how RedisVL *expresses* the canonical CLI form via `IndexSchema`, `SearchIndex`, the query classes, and the `FilterExpression` DSL. Does not re-explain the query DSL grammar, that lives in [`../search-syntax-primitives.md`](../search-syntax-primitives.md).
 
 - **redis-py (raw) equivalents** for the same operations: [`python-redis-py.md`](./python-redis-py.md). RedisVL is built on `redis-py`; an `FT.*` command that RedisVL does not wrap is reachable by calling `redis-py` directly through the index's underlying client (see §3). For tasks that are not RedisVL-specific (no schema, no vectorizer, no LLM primitive), prefer the `redis-py` reference.
 - **Query DSL vocabulary** (delimiters, operators, escaping): [`../search-syntax-primitives.md`](../search-syntax-primitives.md). RedisVL's `FilterExpression` is a typed builder for that DSL, the grammar itself is not duplicated here.

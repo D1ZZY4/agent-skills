@@ -1,6 +1,6 @@
 # Redis Search Query Syntax Primitives
 
-This reference is the canonical vocabulary for the Redis Search query DSL. Action-oriented references ([query-syntax.md](query-syntax.md), [vector-query.md](vector-query.md), [aggregate-pipeline.md](aggregate-pipeline.md), etc.) link here by anchor instead of redefining terms, read this once to anchor terminology, then use the rest for "how to do X."
+Canonical vocabulary for the Redis Search query DSL. Action-oriented references ([query-syntax.md](query-syntax.md), [vector-query.md](vector-query.md), [aggregate-pipeline.md](aggregate-pipeline.md), etc.) link here by anchor instead of redefining terms. Read this once to anchor terminology, then use the rest for "how to do X."
 
 The terms below describe what Redis Search understands when it parses the query string passed to `FT.SEARCH`, `FT.AGGREGATE`, or `FT.HYBRID`.
 

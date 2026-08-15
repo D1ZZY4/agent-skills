@@ -1,7 +1,7 @@
 
 # Jedis, Redis Search quick reference
 
-This reference covers the `FT.*` (Redis Search) surface of the Jedis client. It shows how Jedis *expresses* the canonical CLI form, it does not re-explain the query DSL. Read it after a reference that already states *what* to do.
+Covers the `FT.*` (Redis Search) surface of the Jedis client. Shows how Jedis *expresses* the canonical CLI form; does not re-explain the query DSL. Read after a reference that already states *what* to do.
 
 - **Query DSL vocabulary** (delimiters, operators, escaping): [`../search-syntax-primitives.md`](../search-syntax-primitives.md). Do not duplicate that grammar here.
 - **redis-py (Python) equivalents** for the same operations: [`python-redis-py.md`](./python-redis-py.md).
