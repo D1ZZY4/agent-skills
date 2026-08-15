@@ -1,92 +1,86 @@
 ---
 name: copywriting-expert
+version: "1.3.0"
 description: >
-  Write or audit user-facing UI copy: buttons, labels, empty states, error messages,
-  tooltips, form text, confirmation dialogs, toasts, and onboarding text. Use proactively,
-  not only when explicitly asked to write copy. Trigger any time a feature is being built
-  or reviewed that adds any user-facing text, even when copy is incidental to the task (a
-  new button, a new validation message, a new empty state), and any time existing copy is
-  being audited for voice, tone, clarity, or grammatical correctness. Applies natively in any
-  project. If the project has its own copywriting source of truth (a design system doc, a
-  content style guide), that takes precedence over the general defaults here, check for one
-  first.
+  Write, audit, or improve user-facing product and UI copy including buttons, labels, empty
+  states, errors, tooltips, dialogs, toasts, onboarding, and accessibility text. Trigger when
+  a feature adds or changes user-visible language, or when copy is being reviewed for clarity,
+  tone, consistency, localization, or accessibility. Check project-specific content guidance
+  first and adapt to the product's language and audience rather than imposing generic voice.
+license: MIT
+metadata:
+  version: 1.3.0
+  author: D1ZYY4
+  priority: medium
 ---
 
 # Copywriting Expert
 
-This file is the workflow index. Details live in `references/`, load the specific file for
-the step or component type you're on rather than guessing.
+This file is the workflow index. Load the reference that matches the component and problem.
 
-## Step 0: Check for a project-specific source of truth
+## Step 0: Establish the source of truth
 
-Read `references/project-source-of-truth.md` for the full check. Short version: look for a
-project's own content style guide or copywriting doc before applying the general defaults
-below, common locations include a design system's content docs, a `CONTRIBUTING.md` section,
-or a `docs/content-style.md`-style file. If one exists, it overrides anything here that it
-addresses directly. If it's silent on something, fall back to the defaults in this skill.
+Read `references/project-source-of-truth.md`. Project content standards, legal requirements,
+terminology, localization rules, and design-system guidance override portable defaults.
 
-## Step 1: Voice and tone
+If no source of truth exists, infer only from nearby product copy and explicit user requirements.
+Do not invent brand claims, policy promises, accessibility behavior, or legal guarantees.
 
-Read `references/voice-and-tone.md`. Short version: clear over clever, plain language over
-jargon, active voice, address the user directly, and match tone to stakes (light for a
-success toast, serious for a destructive-action warning).
+## Step 1: Identify the job of the copy
 
-## Step 2: Write for the component type
+Before polishing wording, identify:
 
-Different UI surfaces need different copy patterns:
+- What the user needs to understand.
+- What action, if any, they can take.
+- What can go wrong or be lost.
+- Who the audience is and what language/register they use.
+- Whether the copy is transactional, instructional, persuasive, or safety-critical.
 
-- **Buttons and labels**: `references/ui-component-copy.md`
-- **Error messages**: `references/error-messages.md`
-- **Empty states**: `references/empty-states.md`
-- **Confirmation and destructive-action dialogs**: `references/confirmation-dialogs.md`
-- **Toasts and onboarding**: `references/toasts-and-onboarding.md`
-- **Accessibility and localization**: `references/accessibility-and-localization.md`
+Read `references/voice-and-tone.md` and the relevant component reference.
 
-## Step 3: Verify the language itself, don't guess
+## Step 2: Write for comprehension first
 
-Read `references/language-and-vocabulary-verification.md`. This is the step most copy
-workflows skip and it matters most: no single training corpus is a complete, authoritative
-dictionary for any language, including English. When a word choice, spelling, idiom, loanword,
-or grammatical construction in the target language is anything less than certain, look it up
-against an actual authoritative source for that language rather than going with what feels
-right. Different languages have different authoritative sources (KBBI for Indonesian, a
-proper dictionary for English, and so on), the reference file covers how to find and use the
-right one per language.
+Prefer specific verbs, plain language, active voice, useful nouns, and sentence case unless
+the product standard says otherwise. Keep the primary action obvious. Avoid jokes, euphemisms,
+and cleverness when they obscure consequences or increase cognitive load.
 
-## Step 4: Formatting and punctuation
+For destructive or irreversible actions, name the affected object and meaningful consequence.
+For errors, explain the problem and next step when a next step exists.
 
-Read `references/formatting-and-punctuation.md`. This repository's project preference is to
-avoid em dashes in generated copy. If a project's own source of truth explicitly requires
-preserving an em dash in quoted or localized content, follow that project rule and disclose the
-exception. En dashes are allowed when used correctly as punctuation. Full detail and the rest
-of the punctuation rules are in that file.
+## Step 3: Treat accessibility and localization as requirements
 
-## Step 5: Check against examples and anti-patterns
+Read `references/accessibility-and-localization.md` when relevant. Do not rely on color, word
+length, capitalization, or idiom alone to communicate meaning. Avoid strings that become
+misleading when translated, pluralized, expanded, or rendered in a right-to-left locale.
 
-Read `references/examples-and-anti-patterns.md` for worked good/bad examples across component
-types before finalizing anything.
+## Step 4: Verify terminology
 
-For an audit, report the component or surface, severity, evidence, proposed rewrite, and any
-unverified language or accessibility concern. Mark unresolved uncertainty instead of presenting
-an assumption as a verified fact.
+Read `references/language-and-vocabulary-verification.md` when terminology or translation
+matters. Product names, technical terms, legal wording, and localized UI labels should come
+from authoritative sources, not guesswork.
 
-## Anti-patterns to reject
+## Step 5: Run the final audit
 
-- Writing or approving copy in a language without verifying uncertain vocabulary against an
-  actual authoritative source for that language
-- Any em dash, anywhere in UI copy
-- Blaming the user in error copy ("You entered an invalid email") instead of stating the
-  problem neutrally ("That email address doesn't look right")
-- A destructive-action dialog whose confirm button just says "OK" or "Confirm" instead of
-  naming the actual action ("Delete project", "Remove member")
-- Technical jargon or internal system terms leaking into user-facing error messages
-- Treating copy as an afterthought bolted onto a finished feature instead of part of the
-  feature itself
+Read `references/examples-and-anti-patterns.md` and `references/formatting-and-punctuation.md`.
+Check consistency across the whole flow, not just the changed string.
+
+## Anti-patterns
+
+- Generic labels such as "Submit" when the actual action can be named.
+- Errors that blame the user or expose raw implementation details.
+- Confirmation dialogs for routine, reversible actions.
+- Placeholder copy that ships.
+- Unverified translations or product terminology.
+- Promising outcomes the product cannot guarantee.
+- Writing a friendly tone that trivializes a high-stakes action.
+- Em dashes in generated copy.
 
 ## Bundled references
 
-- `references/project-source-of-truth.md`: checking for and deferring to a project's own
-  content style guide.
+Load only the component-specific references needed for the task:
+
+- `references/project-source-of-truth.md`: checking for and deferring to a project's own content
+  style guide.
 - `references/voice-and-tone.md`: core voice principles and how tone shifts with stakes.
 - `references/ui-component-copy.md`: buttons, labels, tooltips, form text.
 - `references/error-messages.md`: how to write an error message that actually helps.
@@ -95,7 +89,10 @@ an assumption as a verified fact.
 - `references/toasts-and-onboarding.md`: success feedback, undo actions, and first-run guidance.
 - `references/accessibility-and-localization.md`: accessible names, status copy, and localization
   constraints.
-- `references/language-and-vocabulary-verification.md`: verifying word choice and grammar
-  against authoritative per-language sources instead of guessing.
+- `references/language-and-vocabulary-verification.md`: verifying word choice and grammar against
+  authoritative per-language sources instead of guessing.
 - `references/formatting-and-punctuation.md`: the em dash ban and other punctuation rules.
 - `references/examples-and-anti-patterns.md`: worked good/bad examples across component types.
+- `references/verification-and-failure.md`: shared verification and failure-handling principles.
+- `references/proactive-trigger.md`: when to review, rewrite, or audit copy without being asked,
+  and when to stay quiet.
