@@ -8,6 +8,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [Detailed Changelog](#per-skill-changelog)
 ---
 
+## [Unreleased]
+
+### Added
+
+- AGENTS.md as the canonical project rules file.
+- Symlinks so CLAUDE.md and replit.md both point to AGENTS.md.
+
+### Changed
+
+- Removed scripts/ folder and cleaned up AGENTS.md accordingly.
+
+[⬆ Back to top](#changelog)
+
+---
+
 ## [1.3.0] - 2026-08-16
 
 ### Added
