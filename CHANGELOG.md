@@ -17,6 +17,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Proactive trigger references across skills.
 - verification-and-failure reference across skills.
 - Self-contained references across all skills.
+- CHANGELOG.md with back-to-top navigation and per-skill version tables.
+- MIT LICENSE with author D1ZYY4.
+- README.md with design principles, validation instructions, and skill list.
+- AGENTS.md as the canonical project rules file.
 
 ### Changed
 
@@ -24,10 +28,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Skill versions now reflect actual commit age rather than being uniform.
 - Major version starts at 1 across all skills; minor increases by skill maturity.
 
+### Changed
+
+- Consolidated project rules into AGENTS.md.
+- Created symlinks so CLAUDE.md and replit.md both point to AGENTS.md.
+
 ### Fixed
 
 - Removed unnecessary validation section from README.
 - Removed duplicate top back-to-top link from CHANGELOG.
+- Restored missing Per-skill changelog heading.
+- Removed duplicate 1.3.0 entries from mermaid-diagrams-expert and redis-expert tables.
 
 [⬆ Back to top](#changelog)
 

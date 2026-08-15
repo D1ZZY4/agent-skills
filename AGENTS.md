@@ -1,8 +1,4 @@
-# AGENTS.md
-
-Project-level rules for agent behavior in this repository.
-
-## Project overview
+# Project overview
 
 This repository contains reusable custom agent skills for documentation lookup,
 UI copywriting, disciplined Git commits, and Mermaid diagrams.
