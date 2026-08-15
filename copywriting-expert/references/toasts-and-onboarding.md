@@ -5,6 +5,10 @@ description: Guidance for transient success feedback, undo actions, and first-ru
 
 # Toasts and Onboarding
 
+Toast and success-feedback copy, plus onboarding and first-run guidance. Toasts state the
+completed result plainly and include undo actions only when relevant. Onboarding explains immediate
+value, asks for information only when needed, and keeps each step focused.
+
 ## Toasts and success feedback
 
 - State the completed result plainly: "Project saved", not "Success".

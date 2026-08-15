@@ -1,6 +1,8 @@
 # Project-Specific Source of Truth
 
-Full detail for Step 0 in SKILL.md.
+How to find and apply project-specific copywriting conventions before falling back to portable
+defaults. Explains what to look for, where to look, and how to resolve conflicts between project
+guidance and this skill's defaults.
 
 ## Why this matters
 

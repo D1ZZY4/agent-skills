@@ -1,6 +1,8 @@
 # Error Messages
 
-Full detail for error messages in Step 2 of SKILL.md.
+Defines the structure of a good error message: state what happened, explain why when useful, say
+what to do next. Covers tone, severity matching, recoverable vs unrecoverable framing, and privacy
+boundaries.
 
 ## The three things a good error message does
 

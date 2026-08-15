@@ -1,6 +1,7 @@
 # UI Component Copy
 
-Full detail for buttons, labels, tooltips, and form text in Step 2 of SKILL.md.
+Writing copy for specific UI surfaces: buttons, labels, tooltips, and form text including
+placeholders, helper text, and inline validation.
 
 ## Buttons
 

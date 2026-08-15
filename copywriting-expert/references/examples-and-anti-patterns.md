@@ -1,7 +1,7 @@
 # Examples and Anti-Patterns
 
-Full detail for Step 5 in SKILL.md. Consolidated good/bad pairs across component types, check
-new or audited copy against these patterns before finalizing.
+Consolidated good/bad pairs across component types. Check new or audited copy against these
+patterns before finalizing.
 
 ## Buttons
 
@@ -72,5 +72,5 @@ Buttons: Delete project / Cancel
 - **Confirmation fatigue**: dialogs on every minor action train users to click through without
   reading, which defeats the one dialog that actually needs their attention.
 - **Copy as an afterthought**: writing the UI first and filling in placeholder text like "Lorem
-  ipsum" or "TODO: copy" that ships unreviewed, instead of treating copy as part of the
+  ipsum" or " copy" that ships unreviewed, instead of treating copy as part of the
   feature from the start.

@@ -1,11 +1,8 @@
 # Language and Vocabulary Verification
 
-Full detail for Step 3 in SKILL.md. This is the most important addition to this skill: no
-single training corpus is a complete, authoritative dictionary for any language, including
-English, and definitely not for languages with smaller digital footprints in training data.
-Guessing at correctness from a feel for the language is not the same as checking, and UI copy
-is exactly the kind of text where a wrong word choice, a misspelling, or an unnatural
-construction gets seen by every single user, repeatedly, forever.
+When and how to verify word choice, spelling, idiom, and grammar against authoritative sources
+instead of relying on training-data intuition. Covers Indonesian (KBBI), English
+(Merriam-Webster / Oxford), other languages, and fallback behavior when lookup is unavailable.
 
 ## The general principle
 

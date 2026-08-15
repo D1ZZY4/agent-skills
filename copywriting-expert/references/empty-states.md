@@ -1,6 +1,8 @@
 # Empty States
 
-Full detail for empty states in Step 2 of SKILL.md.
+How to write empty-state copy that orients the user, explains why the space is empty, and prompts
+the next action. Distinguishes genuinely-new, filtered-empty, user-emptied, and
+error-masquerading-as-empty cases.
 
 ## An empty state has to do more than announce absence
 

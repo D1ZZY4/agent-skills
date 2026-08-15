@@ -1,7 +1,8 @@
 # Accessibility and Localization
 
-Use this reference when copy appears in an accessible control, a status announcement, or a
-product that may be translated.
+Accessible UI copy (specific names, status announcements, live regions, keyboard order) and
+localization-ready patterns (no English-order concatenation, room for expansion, right-to-left
+layout, plural and gender awareness).
 
 ## Accessible UI copy
 

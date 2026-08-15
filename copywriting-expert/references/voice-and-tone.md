@@ -1,6 +1,7 @@
 # Voice and Tone
 
-Full detail for Step 1 in SKILL.md.
+Defines the core principles for copywriting voice: clear over clever, plain language over jargon,
+active voice, direct address, and tone that scales with stakes rather than mood.
 
 ## Core principles
 

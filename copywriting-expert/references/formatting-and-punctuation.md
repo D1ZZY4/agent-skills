@@ -1,6 +1,7 @@
 # Formatting and Punctuation
 
-Full detail for Step 4 in SKILL.md.
+Punctuation and formatting rules for generated UI copy: em dash avoidance, sentence case, ellipses,
+Oxford comma, exclamation points, numbers, and contractions.
 
 ## Em dash policy
 

@@ -1,6 +1,7 @@
 # Confirmation and Destructive-Action Dialogs
 
-Full detail for confirmation dialogs in Step 2 of SKILL.md.
+Confirmation dialog copy: naming the specific consequence, button labels that name the action,
+scaling friction to severity and reversibility, and when to skip confirmation entirely.
 
 ## Name the specific consequence, not just the action
 
