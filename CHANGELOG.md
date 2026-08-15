@@ -8,6 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [Detailed Changelog](#per-skill-changelog)
 ---
 
+## [Unreleased]
+
+No unreleased changes yet.
+
+[⬆ Back to top](#changelog)
+
+---
+
 ## [1.4.0] - 2026-08-16
 
 ### Added
@@ -20,14 +28,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Bumped create-readme-expert version from 1.1.0 to 1.2.0.
-
-[⬆ Back to top](#changelog)
-
----
-
-## [Unreleased]
-
-No unreleased changes yet.
 
 [⬆ Back to top](#changelog)
 
