@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - AGENTS.md as the canonical project rules file.
 - Symlinks so CLAUDE.md and replit.md both point to AGENTS.md.
+- create-readme-expert skill with proactive trigger, bundled references, and README-structure guidance.
 
 ### Changed
 

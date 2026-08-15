@@ -24,6 +24,7 @@ Each skill is a normal directory containing `SKILL.md` and optional `references/
 - `dizzy-commit/` - repository-aware Git commit and push safety
 - `mermaid-diagrams-expert/` - maintainable Mermaid diagrams for software documentation
 - `redis-expert/` - Redis architecture, clients, search, clustering, observability, security, and semantic caching
+- `create-readme-expert/` - README creation guidance for software projects
 - `CHANGELOG.md` - project changelog with per-skill version tracking
 - `README.md` - project overview and design principles
 - `LICENSE` - MIT License, Copyright (c) 2026 D1ZYY4
