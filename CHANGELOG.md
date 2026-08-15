@@ -77,6 +77,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## Per-skill changelog
+
 ### Version comparison
 
 | Version | Date | Skills | Key changes |
@@ -122,7 +124,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 | Version | Date | Changes |
 |---------|------|---------|
 | 1.2.0 | 2026-08-11 | Renderer/version compatibility, proactive trigger, misc diagram types |
-| 1.3.0 | 2026-08-16 | License, metadata, self-contained references, verification-and-failure reference, proactive trigger |
 | 1.1.0 | 2026-07-13 | Initial release |
 
 [⬆ Back to top](#changelog)
@@ -132,6 +133,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 | Version | Date | Changes |
 |---------|------|---------|
 | 1.1.0 | 2026-07-13 | Initial release |
-| 1.3.0 | 2026-08-16 | License, metadata, self-contained references, verification-and-failure reference |
 
 [⬆ Back to top](#changelog)
