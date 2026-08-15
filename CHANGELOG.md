@@ -8,23 +8,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [Detailed Changelog](#per-skill-changelog)
 ---
 
-## [Unreleased]
+## [1.4.0] - 2026-08-16
 
 ### Added
 
-- AGENTS.md as the canonical project rules file.
-- Symlinks so CLAUDE.md and replit.md both point to AGENTS.md.
-- create-readme-expert skill with proactive trigger, bundled references, and README-structure guidance.
-- `examples/` folder with README-1.md, URL.md, EXAMPLES.md, README-library-adaptive.md, README-cli-adaptive.md, and README-missing-information.md.
-- `Examples` section in create-readme-expert SKILL.md listing bundled examples.
-- Step 2 now loads `examples/README-1.md` when choosing README structure.
+- `examples/README-library-adaptive.md`: library example showing source-driven documentation.
+- `examples/README-cli-adaptive.md`: CLI example showing command verification.
+- `examples/README-missing-information.md`: incomplete project example showing uncertainty handling.
 - Step 4 now loads all bundled README examples for structural and tonal inspiration.
 
 ### Changed
 
-- Removed scripts/ folder and cleaned up AGENTS.md accordingly.
-- Renamed `references/examples-and-anti-patterns.md` to `references/anti-patterns.md`.
 - Bumped create-readme-expert version from 1.1.0 to 1.2.0.
+
+[⬆ Back to top](#changelog)
+
+---
+
+## [Unreleased]
+
+No unreleased changes yet.
 
 [⬆ Back to top](#changelog)
 
@@ -116,6 +119,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Skills | Key changes |
 |---------|------|--------|-------------|
+| 1.4.0 | 2026-08-16 | 1 | create-readme-expert examples additions, version bump to 1.2.0 |
 | 1.3.0 | 2026-08-16 | 5 | Self-contained references, proactive triggers, verification-and-failure references, license/metadata across skills |
 | 1.2.0 | 2026-08-11 | 5 | Skill versions, evidence hierarchy, proactive triggers, verification guidance |
 | 1.1.0 | 2026-07-13 | 5 | Initial release, progressive disclosure pattern, validation |
@@ -165,6 +169,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.1.0 | 2026-07-13 | Initial release |
+
+[⬆ Back to top](#changelog)
+
+### create-readme-expert
+
+| Version | Date | Changes |
+|---------|------|---------|
+| 1.2.0 | 2026-08-16 | Added adaptive README examples, Step 4 loads all bundled examples |
 | 1.1.0 | 2026-07-13 | Initial release |
 
 [⬆ Back to top](#changelog)
