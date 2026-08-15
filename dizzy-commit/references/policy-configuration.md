@@ -54,7 +54,6 @@ commit:
   prohibited_words: []
   punctuation:
     em_dash: disallow
-    en_dash: allow
   author:
     source: git-config
   upstream:
