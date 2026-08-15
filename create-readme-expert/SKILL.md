@@ -1,6 +1,6 @@
 ---
 name: create-readme-expert
-version: "1.1.0"
+version: "1.2.0"
 description: >
   Create comprehensive, well-structured README.md files for software projects. Trigger when
   a project needs a README, when onboarding documentation is missing, when a repository
@@ -9,7 +9,7 @@ description: >
   where the project already has strong conventions.
 license: MIT
 metadata:
-  version: 1.1.0
+  version: 1.2.0
   author: D1ZYY4
   priority: medium
 ---
@@ -18,27 +18,47 @@ metadata:
 
 This file is the routing and decision layer. Load only the references needed for the README.
 
-## Step 0: Decide whether a README is actually needed
+## Step 0: Identify the README operation
 
-Use this skill when the repository or project lacks clear entry-point documentation, when
-a new project needs onboarding material, or when README content is being reviewed for
-clarity, completeness, or audience fit. Do not overwrite an existing README without
-checking project-specific guidance first.
+Classify the task before editing:
+
+### Create
+Use when no README exists. Build documentation from verified project information.
+
+### Improve
+Use when a README exists but contains missing, outdated, or unclear sections. Preserve useful existing structure and change only what needs correction.
+
+### Audit
+Use when reviewing README quality. Report issues and evidence before making changes unless rewriting is explicitly requested.
+
+### Refuse unnecessary rewrite
+If the README accurately represents the project, avoid replacing it with a generic alternative. Make only targeted improvements when they are justified.
 
 If no source-of-truth document exists, infer from the codebase, existing docs, package
 manifest, and explicit user requirements. Do not invent features, guarantees, or roadmap
 claims.
 
-## Step 1: Inspect the project
+## Step 1: Establish project sources of truth
 
-Before writing, inspect:
+Before writing, identify which files define the current project behavior. Inspect sources
+in this priority order:
 
-- Package manifest or project metadata (`pyproject.toml`, `package.json`, `Cargo.toml`,
-  etc.)
-- Directory layout and entry points
-- Existing docs, comments, or inline help text
-- CI, deployment, or usage scripts
-- License and authorship metadata
+1. Explicit project documentation and contribution guidelines
+2. Package manifests and build configuration (`pyproject.toml`, `package.json`,
+   `Cargo.toml`, etc.)
+3. Entry points, executable scripts, and public APIs
+4. CI/CD, deployment, and release configuration
+5. Existing README content that is still accurate
+6. Comments, examples, and inline help text
+
+If sources conflict:
+
+- Prefer executable configuration over outdated documentation.
+- Preserve project conventions unless they are clearly incorrect.
+- Record uncertainty instead of guessing.
+
+Do not invent features, guarantees, compatibility claims, or roadmap items when the
+project sources do not support them.
 
 ## Step 2: Choose the right structure
 
@@ -78,20 +98,19 @@ Check:
 - headings describe actual sections
 - code blocks use the correct language tag
 - links are valid and point to the intended destination
-- the README matches the project's actual state, not a desired future state
-- no em dashes appear in the README
-- no secrets, credentials, or real personal data are embedded in examples
+
+For accuracy, safety, and missing-information rules, load the relevant
+references instead of restating them here:
+
+- `references/formatting-and-punctuation.md` for punctuation and formatting rules.
+- `references/verification-and-failure.md` for claim verification and handling gaps.
 
 If the README will be rendered in a specific platform, verify renderer compatibility.
 
 ## Anti-patterns
 
-- Copying a generic README template without adapting it to the actual project.
-- Claiming features, tests, or compatibility not present in the codebase.
-- Using examples that depend on unavailable dependencies or services.
-- Encoding secrets, credentials, or real personal data into examples.
-- Using em dashes in generated README content.
-- Writing installation instructions that contradict the project's own setup docs.
+Loaded from `references/anti-patterns.md` and `references/formatting-and-punctuation.md`.
+Do not duplicate them here; consult the references when auditing or writing.
 
 ## Bundled references
 
