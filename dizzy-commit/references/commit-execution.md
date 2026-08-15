@@ -1,7 +1,9 @@
 # Commit Execution Mechanics
 
-Full detail for Step 5 in SKILL.md. This exists because subject and body running together
-into one paragraph is a real, recurring failure mode, not a hypothetical one.
+This file covers the actual commit command mechanics: checking for duplicate commits before
+committing, keeping subject and body structurally correct, avoiding literal `\n` in shell
+strings, two `-m` flags versus file plus `-F`, and verifying the result after committing. Also
+covers author identity in strict mode.
 
 ## Check for duplicate commits before committing
 

@@ -1,6 +1,7 @@
 # Message Style Rules
 
-Full detail for Step 3 in SKILL.md.
+This file defines the commit message format, subject-line rules, body rules, prohibited
+content, the AI co-author trailer, and the commit type reference.
 
 ## Format
 

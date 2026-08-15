@@ -1,6 +1,8 @@
 # Staging Discipline and Gitignore Safety
 
-Full detail for the staging part of Step 2 in SKILL.md.
+This file covers how to stage safely: group by logical concern, never cite an ignored or
+untracked file as authority in a commit message, never add a new ignored file, and verify
+gitignore status before staging.
 
 ## Group by logical concern
 

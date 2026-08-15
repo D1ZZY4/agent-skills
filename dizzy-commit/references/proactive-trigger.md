@@ -1,7 +1,7 @@
 # Proactive Trigger and Confirmation Flow
 
-Full detail for Step 0 in SKILL.md. Don't wait for the exact word "commit" or the skill name
-to be typed before thinking about this.
+This file covers when to check in without waiting for an explicit commit request, and the
+check-in flow to use when the working tree is dirty after real work.
 
 ## When to check in
 
