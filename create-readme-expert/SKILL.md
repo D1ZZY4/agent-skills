@@ -67,7 +67,7 @@ exists.
 
 ## Step 4: Add examples and anti-patterns
 
-Read `references/examples-and-anti-patterns.md` and `references/formatting-and-punctuation.md`.
+Read `references/anti-patterns.md` and `references/formatting-and-punctuation.md`.
 Include at least one realistic usage example. Show the common mistake and the corrected
 form when it helps the reader avoid a known pitfall.
 
@@ -101,10 +101,17 @@ Load only the references needed for the README:
   ordering, and when to include or omit sections.
 - `references/voice-and-tone.md`: tone guidance for README content, including when to
   use concise technical style versus warmer onboarding language.
-- `references/examples-and-anti-patterns.md`: worked good/bad README examples and
-  common pitfalls.
+- `references/anti-patterns.md`: worked good/bad README examples and common pitfalls.
 - `references/formatting-and-punctuation.md`: the em dash ban and other punctuation rules.
 - `references/verification-and-failure.md`: verify the README against the actual codebase,
   distinguish checked from unchecked claims, and how to handle missing information.
 - `references/proactive-trigger.md`: when to propose, rewrite, or audit a README without
   being asked, and when to stay quiet.
+
+## Examples
+
+Use the bundled examples in `examples/` as starting material or inspiration:
+
+- `examples/README-1.md`: minimal README template with quick start, usage, and configuration.
+- `examples/URL.md`: list of README sources for direct URL-based reference.
+- `examples/EXAMPLES.md`: index of bundled README examples.
