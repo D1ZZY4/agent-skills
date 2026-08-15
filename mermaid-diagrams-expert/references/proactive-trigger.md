@@ -1,8 +1,6 @@
 # Proactive Trigger Conditions
 
-Full detail for Step 0 in SKILL.md. This is the part the original version of this skill was
-missing, it only activated on explicit trigger words ("diagram", "visualize", "map out"),
-which meant it never fired on its own even when a diagram was clearly the better answer.
+When to reach for a diagram without being asked, and when not to bother. Also distinguishes saved, version-controlled diagrams from one-off inline chat visuals.
 
 ## Reach for a diagram without being asked when
 

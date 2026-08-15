@@ -1,7 +1,8 @@
 # Diagram Type Selection
 
-Full detail for Step 1 in SKILL.md. Pick by what's actually being modeled, not by habit or by
-whichever diagram type was used last.
+Decision guide for choosing the right Mermaid diagram type based on what
+is being modeled: structure, sequence, process, data, architecture, lifecycle, branching,
+scheduling, or comparison.
 
 ## Decision guide
 

@@ -1,7 +1,7 @@
 # State Diagrams, Git Graphs, Gantt Charts, Pie and Bar Charts
 
 The original skill listed these four types in its overview but had no reference depth for any
-of them, this file closes that gap.
+of them. Closes that gap.
 
 ## State diagrams
 

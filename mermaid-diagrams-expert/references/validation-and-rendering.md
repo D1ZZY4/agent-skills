@@ -1,8 +1,8 @@
 # Validation, Rendering, and Export
 
-Full detail for Step 3 in SKILL.md. The single biggest weakness in delivering hand-written
-Mermaid syntax is that it's easy to produce something that looks plausible but fails to
-render, or renders with a subtly wrong structure, and never notice.
+How to validate Mermaid diagrams before delivering them, including renderer
+and version checks, common syntax pitfalls, export options, and where diagrams render without
+explicit export.
 
 ## Validate before delivering, when possible
 
