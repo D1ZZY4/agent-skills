@@ -20,16 +20,6 @@ Reusable, progressively disclosed skills for coding and technical agents.
 6. **Tool-aware workflows**: use available native tools first; degrade gracefully when a dependency is unavailable.
 7. **No em dashes**: project preference applies to generated documentation, UI copy, and commit messages.
 
-## Validation
-
-Run:
-
-```bash
-python3 scripts/validate-skills.py
-```
-
-The validator checks frontmatter, required files, broken local references, duplicate skill names, and forbidden em dashes.
-
 ## Compatibility
 
 Each skill is a normal directory containing `SKILL.md` and optional `references/`, so it can be copied or symlinked into an Agent Skills-compatible skills directory.
