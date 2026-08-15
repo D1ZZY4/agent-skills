@@ -1,6 +1,5 @@
 ---
 name: copywriting-expert
-version: "1.3.0"
 description: >
   Write, audit, or improve user-facing product and UI copy including buttons, labels, empty
   states, errors, tooltips, dialogs, toasts, onboarding, and accessibility text. Trigger when

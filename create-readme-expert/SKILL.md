@@ -1,6 +1,5 @@
 ---
 name: create-readme-expert
-version: "1.2.0"
 description: >
   Create comprehensive, well-structured README.md files for software projects. Trigger when
   a project needs a README, when onboarding documentation is missing, when a repository

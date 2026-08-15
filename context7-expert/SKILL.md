@@ -1,6 +1,5 @@
 ---
 name: context7-expert
-version: "1.5.0"
 description: >
   Retrieve current, version-accurate documentation for libraries, frameworks, SDKs, APIs,
   CLIs, and cloud services through Context7 when authoritative, current documentation matters.

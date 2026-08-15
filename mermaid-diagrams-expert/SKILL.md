@@ -1,6 +1,5 @@
 ---
 name: mermaid-diagrams-expert
-version: "1.2.0"
 description: >
   Create maintainable Mermaid diagrams for software documentation, including flowcharts,
   sequence, class, ER, C4, state, git, gantt, and chart diagrams. Trigger when structure,

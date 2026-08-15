@@ -1,6 +1,5 @@
 ---
 name: redis-expert
-version: "1.1.0"
 description: >
   All-in-one Redis expertise covering data modeling and key naming, client connections
   (pooling, pipelining, client-side caching, timeouts), clustering and replication, Redis
