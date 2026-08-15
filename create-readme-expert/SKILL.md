@@ -42,7 +42,7 @@ Before writing, inspect:
 
 ## Step 2: Choose the right structure
 
-Read `references/readme-structures.md`. Match the README structure to the project type:
+Read `references/readme-structures.md` and `examples/README-1.md`. Match the README structure to the project type:
 
 | Project type | Preferred emphasis |
 |---|---|
