@@ -87,9 +87,12 @@ exists.
 
 ## Step 4: Add examples and anti-patterns
 
-Read `references/anti-patterns.md` and `references/formatting-and-punctuation.md`.
-Include at least one realistic usage example. Show the common mistake and the corrected
-form when it helps the reader avoid a known pitfall.
+Read `references/anti-patterns.md`, `references/formatting-and-punctuation.md`,
+`examples/README-1.md`, `examples/README-library-adaptive.md`,
+`examples/README-cli-adaptive.md`, and `examples/README-missing-information.md`.
+Use these as structural and tonal inspiration. Include at least one realistic usage
+example. Show the common mistake and the corrected form when it helps the reader avoid
+a known pitfall.
 
 ## Step 5: Verify before delivering
 
