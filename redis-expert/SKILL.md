@@ -1,5 +1,6 @@
 ---
 name: redis-expert
+version: "1.1.0"
 description: >
   All-in-one Redis expertise covering data modeling and key naming, client connections
   (pooling, pipelining, client-side caching, timeouts), clustering and replication, Redis
@@ -11,11 +12,16 @@ description: >
   a deployment, or caching LLM completions. Adapted from Redis, Inc.'s official agent-skills
   repository (https://github.com/redis/agent-skills, MIT licensed), merged into one skill so the
   right domain loads automatically without picking between seven separate ones.
+license: MIT
+metadata:
+  version: 1.1.0
+  author: D1ZYY4
+  priority: low
 ---
 
 # Redis Expert
 
-This file is the workflow index. Details live in `references/<domain>/`, organized by the
+This file is the workflow index. Details live in `references/<domain>/` (for example, `references/core/`), organized by the
 same seven domains as the original official skills this was merged from. Load the specific
 file for the domain and topic in question rather than guessing. The retained technical guidance
 follows the upstream material where available. This package adds cross-domain routing, proactive
