@@ -21,6 +21,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Improved changelog navigation with back-to-top links.
 - Skill versions now reflect actual commit age rather than being uniform.
 - Major version starts at 1 across all skills; minor increases by skill maturity.
+- Removed duplicate top back-to-top link from CHANGELOG.
+- Removed unnecessary validation section from README.
 
 [⬆ Back to top](#changelog)
 
