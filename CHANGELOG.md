@@ -15,10 +15,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - AGENTS.md as the canonical project rules file.
 - Symlinks so CLAUDE.md and replit.md both point to AGENTS.md.
 - create-readme-expert skill with proactive trigger, bundled references, and README-structure guidance.
+- `examples/` folder with README-1.md, URL.md, and EXAMPLES.md.
+- `Examples` section in create-readme-expert SKILL.md listing bundled examples.
+- Step 2 now loads `examples/README-1.md` when choosing README structure.
 
 ### Changed
 
 - Removed scripts/ folder and cleaned up AGENTS.md accordingly.
+- Renamed `references/examples-and-anti-patterns.md` to `references/anti-patterns.md`.
 
 [⬆ Back to top](#changelog)
 
