@@ -8,6 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [Detailed Changelog](#per-skill-changelog)
 ---
 
+## [Unreleased]
+
+No unreleased changes yet.
+
+[⬆ Back to top](#changelog)
+
+---
+
 ## [1.5.0] - 2026-08-16
 
 ### Added
@@ -22,14 +30,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Step 0/1 repetition cleaned up in SKILL.md.
 - Narrowed proactive trigger to user-facing workflow, installation, public API, or CLI changes.
 - Added placeholder warning to `examples/README-1.md`.
-
-[⬆ Back to top](#changelog)
-
----
-
-## [Unreleased]
-
-No unreleased changes yet.
 
 [⬆ Back to top](#changelog)
 
