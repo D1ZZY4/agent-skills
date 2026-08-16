@@ -28,4 +28,4 @@ List the key options, environment variables, or config files that affect behavio
 
 ## License
 
-MIT
+See the LICENSE file.

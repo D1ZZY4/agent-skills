@@ -164,5 +164,8 @@ Load only the references needed for the README:
 Use the bundled examples in `examples/` as starting material or inspiration:
 
 - `examples/README-1.md`: minimal README template with quick start, usage, and configuration.
-- `references/external-readme-sources.md`: external README examples for structural inspiration only.
+- `examples/README-library-adaptive.md`: library example showing source-driven documentation.
+- `examples/README-cli-adaptive.md`: CLI example showing command verification.
+- `examples/README-missing-information.md`: incomplete project example showing uncertainty handling.
+- `examples/README-unsupported-claims.md`: unsupported claims failure case showing evidence-based omission.
 - `examples/EXAMPLES.md`: index of bundled README examples.
