@@ -2,6 +2,8 @@
 
 Index of bundled README examples.
 
+## Examples
+
 - `README-1.md`: minimal project README with quick start, usage, and configuration.
 - `README-library-adaptive.md`: library example showing source-driven documentation.
 - `README-cli-adaptive.md`: CLI example showing command verification.
@@ -10,4 +12,4 @@ Index of bundled README examples.
 
 ## Reference material
 
-- `../references/external-readme-sources.md`: list of README sources for direct URL-based reference.
+- `../references/external-readme-sources.md`: external README examples for structural inspiration only.

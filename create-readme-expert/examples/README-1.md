@@ -7,11 +7,11 @@ One-line description of what this project does and who it is for.
 Note: the commands below are placeholders. Replace them only with verified project commands.
 
 ```bash
-# install
-npm install project-name
+# replace with verified install command
+<install-command>
 
-# run
-project-name init
+# replace with verified run command
+<run-command>
 ```
 
 ## What it does
