@@ -4,6 +4,8 @@ One-line description of what this project does and who it is for.
 
 ## Quick start
 
+Note: the commands below are placeholders. Replace them only with verified project commands.
+
 ```bash
 # install
 npm install project-name

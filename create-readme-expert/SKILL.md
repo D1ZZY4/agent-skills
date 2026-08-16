@@ -86,12 +86,23 @@ exists.
 
 ## Step 4: Add examples and anti-patterns
 
-Read `references/anti-patterns.md`, `references/formatting-and-punctuation.md`,
-`examples/README-1.md`, `examples/README-library-adaptive.md`,
-`examples/README-cli-adaptive.md`, and `examples/README-missing-information.md`.
-Use these as structural and tonal inspiration. Include at least one realistic usage
-example. Show the common mistake and the corrected form when it helps the reader avoid
-a known pitfall.
+Load only the examples relevant to the project type:
+
+- Library or SDK:
+  `examples/README-library-adaptive.md`
+
+- CLI:
+  `examples/README-cli-adaptive.md`
+
+- Unknown or incomplete project:
+  `examples/README-missing-information.md`
+
+Always use:
+- `references/anti-patterns.md` when reviewing quality problems.
+- `references/formatting-and-punctuation.md` for punctuation and formatting rules.
+
+Include at least one realistic usage example. Show the common mistake and the corrected
+form when it helps the reader avoid a known pitfall.
 
 ## Step 5: Verify before delivering
 
@@ -128,11 +139,12 @@ Load only the references needed for the README:
   distinguish checked from unchecked claims, and how to handle missing information.
 - `references/proactive-trigger.md`: when to propose, rewrite, or audit a README without
   being asked, and when to stay quiet.
+- `references/external-readme-sources.md`: list of README sources for direct URL-based reference.
 
 ## Examples
 
 Use the bundled examples in `examples/` as starting material or inspiration:
 
 - `examples/README-1.md`: minimal README template with quick start, usage, and configuration.
-- `examples/URL.md`: list of README sources for direct URL-based reference.
+- `references/external-readme-sources.md`: list of README sources for direct URL-based reference.
 - `examples/EXAMPLES.md`: index of bundled README examples.
