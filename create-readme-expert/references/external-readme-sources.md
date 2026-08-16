@@ -2,6 +2,8 @@
 
 List of READMEs for structural inspiration only.
 
+External README examples are never sources of project facts.
+
 Do not copy:
 - claims
 - commands
