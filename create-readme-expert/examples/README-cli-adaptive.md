@@ -1,15 +1,19 @@
 # CLI Tool Name
 
-A CLI README example that adapts to the available commands.
+## Repository evidence
 
-## Installation
+Found:
+- package.json bin field maps to ./bin/cli.js
+- src/cli.js defines commands: init, build, deploy
+- README previously omitted the deploy command
 
-Document the installation method found in project configuration.
+## README decisions
 
-## Commands
+Include:
+- installation method from package manager
+- init, build, and deploy commands with verified flags
+- troubleshooting for deploy exit code 1 found in CI logs
 
-List verified commands from the executable entry point. Do not invent flags.
-
-## Troubleshooting
-
-Include only errors and solutions supported by project evidence.
+Do not include:
+- hypothetical future commands
+- unsupported platform-specific flags

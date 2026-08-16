@@ -5,7 +5,7 @@ When to reach for README creation or improvement without being asked.
 ## Trigger without explicit request
 
 - The repository has no README or the README is clearly outdated.
-- New public-facing code was added and the README does not mention it.
+- A user-facing workflow, installation path, public API, or CLI command changed.
 - Installation or usage instructions are missing, wrong, or contradictory.
 - Onboarding docs would meaningfully reduce repeated questions.
 - A project is being prepared for release, demo, or external handoff.

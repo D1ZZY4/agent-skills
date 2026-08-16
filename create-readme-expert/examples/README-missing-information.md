@@ -1,17 +1,27 @@
 # Project Name
 
-A README example for incomplete project information.
+## Repository evidence
 
-## Installation
+Found:
+- pyproject.toml present
+- src/ directory exists
+- No README, CONTRIBUTING, or deployment config found
+- No verified installation or entry-point documentation
 
-Installation instructions require confirmation because no verified setup process was found.
+## README decisions
 
-## Usage
+Include:
+- project purpose inferred from pyproject.toml description only
+- placeholder sections for installation, usage, and configuration
 
-Usage examples should be added after confirming public entry points.
+Do not include:
+- unverified commands
+- assumed compatibility or deployment steps
 
 ## Missing information
 
 - Supported platforms
+- Installation process
+- Public API or CLI surface
 - Deployment process
-- Public API guarantees
+- License and authorship

@@ -33,9 +33,7 @@ Use when reviewing README quality. Report issues and evidence before making chan
 ### Refuse unnecessary rewrite
 If the README accurately represents the project, avoid replacing it with a generic alternative. Make only targeted improvements when they are justified.
 
-If no source-of-truth document exists, infer from the codebase, existing docs, package
-manifest, and explicit user requirements. Do not invent features, guarantees, or roadmap
-claims.
+Use only verified project information.
 
 ## Step 1: Establish project sources of truth
 
@@ -56,8 +54,7 @@ If sources conflict:
 - Preserve project conventions unless they are clearly incorrect.
 - Record uncertainty instead of guessing.
 
-Do not invent features, guarantees, compatibility claims, or roadmap items when the
-project sources do not support them.
+Do not invent unsupported features, compatibility claims, or roadmap items.
 
 ## Step 2: Choose the right structure
 
