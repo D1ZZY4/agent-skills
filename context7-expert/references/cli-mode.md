@@ -24,7 +24,7 @@ record that fallback was used.
 
 The CLI runs in different environments. Detect the shell before constructing commands:
 
-- **bash / zsh / sh**: POSIX syntax. Use the examples in this reference as-is.
+- **bash / zsh / sh / fish**: POSIX syntax. Use the examples in this reference as-is.
 - **PowerShell**: use `Get-Command ctx7` instead of `command -v ctx7`. Quote arguments with
   single quotes when they contain double quotes, or escape with backtick.
 - **cmd.exe**: `where ctx7` for presence, `ctx7 --version` for version check. Use double quotes
