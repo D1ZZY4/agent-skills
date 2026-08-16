@@ -10,6 +10,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+No unreleased changes yet.
+
+[⬆ Back to top](#changelog)
+
+---
+
+## [1.7.0] - 2026-08-16
+
 ### Added
 
 - Step 2 in create-readme-expert now loads `references/readme-structures.md` only; `examples/README-1.md` is conditional for new README creation.
@@ -17,6 +25,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `references/anti-patterns.md` now includes a correction line for unsupported claims.
 - `examples/README-missing-information.md` wording tightened from "inferred" to "documented only from".
 - `examples/EXAMPLES.md` now separates reference material from the examples list.
+
+### Changed
+
+- Bumped create-readme-expert metadata.version to 1.7.0.
+- Added workflow rules to AGENTS.md: push/commit authorization, `[Unreleased]` position rule, and changelog update guidance.
 
 [⬆ Back to top](#changelog)
 

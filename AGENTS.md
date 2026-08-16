@@ -41,9 +41,17 @@ Each skill is a normal directory containing `SKILL.md` and optional `references/
 
 ## Versioning
 
-Each skill has its own semantic version in `SKILL.md` frontmatter and `metadata.version`.
-Major version starts at 1. Minor increases by skill maturity.
-See `CHANGELOG.md` for per-skill version history.
+This repository uses two version tracks:
+
+- Project version: the version of the repository as a whole, recorded in `CHANGELOG.md` release
+  headings. Format: `1.Y.Z`. First number starts at `1` and increases for major repository-level
+  changes. Second number increases for notable releases, up to `20`. Third number is for patches.
+- Skill version: each skill has its own version in `SKILL.md` `metadata.version`. Format: `1.Y.Z`.
+  Major starts at `1`. Minor increases by skill maturity and review feedback. A skill version may
+  lag behind or lead the project version; they are independent.
+
+When in doubt, keep the first number at `1` unless the change is large enough to justify a new
+major track. Do not start a version with `0`.
 
 ## Workflow rules
 
