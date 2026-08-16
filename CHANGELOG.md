@@ -8,6 +8,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [Detailed Changelog](#per-skill-changelog)
 ---
 
+## [1.5.0] - 2026-08-16
+
+### Added
+
+- `references/external-readme-sources.md`: moved from `examples/URL.md` as source material.
+
+### Changed
+
+- Bumped create-readme-expert version from 1.2.0 to 1.3.0.
+- Upgraded `examples/README-library-adaptive.md`, `README-cli-adaptive.md`, and `README-missing-information.md` to evidence-based format.
+- Step 4 now loads examples conditionally by project type.
+- Step 0/1 repetition cleaned up in SKILL.md.
+- Narrowed proactive trigger to user-facing workflow, installation, public API, or CLI changes.
+- Added placeholder warning to `examples/README-1.md`.
+
+[⬆ Back to top](#changelog)
+
+---
+
 ## [Unreleased]
 
 No unreleased changes yet.
@@ -119,6 +138,7 @@ No unreleased changes yet.
 
 | Version | Date | Skills | Key changes |
 |---------|------|--------|-------------|
+| 1.5.0 | 2026-08-16 | 1 | create-readme-expert review fixes, evidence-based examples, version bump to 1.3.0 |
 | 1.4.0 | 2026-08-16 | 1 | create-readme-expert examples additions, version bump to 1.2.0 |
 | 1.3.0 | 2026-08-16 | 5 | Self-contained references, proactive triggers, verification-and-failure references, license/metadata across skills |
 | 1.2.0 | 2026-08-11 | 5 | Skill versions, evidence hierarchy, proactive triggers, verification guidance |
@@ -177,6 +197,7 @@ No unreleased changes yet.
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.3.0 | 2026-08-16 | Evidence-based examples, conditional Step 4 loading, proactive trigger narrowing, placeholder warning |
 | 1.2.0 | 2026-08-16 | Added adaptive README examples, Step 4 loads all bundled examples |
 | 1.1.0 | 2026-07-13 | Initial release |
 
