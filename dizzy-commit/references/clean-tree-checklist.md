@@ -4,6 +4,8 @@ Before declaring any task complete or ending a session, inspect the working tree
 
 ```bash
 git status --short
+git branch --show-current
+git rev-parse --abbrev-ref HEAD@{upstream} 2>/dev/null || true
 ```
 
 If the output is not empty:
@@ -22,6 +24,8 @@ If the output is not empty:
 - [ ] `git diff --cached --stat` was inspected when staged changes exist
 - [ ] Remaining changes were reported or explicitly approved for commit
 - [ ] Any remaining dirty files are pre-existing user work or were explicitly kept
+- [ ] Current branch was identified; detached HEAD or unexpected branch was flagged
+- [ ] Upstream tracking branch was identified when pushing is in scope
 
 ## Secret and sensitive content check
 
