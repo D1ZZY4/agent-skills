@@ -8,6 +8,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [Detailed Changelog](#per-skill-changelog)
 ---
 
+## [1.6.0] - 2026-08-16
+
+### Added
+
+- Change scope control in SKILL.md to match README change size to user request.
+- Missing information handling mechanism in SKILL.md.
+- Audience identification section in readme-structures.md.
+- Repository inspection checklist in verification-and-failure.md.
+- Preserve existing README voice rules in voice-and-tone.md.
+- `examples/README-unsupported-claims.md` failure case example.
+- Release/update behavior in proactive-trigger.md.
+- Dependency documentation rule in readme-structures.md.
+
+### Changed
+
+- Bumped create-readme-expert metadata.version to 1.5.0.
+- Narrowed proactive trigger to user-facing workflow, installation, public API, or CLI changes.
+- Added placeholder warning to `examples/README-1.md`.
+
+[⬆ Back to top](#changelog)
+
+---
+
 ## [Unreleased]
 
 No unreleased changes yet.
@@ -138,6 +161,7 @@ No unreleased changes yet.
 
 | Version | Date | Skills | Key changes |
 |---------|------|--------|-------------|
+| 1.6.0 | 2026-08-16 | 1 | create-readme-expert review feedback: scope control, missing info handling, audience id, inspection checklist, voice preservation, unsupported claims example |
 | 1.5.0 | 2026-08-16 | 1 | create-readme-expert review fixes, evidence-based examples, version bump to 1.3.0 |
 | 1.4.0 | 2026-08-16 | 1 | create-readme-expert examples additions, version bump to 1.2.0 |
 | 1.3.0 | 2026-08-16 | 5 | Self-contained references, proactive triggers, verification-and-failure references, license/metadata across skills |
@@ -197,6 +221,8 @@ No unreleased changes yet.
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.5.0 | 2026-08-16 | Change scope control, missing info handling, audience id, repository inspection checklist, preserve README voice, unsupported claims example, release trigger, dependency rule |
+| 1.4.0 | 2026-08-16 | External README sources moved to references, Step 4 conditional loading, placeholder warning |
 | 1.3.0 | 2026-08-16 | Evidence-based examples, conditional Step 4 loading, proactive trigger narrowing, placeholder warning |
 | 1.2.0 | 2026-08-16 | Added adaptive README examples, Step 4 loads all bundled examples |
 | 1.1.0 | 2026-07-13 | Initial release |
