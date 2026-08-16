@@ -10,7 +10,7 @@ description: >
   correctness does not depend on external API behavior.
 license: MIT
 metadata:
-  version: 1.7.1
+  version: 1.8.0
   author: D1ZZY4
   priority: high
 ---
@@ -18,6 +18,16 @@ metadata:
 # Context7 Expert
 
 This file is the routing and decision layer. Load only the reference needed for the current step.
+
+## Priority hierarchy
+
+When rules conflict, resolve in this order:
+
+1. Safety boundaries: never initiate installation, login, credential changes, or destructive commands without explicit authorization.
+2. Explicit user authorization: the user's direct instruction overrides convenience defaults.
+3. Repository-local evidence: lockfiles, manifests, and project docs define the actual version and behavior.
+4. Context7 lookup rules: fetch only when the question is version-sensitive or API-specific.
+5. Convenience optimization: caching, mode preference, and query shortcuts apply last.
 
 ## Step 0: Decide whether current documentation is actually needed
 

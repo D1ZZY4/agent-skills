@@ -36,14 +36,21 @@ remains unchecked if the budget runs out.
 
 Examples:
 
-- authentication or authorization behavior
-- payments, billing, or data migration
-- security-sensitive configuration
+- production deployment or infrastructure changes
+- database migration or schema changes
+- authentication, authorization, or security-sensitive configuration
 - a breaking-version migration
+- payments, billing, or financial integrations
 - multiple libraries whose compatibility matters
 
 Use a budget of up to **7 operations** only when the extra verification is necessary. Prefer
 official or version-specific documentation, and state which version and source were checked.
+
+## Minimum-fetch rule
+
+Fetch only the documentation needed to answer the question. Do not pull broad overviews,
+multiple topic areas, or unrelated sections to save a later round trip. If the first focused
+fetch does not contain the answer, make a narrower second fetch rather than widening the first.
 
 ## Rules for increasing the budget
 

@@ -12,7 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### context7-expert
 
-- Bumped metadata.version to 1.7.1.
+- Bumped metadata.version to 1.8.0.
+- Added priority hierarchy to SKILL.md for conflict resolution.
+- Strengthened risk classification in risk-and-budget.md with concrete high-risk examples.
+- Added minimum-fetch rule to risk-and-budget.md.
 - Added explicit "do not use Context7" boundaries to SKILL.md Step 0.
 - Strengthened setup.md to defer to the target agent's own documentation.
 - Added package-scope disambiguation guidance to selection-and-query-writing.md.
