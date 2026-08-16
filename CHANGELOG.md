@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### context7-expert
 
-- Bumped metadata.version to 1.7.0.
+- Bumped metadata.version to 1.7.1.
 - Added explicit "do not use Context7" boundaries to SKILL.md Step 0.
 - Strengthened setup.md to defer to the target agent's own documentation.
 - Added package-scope disambiguation guidance to selection-and-query-writing.md.

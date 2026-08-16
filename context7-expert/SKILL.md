@@ -10,7 +10,7 @@ description: >
   correctness does not depend on external API behavior.
 license: MIT
 metadata:
-  version: 1.7.0
+  version: 1.7.1
   author: D1ZZY4
   priority: high
 ---
