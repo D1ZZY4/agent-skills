@@ -104,5 +104,4 @@ try (UnifiedJedis jedis = new UnifiedJedis("redis://localhost:6379")) {
 
 ## Upstream sources
 
-- No direct upstream example, authored from official Redis Search command and tokenization documentation.
 - Reference: [Stemming](https://redis.io/docs/latest/develop/interact/search-and-query/advanced-concepts/stemming/), [Stopwords](https://redis.io/docs/latest/develop/interact/search-and-query/advanced-concepts/stopwords/), [Phonetic Matching](https://redis.io/docs/latest/develop/interact/search-and-query/advanced-concepts/phonetic_matching/)

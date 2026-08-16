@@ -93,5 +93,4 @@ try (UnifiedJedis jedis = new UnifiedJedis("redis://localhost:6379")) {
 
 ## Upstream sources
 
-- No direct upstream example, authored from official Redis Search command documentation.
 - Reference: [FT.EXPLAIN](https://redis.io/docs/latest/commands/ft.explain/), [FT.PROFILE](https://redis.io/docs/latest/commands/ft.profile/), [FT.INFO](https://redis.io/docs/latest/commands/ft.info/)

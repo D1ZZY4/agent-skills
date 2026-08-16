@@ -10,7 +10,7 @@ description: >
   correctness does not depend on external API behavior.
 license: MIT
 metadata:
-  version: 1.6.0
+  version: 1.7.0
   author: D1ZZY4
   priority: high
 ---
@@ -25,6 +25,12 @@ Use this skill when the answer could be wrong because an API, CLI, SDK, framewor
 or version has changed. Strong triggers include a named dependency plus a concrete API question,
 a version number, migration work, generated code against an external API, or uncertainty about
 the current signature.
+
+Do not use Context7 when:
+
+- The question is about a general programming concept that does not depend on a specific library version (for example, "what is an array in JavaScript").
+- The repository already contains the authoritative answer in local documentation, README, lockfiles, or manifests.
+- The answer can be explained from stable, widely-known language semantics without consulting version-specific documentation.
 
 Do not use documentation lookup as ritual. If the task is pure reasoning, refactoring, or
 language syntax that does not depend on a third-party API, skip it.

@@ -18,7 +18,9 @@ These are reference commands only. Do not run setup, change agent configuration,
 skill, or authenticate merely because a documentation task mentions Context7. Perform setup
 only after the user explicitly requests it and confirms the target and mode. Do not use
 `--yes` by default. The exact target flags and configuration locations are host-specific.
-Read `agent-adapters.md` and the target agent's current documentation before running one.
+Read `agent-adapters.md` and the target agent's own documentation before running one. The
+agent's documented config path and skill directory are the source of truth; do not assume a
+universal location.
 
 ```bash
 npx ctx7@latest setup                     # interactive, prompts for mode then agent/target

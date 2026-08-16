@@ -22,6 +22,7 @@ Each resolved library result typically includes:
 2. Select the best match based on:
    - Name similarity to the query, exact matches prioritized
    - Description relevance to the query's intent
+   - Package scope and ecosystem: distinguish scoped packages from similarly named but unrelated ones (for example, `react-router` vs `react-router-dom`, or `tensorflow` vs `tensorflow-lite`).
    - Documentation coverage, prefer libraries with higher code snippet counts
    - Source reputation, prefer High or Medium over Low or Unknown
    - Benchmark score, higher is better

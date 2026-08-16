@@ -102,5 +102,4 @@ try (UnifiedJedis jedis = new UnifiedJedis("redis://localhost:6379")) {
 
 ## Upstream sources
 
-- No direct upstream example, authored from official Redis Search command documentation.
 - Reference: [FT.AGGREGATE WITHCURSOR](https://redis.io/docs/latest/commands/ft.aggregate/), [FT.CURSOR READ](https://redis.io/docs/latest/commands/ft.cursor-read/), [FT.CURSOR DEL](https://redis.io/docs/latest/commands/ft.cursor-del/)

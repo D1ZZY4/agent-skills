@@ -8,6 +8,7 @@ that can invalidate an otherwise plausible answer.
 - Confirm the selected library ID, indexed version, query, and access mode before presenting an answer as Context7-backed.
 - Distinguish "not checked", "checked and passed", and "checked and failed" for every claim that depends on external state.
 - If a dependency or tool is unavailable, continue with a safe static workflow when possible and say so plainly.
+- Context7 documentation confirms what the library docs say. It does not guarantee that the user's code, configuration, or environment matches that documentation. State the distinction when verification is incomplete.
 
 ## Failure handling
 
