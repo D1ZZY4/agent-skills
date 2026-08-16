@@ -157,12 +157,12 @@ Load only the references needed for the README:
   distinguish checked from unchecked claims, and how to handle missing information.
 - `references/proactive-trigger.md`: when to propose, rewrite, or audit a README without
   being asked, and when to stay quiet.
-- `references/external-readme-sources.md`: list of README sources for direct URL-based reference.
+- `references/external-readme-sources.md`: external README examples for structural inspiration only.
 
 ## Examples
 
 Use the bundled examples in `examples/` as starting material or inspiration:
 
 - `examples/README-1.md`: minimal README template with quick start, usage, and configuration.
-- `references/external-readme-sources.md`: list of README sources for direct URL-based reference.
+- `references/external-readme-sources.md`: external README examples for structural inspiration only.
 - `examples/EXAMPLES.md`: index of bundled README examples.
