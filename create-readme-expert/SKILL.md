@@ -9,7 +9,7 @@ description: >
 license: MIT
 metadata:
   version: 1.6.0
-  author: D1ZYY4
+  author: D1ZZY4
   priority: medium
 ---
 

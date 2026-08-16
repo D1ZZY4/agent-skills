@@ -35,6 +35,15 @@ No unreleased changes yet.
 - Narrowed proactive trigger to user-facing workflow, installation, public API, or CLI changes.
 - Added placeholder warning to `examples/README-1.md`.
 
+### context7-expert
+
+- Bumped context7-expert metadata.version to 1.6.0.
+- Added risk-tiered operation budget in risk-and-budget.md.
+- Added traceability requirements in mcp-mode.md and cli-mode.md.
+- Tightened safety boundaries in setup.md for install/setup/auth/skills-generate.
+- Added agent-adapters.md for host adapter generalization.
+- Rewrote verification-and-failure.md with concrete rules and hard safety boundaries.
+
 [⬆ Back to top](#changelog)
 
 ---

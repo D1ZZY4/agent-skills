@@ -8,7 +8,7 @@ description: >
 license: MIT
 metadata:
   version: 1.10.0
-  author: D1ZYY4
+  author: D1ZZY4
   priority: high
 ---
 
