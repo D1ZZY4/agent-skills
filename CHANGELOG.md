@@ -8,6 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [Detailed Changelog](#per-skill-changelog)
 ---
 
+## [Unreleased]
+
+No unreleased changes yet.
+
+[⬆ Back to top](#changelog)
+
+---
+
 ## [1.6.0] - 2026-08-16
 
 ### Added
@@ -26,14 +34,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Bumped create-readme-expert metadata.version to 1.5.0.
 - Narrowed proactive trigger to user-facing workflow, installation, public API, or CLI changes.
 - Added placeholder warning to `examples/README-1.md`.
-
-[⬆ Back to top](#changelog)
-
----
-
-## [Unreleased]
-
-No unreleased changes yet.
 
 [⬆ Back to top](#changelog)
 
@@ -221,7 +221,7 @@ No unreleased changes yet.
 
 | Version | Date | Changes |
 |---------|------|---------|
-| 1.5.0 | 2026-08-16 | Change scope control, missing info handling, audience id, repository inspection checklist, preserve README voice, unsupported claims example, release trigger, dependency rule |
+| 1.6.0 | 2026-08-16 | Change scope control, missing info handling, audience id, repository inspection checklist, preserve README voice, unsupported claims example, release trigger, dependency rule |
 | 1.4.0 | 2026-08-16 | External README sources moved to references, Step 4 conditional loading, placeholder warning |
 | 1.3.0 | 2026-08-16 | Evidence-based examples, conditional Step 4 loading, proactive trigger narrowing, placeholder warning |
 | 1.2.0 | 2026-08-16 | Added adaptive README examples, Step 4 loads all bundled examples |
