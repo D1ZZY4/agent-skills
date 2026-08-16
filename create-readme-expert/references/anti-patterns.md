@@ -17,6 +17,9 @@ Worked README examples and common pitfalls.
 - README that claims features without showing how to use them.
 - README that mixes multiple unrelated tutorials into one page.
 
+Correction:
+Replace unsupported claims with verified examples, stated limitations, or measured behavior.
+
 ## Example opening
 
 Bad: "This project is awesome and does amazing things."

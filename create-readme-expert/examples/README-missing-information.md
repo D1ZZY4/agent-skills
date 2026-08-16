@@ -11,7 +11,7 @@ Found:
 ## README decisions
 
 Include:
-- project purpose inferred from pyproject.toml description only
+- project purpose documented only from the description field in pyproject.toml
 - placeholder sections for installation, usage, and configuration
 
 Do not include:

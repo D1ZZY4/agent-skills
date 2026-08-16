@@ -77,7 +77,9 @@ Do not invent unsupported features, compatibility claims, or roadmap items.
 
 ## Step 2: Choose the right structure
 
-Read `references/readme-structures.md` and `examples/README-1.md`. Match the README structure to the project type:
+Read `references/readme-structures.md`. Match the README structure to the project type:
+
+Use `examples/README-1.md` only when creating a new README from scratch.
 
 | Project type | Preferred emphasis |
 |---|---|

@@ -44,3 +44,10 @@ Each skill is a normal directory containing `SKILL.md` and optional `references/
 Each skill has its own semantic version in `SKILL.md` frontmatter and `metadata.version`.
 Major version starts at 1. Minor increases by skill maturity.
 See `CHANGELOG.md` for per-skill version history.
+
+## Workflow rules
+
+- Do not push without explicit user authorization.
+- Do not commit without explicit user authorization when the user is reviewing changes.
+- In `CHANGELOG.md`, always keep `[Unreleased]` as the first version section, above any released versions.
+- Update `CHANGELOG.md` before committing whenever the change set is notable enough to record.

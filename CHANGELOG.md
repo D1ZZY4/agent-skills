@@ -10,7 +10,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-No unreleased changes yet.
+### Added
+
+- Step 2 in create-readme-expert now loads `references/readme-structures.md` only; `examples/README-1.md` is conditional for new README creation.
+- `references/external-readme-sources.md` now includes structural-inspiration-only warning with do-not-copy rules.
+- `references/anti-patterns.md` now includes a correction line for unsupported claims.
+- `examples/README-missing-information.md` wording tightened from "inferred" to "documented only from".
+- `examples/EXAMPLES.md` now separates reference material from the examples list.
 
 [⬆ Back to top](#changelog)
 
