@@ -17,6 +17,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Replaced hardcoded MIT placeholder in README-1.md with generic license reference.
 - Fixed typo in readme-structures.md: Prerequisiteses -> Prerequisites.
 
+### redis-expert
+
+- Resolved DIALECT 3 contradiction between dialect.md and search query examples.
+- Removed eval-harness language and vague gold-dataset claims from command-selection.md.
+- Aligned network.md command-renaming guidance with SKILL.md preference order.
+- Removed hardcoded 0.9 similarity threshold default from best-practices.md.
+- Redirected LangCache pointer in python-redisvl.md to this skill's semantic-cache references.
+- Annotated undefined embedding/LLM placeholders in vector-query.md, hybrid-search.md, rag-pattern.md, and langcache-usage.md.
+- Annotated missing collections import in command-selection.md bad example.
+
+### copywriting-expert
+
+- Removed self-referential phrasing from SKILL.md routing layer.
+
+### mermaid-diagrams-expert
+
+- Removed self-referential phrasing from SKILL.md routing layer.
+
 [⬆ Back to top](#changelog)
 
 ---

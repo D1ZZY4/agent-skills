@@ -8,7 +8,7 @@ description: >
   first and adapt to the product's language and audience rather than imposing generic voice.
 license: MIT
 metadata:
-  version: 1.3.0
+  version: 1.3.1
   author: D1ZZY4
   priority: medium
 ---

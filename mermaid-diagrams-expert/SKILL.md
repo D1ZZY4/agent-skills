@@ -8,7 +8,7 @@ description: >
   Mermaid version before using version-sensitive syntax.
 license: MIT
 metadata:
-  version: 1.2.0
+  version: 1.2.1
   author: D1ZZY4
   priority: medium
 ---
