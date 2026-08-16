@@ -31,6 +31,7 @@ result = lang_cache.search(
 if result:
     response = result[0]["response"]
 else:
+    # Replace llm with the actual LLM client used by the application.
     response = llm.generate("What is Redis?")
     # Store for future queries
     lang_cache.set(

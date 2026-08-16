@@ -30,13 +30,8 @@ protected-mode no
 - Use TLS for connections
 - Bind to specific interfaces, not `0.0.0.0`
 - Use firewall rules to restrict access
-- Disable dangerous commands in production
+- Prefer ACL restrictions and network controls over command renaming
 
-```
-# Disable dangerous commands
-rename-command FLUSHALL ""
-rename-command DEBUG ""
-rename-command CONFIG ""
-```
+Command renaming is an optional additional layer. If used, verify client and operational tooling compatibility because renamed commands break expected command names.
 
 Reference: [Redis Security](https://redis.io/docs/latest/operate/oss_and_stack/management/security/)

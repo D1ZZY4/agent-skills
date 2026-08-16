@@ -15,7 +15,7 @@ metadata:
 
 # Copywriting Expert
 
-This file is the workflow index. Load the reference that matches the component and problem.
+This document routes to the component-specific reference that matches the problem.
 
 ## Step 0: Establish the source of truth
 

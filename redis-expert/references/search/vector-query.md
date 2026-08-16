@@ -66,6 +66,7 @@ from redis import Redis
 from redis.commands.search.query import Query
 
 r = Redis()
+# query_embedding must be produced by the same embedding model used at index time.
 vec_blob = np.array(query_embedding, dtype=np.float32).tobytes()
 q = (
     Query("(@type:{mountain} @price:[100 500])=>[KNN 10 @description_embeddings $vec AS score]")

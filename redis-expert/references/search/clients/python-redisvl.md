@@ -806,7 +806,7 @@ hit = llmcache.check(prompt="capital city of France?")          # returns cached
 
 `filterable_fields=[{"name": "user_id", "type": "tag"}]` partitions the cache by tenant/user. Defer to `03_llmcache.ipynb` for filterable-field semantics, TTLs, and metadata.
 
-**LangCache vs SemanticCache:** `SemanticCache` is the in-process Python class shown above. **LangCache** (`13_langcache_semantic_cache.ipynb`) is a separate Redis-hosted product, a managed semantic-cache service on Redis Cloud. They share a vector-search shape but live in different scopes. For LangCache coverage, fall through to the `redis-semantic-cache` skill (a separate skill in this repo) rather than treating it inline as a RedisVL primitive.
+**LangCache vs SemanticCache:** `SemanticCache` is the in-process Python class shown above. **LangCache** (`13_langcache_semantic_cache.ipynb`) is a separate Redis-hosted product, a managed semantic-cache service on Redis Cloud. They share a vector-search shape but live in different scopes. For LangCache coverage, see this skill's `references/semantic-cache/` rather than treating it inline as a RedisVL primitive.
 
 ### MessageHistory, durable chat-history with optional semantic recall
 

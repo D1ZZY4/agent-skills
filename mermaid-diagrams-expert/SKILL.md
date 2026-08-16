@@ -15,7 +15,7 @@ metadata:
 
 # Mermaid Diagrams Expert
 
-This file is the workflow index. Load only the references needed for the diagram.
+This document routes to the references needed for the diagram.
 
 ## Step 0: Decide whether a diagram earns its keep
 

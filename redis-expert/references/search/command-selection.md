@@ -1,7 +1,5 @@
 # Choose the Right FT Command for the Job
 
-**Output contract for query-builder calls:** the generated command is the *entire* response. Emit only the JSON array of strings, no prose, no explanation, no `**Explanation:**` section, no code fences, no leading/trailing whitespace. The token *after* the closing `]` must be EOF. Any commentary will be either ignored (best case) or treated as part of the command (worst case).
-
 The first decision before any query syntax is *which command to run*. Redis Search exposes three query commands with different design intents, picking the wrong one means rewriting the query later when you discover the command cannot express what you need.
 
 | Command | Use when... | Mental model | Min. Redis |
@@ -56,6 +54,7 @@ FT.SEARCH idx:bicycle "(@type:{mountain})=>[KNN 10 @description_embeddings $quer
 ```python
 # Bad: pulling raw docs and grouping in Python, defeats the index, blows up over the wire.
 docs = r.ft("idx:bicycle").search("@type:{mountain}").docs
+# Replace collections.Counter with the actual counting approach; import collections if used.
 brands = collections.Counter(d.brand for d in docs)
 ```
 
@@ -90,7 +89,7 @@ Use `FT.AGGREGATE` when the question contains:
 | *"how many distinct X"* / *"count of distinct X"* | **`FT.AGGREGATE`**, two-step `GROUPBY 1 @x` then `GROUPBY 0 REDUCE COUNT 0` |
 | *"how many X per Y"* / *"count of X by Y"* / *"breakdown by Y"* | **`FT.AGGREGATE`**, `GROUPBY 1 @y REDUCE COUNT 0` |
 
-**Why the default leans `FT.AGGREGATE`:** the gold dataset reserves `FT.SEARCH … LIMIT 0 0` only for the literal phrasing *"return the number of X"*. Every other count phrasing, *"how many"*, *"find the count"*, *"count of"*, uses `FT.AGGREGATE GROUPBY 0 REDUCE COUNT 0`. Both forms return the same total numerically, but the result-row shapes differ, so a coin-flip is wrong half the time.
+**Why the default leans `FT.AGGREGATE`:** `FT.SEARCH … LIMIT 0 0` returns a count in the response header with a different row shape than `FT.AGGREGATE GROUPBY 0 REDUCE COUNT 0`. For any phrasing other than the literal *"return the number of X"*, prefer `FT.AGGREGATE` so the result shape is consistent.
 
 ```
 # Q: "How many beers in Michigan?"
@@ -112,7 +111,7 @@ FT.AGGREGATE conditions "@code:{active} @problem:(rhinitis|asthma)" GROUPBY 1 @s
 FT.AGGREGATE conditions "@code:{active} @problem:(rhinitis|asthma)" GROUPBY 0 REDUCE TOLIST 1 @subject AS List
 ```
 
-**`GROUPBY` without a `REDUCE` is a valid distinct-values projection.** For *"list N distinct values of X"* (no count needed), the canonical form is bare `GROUPBY 1 @x LIMIT 0 N`, adding a `REDUCE COUNT` changes the row shape and breaks result-equality.
+**`GROUPBY` without a `REDUCE` is a valid distinct-values projection.** For *"list N distinct values of X"* (no count needed), the canonical form is bare `GROUPBY 1 @x LIMIT 0 N`, adding a `REDUCE COUNT` changes the row shape.
 
 ```
 # Q: "List eleven countries"

@@ -36,7 +36,8 @@ from redis.commands.search.query import Query
 r = Redis()
 
 def embed(text: str) -> bytes:
-    # Replace with your model, must produce the SAME dim as the index (1536 here)
+    # Replace embed_model with the actual embedding client/model used at index time.
+    # The produced dimension must match the index DIM exactly.
     return np.array(embed_model.encode(text), dtype=np.float32).tobytes()
 
 def retrieve(question: str, k: int = 5, type_filter: str = "mountain"):

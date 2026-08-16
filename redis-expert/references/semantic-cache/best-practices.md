@@ -54,7 +54,7 @@ result = lang_cache.search(prompt="How do I reset my password?")
 ```
 
 **Best practices:**
-- Start with threshold 0.9, adjust based on your use case
+- Thresholds are workload and embedding-model heuristics, not portable defaults. Start conservatively, then calibrate against an evaluation set.
 - Use custom attributes to filter results within a single cache
 - Monitor cache hit rates to evaluate effectiveness
 - Use separate cache IDs for fundamentally different LLM tasks

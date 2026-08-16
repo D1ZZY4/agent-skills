@@ -2,6 +2,8 @@
 
 Pass `DIALECT 2` on every `FT.SEARCH` / `FT.AGGREGATE` / `FT.HYBRID` call. From Redis 8 onward, **DIALECT 2 is the only supported value**, dialects 1, 3, and 4 are deprecated and removed in current Redis Open Source. Vector query attributes (the `=>[KNN ...]` form) require DIALECT 2 to parse.
 
+**Exception for GEOSHAPE:** `DIALECT 3` is still required for `GEOSHAPE WITHIN` / `CONTAINS` predicates on Redis 7.x deployments with the RediSearch module. On Redis 8, check the current module documentation; if GEOSHAPE has migrated to DIALECT 2, update queries accordingly.
+
 **Correct:** Specify DIALECT 2 explicitly, or rely on modern client defaults.
 
 ```
