@@ -20,6 +20,22 @@ If the executable is missing or the version check fails, treat the CLI as unavai
 transient `npx` fallback only when network-backed package execution is already approved, and
 record that fallback was used.
 
+## Environment detection
+
+The CLI runs in different environments. Detect the shell before constructing commands:
+
+- **bash / zsh / sh**: POSIX syntax. Use the examples in this reference as-is.
+- **PowerShell**: use `Get-Command ctx7` instead of `command -v ctx7`. Quote arguments with
+  single quotes when they contain double quotes, or escape with backtick.
+- **cmd.exe**: `where ctx7` for presence, `ctx7 --version` for version check. Use double quotes
+  for arguments and escape inner double quotes by doubling them.
+- **Container / CI**: `command -v ctx7` may return a path inside the container image. A version
+  check failure here usually means the binary is stale or missing, not that the host lacks it.
+  Treat the CLI as unavailable and use the approved fallback.
+
+Do not assume a Unix-like shell. If the environment is ambiguous, ask or use the simplest
+cross-shell form.
+
 If `ctx7` is installed, use it directly:
 
 ```bash
