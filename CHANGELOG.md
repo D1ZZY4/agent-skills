@@ -10,7 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-No unreleased changes yet.
+### create-readme-expert
+
+- Bumped metadata.version from 1.7.0 to 1.9.0.
+- Fixed SKILL.md Examples section to list actual bundled example files.
+- Replaced hardcoded MIT placeholder in README-1.md with generic license reference.
+- Fixed typo in readme-structures.md: Prerequisiteses -> Prerequisites.
 
 [⬆ Back to top](#changelog)
 

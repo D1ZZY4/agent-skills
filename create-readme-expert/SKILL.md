@@ -8,7 +8,7 @@ description: >
   where the project already has strong conventions.
 license: MIT
 metadata:
-  version: 1.7.0
+  version: 1.9.0
   author: D1ZZY4
   priority: medium
 ---

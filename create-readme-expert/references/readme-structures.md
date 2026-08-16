@@ -50,7 +50,7 @@ Prioritize sections based on the primary reader.
 ### Template or starter
 
 1. Project name and what it includes
-2. Prerequisiteses
+2. Prerequisites
 3. Setup
 4. Customization guide
 5. Examples of what was produced
