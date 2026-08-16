@@ -4,12 +4,20 @@ This file covers how to stage safely: group by logical concern, never cite an ig
 untracked file as authority in a commit message, never add a new ignored file, and verify
 gitignore status before staging.
 
-## Group by logical concern
+## Atomic commits
 
-Group changed files by concern: one bug fix, one refactor, one feature, one docs update. If
-the diff spans unrelated areas, recommend splitting into multiple commits. Explain the tradeoff
-and ask a focused question when the user explicitly requests one combined commit; follow that
-instruction when it is safe and the combined change has a coherent purpose.
+One commit should represent one logical change. Mixing unrelated changes in one commit makes
+revert, cherry-pick, and bisect harder later. Typical atomic units:
+
+- one bug fix
+- one refactor
+- one feature
+- one docs update
+- one dependency bump
+
+If the staged diff clearly contains unrelated changes, recommend splitting before committing.
+The user can override this, but do so only after they have seen the grouped diff and understand
+the cost.
 
 ## Never cite an ignored or untracked file as authority in the message
 

@@ -7,7 +7,7 @@ description: >
   for that side effect. Use Conventional Commits only when repository policy or the user requires it.
 license: MIT
 metadata:
-  version: 1.10.0
+  version: 1.11.0
   author: D1ZZY4
   priority: high
 ---
@@ -24,6 +24,10 @@ Read `references/policy-configuration.md`. Resolve rules in this order:
 2. Repository policy and contribution instructions.
 3. Explicit user instructions.
 4. This skill's portable defaults.
+
+## Conflict resolution
+
+When the user's request conflicts with a safety or policy rule, the higher-precedence rule wins. Do not downgrade a safety boundary because the user asked for speed or convenience. If a request would violate a hard boundary, stop and explain what conflicts and what the safer path is.
 
 Never invent branch names, scopes, authorship, remotes, commit formats, or required checks.
 

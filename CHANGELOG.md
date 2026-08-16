@@ -10,6 +10,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### dizzy-commit
+
+- Bumped metadata.version to 1.11.0.
+- Added conflict resolution rule to SKILL.md.
+- Added atomic commit guidance to staging-and-gitignore.md.
+- Added secret scanning and diff size threshold to clean-tree-checklist.md.
+- Added recovery and rollback guidance to verification-and-failure.md.
+
 ### context7-expert
 
 - Bumped metadata.version to 1.9.0.
