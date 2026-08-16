@@ -17,3 +17,11 @@ Tone guidance for README content.
 
 - For internal, library, or API-first projects, lead with behavior, installation, and examples.
 - Avoid phrases like "seamless", "powerful", or "next-generation" unless they are supported by measurable behavior in the README.
+
+## Preserve existing README voice
+
+When improving an existing README:
+
+- Preserve the project's established voice when it is intentional.
+- Do not replace concise documentation with marketing language.
+- Do not make technical projects sound like product landing pages.

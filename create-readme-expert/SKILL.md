@@ -8,7 +8,7 @@ description: >
   where the project already has strong conventions.
 license: MIT
 metadata:
-  version: 1.3.0
+  version: 1.4.0
   author: D1ZYY4
   priority: medium
 ---
@@ -32,6 +32,25 @@ Use when reviewing README quality. Report issues and evidence before making chan
 
 ### Refuse unnecessary rewrite
 If the README accurately represents the project, avoid replacing it with a generic alternative. Make only targeted improvements when they are justified.
+
+## Change scope
+
+Match the size of the README change to the user request.
+
+- Fix request: change only incorrect or missing sections.
+- Improve request: improve clarity while preserving useful structure.
+- Rewrite request: restructure only when the existing README cannot represent the project accurately.
+
+Do not rewrite unrelated sections.
+
+## Missing information handling
+
+When information is missing:
+
+1. Search repository sources of truth.
+2. Mark unknown information explicitly.
+3. Use placeholders only when the user requested a draft.
+4. Never fill gaps with common defaults.
 
 Use only verified project information.
 

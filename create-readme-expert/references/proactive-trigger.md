@@ -20,3 +20,11 @@ When to reach for README creation or improvement without being asked.
 
 - Only propose README changes when the content can be verified against the actual project.
 - Do not rewrite a README based on assumptions, memory, or generic templates.
+
+## Release or update behavior
+
+Suggest README review when:
+
+- a release introduces user-visible changes
+- installation instructions change
+- migration steps are required

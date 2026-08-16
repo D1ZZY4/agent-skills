@@ -2,6 +2,17 @@
 
 Decision guide for choosing and ordering README sections based on project type.
 
+## Audience identification
+
+Before selecting a structure, identify the primary reader:
+
+- End user
+- Developer integrating the project
+- Contributor
+- Operator or deployment engineer
+
+Prioritize sections based on the primary reader.
+
 ## Common structures
 
 ### Library or SDK
@@ -52,3 +63,7 @@ Decision guide for choosing and ordering README sections based on project type.
 - If a section is empty or placeholder, remove it instead of leaving TODO text.
 - If the project has a logo or icon that is clearly intended for the README header, use it once near the title.
 - Do not add "Contributing", "Changelog", or "License" sections when those topics are covered by dedicated files.
+
+## Dependency documentation
+
+Only document dependencies users need to know about. Do not list every internal dependency.

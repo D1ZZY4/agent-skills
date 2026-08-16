@@ -2,6 +2,19 @@
 
 How to verify a README against the actual project and how to handle missing information.
 
+## Repository inspection checklist
+
+Inspect when available:
+
+- package manifests
+- entry points
+- executable scripts
+- environment examples
+- CI workflows
+- deployment files
+- public exports
+- existing documentation
+
 ## Verify before claiming
 
 - Run or read the code paths referenced in usage examples.

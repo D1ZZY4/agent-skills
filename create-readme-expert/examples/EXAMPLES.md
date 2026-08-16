@@ -7,3 +7,4 @@ Index of bundled README examples.
 - `README-library-adaptive.md`: library example showing source-driven documentation.
 - `README-cli-adaptive.md`: CLI example showing command verification.
 - `README-missing-information.md`: incomplete project example showing uncertainty handling.
+- `README-unsupported-claims.md`: unsupported claims failure case showing evidence-based omission.
