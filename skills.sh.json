@@ -1,0 +1,20 @@
+{
+  "sections": [
+    {
+      "title": "Documentation and content",
+      "skills": [
+        "context7-expert",
+        "copywriting-expert",
+        "create-readme-expert",
+        "mermaid-diagrams-expert"
+      ]
+    },
+    {
+      "title": "Development workflow",
+      "skills": [
+        "dizzy-commit",
+        "redis-expert"
+      ]
+    }
+  ]
+}
