@@ -47,6 +47,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added references/commit-strategy.md with resolution order and strategy values: auto,
   conventional-commit, atomic-commit, focused-commit, commit-type, scope, breaking-change, and
   concern-commit.
+- Expanded the commit strategy reference with three strategy dimensions (grouping, message
+  format, metadata), grouping principles, weak-grouping signals, and terminology.
 - Added a strategy field to the optional policy shape and wired strategy resolution into
   SKILL.md Step 2 and Step 3.
 - Clarified that large commits are not banned; grouping follows logical change, not file count.
