@@ -40,6 +40,22 @@ Common places these live:
 - A host-specific agent rules or conventions file, if the project's agent integration documents
   one.
 
+## If no style guide exists: read the project anyway
+
+Even without a documented style guide, a project's existing code and docs are its de facto
+copy standards:
+
+- Read the README and any docs folders to learn the product's domain, terminology, and the
+  register it already uses.
+- Grep for existing UI strings (button labels, error messages, empty states) in the codebase
+  and read a sample. These show the real house voice far more reliably than intuition.
+- Identify the domain and audience: who reads this copy, and what vocabulary do they already
+  use? A developer experience tool writes differently than a consumer finance app.
+- Carry forward house terms verbatim. If the product already says "workspace", do not
+  introduce "project space" for the same concept.
+
+These de facto standards override portable defaults, exactly as a documented style guide would.
+
 ## How to apply it
 
 - If a project-specific guide exists and addresses something directly (a specific tone

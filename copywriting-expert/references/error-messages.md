@@ -58,6 +58,17 @@ use the least revealing message that still gives the legitimate user a safe next
   honest that retrying won't help, and point toward the actual resolution path (contact an
   admin, request access, go back) instead of implying a retry button will fix it.
 
+## Permission and access-denied copy
+
+Access failures use the same "state, why, next step" pattern with careful boundaries:
+
+- Say what the user can't reach, why (when knowable without leaking), and what path restores
+  access: "You don't have access to this project. Ask an admin to add you."
+- Do not reveal what exists behind the permission barrier. A denied page must not hint at
+  data the user could not otherwise know exists.
+- Separate "you lack permission" from "this resource no longer exists". They need different
+  next steps and different copy, see `empty-states.md` for the error-as-empty overlap.
+
 ## Example set
 
 | Situation | Weak | Better |

@@ -30,6 +30,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added link text and alternative text guidance to references/accessibility-and-localization.md.
 - Fixed broken " copy" placeholder token in references/examples-and-anti-patterns.md.
 - Removed YAML frontmatter from references/toasts-and-onboarding.md to match the other references.
+- Bumped metadata.version to 1.5.0.
+- Added anti-AI-sounding patterns and domain adaptation guidance to references/voice-and-tone.md.
+- Expanded references/project-source-of-truth.md with de facto house voice discovery (codebase strings, README, docs).
+- Made reading existing project copy a required first step in SKILL.md Step 0.
+- Added navigation copy guidance to references/ui-component-copy.md.
+- Added loading and transitional state guidance to references/empty-states.md.
+- Added permission and access-denied copy guidance to references/error-messages.md.
+- Expanded references/verification-and-failure.md with copywork-specific verification rules.
+- Added toasts, onboarding, CLI output, and navigation examples to references/examples-and-anti-patterns.md.
 
 [⬆ Back to top](#changelog)
 
@@ -313,6 +322,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.5.0 | 2026-09-13 | Anti-AI-sounding patterns, domain adaptation, codebase copy discovery, navigation/loading/permission surfaces, copywork-specific verification, expanded examples |
 | 1.4.0 | 2026-09-13 | CLI output copy reference, vocabulary lookup hygiene, link and alternate text guidance, SKILL.md description expansion, broken placeholder token fix, frontmatter cleanup |
 | 1.3.0 | 2026-08-16 | Accessibility/localization strengthening, proactive trigger, self-contained references, verification-and-failure reference |
 | 1.2.0 | 2026-08-11 | Accessibility/localization strengthening, proactive trigger, self-contained references |

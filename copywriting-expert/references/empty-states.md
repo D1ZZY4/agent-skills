@@ -47,3 +47,16 @@ Empty states are a common place for products to lean into playful copy ("Nothing
 here... yet!"), which is fine in genuinely low-stakes contexts but should still clearly answer
 the three questions above. Personality that replaces the actual information the user needs
 (what is this, why is it empty, what can I do) has failed at the job even if it's charming.
+
+## Loading and transitional states
+
+A loading state is not yet an empty state. Copy should say what is happening without claiming
+the space is empty:
+
+- Show what will appear, not an apology: "Loading your projects", not "Please wait".
+- If a load is slow enough that users worry, add a reason or progress ("Still loading, this is
+  a large report"), and on failure switch to `error-messages.md` copy instead of leaving a
+  spinner forever.
+- A bare skeleton or spinner is fine for fast loads. Once the absence is noticeable, shift
+  from loading copy to the correct empty-state or error copy rather than letting the skeleton
+  linger.

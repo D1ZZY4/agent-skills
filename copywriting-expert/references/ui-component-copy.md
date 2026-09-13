@@ -53,3 +53,18 @@ placeholders, helper text, and inline validation.
   the visual change, especially for fields where the format isn't obviously self-evident.
 - Validation messages state the actual problem and, where possible, the fix: "Password needs
   at least one number" not "Invalid password." See `error-messages.md` for the full pattern.
+
+## Navigation copy
+
+- Menu items, tabs, and breadcrumbs name the destination or section, not the action taken in
+  the code, "Settings", "Billing", "Team members". Keep labels short and consistent with the
+  section heading they lead to.
+- Breadcrumbs read as a path from root to current page: "Projects / Q3 Roadmap". Omit levels
+  that add no meaning.
+- Keep a set of tabs or filters parallel in structure: all nouns ("Projects, Reports, Team")
+  or all verbs ("Create, Import, Export"), never a mix within the same group.
+- In a tab or filter set, one option is the implicit default. Do not mark a default with
+  "Recommended" unless it is genuinely recommended over alternatives.
+- Avoid the same label meaning different things in different navigation levels ("Home" as a
+  top-level tab and as a breadcrumb root can both work, but a second "Home" under them is
+  ambiguous).

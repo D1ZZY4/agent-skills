@@ -56,3 +56,49 @@ Before writing new copy, check how similar situations are already phrased elsewh
 same product (search the codebase for similar strings). New copy that's individually well
 written but inconsistent with the existing voice reads as jarring and unprofessional, worse
 than copy that's slightly less polished but consistent.
+
+## Anti-AI-sounding patterns
+
+Copy that reads as artificially generated has recognizable tells. Avoid them even when the
+result looks polished, because the goal is a specialist's voice, not a confident robot:
+
+- **Empty corporate filler**: words that add weight without adding meaning: "delve into",
+  "leverage", "utilize", "foster", "robust", "seamless", "cutting-edge", "revolutionary",
+  "empower", "game-changer", "optimize". Use the plain word instead ("use" for "utilize",
+  "improve" for "optimize"), or cut the filler entirely.
+- **Essay openers and signposting**: "It's important to note that", "As we can see",
+  "In today's fast-paced world", "Furthermore", "Moreover". Real product copy states the
+  point directly; it does not announce the point first.
+- **Unnecessary hedging**: "It's worth mentioning", "Needless to say", "One could argue".
+  If the point matters, state it. If it doesn't, cut it.
+- **Over-explanation**: restating what the reader already knows, or explaining the obvious
+  inside the same sentence. If the added words don't change what the reader understands,
+  remove them.
+- **Uniform voice everywhere**: identical sentence structures and word choices on every
+  surface. A real specialist varies sentence length and register by context, exactly as the
+  stakes-and-tone rules above describe.
+
+| Weak (AI-sounding) | Better | Why |
+|---|---|---|
+| "Utilize our robust search to seamlessly optimize your workflow" | "Search filters narrow results as you type" | Plain verb with no filler, states the actual outcome |
+| "It's important to note that this action cannot be undone" | "This cannot be undone" | No hedged announcement of the warning the reader needs |
+| "In today's fast-paced world, we leverage data to empower teams" | "Reports update every 5 minutes" | Concrete fact replaces the filler prologue |
+
+## Adapt to the domain and audience
+
+"Professional expert in the field" means matching the terms and register the field's own
+practitioners use, not sounding generically corporate:
+
+- **Learn the field's vocabulary first.** A medical product's term set for a radiologist
+  differs from what a patient expects. Read the project's README, docs, glossary, and
+  existing strings to learn its house terms before writing.
+- **Match the audience's level, don't posture.** Address readers at their level. Do not
+  dumb copy down or jargon it up for show. The goal is the vocabulary the audience already
+  uses, used correctly.
+- **Use precise terms, then define on first use when audiences span levels.** "Antidiuretic
+  hormone" for a clinician, "reduces how much water your kidneys hold" for a patient, and
+  "ADH (antidiuretic hormone)" for a mixed audience.
+- **Confidence without overclaiming.** Field experts are precise about limits. Never commit
+  the product to guarantees it does not actually make, see `project-source-of-truth.md`.
+- **Let the project anchor the register.** If the project's existing strings are casual,
+  write casual; if formal, write formal. The project's voice guide wins over these defaults.

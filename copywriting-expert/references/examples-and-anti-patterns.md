@@ -32,6 +32,33 @@ why when useful, say what to do next when there's something to do, never blame t
 | OK / Cancel | Delete project / Cancel | Confirm button names the action |
 | Remove member? | Remove Aby from this project? They'll lose access immediately. | Names who and what's affected |
 
+## Toasts
+
+| Weak | Better | Why |
+|---|---|---|
+| Success | Project saved | States the completed result |
+| Your changes have been successfully saved | Saved. Undo | Result plus the one relevant action |
+
+## Onboarding
+
+| Weak | Better | Why |
+|---|---|---|
+| Welcome to the app! Let's get you set up. | Create your first report to see live metrics | Shows immediate value before asking anything |
+
+## CLI output
+
+| Weak | Better | Why |
+|---|---|---|
+| ERROR: failed to process request | Couldn't load reports. Check your connection and retry | Plain language, cause, next step |
+| Generating... | Generated 12 reports in 4s | Explicit final state, not just progress |
+
+## Navigation
+
+| Weak | Better | Why |
+|---|---|---|
+| Click here to access settings | Open settings | Link text names the destination |
+| Projects / New | Projects / Create project | Breadcrumb names the actual current step |
+
 ## A full before/after, combining multiple fixes at once
 
 **Before:**

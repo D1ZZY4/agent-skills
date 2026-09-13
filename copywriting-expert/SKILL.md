@@ -9,7 +9,7 @@ description: >
   and adapt to the product's language and audience rather than imposing generic voice.
 license: SSPL-1.0
 metadata:
-  version: 1.4.0
+  version: 1.5.0
   author: D1ZZY4
   priority: medium
 ---
@@ -22,6 +22,10 @@ This document routes to the component-specific reference that matches the proble
 
 Read `references/project-source-of-truth.md`. Project content standards, legal requirements,
 terminology, localization rules, and design-system guidance override portable defaults.
+
+Read a sample of the project's existing user-facing copy before writing: UI strings from the
+codebase, the README, and any docs. These are the de facto house voice and terminology when no
+style guide exists.
 
 If no source of truth exists, infer only from nearby product copy and explicit user requirements.
 Do not invent brand claims, policy promises, accessibility behavior, or legal guarantees.
@@ -73,6 +77,8 @@ Check consistency across the whole flow, not just the changed string.
 - Confirmation dialogs for routine, reversible actions.
 - Placeholder copy that ships.
 - Unverified translations or product terminology.
+- Generic AI filler ("delve", "leverage", "seamless") and essay signposting
+  ("It's important to note that").
 - Promising outcomes the product cannot guarantee.
 - Writing a friendly tone that trivializes a high-stakes action.
 - Em dashes in generated copy.
