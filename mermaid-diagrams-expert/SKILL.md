@@ -8,7 +8,7 @@ description: >
   Mermaid version before using version-sensitive syntax.
 license: SSPL-1.0
 metadata:
-  version: 1.4.1
+  version: 1.4.2
   author: D1ZZY4
   priority: medium
 ---
@@ -115,6 +115,6 @@ feature reference needed for the requested syntax:
 - `references/renderer-adapters.md`: target renderer and version compatibility checks.
 - `references/validation-and-rendering.md`: how to validate diagrams before delivering, common
   pitfalls, export options, and where diagrams render without export.
-- `references/proactive-trigger.md`: when to reach for a diagram without being asked, and when not
-  to bother.
+- `references/proactive-trigger.md`: when to reach for a diagram without being asked, and when to
+  stay quiet.
 - `references/verification-and-failure.md`: shared verification and failure-handling principles.

@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### create-readme-expert
 
+- Bumped metadata.version to 1.13.0.
+- Modernized the proactive trigger reference: consistent headings, a how-to-offer section,
+  and bullet capitalization fixes.
 - Bumped metadata.version to 1.12.0.
 - Added a Purpose section to SKILL.md for a consistent, modern skill opening.
 - Bumped metadata.version to 1.11.0.
@@ -25,6 +28,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### copywriting-expert
 
+- Bumped metadata.version to 1.7.0.
+- Modernized the proactive trigger reference: consistent headings (When to act, When to stay
+  quiet, How to offer), fixed comma splices, and tightened the offer guidance.
 - Bumped metadata.version to 1.6.0.
 - Added a Purpose section to SKILL.md for a consistent, modern skill opening.
 - Bumped metadata.version to 1.4.0.
@@ -50,6 +56,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### dizzy-commit
 
+- Bumped metadata.version to 1.17.0.
+- Modernized the proactive trigger reference: consistent heading naming (When to act,
+  Check-in flow) and prose cleanup.
 - Bumped metadata.version to 1.16.0.
 - Clarified that the punctuation ban covers the em dash (U+2014) only, and added an explicit
   rule to enumerate several distinct items as Markdown bullet lists with `-` markers, never as
@@ -83,12 +92,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### context7-expert
 
+- Bumped metadata.version to 1.13.0.
+- Aligned the proactive trigger reference style with the other skills: consistent headings
+  and comma-splice and hedging-phrase cleanup.
 - Bumped metadata.version to 1.12.0.
 - Added a Purpose section to SKILL.md and renamed the priority hierarchy heading to
   Priority order for a consistent skill style.
 
 ### mermaid-diagrams-expert
 
+- Bumped metadata.version to 1.4.2.
+- Modernized the proactive trigger reference: consistent headings, tightened prose, and a
+  renamed inline-chart section.
 - Bumped metadata.version to 1.4.1.
 - Corrected the swapped rounded-rectangle and stadium flowchart shapes and documented the
   `@{ shape: <name> }` shape-definition syntax (v11.28.0+).
@@ -119,6 +134,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### redis-expert
 
+- Bumped metadata.version to 1.4.0.
+- Moved the proactive trigger guidance into references/proactive-trigger.md, aligned with the
+  other skills, and rewired SKILL.md Step 0 to point at it.
 - Bumped metadata.version to 1.3.0.
 - Added a Purpose section to SKILL.md and renamed the anti-patterns heading to match the
   other skills.
@@ -392,6 +410,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.13.0 | 2026-09-13 | Proactive trigger reference style alignment: consistent headings, comma-splice cleanup |
 | 1.12.0 | 2026-09-13 | SKILL.md style unification: Purpose section, priority heading renamed to Priority order |
 | 1.11.0 | 2026-09-13 | Snyk W011 response: propose lookup to the user before any query, auto-load without auto-query, MCP preferred over CLI, version options presented as choices |
 | 1.10.0 | 2026-09-13 | Security audit response: trust boundaries, npx execution policy, query redaction, indirect prompt injection handling, skills management write controls; repo license moved to SSPL-1.0 |
@@ -406,6 +425,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.7.0 | 2026-09-13 | Proactive trigger reference modernization: consistent headings and copy cleanup |
 | 1.6.0 | 2026-09-13 | SKILL.md style unification: Purpose section |
 | 1.5.0 | 2026-09-13 | Anti-AI-sounding patterns, domain adaptation, codebase copy discovery, navigation/loading/permission surfaces, copywork-specific verification, expanded examples |
 | 1.4.0 | 2026-09-13 | CLI output copy reference, vocabulary lookup hygiene, link and alternate text guidance, SKILL.md description expansion, broken placeholder token fix, frontmatter cleanup |
@@ -419,6 +439,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.17.0 | 2026-09-13 | Proactive trigger reference style alignment: heading naming and prose cleanup |
 | 1.16.0 | 2026-09-13 | Punctuation ban clarified (em dash only), bulleted-list body rule, bulleted-body example |
 | 1.15.0 | 2026-09-13 | SKILL.md style unification: Purpose section, precedence headings renamed to Priority order |
 | 1.14.0 | 2026-09-13 | Final verification pass: trailing-newline hygiene on three references |
@@ -435,6 +456,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.4.2 | 2026-09-13 | Proactive trigger reference style alignment: consistent headings and tightened prose |
 | 1.4.1 | 2026-09-13 | Modernized against Mermaid v12 docs: flowchart shape swap and @{ shape } syntax, sequence bidirectional arrows/box/rect/critical/create-destroy/autonumber, class relationship and classifier fixes plus namespaces, xychart/gantt/gitgraph/state/pie corrections, architecture align, C4 dynamic and deployment types, full theme and look lists |
 | 1.4.0 | 2026-09-13 | Documented ERD cardinality and relationship-line corrections, PK/FK/UK key rules, %%{init}%% directives replaced with frontmatter config, example and wording cleanups |
 | 1.3.0 | 2026-09-13 | SKILL.md style unification: Purpose section |
@@ -447,6 +469,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.4.0 | 2026-09-13 | Proactive trigger moved to a dedicated reference file, style aligned with the other skills |
 | 1.3.0 | 2026-09-13 | SKILL.md style unification: Purpose section, anti-patterns heading aligned |
 | 1.1.0 | 2026-07-13 | Initial release |
 
@@ -456,6 +479,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.13.0 | 2026-09-13 | Proactive trigger reference modernization: consistent headings, how-to-offer section |
 | 1.11.0 | 2026-09-13 | GitHub-style alert callouts example for secrets and destructive actions, callout rules in formatting-and-punctuation, example wired into SKILL.md steps |
 | 1.10.0 | 2026-09-13 | W011 response: user consent before external README fetches, security.md with untrusted content rules, anti-pattern additions |
 | 1.6.0 | 2026-08-16 | Change scope control, missing info handling, audience id, repository inspection checklist, preserve README voice, unsupported claims example, release trigger, dependency rule |

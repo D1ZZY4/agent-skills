@@ -9,7 +9,7 @@ description: >
   and adapt to the product's language and audience rather than imposing generic voice.
 license: SSPL-1.0
 metadata:
-  version: 1.6.0
+  version: 1.7.0
   author: D1ZZY4
   priority: medium
 ---

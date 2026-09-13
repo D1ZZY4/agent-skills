@@ -13,7 +13,7 @@ description: >
   right domain loads automatically without picking between seven separate ones.
 license: SSPL-1.0
 metadata:
-  version: 1.3.0
+  version: 1.4.0
   author: D1ZZY4
   priority: low
 ---
@@ -32,14 +32,9 @@ modules, clients, or deployment models.
 
 ## Step 0: Trigger proactively
 
-Don't wait for the word "Redis" plus an explicit question. Reach for this skill any time
-code, config, or a design decision touches Redis at all: writing a Redis client call,
-designing a schema or key structure, setting up a search index, reviewing a PR that adds
-Redis usage, debugging a slow or failing Redis operation, or hardening a deployment before
-production. If genuinely uncertain whether a design choice is optimal (a data structure pick,
-a field type, a timeout value), check the relevant reference rather than guessing from
-general database intuition, Redis has specific, sometimes counterintuitive right answers
-(see the anti-patterns list below for common wrong intuitions).
+Reach for this skill any time code, config, or a design decision touches Redis, not only when
+the user says the word "Redis". Read `references/proactive-trigger.md` for the full trigger
+list, the confidence rule, and when to stay quiet.
 
 ## Step 1: Route to the right domain
 
@@ -175,6 +170,8 @@ Cloud, behavior may change.
 
 Organized by domain, matching the seven original official skills:
 
+- `references/proactive-trigger.md`: when to reach for this skill without being asked, and the
+  confidence rule.
 - `references/core/`: choosing a data structure, key naming conventions.
 - `references/connections/`: pooling, pipelining, blocking commands, client-side caching,
   timeouts.
