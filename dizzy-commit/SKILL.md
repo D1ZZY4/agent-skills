@@ -7,16 +7,21 @@ description: >
   for that side effect. Use Conventional Commits only when repository policy or the user requires it.
 license: SSPL-1.0
 metadata:
-  version: 1.14.0
+  version: 1.15.0
   author: D1ZZY4
   priority: high
 ---
 
 # Dizzy Commit
 
-This skill is a safety workflow, not permission to modify the repository.
+## Purpose
 
-## Policy precedence
+This skill is a safety workflow, not permission to modify the repository. Guide safe,
+repository-aware Git commits and pushes by inspecting repository policy, working-tree state,
+diffs, and branch configuration before any mutation. Never commit, push, stage, restore, or
+discard changes without explicit authorization for that side effect.
+
+## Priority order
 
 Read `references/policy-configuration.md`. Resolve rules in this order:
 

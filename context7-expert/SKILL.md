@@ -11,16 +11,22 @@ description: >
   or code whose correctness does not depend on external API behavior.
 license: SSPL-1.0
 metadata:
-  version: 1.11.0
+  version: 1.12.0
   author: D1ZZY4
   priority: high
 ---
 
 # Context7 Expert
 
-This file is the routing and decision layer. Load only the reference needed for the current step.
+## Purpose
 
-## Priority hierarchy
+Fetch current, version-accurate documentation for external libraries, frameworks, SDKs, and
+cloud services when the answer depends on a specific version or API behavior. Prefer
+project-local documentation and explicitly supplied versions when they are more
+authoritative. Load only the reference needed for the current step. Before any lookup,
+propose the query to the user with mode and version options, then wait for confirmation.
+
+## Priority order
 
 When rules conflict, resolve in this order:
 

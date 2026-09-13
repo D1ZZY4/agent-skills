@@ -8,14 +8,19 @@ description: >
   where the project already has strong conventions.
 license: SSPL-1.0
 metadata:
-  version: 1.11.0
+  version: 1.12.0
   author: D1ZZY4
   priority: medium
 ---
 
 # Create README Expert
 
-This file is the routing and decision layer. Load only the references needed for the README.
+## Purpose
+
+Create, improve, or audit README documentation for software projects from verified project
+information. Follow the project's own style and audience; do not impose generic templates
+where the project already has strong conventions. Load only the references needed for the
+README.
 
 ## Step 0: Identify the README operation
 

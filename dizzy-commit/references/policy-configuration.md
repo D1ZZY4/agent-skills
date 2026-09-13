@@ -3,7 +3,7 @@
 This reference separates portable Git safety from repository-specific commit style. The skill
 can work without a policy file, but it must inspect the repository before assuming conventions.
 
-## Policy precedence
+## Priority order
 
 Resolve settings in this order:
 

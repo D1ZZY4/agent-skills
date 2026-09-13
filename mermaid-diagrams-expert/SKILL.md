@@ -8,14 +8,20 @@ description: >
   Mermaid version before using version-sensitive syntax.
 license: SSPL-1.0
 metadata:
-  version: 1.2.1
+  version: 1.3.0
   author: D1ZZY4
   priority: medium
 ---
 
 # Mermaid Diagrams Expert
 
-This document routes to the references needed for the diagram.
+## Purpose
+
+Create maintainable Mermaid diagrams for software documentation when structure,
+relationships, sequencing, or architecture would be clearer visually: flowcharts, sequence,
+class, ER, C4, state, git, gantt, and chart diagrams. Verify the target renderer and Mermaid
+version before using version-sensitive syntax. Load the references needed for the chosen
+diagram type.
 
 ## Step 0: Decide whether a diagram earns its keep
 

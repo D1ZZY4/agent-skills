@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### create-readme-expert
 
+- Bumped metadata.version to 1.12.0.
+- Added a Purpose section to SKILL.md for a consistent, modern skill opening.
 - Bumped metadata.version to 1.11.0.
 - Added examples/README-github-alerts.md showing GitHub-style alert callouts (IMPORTANT, WARNING, CAUTION, NOTE, TIP) for secrets and destructive actions, with renderer compatibility notes.
 - Added Callout blocks section to references/formatting-and-punctuation.md.
@@ -23,6 +25,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### copywriting-expert
 
+- Bumped metadata.version to 1.6.0.
+- Added a Purpose section to SKILL.md for a consistent, modern skill opening.
 - Bumped metadata.version to 1.4.0.
 - Added references/cli-output-copy.md for terminal surfaces: help text, flag descriptions, deprecation warnings, non-interactive errors, and progress lines.
 - Extended SKILL.md description and Step 1 routing to cover CLI output copy.
@@ -43,6 +47,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### dizzy-commit
 
+- Bumped metadata.version to 1.15.0.
+- Added a Purpose section to SKILL.md and renamed precedence headings to Priority order
+  across SKILL.md and references/policy-configuration.md for a consistent skill style.
 - Bumped metadata.version to 1.14.0.
 - Final verification: fixed missing trailing newlines in references/commit-signing.md,
   references/host-adapters.md, and references/push-and-upstream.md.
@@ -63,6 +70,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Modernized clean-tree checklist to git restore and added a hooks and --no-verify rule.
 - Added a --no-verify bypass anti-pattern and signature verification to SKILL.md.
 - Reframed the unicode-dash-in-flag example to focus on the broken command, not punctuation.
+
+### context7-expert
+
+- Bumped metadata.version to 1.12.0.
+- Added a Purpose section to SKILL.md and renamed the priority hierarchy heading to
+  Priority order for a consistent skill style.
+
+### mermaid-diagrams-expert
+
+- Bumped metadata.version to 1.3.0.
+- Added a Purpose section to SKILL.md for a consistent, modern skill opening.
+
+### redis-expert
+
+- Bumped metadata.version to 1.3.0.
+- Added a Purpose section to SKILL.md and renamed the anti-patterns heading to match the
+  other skills.
 
 [⬆ Back to top](#changelog)
 
@@ -333,6 +357,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.12.0 | 2026-09-13 | SKILL.md style unification: Purpose section, priority heading renamed to Priority order |
 | 1.11.0 | 2026-09-13 | Snyk W011 response: propose lookup to the user before any query, auto-load without auto-query, MCP preferred over CLI, version options presented as choices |
 | 1.10.0 | 2026-09-13 | Security audit response: trust boundaries, npx execution policy, query redaction, indirect prompt injection handling, skills management write controls; repo license moved to SSPL-1.0 |
 | 1.5.0 | 2026-08-16 | Evidence hierarchy, version-awareness, MCP/CLI mode selection, proactive trigger |
@@ -346,6 +371,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.6.0 | 2026-09-13 | SKILL.md style unification: Purpose section |
 | 1.5.0 | 2026-09-13 | Anti-AI-sounding patterns, domain adaptation, codebase copy discovery, navigation/loading/permission surfaces, copywork-specific verification, expanded examples |
 | 1.4.0 | 2026-09-13 | CLI output copy reference, vocabulary lookup hygiene, link and alternate text guidance, SKILL.md description expansion, broken placeholder token fix, frontmatter cleanup |
 | 1.3.0 | 2026-08-16 | Accessibility/localization strengthening, proactive trigger, self-contained references, verification-and-failure reference |
@@ -358,6 +384,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.15.0 | 2026-09-13 | SKILL.md style unification: Purpose section, precedence headings renamed to Priority order |
 | 1.14.0 | 2026-09-13 | Final verification pass: trailing-newline hygiene on three references |
 | 1.13.0 | 2026-09-13 | Strategy-driven commit grouping: auto default plus seven explicit strategies, policy shape field, no mega-commit ban, resolution wired into SKILL.md steps |
 | 1.12.0 | 2026-09-13 | En dash allowance removed, dedicated references/commit-signing.md, git restore modernization, --no-verify rule, unicode-dash flag example reframe |
@@ -372,6 +399,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.3.0 | 2026-09-13 | SKILL.md style unification: Purpose section |
 | 1.2.0 | 2026-08-11 | Renderer/version compatibility, proactive trigger, misc diagram types |
 | 1.1.0 | 2026-07-13 | Initial release |
 
@@ -381,6 +409,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.3.0 | 2026-09-13 | SKILL.md style unification: Purpose section, anti-patterns heading aligned |
 | 1.1.0 | 2026-07-13 | Initial release |
 
 [⬆ Back to top](#changelog)

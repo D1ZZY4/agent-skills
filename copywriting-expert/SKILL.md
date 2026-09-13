@@ -9,14 +9,20 @@ description: >
   and adapt to the product's language and audience rather than imposing generic voice.
 license: SSPL-1.0
 metadata:
-  version: 1.5.0
+  version: 1.6.0
   author: D1ZZY4
   priority: medium
 ---
 
 # Copywriting Expert
 
-This document routes to the component-specific reference that matches the problem.
+## Purpose
+
+Write, audit, or improve user-facing product and UI copy across surfaces: buttons, labels,
+empty states, errors, tooltips, dialogs, toasts, onboarding, accessibility text, and CLI
+output. Check project-specific content guidance first and adapt to the product's language
+and audience rather than imposing a generic voice. Load only the component-specific
+reference that matches the problem.
 
 ## Step 0: Establish the source of truth
 

@@ -13,19 +13,22 @@ description: >
   right domain loads automatically without picking between seven separate ones.
 license: SSPL-1.0
 metadata:
-  version: 1.2.0
+  version: 1.3.0
   author: D1ZZY4
   priority: low
 ---
 
 # Redis Expert
 
-This file is the workflow index. Details live in `references/<domain>/` (for example, `references/core/`), organized by the
-same seven domains as the original official skills this was merged from. Load the specific
-file for the domain and topic in question rather than guessing. The retained technical guidance
-follows the upstream material where available. This package adds cross-domain routing, proactive
-triggering, and house formatting, and may add qualifiers where the aggregate needs to
-distinguish Redis versions, modules, clients, or deployment models.
+## Purpose
+
+Provide all-in-one Redis expertise across seven domains: data modeling and key naming,
+client connections, clustering and replication, Redis Search, observability, security, and
+semantic caching. Reach for this skill any time code, config, or a design decision touches
+Redis. Details live in `references/<domain>/`; load the file for the domain and topic in
+question rather than guessing. Retained technical guidance follows the upstream material
+where available, with qualifiers where the aggregate must distinguish Redis versions,
+modules, clients, or deployment models.
 
 ## Step 0: Trigger proactively
 
@@ -151,7 +154,7 @@ See `references/semantic-cache/langcache-usage.md` and
 `references/semantic-cache/best-practices.md`. LangCache is currently in preview on Redis
 Cloud, behavior may change.
 
-## Anti-patterns to reject
+## Anti-patterns
 
 - Storing a flat, independently-updated object as a serialized string instead of a Hash
 - Using `TEXT` for a field that needs exact-match filtering instead of `TAG`
