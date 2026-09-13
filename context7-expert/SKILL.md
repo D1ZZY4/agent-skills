@@ -1,16 +1,17 @@
 ---
 name: context7-expert
 description: >
-  Retrieve current, version-accurate documentation for libraries, frameworks, SDKs, APIs,
-  CLIs, and cloud services through Context7 when authoritative, current documentation matters.
-  Trigger for version-sensitive setup, configuration, API signatures, migration questions,
-  dependency-specific code, or uncertainty about a named technology. Prefer project-local
-  documentation and explicitly supplied versions when they are more authoritative. Do not
-  invoke for library-independent programming concepts, ordinary refactors, or code whose
-  correctness does not depend on external API behavior.
+  Auto-loads whenever the answer depends on an external library, framework, SDK, API, CLI, or
+  cloud service, and retrieves current, version-accurate documentation through Context7. Triggers
+  on setup or configuration of a named technology, API signatures, version-specific behavior,
+  migration work, dependency usage, or errors that originate from a specific library. Before any
+  lookup, propose the query to the user with mode and version options and wait for confirmation.
+  Prefer project-local documentation and explicitly supplied versions when they are more
+  authoritative. Do not invoke for library-independent programming concepts, ordinary refactors,
+  or code whose correctness does not depend on external API behavior.
 license: SSPL-1.0
 metadata:
-  version: 1.10.0
+  version: 1.11.0
   author: D1ZZY4
   priority: high
 ---
@@ -61,18 +62,38 @@ Never silently substitute a different major version because it is easier to find
 
 ## Step 2: Choose the available Context7 mode
 
-- **MCP available**: use the Context7 MCP tools. Read `references/mcp-mode.md`.
-- **CLI available**: use the installed `ctx7` CLI. Read `references/cli-mode.md`.
-- **Neither available**: read `references/risk-and-budget.md` before considering a network-backed fallback.
-  Do not invent an installation state or execute an unapproved transient package command.
+- **MCP available**: prefer the Context7 MCP tools. Read `references/mcp-mode.md`.
+- **CLI available, MCP not available**: use the installed `ctx7` CLI. Read `references/cli-mode.md`.
+- **Neither available**: read `references/risk-and-budget.md` before considering a network-backed
+  fallback. Do not invent an installation state or execute an unapproved transient package command.
 
-## Step 3: Resolve the technology precisely
+MCP is preferred when available; CLI is the fallback. State which mode you will use as part of
+the query proposal in Step 3.
+
+## Step 3: Propose the lookup to the user, then wait
+
+Before any resolve or fetch is sent to Context7, present the planned lookup and wait for the
+user's confirmation and choices:
+
+- **What to query**: the exact package, library, or platform name and scope.
+- **Version**: offer the relevant options. For example, latest release, a specific version the
+  user names, or the version pinned by the project's lockfile or manifest when the project pins
+  one. Give a recommendation where one is clearly better.
+- **Mode**: MCP when available, otherwise the installed CLI.
+- **Transmission note**: the query is transmitted to the Context7 service, so mention this when
+  the query may carry project-specific details.
+
+Wait for the user to pick before running any resolve or fetch. If the user declines, skip the
+lookup and answer from project-local documentation or training knowledge with the uncertainty
+flagged. The skill may auto-load, but it never auto-queries.
+
+## Step 4: Resolve the technology precisely
 
 Identify the product/library, ecosystem, and relevant version before querying. If the project
 contains a lockfile or manifest, use it to constrain the lookup. If multiple similarly named
 libraries exist, disambiguate before fetching docs.
 
-## Step 4: Fetch narrowly and apply the result
+## Step 5: Fetch narrowly and apply the result
 
 Query for the exact task, not "everything about the library". Prefer primary API/reference
 sections and version-specific migration notes. When documentation conflicts with memory,
@@ -86,7 +107,7 @@ service. See `references/security.md` for the full trust-boundary rules.
 When writing code, preserve the project's existing API style and dependency version. Do not
 upgrade a dependency merely because newer documentation was found.
 
-## Step 5: Report uncertainty honestly
+## Step 6: Report uncertainty honestly
 
 If the source does not answer the question, say what was verified and what remains uncertain.
 Do not fabricate a method, option, version, or compatibility claim.
@@ -95,6 +116,8 @@ Do not fabricate a method, option, version, or compatibility claim.
 
 - Looking up documentation after already committing to an API from memory.
 - Mixing examples from different major versions.
+- Running a resolve or fetch before the user confirms the query, version, and mode.
+- Treating a documentation lookup as a silent background task instead of a proposed action.
 - Treating Context7 output as proof that the project has that dependency installed.
 - Upgrading dependencies solely to make an example work.
 - Querying broad documentation when one targeted reference would suffice.
@@ -102,10 +125,10 @@ Do not fabricate a method, option, version, or compatibility claim.
 
 ## Bundled references
 
-- `references/proactive-trigger.md`: when to activate Context7 without waiting for the user to
-  name it, the confidence threshold, and what not to narrate.
-- `references/selection-and-query-writing.md`: how to pick the best library match and write good
-  scoped queries.
+- `references/proactive-trigger.md`: when the skill auto-loads, and the rule that auto-loading
+  never means auto-querying.
+- `references/selection-and-query-writing.md`: how to pick the best library match, write good
+  scoped queries, and present the version options to the user before querying.
 - `references/mcp-mode.md`: MCP tool name variance, resolve/fetch mechanics, result handling, and
   error recovery.
 - `references/cli-mode.md`: CLI command shape, resolve/fetch mechanics, version-specific IDs,
@@ -121,6 +144,6 @@ Do not fabricate a method, option, version, or compatibility claim.
 - `references/verification-and-failure.md`: verify the smallest controlling fact, prefer primary
   sources, distinguish checked from unchecked, safe static fallback, and never invent execution or
   compatibility.
-- `references/security.md`: trust boundaries, data-flow rules, injection handling, npx execution
-  policy, query redaction, and skills management write controls. Start here for any safety or
-  audit-related question.
+- `references/security.md`: trust boundaries, user consent before every query, data-flow rules,
+  injection handling, npx execution policy, query redaction, and skills management write
+  controls. Start here for any safety or audit-related question.

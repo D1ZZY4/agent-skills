@@ -26,8 +26,8 @@ Each resolved library result typically includes:
    - Documentation coverage, prefer libraries with higher code snippet counts
    - Source reputation, prefer High or Medium over Low or Unknown
    - Benchmark score, higher is better
-3. If multiple good matches exist, acknowledge that briefly but proceed with the most
-   relevant one rather than stalling on the ambiguity.
+3. If multiple good matches exist, acknowledge that briefly and present the best candidates as
+   options to the user when the choice could change the answer, rather than silently picking one.
 4. If no good match exists, say so clearly and suggest query refinements instead of guessing.
 5. For genuinely ambiguous queries (the library name alone could mean two unrelated things),
    ask for clarification before proceeding with a best-guess match.
@@ -35,6 +35,28 @@ Each resolved library result typically includes:
    community forks.
 7. If the user mentioned a version, prefer a version-specific library ID when one's available
    from the resolution results.
+
+## Confirm target and version with the user
+
+Before resolving or fetching anything, present the lookup parameters and let the user confirm
+them. This is a security control as much as a quality control: every query is transmitted to
+the Context7 service, so the user must approve what is sent. See `references/security.md`.
+
+Present, compactly:
+
+- **Package or library**: the exact context7-compatible name you intend to query, especially
+  when the name alone is ambiguous.
+- **Version strategy**:
+  - *Latest*: use when the question is "what does the current release do" or "what changed
+    recently".
+  - *Project pinned*: use when the repository's lockfile or manifest pins a version; prefer
+    this whenever the project will consume the answer.
+  - *User specified*: when the user names a concrete version.
+- **Mode**: MCP when available, otherwise the installed CLI.
+
+Give one recommendation where it is genuinely better, then wait for the user to accept or
+adjust it. If the user declines the lookup, skip it and answer from project-local
+documentation or training knowledge with the uncertainty flagged.
 
 ## Writing good queries
 

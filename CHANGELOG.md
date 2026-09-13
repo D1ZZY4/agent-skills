@@ -10,6 +10,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### context7-expert
+
+- Bumped metadata.version to 1.11.0 in response to Snyk W011 (third-party content exposure / indirect prompt injection risk).
+- Added "propose the lookup to the user, then wait" step to SKILL.md: the skill auto-loads but never auto-queries.
+- Added THIRD_PARTY_CONTENT_EXPOSURE section with user consent requirements to references/security.md.
+- Added "Confirm target and version with the user" section to references/selection-and-query-writing.md.
+- Reworked references/proactive-trigger.md to separate activation (automatic) from transmission (always user-confirmed).
+- Mode preference updated to MCP when available, CLI as fallback.
+
 [⬆ Back to top](#changelog)
 
 ---
@@ -258,6 +267,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.11.0 | 2026-09-13 | Snyk W011 response: propose lookup to the user before any query, auto-load without auto-query, MCP preferred over CLI, version options presented as choices |
 | 1.10.0 | 2026-09-13 | Security audit response: trust boundaries, npx execution policy, query redaction, indirect prompt injection handling, skills management write controls; repo license moved to SSPL-1.0 |
 | 1.5.0 | 2026-08-16 | Evidence hierarchy, version-awareness, MCP/CLI mode selection, proactive trigger |
 | 1.3.0 | 2026-08-16 | License, metadata, self-contained references, verification-and-failure reference |

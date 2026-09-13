@@ -45,3 +45,22 @@ Exceptions where training data alone is fine, no need to trigger:
 Once triggered, just call the tool or run the command, don't announce "I'm going to check
 Context7 for this" as a separate sentence before doing it. Weave the lookup into normal
 work the way a developer would reach for documentation without narrating the reach.
+
+## Propose first, query after confirmation
+
+The official, non-auto-load Context7 rule files made this skill wait to be named before
+activating. This skill instead auto-loads on its own, and that auto-loading is precisely
+why it must never auto-query:
+
+- Activation decides *whether documentation is relevant*; it does not authorize sending the
+  query. Relevance and transmission are two separate decisions.
+- After activation, present the planned lookup to the user in compact form: the package or
+  library, the version choice (latest, a named version, or the project's pinned version),
+  the mode (MCP when available, otherwise CLI), and a one-line note when the query carries
+  project-specific detail.
+- Wait for the user's answer. Offer a clear default so the user can simply accept it.
+- If the user declines or picks a different version, honor that and do not run the query
+  anyway.
+
+This split is the skill's distinguishing behavior: it shows up in context automatically, but
+it never transmits anything to Context7 without an explicit user choice.

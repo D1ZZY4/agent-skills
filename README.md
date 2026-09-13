@@ -16,7 +16,7 @@ This installs all skills in this repository and makes them available to your AI 
 
 ### Documentation and content
 
-- `context7-expert`: current, version-aware library and platform documentation lookup.
+- `context7-expert`: current, version-aware library and platform documentation lookup; auto-loads but always proposes the query to the user before running it.
 - `copywriting-expert`: user-facing product and UI copy, including accessibility text.
 - `create-readme-expert`: source-driven README creation, improvement, and audit.
 - `mermaid-diagrams-expert`: maintainable Mermaid diagrams for software documentation.
