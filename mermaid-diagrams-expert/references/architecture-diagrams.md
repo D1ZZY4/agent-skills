@@ -198,6 +198,25 @@ architecture-beta
     client{group}:B --> T:api{group}
 ```
 
+## Aligning Siblings (v11.16.0+)
+
+When services share the same connection pattern they can collapse onto one coordinate. Force
+them to spread out across a row or column instead:
+
+```mermaid
+architecture-beta
+    service mcp(server)[Main Control]
+    service dbone(database)[DB One]
+    service dbtwo(database)[DB Two]
+    service dbthree(database)[DB Three]
+    align column dbone dbtwo dbthree
+    dbone:R --> L:mcp
+    dbtwo:R --> L:mcp
+    dbthree:R --> L:mcp
+```
+
+`align row <id> <id> ...` lays the services out horizontally, `align column` vertically.
+
 ## Best Practices
 
 1. Group services by environment (public/private) or layer (frontend/backend)

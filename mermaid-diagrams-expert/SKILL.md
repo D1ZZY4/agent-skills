@@ -8,7 +8,7 @@ description: >
   Mermaid version before using version-sensitive syntax.
 license: SSPL-1.0
 metadata:
-  version: 1.3.0
+  version: 1.4.1
   author: D1ZZY4
   priority: medium
 ---

@@ -1,7 +1,7 @@
 # State Diagrams, Git Graphs, Gantt Charts, Pie and Bar Charts
 
-The original skill listed these four types in its overview but had no reference depth for any
-of them. Closes that gap.
+Reference depth for state diagrams, git graphs, gantt charts, and pie and bar charts: syntax,
+structure, and usage guidance for each diagram type.
 
 ## State diagrams
 
@@ -55,6 +55,11 @@ stateDiagram-v2
     }
 ```
 
+- `note right of <state>` / `note left of <state>` attach explanatory notes to a state.
+- `<<choice>>`, and the pair `<<fork>>` / `<<join>>`, mark decision and parallel states,
+  declared as ordinary states, e.g. `state Decide <<choice>>`, with transitions routed
+  through them.
+
 Use a state diagram over a flowchart when the subject is specifically one entity's status over
 its lifetime, not a general process, a flowchart better fits a one-time process with a clear
 start and end rather than a status that can cycle.
@@ -79,10 +84,13 @@ gitGraph
     merge feature/payments
 ```
 
-- `commit` adds a commit to the current branch, optionally with `id: "label"` or
-  `tag: "v1.0"`.
+- `commit` adds a commit to the current branch, with optional `id: "label"`,
+  `tag: "v1.0"`, and `type:` (`NORMAL`, `REVERSE`, or `HIGHLIGHT`).
 - `branch <name>` creates a branch from the current branch, `checkout <name>` switches to it.
 - `merge <name>` merges the named branch into the current one.
+- `gitGraph <orientation>:` after the keyword rotates the whole graph, `LR:` is the default,
+  `TB:` and `BT:` are available in newer renderers (v10.3.0+).
+- `cherry-pick id: "<id>"` copies an existing commit onto the current branch.
 - Use this to document a release strategy or branching convention, not to record actual
   literal commit history, that belongs in the real git log, not a diagram.
 
@@ -110,10 +118,13 @@ gantt
 ```
 
 - Each task line is `Task name :status, id, start, duration`. `status` is optional (`done`,
-  `active`, `crit`), `id` lets other tasks reference it.
+  `active`, `crit`, `milestone`), `id` lets other tasks reference it.
 - `after <id>` makes a task start when another finishes, use this instead of hardcoding dates
   whenever tasks are sequentially dependent, hardcoded dates drift out of sync as the plan
   changes.
+- Durations take `ms`, `s`, `m` (minutes), `h`, `d`, `w`, `M` (months), or `y` units, decimal
+  values like `1.5d` are allowed, note `m` is minutes and `M` is months.
+- `until <id>` (newer renderers) makes a task end when another task starts.
 - `section` groups related tasks under a labeled heading.
 - A duration of `0d` with the `milestone` status marks a point-in-time event rather than a
   span.
@@ -134,18 +145,24 @@ pie title Browser Market Share
 ```
 
 ```mermaid
-%%{init: {"xyChart": {"width": 700, "height": 400}}}%%
-xychart-beta
+---
+config:
+  xyChart:
+    width: 700
+    height: 400
+---
+xychart
     title "Monthly Signups"
     x-axis [Jan, Feb, Mar, Apr, May, Jun]
     y-axis "Signups" 0 --> 1000
     bar [200, 350, 500, 420, 680, 900]
 ```
 
-- Pie chart values don't need to sum to 100, Mermaid computes proportions automatically.
+- Pie chart values don't need to sum to 100, Mermaid computes proportions automatically, but
+  each value must be a positive number, negative values trigger an error.
 - Use a pie chart for a handful of categories at most, more than 6 to 8 slices becomes hard to
   read at a glance, consider a bar chart or a table instead at that point.
-- The `xychart-beta` syntax for bar and line charts is newer and less universally supported
-  across renderers than the other diagram types here, check the target renderer (GitHub,
-  Notion, the specific tool in use) actually supports it before relying on it, fall back to a
-  plain Markdown table if unsure.
+- The `xychart` syntax for bar and line charts (historically introduced as `xychart-beta`) is
+  newer and less universally supported across renderers than the other diagram types here,
+  check the target renderer (GitHub, Notion, the specific tool in use) actually supports it
+  before relying on it, fall back to a plain Markdown table if unsure.

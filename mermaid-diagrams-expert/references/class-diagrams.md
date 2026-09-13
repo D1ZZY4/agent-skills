@@ -34,6 +34,10 @@ classDiagram
 - `+type attribute` - Attribute with type
 - `+method(params) ReturnType` - Method with parameters and return type
 
+**Member classifiers** - Special characters after the member denote properties:
+- `*` marks an **abstract** member, e.g. `+draw()*` or `+draw() int*`
+- `$` marks a **static** member, e.g. `+create()$` or `String template$`
+
 ## Relationships
 
 ### Association (`--`)
@@ -80,7 +84,7 @@ classDiagram
     }
 ```
 
-### Dependency (`<..`)
+### Dependency (`..>`)
 One class depends on another, often as a parameter or local variable.
 
 ```mermaid
@@ -88,13 +92,16 @@ classDiagram
     OrderProcessor ..> PaymentGateway
 ```
 
-### Realization/Implementation (`<|..`)
+The arrow direction is reversible, so `OrderProcessor ..> PaymentGateway` is the same
+relationship as `PaymentGateway <.. OrderProcessor`.
+
+### Realization/Implementation (`..|>` or `<|..`)
 Class implements an interface.
 
 ```mermaid
 classDiagram
     class Drawable {
-        <<interface>>
+        <<Interface>>
         +draw()
     }
     Drawable <|.. Circle
@@ -135,13 +142,13 @@ Mark special class types:
 ```mermaid
 classDiagram
     class IRepository {
-        <<interface>>
+        <<Interface>>
         +save(entity)
         +findById(id)
     }
     
     class UserService {
-        <<service>>
+        <<Service>>
         +createUser()
     }
     
@@ -152,15 +159,19 @@ classDiagram
     }
 ```
 
+Mermaid recognizes these annotations only in the exact forms `<<Interface>>`,
+`<<Abstract>>`, `<<Service>>`, and `<<Enumeration>>`; any other text inside `<< >>` (for
+example `<<dataclass>>` or `<<entity>>`) renders as a plain label.
+
 ## Abstract Classes and Methods
 
 ```mermaid
 classDiagram
     class Shape {
-        <<abstract>>
+        <<Abstract>>
         +int x
         +int y
-        +draw()* abstract
+        +draw()*
         +move(x, y)
     }
     
@@ -178,6 +189,25 @@ classDiagram
     }
     
     List~String~ <-- StringProcessor
+```
+
+## Namespaces (v11.0.0+)
+
+Group related classes:
+
+```mermaid
+classDiagram
+    namespace Domain {
+        class Customer {
+            +String id
+        }
+        class Order
+    }
+    namespace Application {
+        class OrderService
+    }
+    Customer --> Order
+    OrderService --> Order
 ```
 
 ## Comprehensive Example: E-Commerce Domain
@@ -242,7 +272,7 @@ classDiagram
     
     %% Enums
     class OrderStatus {
-        <<enumeration>>
+        <<Enumeration>>
         PENDING
         PAID
         SHIPPED
@@ -306,6 +336,10 @@ classDiagram
 4. **Add multiplicity** - Clarifies how many instances participate
 5. **Group related classes** - Use notes or visual proximity
 6. **Document invariants** - Use notes to explain business rules
+7. **Set a direction** - `direction TB` or `direction LR` at the top of the diagram controls
+   layout when the renderer supports it
+8. **Hide empty member boxes** - Pass `class: { hideEmptyMembersBox: true }` in the diagram
+   config (see `advanced-features.md`) to drop the member box from classes without members
 
 ## Common Patterns
 
@@ -313,7 +347,7 @@ classDiagram
 ```mermaid
 classDiagram
     class IRepository~T~ {
-        <<interface>>
+        <<Interface>>
         +save(entity: T)
         +findById(id: UUID) T
         +delete(entity: T)
@@ -334,7 +368,7 @@ classDiagram
     }
     
     class Shape {
-        <<abstract>>
+        <<Abstract>>
         +draw()*
     }
     
@@ -353,7 +387,7 @@ classDiagram
     }
     
     class PaymentStrategy {
-        <<interface>>
+        <<Interface>>
         +pay(amount: Decimal)*
     }
     

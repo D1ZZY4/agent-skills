@@ -12,6 +12,10 @@ sequenceDiagram
     A->>B: Message
 ```
 
+> The word `end` on its own in message text can break parsing. Wrap it in parentheses,
+> brackets, or quotes when it appears inside a message label (e.g. `(end)`, `[end]`, or
+> `"end"`).
+
 ## Participants and Actors
 
 ```mermaid
@@ -28,6 +32,25 @@ sequenceDiagram
 **Difference:**
 - `participant` - System components (services, classes, databases)
 - `actor` - External entities (users, external systems)
+
+Some renderers also accept specialized participant kinds (for example `database`), but
+support varies, prefer `participant` and `actor` for portability.
+
+### Creating and Destroying Participants (v10.3.0+)
+
+An actor or participant can be created, and later destroyed, by a message:
+
+```mermaid
+sequenceDiagram
+    participant A
+    create participant B
+    A --> B: Create B
+    A --> B: Use B
+    destroy B
+    A --> B: Destroy B
+```
+
+Only the recipient of a message can be created; either side can be destroyed.
 
 ## Message Types
 
@@ -56,6 +79,20 @@ sequenceDiagram
 sequenceDiagram
     Client-xServer: Delete
 ```
+
+- `-x` Solid line with a cross at the end
+- `--x` Dotted line with a cross at the end
+
+### Bidirectional Arrows (v11.0.0+)
+
+```mermaid
+sequenceDiagram
+    A<<->>B: Bidirectional solid
+    C<<-->>D: Bidirectional dotted
+```
+
+- `<<->>` Solid line with bidirectional arrowheads
+- `<<-->>` Dotted line with bidirectional arrowheads
 
 ## Activations
 
@@ -161,6 +198,34 @@ sequenceDiagram
     API-->>User: 200 OK
 ```
 
+## Critical Region
+
+Force certain steps and handle exceptional circumstances:
+
+```mermaid
+sequenceDiagram
+    critical Payment must succeed
+        API->>Payment: Charge card
+    option Card declined
+        API-->>User: 402 Payment Required
+    end
+```
+
+Critical blocks can be nested and can also have no options.
+
+## Background Highlighting
+
+Highlight a flow span with a colored rectangle:
+
+```mermaid
+sequenceDiagram
+    rect rgb(238, 238, 238)
+        A->>B: Normal path
+    end
+```
+
+Colors use `rgb`, `rgba`, `hsl`, and `hsla` notation.
+
 ## Notes
 
 ### Note over single participant
@@ -204,6 +269,9 @@ sequenceDiagram
     Frontend-->>User: Success
 ```
 
+`autonumber <start> <increment>` (v11.15.0+) sets a custom start and step, e.g.
+`autonumber 10 5` numbers 10, 15, 20, and so on.
+
 ## Links and Tooltips
 
 Add clickable links:
@@ -217,6 +285,26 @@ sequenceDiagram
     
     A->>B: Message
 ```
+
+### Grouping (Boxes)
+
+Group related participants in vertical boxes:
+
+```mermaid
+sequenceDiagram
+    box Aqua Frontend
+        participant UI
+        participant Store
+    end
+    box Backend
+        participant API
+        participant DB
+    end
+    UI->>API: Query
+```
+
+The first word inside a `box` line is an optional color (`rgb`, `rgba`, `hsl`, `hsla`, or a
+color name), then an optional label. Hex colors are not supported because `#` starts a comment.
 
 ## Comprehensive Example: User Authentication Flow
 

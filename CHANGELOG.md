@@ -89,8 +89,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### mermaid-diagrams-expert
 
-- Bumped metadata.version to 1.3.0.
-- Added a Purpose section to SKILL.md for a consistent, modern skill opening.
+- Bumped metadata.version to 1.4.1.
+- Corrected the swapped rounded-rectangle and stadium flowchart shapes and documented the
+  `@{ shape: <name> }` shape-definition syntax (v11.28.0+).
+- Added sequence diagram features: bidirectional arrows (v11.0.0+), participant creation and
+  destruction (v10.3.0+), box grouping, rect background highlighting, critical/option blocks,
+  autonumber start/increment (v11.15.0+), and the "end" word parsing caveat.
+- Fixed class diagram relationship syntax (Dependency `..>`, Realization `..|>` / `<|..`),
+  added abstract `*` and static `$` member classifiers, capitalized the recognized annotation
+  keywords, and added the namespace section plus direction and hideEmptyMembersBox tips.
+- Updated misc diagrams: `xychart` keyword (legacy `xychart-beta` noted), gantt duration units
+  and until dependency, gitgraph commit attributes and orientation, state note/choice/fork
+  syntax, and a pie chart positive-value rule.
+- Added architecture diagram sibling alignment (v11.16.0+) and the C4 dynamic and deployment
+  diagram types.
+- Expanded advanced-features.md with the full built-in theme list and the neo look, and noted
+  that recent Mermaid versions default class and state diagrams to ELK.
+- Bumped metadata.version to 1.4.0.
+- Fixed the reversed identifying and non-identifying ERD relationship mapping in
+  erd-diagrams.md and replaced the invalid `}{` cardinality marker with the documented
+  `}|` / `|{` forms.
+- Corrected the ERD key rules: only PK, FK, and UK are recognized keys, with quoted comments
+  used for other constraints such as NOT NULL.
+- Replaced the deprecated %%{init: ...}%% directives with the frontmatter `config:` block in
+  advanced-features.md and misc-diagrams.md, and added a deprecation note.
+- Replaced the empty performance flowchart with a real diagram, clarified the pinned-version
+  placeholder, and rewrote the misc-diagrams.md opening in reference style instead of
+  changelog style.
 
 ### redis-expert
 
@@ -410,6 +435,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.4.1 | 2026-09-13 | Modernized against Mermaid v12 docs: flowchart shape swap and @{ shape } syntax, sequence bidirectional arrows/box/rect/critical/create-destroy/autonumber, class relationship and classifier fixes plus namespaces, xychart/gantt/gitgraph/state/pie corrections, architecture align, C4 dynamic and deployment types, full theme and look lists |
+| 1.4.0 | 2026-09-13 | Documented ERD cardinality and relationship-line corrections, PK/FK/UK key rules, %%{init}%% directives replaced with frontmatter config, example and wording cleanups |
 | 1.3.0 | 2026-09-13 | SKILL.md style unification: Purpose section |
 | 1.2.0 | 2026-08-11 | Renderer/version compatibility, proactive trigger, misc diagram types |
 | 1.1.0 | 2026-07-13 | Initial release |

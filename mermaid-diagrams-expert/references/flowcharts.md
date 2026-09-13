@@ -27,13 +27,13 @@ flowchart LR
 ### Rounded Rectangle
 ```mermaid
 flowchart LR
-    B([Rounded process])
+    B(Rounded rectangle)
 ```
 
 ### Stadium/Pill Shape
 ```mermaid
 flowchart LR
-    C(Start or End)
+    C([Start or End])
 ```
 
 ### Subroutine (Double Border)
@@ -85,6 +85,24 @@ flowchart LR
     L[/Trapezoid\]
     M[\Alt trapezoid/]
 ```
+
+### Shape Definition Syntax (v11.28.0+)
+
+Newer renderers also accept an explicit `@{ shape: <name> }` form. It helps for shapes that
+are ambiguous in the classic one-liner and for labels with spaces:
+
+```mermaid
+flowchart LR
+    A@{ shape: stadium, label: "Start" }
+    B@{ shape: rect }
+    C@{ shape: rhombus }
+    D@{ shape: double-circle }
+```
+
+Recognized shape names include `rect`, `square`, `rounded`, `stadium`, `subroutine`,
+`cylindrical`, `circle`, `double-circle`, `asymmetric`, `rhombus`, `hexagon`,
+`parallelogram`, and `trapezoid`. Requires a renderer on Mermaid v11.28.0 or newer; verify the
+target before relying on it.
 
 ## Connections
 

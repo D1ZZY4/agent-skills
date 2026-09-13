@@ -36,25 +36,28 @@ erDiagram
 
 **Attribute format:** `type name constraints`
 
-**Common constraints:**
+**Keys and constraints:**
 - `PK` - Primary Key
 - `FK` - Foreign Key
 - `UK` - Unique Key
-- `NN` - Not Null
+
+Only `PK`, `FK`, and `UK` are recognized as keys, and a single attribute can carry multiple
+keys separated by commas, for example `category_id PK, FK`. Other database constraints such as
+not-null are expressed as quoted comments instead, like `varchar email "NOT NULL"`.
 
 ## Relationships
 
 ### Relationship Symbols
 
-**Cardinality indicators:**
-- `||` - Exactly one
-- `|o` - Zero or one
-- `}{` - One or many
-- `}o` - Zero or many
+**Cardinality indicators (left / right forms):**
+- `||` / `||` - Exactly one
+- `|o` / `o|` - Zero or one
+- `}o` / `o{` - Zero or many
+- `}|` / `|{` - One or many
 
 **Relationship line:**
-- `--` - Non-identifying relationship
-- `..` - Identifying relationship (rare in practice)
+- `--` - Identifying relationship (solid line)
+- `..` - Non-identifying relationship (dashed line)
 
 ### Common Relationships
 

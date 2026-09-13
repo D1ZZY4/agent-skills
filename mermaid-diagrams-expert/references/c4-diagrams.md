@@ -3,10 +3,10 @@
 The C4 model provides a hierarchical way to visualize software architecture at different
 levels of abstraction: Context, Containers, Components, and Code.
 
-`C4Context`, `C4Container`, and `C4Component` are renderer-dependent extensions rather than
-universally supported core Mermaid syntax. Confirm that the target renderer and version support
-the C4 extension before using these blocks. If they are unavailable, use a flowchart or regular
-architecture diagram with explicit system boundaries.
+`C4Context`, `C4Container`, `C4Component`, `C4Dynamic`, and `C4Deployment` are renderer-
+dependent extensions rather than universally supported core Mermaid syntax. Confirm that the
+target renderer and version support the C4 extension before using these blocks. If they are
+unavailable, use a flowchart or regular architecture diagram with explicit system boundaries.
 
 ## C4 Model Levels
 
@@ -257,6 +257,40 @@ C4Component
     Rel(repository, postgres, "Reads/writes", "JDBC/SQL")
     Rel(event_publisher, queue, "Publishes to", "AMQP")
 ```
+
+## C4 Dynamic Diagram
+
+Shows an ordered interaction flow between the elements of a system.
+
+```mermaid
+C4Dynamic
+    title Flow - User Login
+    Person(user, "User")
+    System(app, "App")
+    RelIndex(1, user, app, "Logs in", "HTTPS")
+    RelIndex(2, app, user, "Returns session", "HTTPS")
+```
+
+`RelIndex(sequence, from, to, label, tech)` numbers interactions in order, and
+`UpdateRelIndexStyle(...)` adjusts their styling.
+
+## C4 Deployment Diagram
+
+Shows how software runs on infrastructure, using nested deployment nodes and containers.
+
+```mermaid
+C4Deployment
+    title Deployment - App Runtime
+    Deployment_Node(aws, "AWS Region") {
+        Node(ec2, "EC2 Instance") {
+            Container(app, "App", "Node.js")
+            ContainerDb(db, "DB", "PostgreSQL")
+        }
+    }
+```
+
+`Deployment_Node` can also be spelled `Node`; use `Deployment_Node_Ext` / `Node_Ext` for
+external infrastructure, and the `L`/`R` variants (for example `Node_L`) control placement.
 
 ## Microservices Architecture Example
 

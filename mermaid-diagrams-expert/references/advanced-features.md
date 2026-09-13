@@ -27,6 +27,10 @@ flowchart TD
     A --> B
 ```
 
+> Prefer the frontmatter `config:` block for configuration. The older `%%{init: ...}%%`
+> directive is deprecated as of Mermaid v10.5.0. Renderer support for frontmatter still varies,
+> read `renderer-adapters.md` and verify the target.
+
 ## Themes
 
 ### Built-in Themes
@@ -39,11 +43,14 @@ config:
 ```
 
 **Available themes:**
-- `default` - Standard blue theme
+- `default` - Standard light theme (the package-wide default)
 - `forest` - Green earth tones
 - `dark` - Dark mode friendly
 - `neutral` - Grayscale professional
 - `base` - Minimal base theme for customization
+- `redux-color`, `redux-dark-color`, `redux`, `redux-dark`, `neo`, `neo-dark` - Newer palette
+  variants; recent Mermaid releases default several diagram types (for example class, state,
+  and sequence) to `redux-color` with the `neo` look instead of `default`
 
 ### Theme Examples
 
@@ -109,7 +116,12 @@ flowchart TD
 
 ## Layout Options
 
-### Dagre Layout (Default)
+> Layout choice is version and renderer dependent. Recent Mermaid releases default class and
+> state diagrams to ELK; pin `layout` explicitly to avoid surprises.
+
+### Dagre Layout
+
+Dagre is the classic layout and the safest default for untested renderers:
 
 ```mermaid
 ---
@@ -122,7 +134,8 @@ flowchart TD
 
 ### ELK Layout (Advanced)
 
-For complex diagrams with better automatic layout:
+For complex diagrams with better automatic layout, and the default for class and state
+diagrams in recent Mermaid versions:
 
 ```mermaid
 ---
@@ -165,6 +178,19 @@ Sketch-like, informal style:
 ---
 config:
   look: handDrawn
+---
+flowchart LR
+    A --> B --> C
+```
+
+### Neo Look
+
+Cleaner, modern default look used by several diagram types in recent Mermaid releases:
+
+```mermaid
+---
+config:
+  look: neo
 ---
 flowchart LR
     A --> B --> C
@@ -243,35 +269,39 @@ flowchart LR
 ### Sequence Diagram Styling
 
 ```mermaid
+---
+config:
+  theme: forest
+---
 sequenceDiagram
     participant A
     participant B
     participant C
-    
+
     A->>B: Message 1
     B->>C: Message 2
-    
+
     Note over A,C: Styled note
-    
-    %%{init: {'theme':'forest'}}%%
 ```
 
 ### Class Diagram Styling
 
 ```mermaid
+---
+config:
+  theme: dark
+---
 classDiagram
     class User {
         +String name
         +login()
     }
-    
+
     class Admin {
         +manageUsers()
     }
-    
+
     User <|-- Admin
-    
-    %%{init: {'theme':'dark'}}%%
 ```
 
 ## Directional Hints
@@ -489,6 +519,14 @@ config:
 flowchart TD
     %% ELK handles complex layouts better
     %% Merge edges reduces visual clutter
+    subgraph Collect
+        A[Fetch events] --> B[Validate]
+    end
+    subgraph Process
+        B --> C[Transform]
+        C --> D[Persist]
+    end
+    D --> E[Notify]
 ```
 
 **Performance tips:**
@@ -518,7 +556,7 @@ flowchart LR
 <html>
 <head>
     <script type="module">
-        // Pin this to the Mermaid version supported by the target project.
+        // Replace <pinned-version> with the Mermaid version the target project supports.
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@<pinned-version>/dist/mermaid.esm.min.mjs';
         mermaid.initialize({ 
             startOnLoad: true,
