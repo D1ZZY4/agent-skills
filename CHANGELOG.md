@@ -10,6 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+[⬆ Back to top](#changelog)
+
+---
+
+## [1.8.0] - 2026-09-13
+
 ### dizzy-commit
 
 - Bumped metadata.version to 1.11.0.
@@ -28,9 +34,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added trust boundaries and skills-management write controls to verification-and-failure.md.
 - Referenced security.md from setup.md, cli-skills-management.md, selection-and-query-writing.md, and the SKILL.md priority hierarchy.
 - Replaced repository license MIT with SSPL-1.0 (verbatim official text, copyright retained as D1ZZY4).
-
-### context7-expert (1.9.0)
-
 - Bumped metadata.version to 1.9.0.
 - Added priority hierarchy to SKILL.md for conflict resolution.
 - Strengthened risk classification in risk-and-budget.md with concrete high-risk examples.
@@ -243,6 +246,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Skills | Key changes |
 |---------|------|--------|-------------|
+| 1.8.0 | 2026-09-13 | 6 | context7-expert security hardening, SSPL-1.0 relicensing, README install fix |
 | 1.6.0 | 2026-08-16 | 1 | create-readme-expert review feedback: scope control, missing info handling, audience id, inspection checklist, voice preservation, unsupported claims example |
 | 1.5.0 | 2026-08-16 | 1 | create-readme-expert review fixes, evidence-based examples, version bump to 1.3.0 |
 | 1.4.0 | 2026-08-16 | 1 | create-readme-expert examples additions, version bump to 1.2.0 |
