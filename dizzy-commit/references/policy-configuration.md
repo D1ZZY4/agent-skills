@@ -23,6 +23,8 @@ Unless the repository or user says otherwise:
 - Do not restore, delete, clean, or commit without explicit approval.
 - Preserve the repository's configured Git author and upstream.
 - Use Conventional Commit structure when the repository already uses it.
+- Resolve commit grouping and message strategy per `references/commit-strategy.md`. Default
+  is `auto`, overridable by repository policy or an explicit user instruction.
 - Prefer a meaningful scope when one is clear, but do not invent a scope.
 - Add a body for non-trivial changes or whenever the repository requires one.
 - Use the repository's commit-language convention. If none exists, follow the user's language
@@ -58,11 +60,16 @@ commit:
   punctuation:
     em_dash: disallow
   signing: required
+  strategy: auto
   author:
     source: git-config
   upstream:
     source: git-config
 ```
+
+The `strategy` field accepts the values from `references/commit-strategy.md`. The default is
+`auto`; repository policy or an explicit user instruction can set any of the documented
+values.
 
 This is a documentation shape, not a requirement to add a new configuration file. Signing
 follows `commit-signing.md` when the policy marks it required.

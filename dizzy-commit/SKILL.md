@@ -7,7 +7,7 @@ description: >
   for that side effect. Use Conventional Commits only when repository policy or the user requires it.
 license: SSPL-1.0
 metadata:
-  version: 1.12.0
+  version: 1.13.0
   author: D1ZZY4
   priority: high
 ---
@@ -64,14 +64,16 @@ Read `references/clean-tree-checklist.md` and `references/staging-and-gitignore.
 
 ## Step 2: Scope the change
 
-Separate task-related changes from pre-existing or unrelated work. Never stage "everything"
-merely because it is convenient. Prefer explicit paths and verify the staged diff before commit.
+Resolve the commit strategy first via `references/commit-strategy.md` (default `auto`), then
+stage according to that strategy. Separate task-related changes from pre-existing or unrelated
+work. Never stage "everything" merely because it is convenient. Prefer explicit paths and verify
+the staged diff before commit.
 
 ## Step 3: Determine the commit message
 
-Read `references/message-style.md`. Use repository conventions if present. Conventional Commits
-is a fallback, not a universal law. The subject should describe the resulting change, not the
-agent's process.
+Read `references/message-style.md` and `references/commit-strategy.md`. Use repository
+conventions if present. Conventional Commits is a fallback, not a universal law. The subject
+should describe the resulting change, not the agent's process.
 
 ## Step 4: Verify
 
@@ -94,6 +96,7 @@ result. Pushing requires explicit push authorization unless the user clearly req
 - Cleaning a dirty tree to make a task easier.
 - Amending or force-pushing without explicit instruction.
 - Hiding unrelated changes in a commit.
+- Adopting a commit strategy the repository or user did not ask for.
 - Claiming hooks/tests passed without evidence.
 - Change config (git config --global, signing keys, credentials) to satisfy a local policy
   without explicit instruction.
@@ -111,6 +114,8 @@ the minimum safety checks. Direct intent is authorization to mutate, not authori
 Load the specific policy, staging, message, verification, and push references required by the task:
 
 - `references/policy-configuration.md`: policy precedence order and what never to invent.
+- `references/commit-strategy.md`: how to group changes and shape messages under `auto` and the
+  other documented strategy values.
 - `references/host-adapters.md`: when the environment is not ordinary Git CLI usage and how to
   adapt.
 - `references/clean-tree-checklist.md`: what to inspect before deciding to commit.

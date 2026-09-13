@@ -43,6 +43,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### dizzy-commit
 
+- Bumped metadata.version to 1.13.0.
+- Added references/commit-strategy.md with resolution order and strategy values: auto,
+  conventional-commit, atomic-commit, focused-commit, commit-type, scope, breaking-change, and
+  concern-commit.
+- Added a strategy field to the optional policy shape and wired strategy resolution into
+  SKILL.md Step 2 and Step 3.
+- Clarified that large commits are not banned; grouping follows logical change, not file count.
+- Added an anti-pattern for adopting a commit strategy the repository or user did not ask for.
 - Bumped metadata.version to 1.12.0.
 - Dropped the en dash (U+2013) allowance language to keep the punctuation rule focused on the em dash ban, while retaining the ASCII-hyphen safety requirement for commands, flags, and paths.
 - Added references/commit-signing.md consolidating signed-commit inspection, signing mechanics, and signature verification before push; wired into SKILL.md and referenced from policy-configuration.md, strict-mode.md, and push-and-upstream.md.
@@ -345,6 +353,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.13.0 | 2026-09-13 | Strategy-driven commit grouping: auto default plus seven explicit strategies, policy shape field, no mega-commit ban, resolution wired into SKILL.md steps |
 | 1.12.0 | 2026-09-13 | En dash allowance removed, dedicated references/commit-signing.md, git restore modernization, --no-verify rule, unicode-dash flag example reframe |
 | 1.10.0 | 2026-08-16 | Highest maturity tier, tightened mutation boundaries, verification language, proactive check-in flow |
 | 1.3.0 | 2026-08-16 | License, metadata, self-contained references, verification-and-failure reference |
