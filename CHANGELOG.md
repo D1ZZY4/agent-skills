@@ -10,6 +10,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Repository
+
+- Added a "Why these skills" README section comparing each skill against its original, framed
+  around how the skill works, why it is worth it, the differences from the official version,
+  strengths and weaknesses, and proactive loading. The context7 comparison is a collapsible
+  block with a per-category table against the official `upstash/context7` layout (three skills
+  plus two rules files) using HTML symbols for coverage markers; the other skills are pending.
+
+## [1.10.0] - 2026-09-13
+
 ### create-readme-expert
 
 - Bumped metadata.version to 1.13.0.
