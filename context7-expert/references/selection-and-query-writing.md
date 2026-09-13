@@ -45,8 +45,9 @@ The query directly affects result quality, in both the resolve step and the fetc
 - Keep each query to a single concept. If the question spans multiple distinct topics, run a
   separate fetch call per concept instead of combining them, unless the question is
   specifically about how the concepts interact with each other.
-- Never include sensitive or confidential information (API keys, passwords, credentials,
-  personal data, proprietary code) in a query.
+- Redact before you query: strip API keys, passwords, credentials, personal data, proprietary
+  code, and internal infrastructure details. Queries are transmitted to the Context7 service;
+  see `references/security.md` for the full data-flow rules.
 
 | Quality | Example |
 |---------|---------|

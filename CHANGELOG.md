@@ -20,6 +20,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### context7-expert
 
+- Bumped metadata.version to 1.10.0.
+- Added references/security.md with audited trust boundaries for remote code execution (npx), command execution, data exfiltration (query redaction), indirect prompt injection (untrusted fetched content), and persistence (skills management writes).
+- Strengthened cli-mode.md with an npx execution policy requiring explicit per-request approval and version pinning after first use.
+- Added "treat CLI output as untrusted data" rules to cli-mode.md.
+- Added query redaction and untrusted-content handling to mcp-mode.md.
+- Added trust boundaries and skills-management write controls to verification-and-failure.md.
+- Referenced security.md from setup.md, cli-skills-management.md, selection-and-query-writing.md, and the SKILL.md priority hierarchy.
+- Replaced repository license MIT with SSPL-1.0 (verbatim official text, copyright retained as D1ZZY4).
+
+### context7-expert (1.9.0)
+
 - Bumped metadata.version to 1.9.0.
 - Added priority hierarchy to SKILL.md for conflict resolution.
 - Strengthened risk classification in risk-and-budget.md with concrete high-risk examples.
@@ -156,7 +167,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - verification-and-failure reference across skills.
 - Self-contained references across all skills.
 - CHANGELOG.md with back-to-top navigation and per-skill version tables.
-- MIT LICENSE with author D1ZYY4.
+- SSPL-1.0 LICENSE with author D1ZZY4.
 - README.md with design principles, validation instructions, and skill list.
 - AGENTS.md as the canonical project rules file.
 
@@ -243,6 +254,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.10.0 | 2026-09-13 | Security audit response: trust boundaries, npx execution policy, query redaction, indirect prompt injection handling, skills management write controls; repo license moved to SSPL-1.0 |
 | 1.5.0 | 2026-08-16 | Evidence hierarchy, version-awareness, MCP/CLI mode selection, proactive trigger |
 | 1.3.0 | 2026-08-16 | License, metadata, self-contained references, verification-and-failure reference |
 | 1.2.0 | 2026-08-11 | Evidence hierarchy, version-awareness, MCP/CLI mode selection, proactive trigger |

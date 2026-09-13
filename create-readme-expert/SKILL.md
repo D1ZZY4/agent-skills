@@ -6,7 +6,7 @@ description: >
   lacks clear usage instructions, or when README content is being reviewed or rewritten.
   Follow the project's own style and audience; do not impose generic README templates
   where the project already has strong conventions.
-license: MIT
+license: SSPL-1.0
 metadata:
   version: 1.9.0
   author: D1ZZY4

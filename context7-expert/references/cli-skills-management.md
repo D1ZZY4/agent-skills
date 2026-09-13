@@ -7,9 +7,10 @@ specific library or task, the same shape as this skill itself. Covers install, s
 generate, list, remove, and info commands.
 
 Installation, suggestion, generation, and removal commands are mutating operations. Confirm the
-requested target and scope before running them. Search, list, and info commands are read-only
-inspection unless the CLI version documents otherwise. Never add `--all`, `--global`, or a
-removal command based only on a dependency scan or a proactive suggestion.
+requested target and scope before running them, and review the write controls in
+`references/security.md` before any mutating command. Search, list, and info commands are
+read-only inspection unless the CLI version documents otherwise. Never add `--all`, `--global`,
+or a removal command based only on a dependency scan or a proactive suggestion.
 
 ## Install
 

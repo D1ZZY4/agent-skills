@@ -1,13 +1,13 @@
 # Agent Skills
 
-[![skills.sh](https://skills.sh/b/D1ZYY4/agent-skills)](https://skills.sh/D1ZYY4/agent-skills)
+[![skills.sh](https://skills.sh/b/D1ZZY4/agent-skills)](https://skills.sh/D1ZZY4/agent-skills)
 
 Reusable, progressively disclosed skills for coding and technical agents. Each skill is a normal directory containing `SKILL.md` and optional `references/`, so it can be copied or symlinked into any Agent Skills-compatible skills directory.
 
 ## Install
 
 ```bash
-npx skills add D1ZYY4/agent-skills
+npx skills add D1ZZY4/agent-skills
 ```
 
 This installs all skills in this repository and makes them available to your AI agent.
@@ -63,4 +63,4 @@ Two independent version tracks are recorded in [CHANGELOG.md](CHANGELOG.md):
 
 ## License
 
-MIT. Copyright (c) 2026 D1ZYY4. See [LICENSE](LICENSE).
+SSPL-1.0. Copyright (c) 2026 D1ZZY4. See [LICENSE](LICENSE).

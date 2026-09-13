@@ -6,7 +6,7 @@ description: >
   a feature adds or changes user-visible language, or when copy is being reviewed for clarity,
   tone, consistency, localization, or accessibility. Check project-specific content guidance
   first and adapt to the product's language and audience rather than imposing generic voice.
-license: MIT
+license: SSPL-1.0
 metadata:
   version: 1.3.1
   author: D1ZZY4

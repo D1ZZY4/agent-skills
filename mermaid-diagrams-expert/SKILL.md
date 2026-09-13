@@ -6,7 +6,7 @@ description: >
   relationships, sequencing, or architecture would be clearer visually, especially for
   persistent README, wiki, PR, or design-document diagrams. Verify the target renderer and
   Mermaid version before using version-sensitive syntax.
-license: MIT
+license: SSPL-1.0
 metadata:
   version: 1.2.1
   author: D1ZZY4

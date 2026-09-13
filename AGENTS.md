@@ -27,7 +27,7 @@ Each skill is a normal directory containing `SKILL.md` and optional `references/
 - `create-readme-expert/` - README creation guidance for software projects
 - `CHANGELOG.md` - project changelog with per-skill version tracking
 - `README.md` - project overview and design principles
-- `LICENSE` - MIT License, Copyright (c) 2026 D1ZYY4
+- `LICENSE` - SSPL-1.0 License, Copyright (c) 2026 D1ZZY4
 
 ## Design principles
 

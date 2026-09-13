@@ -11,7 +11,7 @@ description: >
   a deployment, or caching LLM completions. Adapted from Redis, Inc.'s official agent-skills
   repository (https://github.com/redis/agent-skills, MIT licensed), merged into one skill so the
   right domain loads automatically without picking between seven separate ones.
-license: MIT
+license: SSPL-1.0
 metadata:
   version: 1.2.0
   author: D1ZZY4
