@@ -53,6 +53,7 @@ major track. Do not start a version with `0`.
 
 ## Workflow rules
 
+- Sign every commit and tag with the repository GPG key; never push an unsigned commit.
 - Do not push without explicit user authorization.
 - Do not commit without explicit user authorization when the user is reviewing changes.
 - In `CHANGELOG.md`, always keep `[Unreleased]` as the first version section, above any released versions.
