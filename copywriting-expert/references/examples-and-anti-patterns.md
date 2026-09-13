@@ -72,5 +72,5 @@ Buttons: Delete project / Cancel
 - **Confirmation fatigue**: dialogs on every minor action train users to click through without
   reading, which defeats the one dialog that actually needs their attention.
 - **Copy as an afterthought**: writing the UI first and filling in placeholder text like "Lorem
-  ipsum" or " copy" that ships unreviewed, instead of treating copy as part of the
+  ipsum" or "TBD" that ships unreviewed, instead of treating copy as part of the
   feature from the start.

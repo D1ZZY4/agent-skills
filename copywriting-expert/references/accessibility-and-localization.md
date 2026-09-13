@@ -20,6 +20,11 @@ layout, plural and gender awareness).
 - Announce asynchronous success and error states through the product's live-region or status
   pattern. Do not rely on a visual toast alone, and keep important status text available long
   enough to be read.
+- Write link text that says where it goes and what it does ("Open usage docs", not "click
+  here"), and keep the visible label and the accessible name the same when they can be.
+- Give informative images specific alternative text and decorative images an empty
+  alternative. Do not rely on an icon or illustration alone to carry a message the copy must
+  state.
 - Test the resulting copy with the project's supported assistive technologies when the surface
   is high-impact or frequently used.
 

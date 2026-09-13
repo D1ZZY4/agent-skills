@@ -1,8 +1,3 @@
----
-name: Toasts and Onboarding
-description: Guidance for transient success feedback, undo actions, and first-run education.
----
-
 # Toasts and Onboarding
 
 Toast and success-feedback copy, plus onboarding and first-run guidance. Toasts state the

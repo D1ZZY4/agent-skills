@@ -90,6 +90,21 @@ Report that authoritative verification was not available and ask for review when
 affects legal meaning, safety, accessibility, localization quality, or a high-visibility
 surface. Never invent a citation or imply that a source was consulted when it was not.
 
+## Keep the lookup minimal and transparent
+
+A vocabulary lookup is a normal, expected step, not something to skip to save a network call.
+Two hygiene rules apply whenever one runs:
+
+- **Query the bare term.** Send just the word or short phrase plus the source name (for
+  example, "sistem KBBI"), never the surrounding copy, user data, or project context wrapped
+  around it.
+- **Mention the lookup when it may carry context.** If the term alone could reveal a sensitive
+  or proprietary project detail, note briefly that the term is transmitted and confirm before
+  sending it.
+
+Prefer an authoritative source already available in the environment over a fresh fetch when
+one exists. Never claim a lookup happened when it did not.
+
 ## How to actually do this in practice
 
 Use an available authoritative lookup mechanism rather than answering from memory when verification

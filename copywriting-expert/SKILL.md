@@ -2,13 +2,14 @@
 name: copywriting-expert
 description: >
   Write, audit, or improve user-facing product and UI copy including buttons, labels, empty
-  states, errors, tooltips, dialogs, toasts, onboarding, and accessibility text. Trigger when
-  a feature adds or changes user-visible language, or when copy is being reviewed for clarity,
-  tone, consistency, localization, or accessibility. Check project-specific content guidance
-  first and adapt to the product's language and audience rather than imposing generic voice.
+  states, errors, tooltips, dialogs, toasts, onboarding, accessibility text, and CLI output
+  such as help text, flags, deprecation warnings, and terminal errors. Trigger when a feature
+  adds or changes user-visible language, or when copy is being reviewed for clarity, tone,
+  consistency, localization, or accessibility. Check project-specific content guidance first
+  and adapt to the product's language and audience rather than imposing generic voice.
 license: SSPL-1.0
 metadata:
-  version: 1.3.1
+  version: 1.4.0
   author: D1ZZY4
   priority: medium
 ---
@@ -35,7 +36,9 @@ Before polishing wording, identify:
 - Who the audience is and what language/register they use.
 - Whether the copy is transactional, instructional, persuasive, or safety-critical.
 
-Read `references/voice-and-tone.md` and the relevant component reference.
+Read `references/voice-and-tone.md` and the relevant component reference. For terminal
+surfaces (help text, flag descriptions, deprecation warnings, and non-interactive errors),
+read `references/cli-output-copy.md`.
 
 ## Step 2: Write for comprehension first
 
@@ -86,6 +89,8 @@ Load only the component-specific references needed for the task:
 - `references/empty-states.md`: what an empty state needs to do beyond saying "nothing here".
 - `references/confirmation-dialogs.md`: confirmation and destructive-action copy.
 - `references/toasts-and-onboarding.md`: success feedback, undo actions, and first-run guidance.
+- `references/cli-output-copy.md`: help text, flag descriptions, deprecation warnings, and
+  non-interactive terminal errors.
 - `references/accessibility-and-localization.md`: accessible names, status copy, and localization
   constraints.
 - `references/language-and-vocabulary-verification.md`: verifying word choice and grammar against

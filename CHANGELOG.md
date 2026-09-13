@@ -21,6 +21,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added references/security.md with W011 and indirect prompt injection rules.
 - Added anti-pattern for fetching external READMEs without user confirmation.
 
+### copywriting-expert
+
+- Bumped metadata.version to 1.4.0.
+- Added references/cli-output-copy.md for terminal surfaces: help text, flag descriptions, deprecation warnings, non-interactive errors, and progress lines.
+- Extended SKILL.md description and Step 1 routing to cover CLI output copy.
+- Added lookup hygiene rules (bare-term queries, consent when the term carries sensitive context) to references/language-and-vocabulary-verification.md.
+- Added link text and alternative text guidance to references/accessibility-and-localization.md.
+- Fixed broken " copy" placeholder token in references/examples-and-anti-patterns.md.
+- Removed YAML frontmatter from references/toasts-and-onboarding.md to match the other references.
+
 [⬆ Back to top](#changelog)
 
 ---
@@ -303,6 +313,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.4.0 | 2026-09-13 | CLI output copy reference, vocabulary lookup hygiene, link and alternate text guidance, SKILL.md description expansion, broken placeholder token fix, frontmatter cleanup |
 | 1.3.0 | 2026-08-16 | Accessibility/localization strengthening, proactive trigger, self-contained references, verification-and-failure reference |
 | 1.2.0 | 2026-08-11 | Accessibility/localization strengthening, proactive trigger, self-contained references |
 | 1.1.0 | 2026-07-13 | Initial release |
