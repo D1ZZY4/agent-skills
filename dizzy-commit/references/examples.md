@@ -51,6 +51,25 @@ fix(info-tab): status tokens for stable/bug colors
 Fixes dark mode contrast. The raw color vars have no dark override.
 ```
 
+## Good, bulleted body for enumerated changes
+
+When a change touches several distinct items with no single synthesis (for example, multiple
+version bumps), list them as Markdown bullets, one per line. Do not compress them into a
+comma-separated run.
+
+```
+chore(skills): bump versions after style unification
+
+Bump the metadata version for each skill:
+
+- context7-expert 1.12.0
+- copywriting-expert 1.6.0
+- create-readme-expert 1.12.0
+- dizzy-commit 1.15.0
+- mermaid-diagrams-expert 1.3.0
+- redis-expert 1.3.0
+```
+
 ## Bad: bundled and policy-violating
 
 ```

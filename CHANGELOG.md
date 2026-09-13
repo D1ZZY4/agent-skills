@@ -43,10 +43,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added permission and access-denied copy guidance to references/error-messages.md.
 - Expanded references/verification-and-failure.md with copywork-specific verification rules.
 - Added toasts, onboarding, CLI output, and navigation examples to references/examples-and-anti-patterns.md.
-- Reframed the en dash rule in references/formatting-and-punctuation.md as an ASCII-hyphen safety warning instead of a punctuation allowance.
+- Reframed the dash guidance in references/formatting-and-punctuation.md as an ASCII-hyphen
+  safety warning instead of a punctuation allowance.
+- Removed unicode dash naming from references/formatting-and-punctuation.md; the ASCII-hyphen
+  safety warning remains.
 
 ### dizzy-commit
 
+- Bumped metadata.version to 1.16.0.
+- Clarified that the punctuation ban covers the em dash (U+2014) only, and added an explicit
+  rule to enumerate several distinct items as Markdown bullet lists with `-` markers, never as
+  a comma-separated inline run.
+- Added a bulleted-body example for enumerated changes (version bumps) to examples.md.
 - Bumped metadata.version to 1.15.0.
 - Added a Purpose section to SKILL.md and renamed precedence headings to Priority order
   across SKILL.md and references/policy-configuration.md for a consistent skill style.
@@ -64,7 +72,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Clarified that large commits are not banned; grouping follows logical change, not file count.
 - Added an anti-pattern for adopting a commit strategy the repository or user did not ask for.
 - Bumped metadata.version to 1.12.0.
-- Dropped the en dash (U+2013) allowance language to keep the punctuation rule focused on the em dash ban, while retaining the ASCII-hyphen safety requirement for commands, flags, and paths.
+- Dropped the Unicode U+2013 allowance language to keep the punctuation rule focused on the
+  em dash ban, while retaining the ASCII-hyphen safety requirement for commands, flags, and
+  paths.
 - Added references/commit-signing.md consolidating signed-commit inspection, signing mechanics, and signature verification before push; wired into SKILL.md and referenced from policy-configuration.md, strict-mode.md, and push-and-upstream.md.
 - Added a signing option to the optional policy shape.
 - Modernized clean-tree checklist to git restore and added a hooks and --no-verify rule.
@@ -384,10 +394,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.16.0 | 2026-09-13 | Punctuation ban clarified (em dash only), bulleted-list body rule, bulleted-body example |
 | 1.15.0 | 2026-09-13 | SKILL.md style unification: Purpose section, precedence headings renamed to Priority order |
 | 1.14.0 | 2026-09-13 | Final verification pass: trailing-newline hygiene on three references |
 | 1.13.0 | 2026-09-13 | Strategy-driven commit grouping: auto default plus seven explicit strategies, policy shape field, no mega-commit ban, resolution wired into SKILL.md steps |
-| 1.12.0 | 2026-09-13 | En dash allowance removed, dedicated references/commit-signing.md, git restore modernization, --no-verify rule, unicode-dash flag example reframe |
+| 1.12.0 | 2026-09-13 | Unicode U+2013 allowance removed, dedicated references/commit-signing.md, git restore modernization, --no-verify rule, unicode-dash flag example reframe |
 | 1.10.0 | 2026-08-16 | Highest maturity tier, tightened mutation boundaries, verification language, proactive check-in flow |
 | 1.3.0 | 2026-08-16 | License, metadata, self-contained references, verification-and-failure reference |
 | 1.2.0 | 2026-08-11 | Evidence hierarchy, version-awareness |

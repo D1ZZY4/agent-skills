@@ -21,8 +21,11 @@ content, the AI co-author trailer, and the commit type reference.
 - Imperative mood: "add", "fix", "remove", never "added", "adds", "adding"
 - Short and punchy: aim 50 characters or less, soft cap around 72
 - No trailing period
-- No em dashes, ever. Not in the subject, not in the body, not anywhere in a commit message.
-  Use a comma, colon, period, or parentheses instead.
+- No em dashes (U+2014), ever. Not in the subject, not in the body, not anywhere in a commit
+  message. Use a comma, colon, period, or parentheses instead.
+- Enumerate items as a Markdown bullet list, one item per line with a `-` marker. Do not
+  compress several distinct items into one comma-separated inline sentence. For example, a
+  set of version bumps is a bullet list, not a run of commas.
 - Keep literal commands, flags, and paths on their exact ASCII hyphens. A command like
   `--recurse-submodules` must keep its two hyphens or it will break when copied and pasted
   into a terminal. Double check any line containing a command or path before putting it into
@@ -35,9 +38,9 @@ content, the AI co-author trailer, and the commit type reference.
 - Add a body when repository policy requires it or when the change is non-trivial. Explain the
   why in a sentence or two whenever the diff does not make it obvious. A subject-only commit is
   acceptable for a genuinely trivial change when project policy allows it.
-- Must use Markdown formatting: bullets (`-`), inline code, bold, headers all fine. A body
-  that is a single unformatted sentence is fine content-wise, but reach for Markdown structure
-  (bullets, code spans) whenever there is more than one point to make.
+- Must use Markdown formatting. When there is more than one point, render it as a bullet list
+  (`-`), one item per line, never as a comma-separated inline run. Inline code, bold, and
+  headings are all fine.
 - Explain what and why, not how.
 - Write it like a senior developer's commit, not a changelog or an AI status update. Don't
   enumerate every single file, asset, or doc that was touched as a checklist. Group related
@@ -46,8 +49,8 @@ content, the AI co-author trailer, and the commit type reference.
   bullets is a sign the commit itself should have been split, not that the body needs more
   lines. If you catch yourself listing filenames one after another with no synthesis, stop and
   compress it into what actually changed conceptually.
-- No em dashes or emoji in the body either. Literal commands, flags, and paths must keep
-  their plain ASCII hyphens.
+- No em dashes (U+2014) or emoji in the body either. Literal
+  commands, flags, and paths must keep their plain ASCII hyphens.
 - Wrap prose around 72 characters.
 - Reference issues at the end when relevant: `Closes #42`, `Refs #17`.
 - Breaking changes, security fixes, data migrations, and reverts always get a fuller body.
@@ -59,7 +62,7 @@ content, the AI co-author trailer, and the commit type reference.
 - Inline prose like "As requested by..." or "Generated with X", use the `Co-authored-by`
   trailer instead (see below) rather than mentioning AI involvement in the subject or body
 - Any emoji, under any circumstance
-- Any em dash, under any circumstance
+- Any em dash (U+2014), under any circumstance
 - Any word or phrase prohibited by the resolved repository or user policy
 - Generic AI summaries like "Update documentation" or "Address findings from audit"
 

@@ -15,7 +15,7 @@ When a sentence seems to want an em dash, restructure it instead:
 - Use a colon if what follows explains or elaborates on what came before.
 - Use parentheses if it's a genuine aside.
 
-An en dash (U+2013) is mentioned only as a warning: a unicode dash anywhere in a technical
+A unicode dash (U+2013) anywhere in a technical
 string, identifier, command, or flag breaks when copied into a terminal, so keep literal
 commands, flags, paths, and identifiers on their exact ASCII hyphens.
 

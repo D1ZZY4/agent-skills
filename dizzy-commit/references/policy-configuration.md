@@ -29,8 +29,9 @@ Unless the repository or user says otherwise:
 - Add a body for non-trivial changes or whenever the repository requires one.
 - Use the repository's commit-language convention. If none exists, follow the user's language
   preference.
-- Reject em dashes when the active punctuation policy disallows them. Technical strings,
-  including commands, flags, and paths, must preserve their ASCII hyphens.
+- Reject em dashes (U+2014) in commit messages when the active punctuation policy disallows
+  them. Technical strings, including commands, flags, and paths, must preserve their ASCII
+  hyphens.
 - When the repository signs commits, follow `references/commit-signing.md` for signing and
   verification. Changing signing, credentials, or identity is a separate mutation needing
   explicit approval.

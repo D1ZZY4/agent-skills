@@ -7,7 +7,7 @@ description: >
   for that side effect. Use Conventional Commits only when repository policy or the user requires it.
 license: SSPL-1.0
 metadata:
-  version: 1.15.0
+  version: 1.16.0
   author: D1ZZY4
   priority: high
 ---

@@ -26,9 +26,9 @@ public unless the user explicitly instructs it.
   use a meaningful scope when one is clear and do not invent one.
 - **Body.** Require a Markdown body when repository policy requires it or when the change is
   non-trivial. Never hide the why for a non-trivial change.
-- **No em dashes.** Not in the subject, not in the body, not anywhere in the message. Literal
-  shell commands, flags, and paths must keep the plain ASCII hyphens they require. Use a
-  comma, colon, period, or parentheses instead of an em dash.
+- **No em dashes (U+2014).** Not in the subject, not in the body, not anywhere in the message.
+  Literal shell commands, flags, and paths must keep the plain ASCII hyphens they require. Use
+  a comma, colon, period, or parentheses instead of an em dash.
 - **Signing.** When repository policy requires signed commits, follow `commit-signing.md`:
   verify the signature with `git log --show-signature` before pushing and never sign with an
   invented key. Do not change signing configuration without explicit approval.
