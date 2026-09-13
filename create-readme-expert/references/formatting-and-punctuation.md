@@ -23,3 +23,15 @@ Do not use em dashes in README content. Use commas, colons, periods, or parenthe
 - Prefer absolute URLs for external links.
 - Prefer relative paths for links within the repository.
 - Do not link to files that do not exist.
+
+## Callout blocks
+
+- Use GitHub-style blockquote alerts for genuinely important notes: `> [!IMPORTANT]`,
+  `> [!WARNING]`, `> [!CAUTION]`, `> [!NOTE]`, and `> [!TIP]`.
+- Put the alert marker on its own line at the start of the blockquote, then one `>`
+  before each content line.
+- Reserve alerts for security notes, destructive actions, and common pitfalls. A plain
+  paragraph is the default for everything else.
+- Alert syntax is renderer-specific. Confirm the README's primary host supports it
+  before relying on it; on unsupported platforms it renders as an ordinary blockquote.
+- See `examples/README-github-alerts.md` for a worked example with secrets and warnings.

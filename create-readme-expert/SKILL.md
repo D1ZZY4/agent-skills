@@ -8,7 +8,7 @@ description: >
   where the project already has strong conventions.
 license: SSPL-1.0
 metadata:
-  version: 1.10.0
+  version: 1.11.0
   author: D1ZZY4
   priority: medium
 ---
@@ -122,6 +122,8 @@ Load only the examples relevant to the project type:
 Always use:
 - `references/anti-patterns.md` when reviewing quality problems.
 - `references/formatting-and-punctuation.md` for punctuation and formatting rules.
+- `examples/README-github-alerts.md` when the README needs security notes, warnings, or
+  platform-specific callouts.
 
 Include at least one realistic usage example. Show the common mistake and the corrected
 form when it helps the reader avoid a known pitfall.
@@ -175,4 +177,5 @@ Use the bundled examples in `examples/` as starting material or inspiration:
 - `examples/README-cli-adaptive.md`: CLI example showing command verification.
 - `examples/README-missing-information.md`: incomplete project example showing uncertainty handling.
 - `examples/README-unsupported-claims.md`: unsupported claims failure case showing evidence-based omission.
+- `examples/README-github-alerts.md`: GitHub-style alert callouts for secrets and warnings, with renderer compatibility notes.
 - `examples/EXAMPLES.md`: index of bundled README examples.

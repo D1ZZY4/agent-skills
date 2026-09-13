@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### create-readme-expert
 
+- Bumped metadata.version to 1.11.0.
+- Added examples/README-github-alerts.md showing GitHub-style alert callouts (IMPORTANT, WARNING, CAUTION, NOTE, TIP) for secrets and destructive actions, with renderer compatibility notes.
+- Added Callout blocks section to references/formatting-and-punctuation.md.
+- Added the alerts example to the SKILL.md Step 4 always-use list and examples index.
 - Bumped metadata.version to 1.10.0 in response to Snyk W011 (third-party content exposure / indirect prompt injection risk).
 - Added user consent requirement before fetching any external README from references/external-readme-sources.md.
 - Added references/security.md with W011 and indirect prompt injection rules.
@@ -337,6 +341,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.11.0 | 2026-09-13 | GitHub-style alert callouts example for secrets and destructive actions, callout rules in formatting-and-punctuation, example wired into SKILL.md steps |
 | 1.10.0 | 2026-09-13 | W011 response: user consent before external README fetches, security.md with untrusted content rules, anti-pattern additions |
 | 1.6.0 | 2026-08-16 | Change scope control, missing info handling, audience id, repository inspection checklist, preserve README voice, unsupported claims example, release trigger, dependency rule |
 | 1.4.0 | 2026-08-16 | External README sources moved to references, Step 4 conditional loading, placeholder warning |
