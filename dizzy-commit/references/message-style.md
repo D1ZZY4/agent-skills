@@ -23,11 +23,10 @@ content, the AI co-author trailer, and the commit type reference.
 - No trailing period
 - No em dashes, ever. Not in the subject, not in the body, not anywhere in a commit message.
   Use a comma, colon, period, or parentheses instead.
-- En dashes (Unicode U+2013) are allowed when used as normal punctuation. They must not
-  replace the plain ASCII hyphens required by a literal command, flag, or path. For example,
-  `--recurse-submodules` must keep its two ASCII hyphens or it will break when copied and
-  pasted into a terminal. Double check any line containing a command or path before putting
-  it into the message.
+- Keep literal commands, flags, and paths on their exact ASCII hyphens. A command like
+  `--recurse-submodules` must keep its two hyphens or it will break when copied and pasted
+  into a terminal. Double check any line containing a command or path before putting it into
+  the message.
 - No emoji, ever. Not even if it seems fitting or the project uses them elsewhere.
 - Follow the repository's documented commit language or the user's explicit preference.
 
@@ -47,8 +46,8 @@ content, the AI co-author trailer, and the commit type reference.
   bullets is a sign the commit itself should have been split, not that the body needs more
   lines. If you catch yourself listing filenames one after another with no synthesis, stop and
   compress it into what actually changed conceptually.
-- No em dashes or emoji in the body either. En dashes are allowed as normal punctuation;
-  literal commands, flags, and paths must still use plain ASCII hyphens.
+- No em dashes or emoji in the body either. Literal commands, flags, and paths must keep
+  their plain ASCII hyphens.
 - Wrap prose around 72 characters.
 - Reference issues at the end when relevant: `Closes #42`, `Refs #17`.
 - Breaking changes, security fixes, data migrations, and reverts always get a fuller body.

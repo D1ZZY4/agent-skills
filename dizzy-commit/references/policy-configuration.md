@@ -27,8 +27,11 @@ Unless the repository or user says otherwise:
 - Add a body for non-trivial changes or whenever the repository requires one.
 - Use the repository's commit-language convention. If none exists, follow the user's language
   preference.
-- Reject em dashes when the active punctuation policy disallows them. En dashes are allowed as
-  normal punctuation, but technical strings must preserve ASCII hyphens.
+- Reject em dashes when the active punctuation policy disallows them. Technical strings,
+  including commands, flags, and paths, must preserve their ASCII hyphens.
+- When the repository signs commits, follow `references/commit-signing.md` for signing and
+  verification. Changing signing, credentials, or identity is a separate mutation needing
+  explicit approval.
 - Treat prohibited words, fixed author identities, branch names, and remote names as policy
   inputs, never as universal defaults.
 
@@ -54,13 +57,15 @@ commit:
   prohibited_words: []
   punctuation:
     em_dash: disallow
+  signing: required
   author:
     source: git-config
   upstream:
     source: git-config
 ```
 
-This is a documentation shape, not a requirement to add a new configuration file.
+This is a documentation shape, not a requirement to add a new configuration file. Signing
+follows `commit-signing.md` when the policy marks it required.
 
 ## Strict mode
 

@@ -40,3 +40,6 @@ git branch -vv
 
 Report the branch and remote that were updated. If the push fails, preserve the local commits and
 report the provider's error instead of retrying with a destructive or force option.
+
+When the repository requires signed commits, verify the signature before pushing per
+`references/commit-signing.md`.

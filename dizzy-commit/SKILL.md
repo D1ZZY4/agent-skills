@@ -7,7 +7,7 @@ description: >
   for that side effect. Use Conventional Commits only when repository policy or the user requires it.
 license: SSPL-1.0
 metadata:
-  version: 1.11.0
+  version: 1.12.0
   author: D1ZZY4
   priority: high
 ---
@@ -76,10 +76,12 @@ agent's process.
 ## Step 4: Verify
 
 Run the repository's documented checks when authorized and relevant. If checks are unavailable,
-say so. Never claim tests passed when only static inspection occurred.
+say so. Never claim tests passed when only static inspection occurred. Never bypass hooks with
+`--no-verify` without explicit authorization.
 
 Before a commit, verify the staged diff and intended paths. Before a push, verify the commit,
-remote, branch, and upstream relationship.
+signature when the repository requires signed commits, remote, branch, and upstream
+relationship.
 
 ## Step 5: Mutate only within the granted scope
 
@@ -93,8 +95,10 @@ result. Pushing requires explicit push authorization unless the user clearly req
 - Amending or force-pushing without explicit instruction.
 - Hiding unrelated changes in a commit.
 - Claiming hooks/tests passed without evidence.
-- Changing Git config to satisfy a local policy.
+- Change config (git config --global, signing keys, credentials) to satisfy a local policy
+  without explicit instruction.
 - Treating a dirty working tree as an error that must be "fixed".
+- Bypassing hooks with `--no-verify` without explicit authorization.
 - Using em dashes in commit messages.
 
 ## Caveman mode
@@ -116,6 +120,8 @@ Load the specific policy, staging, message, verification, and push references re
   content, AI co-author trailer, and type reference.
 - `references/commit-execution.md`: duplicate-commit check, subject/body structure, avoiding literal
   `\n` in shell, two `-m` flags versus file plus `-F`, and post-commit verification.
+- `references/commit-signing.md`: signed-commit inspection, signing mechanics, and signature
+  verification before push.
 - `references/proactive-trigger.md`: when to check in without an explicit commit request and the
   check-in flow.
 - `references/strict-mode.md`: extra constraints for strict mode, applied on top of default rules.

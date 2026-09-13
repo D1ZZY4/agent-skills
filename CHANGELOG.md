@@ -39,6 +39,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added permission and access-denied copy guidance to references/error-messages.md.
 - Expanded references/verification-and-failure.md with copywork-specific verification rules.
 - Added toasts, onboarding, CLI output, and navigation examples to references/examples-and-anti-patterns.md.
+- Reframed the en dash rule in references/formatting-and-punctuation.md as an ASCII-hyphen safety warning instead of a punctuation allowance.
+
+### dizzy-commit
+
+- Bumped metadata.version to 1.12.0.
+- Dropped the en dash (U+2013) allowance language to keep the punctuation rule focused on the em dash ban, while retaining the ASCII-hyphen safety requirement for commands, flags, and paths.
+- Added references/commit-signing.md consolidating signed-commit inspection, signing mechanics, and signature verification before push; wired into SKILL.md and referenced from policy-configuration.md, strict-mode.md, and push-and-upstream.md.
+- Added a signing option to the optional policy shape.
+- Modernized clean-tree checklist to git restore and added a hooks and --no-verify rule.
+- Added a --no-verify bypass anti-pattern and signature verification to SKILL.md.
+- Reframed the unicode-dash-in-flag example to focus on the broken command, not punctuation.
 
 [⬆ Back to top](#changelog)
 
@@ -334,6 +345,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.12.0 | 2026-09-13 | En dash allowance removed, dedicated references/commit-signing.md, git restore modernization, --no-verify rule, unicode-dash flag example reframe |
 | 1.10.0 | 2026-08-16 | Highest maturity tier, tightened mutation boundaries, verification language, proactive check-in flow |
 | 1.3.0 | 2026-08-16 | License, metadata, self-contained references, verification-and-failure reference |
 | 1.2.0 | 2026-08-11 | Evidence hierarchy, version-awareness |

@@ -14,8 +14,16 @@ If the output is not empty:
 2. Report the remaining files and their ownership.
 3. Commit only after explicit user approval, or leave the changes in place when the user
    intentionally wants them uncommitted.
-4. Never use `git checkout -- <file>` or `git clean -fd` to force a clean tree. Destructive
-   cleanup requires explicit, file-specific confirmation.
+4. Never use `git checkout -- <file>`, `git restore <file>`, or `git clean -fd` to force a
+   clean tree. Destructive cleanup requires explicit, file-specific confirmation.
+
+## Hooks and verification
+
+- Check whether the repository defines Git hooks or CI checks before committing.
+- Run the available checks and report the result honestly. Never claim a check passed without
+  running it.
+- Never bypass hooks with `--no-verify` unless the user explicitly authorizes the bypass, and
+  even then report that it was done.
 
 ## Checklist before done
 

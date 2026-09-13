@@ -127,21 +127,21 @@ fix(skills): add missing references/ to 3 README trees
 Co-authored-by: Agent model/version <provider-issued-address>
 ```
 
-## Bad: en dash replaces the hyphens in a command flag
+## Bad: a single unicode dash replaces the hyphens in a command flag
 
 ```
 docs(readme): add LFS clone instructions
 
-Recommended clone command with [en dash]recurse-submodules or git lfs
+Recommended clone command with [unicode dash]recurse-submodules or git lfs
 clone. Users without git-lfs can still use the skill docs, only
 binary assets are affected.
 ```
 
-The problem is not using an en dash as punctuation. The flag incorrectly replaces the leading
-two ASCII hyphens of `--recurse-submodules` with one en dash (U+2013), shown above as
-`[en dash]` so the broken character is clear without presenting it as a valid command. Copied
-straight into a terminal, that replacement fails to parse as the flag it is supposed to be.
-The fixed version preserves the plain ASCII hyphens:
+The flag incorrectly replaces the leading two ASCII hyphens of `--recurse-submodules` with a
+single unicode dash character (U+2013), shown above as `[unicode dash]` so the broken
+character is clear without presenting it as a valid command. Copied straight into a terminal,
+that single character fails to parse as the flag it is supposed to be. The fixed version
+preserves the plain ASCII hyphens:
 
 ```
 docs(readme): add LFS clone instructions

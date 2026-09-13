@@ -15,9 +15,9 @@ When a sentence seems to want an em dash, restructure it instead:
 - Use a colon if what follows explains or elaborates on what came before.
 - Use parentheses if it's a genuine aside.
 
-An en dash (U+2013) is allowed when it has its own meaning, such as a numeric range
-("9:00–17:00") or a relationship ("input–output"). Do not use an en dash where a regular
-ASCII hyphen is required in a technical string, identifier, command, or flag.
+An en dash (U+2013) is mentioned only as a warning: a unicode dash anywhere in a technical
+string, identifier, command, or flag breaks when copied into a terminal, so keep literal
+commands, flags, paths, and identifiers on their exact ASCII hyphens.
 
 Example: "Your file was too large, try compressing it first" instead of a version built
 around an em dash. If a rewrite keeps reaching for an em dash no matter how it's restructured,
