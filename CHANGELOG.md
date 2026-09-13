@@ -43,6 +43,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### dizzy-commit
 
+- Bumped metadata.version to 1.14.0.
+- Final verification: fixed missing trailing newlines in references/commit-signing.md,
+  references/host-adapters.md, and references/push-and-upstream.md.
 - Bumped metadata.version to 1.13.0.
 - Added references/commit-strategy.md with resolution order and strategy values: auto,
   conventional-commit, atomic-commit, focused-commit, commit-type, scope, breaking-change, and
@@ -355,6 +358,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.14.0 | 2026-09-13 | Final verification pass: trailing-newline hygiene on three references |
 | 1.13.0 | 2026-09-13 | Strategy-driven commit grouping: auto default plus seven explicit strategies, policy shape field, no mega-commit ban, resolution wired into SKILL.md steps |
 | 1.12.0 | 2026-09-13 | En dash allowance removed, dedicated references/commit-signing.md, git restore modernization, --no-verify rule, unicode-dash flag example reframe |
 | 1.10.0 | 2026-08-16 | Highest maturity tier, tightened mutation boundaries, verification language, proactive check-in flow |
