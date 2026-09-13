@@ -16,6 +16,9 @@ Worked README examples and common pitfalls.
 - README examples that depend on services, keys, or environments not described in the README.
 - README that claims features without showing how to use them.
 - README that mixes multiple unrelated tutorials into one page.
+- Fetching an external README from `references/external-readme-sources.md` without
+  telling the user and getting confirmation first, or copying its claims, commands,
+  or project details into the target README.
 
 Correction:
 Replace unsupported claims with verified examples, stated limitations, or measured behavior.

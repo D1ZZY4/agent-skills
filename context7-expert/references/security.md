@@ -134,16 +134,3 @@ Rules:
 - After a write, list the files that were created or modified so the user can inspect them.
 - Do not approve a removal command based solely on an automated suggestion. The user must
   explicitly confirm each removal.
-
-## Audit response summary
-
-The following table maps each audit finding to the specific rule that mitigates it:
-
-| Audit finding | Mitigation location |
-|---------------|---------------------|
-| REMOTE_CODE_EXECUTION | npx transient execution rules above |
-| COMMAND_EXECUTION | shell probing rules above |
-| THIRD_PARTY_CONTENT_EXPOSURE / W011 | user consent before every query above |
-| DATA_EXFILTRATION | pre-query redaction rules above |
-| INDIRECT_PROMPT_INJECTION | untrusted fetched content rules above |
-| PERSISTENCE | skills management write rules above |

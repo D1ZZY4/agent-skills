@@ -146,4 +146,4 @@ Do not fabricate a method, option, version, or compatibility claim.
   compatibility.
 - `references/security.md`: trust boundaries, user consent before every query, data-flow rules,
   injection handling, npx execution policy, query redaction, and skills management write
-  controls. Start here for any safety or audit-related question.
+  controls. Start here for any safety-related question.

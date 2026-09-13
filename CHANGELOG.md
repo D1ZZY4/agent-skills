@@ -10,6 +10,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### create-readme-expert
+
+- Bumped metadata.version to 1.10.0 in response to Snyk W011 (third-party content exposure / indirect prompt injection risk).
+- Added user consent requirement before fetching any external README from references/external-readme-sources.md.
+- Added references/security.md with W011 and indirect prompt injection rules.
+- Added anti-pattern for fetching external READMEs without user confirmation.
+
 [⬆ Back to top](#changelog)
 
 ---
@@ -330,6 +337,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.10.0 | 2026-09-13 | W011 response: user consent before external README fetches, security.md with untrusted content rules, anti-pattern additions |
 | 1.6.0 | 2026-08-16 | Change scope control, missing info handling, audience id, repository inspection checklist, preserve README voice, unsupported claims example, release trigger, dependency rule |
 | 1.4.0 | 2026-08-16 | External README sources moved to references, Step 4 conditional loading, placeholder warning |
 | 1.3.0 | 2026-08-16 | Evidence-based examples, conditional Step 4 loading, proactive trigger narrowing, placeholder warning |
