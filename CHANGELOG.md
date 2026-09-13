@@ -10,6 +10,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+[⬆ Back to top](#changelog)
+
+---
+
+## [1.9.0] - 2026-09-13
+
+### Repository
+
+- Fixed skills.sh.json to match the skills.sh schema (groupings instead of sections) so the repository page renders with curated sections.
+- Updated README install instructions to list skills and select them with --skill instead of installing every skill by default.
+
 ### context7-expert
 
 - Bumped metadata.version to 1.11.0 in response to Snyk W011 (third-party content exposure / indirect prompt injection risk).
@@ -255,6 +266,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Skills | Key changes |
 |---------|------|--------|-------------|
+| 1.9.0 | 2026-09-13 | 6 | context7-expert W011 response, skills.sh.json schema fix, README selective install docs |
 | 1.8.0 | 2026-09-13 | 6 | context7-expert security hardening, SSPL-1.0 relicensing, README install fix |
 | 1.6.0 | 2026-08-16 | 1 | create-readme-expert review feedback: scope control, missing info handling, audience id, inspection checklist, voice preservation, unsupported claims example |
 | 1.5.0 | 2026-08-16 | 1 | create-readme-expert review fixes, evidence-based examples, version bump to 1.3.0 |

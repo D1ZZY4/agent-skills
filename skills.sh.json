@@ -1,7 +1,10 @@
 {
-  "sections": [
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
     {
       "title": "Documentation and content",
+      "description": "Skills for finding documentation and producing written content for agents.",
       "skills": [
         "context7-expert",
         "copywriting-expert",
@@ -11,6 +14,7 @@
     },
     {
       "title": "Development workflow",
+      "description": "Skills for safe engineering workflows, version control, and data infrastructure.",
       "skills": [
         "dizzy-commit",
         "redis-expert"

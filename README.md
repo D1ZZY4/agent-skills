@@ -6,11 +6,22 @@ Reusable, progressively disclosed skills for coding and technical agents. Each s
 
 ## Install
 
+First list the skills this repository provides:
+
 ```bash
-npx skills add D1ZZY4/agent-skills
+npx skills add D1ZZY4/agent-skills --list
 ```
 
-This installs all skills in this repository and makes them available to your AI agent.
+Install only the skills you want, one `--skill` flag per skill:
+
+```bash
+npx skills add D1ZZY4/agent-skills --skill context7-expert --skill dizzy-commit
+```
+
+Note: running `npx skills add D1ZZY4/agent-skills` without any `--skill` flag
+installs every skill in the repository at once without letting you choose. Prefer
+listing first and naming the skills you actually use so nothing is installed
+unless you specifically select it.
 
 ## Skills
 
