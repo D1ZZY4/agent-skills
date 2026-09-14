@@ -10,6 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Repository
+
+- Fixed skills.sh.json grouping: redis-expert moves to a new Infrastructure and data
+  group matching the README category, added the missing mermaid keyword to plugin.json.
+
 ## [1.11.0] - 2026-09-14
 
 ### create-readme-expert

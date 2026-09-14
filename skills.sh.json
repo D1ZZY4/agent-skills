@@ -14,9 +14,15 @@
     },
     {
       "title": "Development workflow",
-      "description": "Safe Git commits and pushes, plus Redis architecture and operations.",
+      "description": "Safe Git commits and pushes.",
       "skills": [
-        "commit-expert",
+        "commit-expert"
+      ]
+    },
+    {
+      "title": "Infrastructure and data",
+      "description": "Redis architecture, clients, search, clustering, observability, security, and semantic caching.",
+      "skills": [
         "redis-expert"
       ]
     }
