@@ -1,8 +1,12 @@
 # Agent Skills
 
-[![skills.sh](https://skills.sh/b/D1ZZY4/agent-skills)](https://skills.sh/D1ZZY4/agent-skills)
+<p align="center">
+  <a href="https://skills.sh/D1ZZY4/agent-skills"><img src="https://skills.sh/b/D1ZZY4/agent-skills" alt="skills.sh"></a>
+</p>
 
 Reusable skills for coding agents. Each skill is a normal directory with `SKILL.md` plus optional `references/`, so you can copy or symlink it into any Agent Skills compatible directory.
+
+<p align="center"><img src="assets/logos/amp.svg" width="28" alt="Amp" title="Amp"> <img src="assets/logos/google-g.svg" width="28" alt="Antigravity" title="Antigravity"> <img src="assets/logos/claude.svg" width="28" alt="Claude Code" title="Claude Code"> <img src="assets/logos/cline.svg" width="28" alt="Cline" title="Cline"> <img src="assets/logos/openai.svg" width="28" alt="Codex" title="Codex"> <img src="assets/logos/cursor.svg" width="28" alt="Cursor" title="Cursor"> <img src="assets/logos/gemini.svg" width="28" alt="Gemini CLI" title="Gemini CLI"> <img src="assets/logos/githubcopilot.svg" width="28" alt="GitHub Copilot" title="GitHub Copilot"> <img src="assets/logos/hermes.svg" width="28" alt="Hermes" title="Hermes"> <img src="assets/logos/opencode.svg" width="28" alt="OpenCode" title="OpenCode"> <img src="assets/logos/pi.svg" width="28" alt="Pi" title="Pi"> <img src="assets/logos/windsurf.svg" width="28" alt="Windsurf" title="Windsurf"></p>
 
 ## Install
 
@@ -95,28 +99,6 @@ Each skill works once its directory is inside a skills path your agent reads. Th
 Preferred path: install with `npx skills add` as shown above.
 
 Manual path: copy or symlink the skill directory into the skills directory your agent documents, then confirm the agent lists the skill. Each skill documents its own triggers and safety rules in its `SKILL.md`.
-
-## Compatible agents
-
-<details>
-<summary>12 tools that read the Agent Skills format</summary>
-
-| Agents |
-|---|
-| <img src="assets/logos/amp.svg" width="24" alt="Amp logo"> Amp |
-| <img src="assets/logos/google-g.svg" width="24" alt="Antigravity logo"> Antigravity |
-| <img src="assets/logos/claude.svg" width="24" alt="Claude Code logo"> Claude Code |
-| <img src="assets/logos/cline.svg" width="24" alt="Cline logo"> Cline |
-| <img src="assets/logos/openai.svg" width="24" alt="Codex logo"> Codex |
-| <img src="assets/logos/cursor.svg" width="24" alt="Cursor logo"> Cursor |
-| <img src="assets/logos/gemini.svg" width="24" alt="Gemini CLI logo"> Gemini CLI |
-| <img src="assets/logos/githubcopilot.svg" width="24" alt="GitHub Copilot logo"> GitHub Copilot |
-| <img src="assets/logos/hermes.svg" width="24" alt="Hermes logo"> Hermes |
-| <img src="assets/logos/opencode.svg" width="24" alt="OpenCode logo"> OpenCode |
-| <img src="assets/logos/pi.svg" width="24" alt="Pi logo"> Pi |
-| <img src="assets/logos/windsurf.svg" width="24" alt="Windsurf logo"> Windsurf |
-
-</details>
 
 ## Contributing
 
