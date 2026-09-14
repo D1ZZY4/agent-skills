@@ -16,6 +16,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   complete structure map, no stale claims, tighter professional wording.
 - Fixed skills.sh.json grouping: redis-expert moves to a new Infrastructure and data
   group matching the README category, added the missing mermaid keyword to plugin.json.
+- Restyled all twelve agent logo tiles with a unified macOS tile system
+  (vertical gradient plus top gloss highlight, corner radius kept at 24 percent).
 
 ## [1.11.0] - 2026-09-14
 

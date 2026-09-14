@@ -4,7 +4,8 @@
 <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
  width="1772.000000pt" height="1799.000000pt" viewBox="0 0 1772.000000 1799.000000"
  preserveAspectRatio="xMidYMid meet">
-<rect x="0" y="0" width="1772.000000" height="1799.000000" rx="425.280000" fill="#ffffff"/>
+<defs><linearGradient id="tileGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e9e9ee"/></linearGradient><linearGradient id="glossGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.5"/><stop offset="0.45" stop-color="#ffffff" stop-opacity="0"/></linearGradient></defs>
+<rect x="0" y="0" width="1772.000000" height="1799.000000" rx="425.280000" fill="url(#tileGrad)"/>
 <clipPath id="artclip"><rect x="120.320000" y="137.940000" width="1531.360000" height="1539.120000" rx="249.497600"/></clipPath>
 <g clip-path="url(#artclip)"><g transform="translate(106.320000,107.940000) scale(0.880000)">
 <metadata>
@@ -549,4 +550,5 @@ c0 -5 -7 -10 -16 -10 -8 0 -12 5 -9 10 3 6 10 10 16 10 5 0 9 -4 9 -10z m150
 97 0 7 9 24 20 38 30 39 26 81 -13 118 -36 35 -50 38 -87 19z"/>
 </g>
 </g></g>
+<rect x="0" y="0" width="1772.000000" height="1799.000000" rx="425.280000" fill="url(#glossGrad)"/>
 </svg>
