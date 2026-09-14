@@ -1,6 +1,6 @@
 # Contributing
 
-Everyone is welcome here. Whether you want to fix a typo, improve a skill, or propose a whole new one, your contribution matters to this repo.
+Everyone is welcome here. Whether you fix a typo, improve a skill, or propose a whole new one, your contribution matters to this repo.
 
 An honest note first: this repository is still young and has plenty of rough edges. Only `context7-expert` has a full comparison against its upstream original so far; the same treatment for the other skills is still pending. Docs may be uneven and conventions are still settling. If you see a gap, that is not a reason to stay away. It is a reason to open an issue or send a pull request.
 
@@ -76,7 +76,7 @@ metadata:
 Rules for the change itself:
 
 - `SKILL.md` is the routing and safety layer. Detailed procedures go in `references/`, and the skill loads only the reference needed for the current step.
-- Bump `metadata.version` when you change a skill. Project versions (`1.Y.Z` headings in `CHANGELOG.md`) and skill versions move independently. Never start a version with `0`.
+- Bump `metadata.version` when you change a skill (version tracks are defined in Ground rules above).
 - Follow the existing voice: clear, direct, developer-facing. No marketing filler, no cleverness where precision matters.
 - Never paste secrets, tokens, or private keys into docs, queries, or commits.
 
@@ -112,7 +112,7 @@ Common types in this history are `docs`, `feat`, `fix`, `refactor`, and `chore`,
 git push origin <short-branch-name>
 ```
 
-Then open a pull request against `main` of the upstream repo. In the description, state what changed, why, what you tested, and what you could not test. Keep the pull request focused: one concern per pull request, so it can be reviewed and reverted cleanly.
+Then open a pull request against `main` of the upstream repo. In the description, state what changed, why, what you tested, and what you could not test. Keep it focused: one concern per pull request, so it can be reviewed and reverted cleanly.
 
 ## Review expectations
 

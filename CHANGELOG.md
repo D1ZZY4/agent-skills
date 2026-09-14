@@ -53,6 +53,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Linked the six skill names in the README Skills table to their relative
   `skills/<name>/SKILL.md` files and added a raw skill file URL pattern for
   harnesses that install from a URL.
+- Polished README and CONTRIBUTING copy: centered the tagline, tightened install
+  and channel wording, aligned setup terms, removed duplicated version rules.
 
 ## [1.10.0] - 2026-09-13
 

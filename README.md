@@ -4,7 +4,7 @@
   <a href="https://skills.sh/D1ZZY4/agent-skills"><img src="https://skills.sh/b/D1ZZY4/agent-skills" alt="skills.sh"></a>
 </p>
 
-Custom skills, ready to use. Six expert skills that plug into your coding agent: documentation lookup, copywriting, README creation, diagrams, Git safety, and Redis.
+<p align="center">Custom expert skills, ready to use in your coding agent.</p>
 
 <p align="center"><img src="assets/logos/amp.svg" width="40" alt="Amp" title="Amp"> <img src="assets/logos/google-g.svg" width="40" alt="Antigravity" title="Antigravity"> <img src="assets/logos/claude.svg" width="40" alt="Claude Code" title="Claude Code"> <img src="assets/logos/cline.svg" width="40" alt="Cline" title="Cline"> <img src="assets/logos/openai.svg" width="40" alt="Codex" title="Codex"> <img src="assets/logos/cursor.svg" width="40" alt="Cursor" title="Cursor"> <img src="assets/logos/gemini.svg" width="40" alt="Gemini CLI" title="Gemini CLI"> <img src="assets/logos/githubcopilot.svg" width="40" alt="GitHub Copilot" title="GitHub Copilot"> <img src="assets/logos/hermes.svg" width="40" alt="Hermes" title="Hermes"> <img src="assets/logos/opencode.svg" width="40" alt="OpenCode" title="OpenCode"> <img src="assets/logos/pi.svg" width="40" alt="Pi" title="Pi"> <img src="assets/logos/windsurf.svg" width="40" alt="Windsurf" title="Windsurf"></p>
 
@@ -22,7 +22,7 @@ Install only the skills you want, one `--skill` flag per skill:
 npx skills add D1ZZY4/agent-skills --skill context7-expert --skill commit-expert
 ```
 
-Running `npx skills add D1ZZY4/agent-skills` without any `--skill` flag installs every skill at once without letting you choose. List first and name the skills you actually use, so nothing is installed unless you select it.
+Without a `--skill` flag, `npx skills add D1ZZY4/agent-skills` installs every skill at once. List first, then name only the skills you use.
 
 ### Official agent channels
 
@@ -47,7 +47,7 @@ hermes skills install D1ZZY4/agent-skills/context7-expert
 cline skill install D1ZZY4/agent-skills
 ```
 
-Cursor, Codex, and GitHub Copilot read the `plugin.json` Agent Plugins manifest at the repo root. Antigravity, OpenCode, Windsurf, and Amp have no public marketplace, so `npx skills add` above is their channel.
+Cursor, Codex, and GitHub Copilot read the `plugin.json` Agent Plugins manifest at the repo root. Antigravity, OpenCode, Windsurf, and Amp have no public marketplace. For those, use `npx skills add` above.
 
 If your harness installs from a URL, point it at a raw skill file. Replace `<skill>` with any name from the table below:
 
@@ -69,7 +69,7 @@ https://raw.githubusercontent.com/D1ZZY4/agent-skills/refs/heads/main/skills/<sk
 
 ## Why these skills
 
-Each skill defines its triggers, safety boundaries, and loading behavior in its own `SKILL.md`. The `context7-expert` entry below also records a full comparison against its upstream original. Differences are tracked in [CHANGELOG.md](CHANGELOG.md). The same comparison format follows for the other skills as their upstream notes land.
+Each skill defines its triggers, safety boundaries, and loading behavior in its own `SKILL.md`. The `context7-expert` entry below also records a full comparison against its upstream original. Differences are tracked in [CHANGELOG.md](CHANGELOG.md). The other skills get the same treatment once their comparisons are written.
 
 ### context7-expert
 
@@ -117,7 +117,7 @@ Each skill works once its directory is inside a skills path your agent reads. Th
 
 Preferred path: install with `npx skills add` as shown above.
 
-Manual path: copy or symlink the skill directory into the skills directory your agent documents, then confirm the agent lists the skill. Each skill documents its own triggers and safety rules in its `SKILL.md`.
+Manual path: copy or symlink the skill directory into a skills path your agent reads, then confirm the agent lists the skill. Each skill documents its own triggers and safety rules in its `SKILL.md`.
 
 ## Contributing
 
