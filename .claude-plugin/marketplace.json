@@ -1,5 +1,5 @@
 {
-  "description": "Agent skills by D1ZZY4: documentation lookup, copywriting, README creation, diagrams, Git safety, and Redis.",
+  "description": "Agent skills by D1ZZY4, ready to use in your coding agent.",
   "name": "d1zzy4-skills",
   "owner": {
     "name": "D1ZZY4",
@@ -7,7 +7,7 @@
   },
   "plugins": [
     {
-      "description": "Custom skills, ready to use: documentation lookup, copywriting, README creation, diagrams, Git safety, and Redis.",
+      "description": "Custom expert skills, ready to use in your coding agent.",
       "name": "agent-skills",
       "source": {
         "repo": "D1ZZY4/agent-skills",

@@ -57,6 +57,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   and channel wording, aligned setup terms, removed duplicated version rules.
 - Made the README compare section generic and neutral: the intro no longer singles
   out one skill, entries follow as comparisons are completed, personal phrasing removed.
+- Synced all marketplace manifest descriptions with the new README tagline so no
+  fixed skill list rots as skills are added.
 
 ## [1.10.0] - 2026-09-13
 
