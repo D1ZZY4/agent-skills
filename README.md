@@ -1,4 +1,4 @@
-# Agent Skills
+<h1 align="center">Agent Skills</h1>
 
 <p align="center">
   <a href="https://skills.sh/D1ZZY4/agent-skills"><img src="https://skills.sh/b/D1ZZY4/agent-skills" alt="skills.sh"></a>
