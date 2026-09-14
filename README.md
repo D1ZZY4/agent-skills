@@ -69,25 +69,25 @@ https://raw.githubusercontent.com/D1ZZY4/agent-skills/refs/heads/main/skills/<sk
 
 ## Why these skills
 
-Each skill defines its triggers, safety boundaries, and loading behavior in its own `SKILL.md`. The `context7-expert` entry below also records a full comparison against its upstream original. Differences are tracked in [CHANGELOG.md](CHANGELOG.md). The other skills get the same treatment once their comparisons are written.
+Each skill defines its triggers, safety boundaries, and loading behavior in its own `SKILL.md`. Where a skill builds on an upstream original, its entry below also records how it works, why it is worth it, and how it differs. Entries are added as their comparisons are completed. Differences are tracked in [CHANGELOG.md](CHANGELOG.md).
 
 ### context7-expert
 
 <details>
-<summary>How it works, why it is worth it, and how it differs from the official</summary>
+<summary>How it works, why it is worth it, and how it differs from upstream</summary>
 
-**How it works**: the skill watches for anything that depends on an external library, framework, SDK, or cloud service, then runs a six-step flow before answering.
+**How it works**: the skill activates on tasks that depend on an external library, framework, SDK, or cloud service, then runs a six-step flow before answering.
 
-1. Decides whether current documentation is actually needed, and skips library-independent questions instead of treating the lookup as a ritual.
+1. Decides whether current documentation is needed and skips library-independent questions.
 2. Picks the strongest available source: project-local docs and lockfiles first, official vendor docs second, Context7 third.
 3. Chooses the available mode: the Context7 MCP when present, the `ctx7` CLI as fallback.
 4. Proposes the lookup to you, including the exact library, the version, and the mode, and waits for your confirmation before any query is sent.
 5. Resolves the library precisely from your manifests, fetches only the reference the task needs, and applies it without silently upgrading your dependency version.
 6. Reports what was verified and what stays uncertain instead of fabricating a method, option, version, or compatibility claim.
 
-**Why it is worth it**: model training data goes stale, and "latest" answers break projects pinned to older versions. This skill answers from current, version-matched documentation. Because every lookup is approved first, it never surprises you with token spend, never sends project details to a remote service without your explicit consent, and never invents an installation state.
+**Why it is worth it**: model training data goes stale, and answers based on "latest" break projects pinned to older versions. This skill answers from current, version-matched documentation. Because every lookup requires approval first, there are no surprise token costs, no project details sent to a remote service without explicit consent, and no invented installation states.
 
-**What differs from the official**: the official Context7 setup is not one skill. It ships as three separate skills in `upstash/context7` (`find-docs` for the CLI lookup flow, `context7-mcp` for the MCP flow, and `context7-cli` for full CLI coverage) plus two standalone rules files (`rules/context7-cli.md` and `rules/context7-mcp.md`). This repo replaces all five files with a single installable skill. In the table, &check; means the version covers it, &cross; means it is absent or not specified, and &bull; means it is partial or varies.
+**What differs from the official**: the official Context7 setup ships as three separate skills in `upstash/context7` (`find-docs` for the CLI lookup flow, `context7-mcp` for the MCP flow, and `context7-cli` for full CLI coverage) plus two standalone rules files (`rules/context7-cli.md` and `rules/context7-mcp.md`). This repo replaces all five files with a single installable skill. In the table, &check; means the version covers it, &cross; means it is absent or not specified, and &bull; means it is partial or varies.
 
 | Category | Official `upstash/context7` | This repo `context7-expert` |
 |----------|----------------------------|-----------------------------|
@@ -106,7 +106,7 @@ Each skill defines its triggers, safety boundaries, and loading behavior in its 
 
 **Weaknesses**: every lookup needs your confirmation, which adds friction for fast, fully-autonomous workflows; it needs the MCP or the `ctx7` CLI to reach Context7 (without them it degrades to local docs and flagged uncertainty); coverage depends on the Context7 index, so new or niche libraries can be missing; and it ships ten references, so the install is larger than a single SKILL.md (progressive disclosure keeps the loaded part small).
 
-**Proactive loading**: you never have to say a magic word. The skill auto-loads whenever the task matches a trigger, for example, a named dependency plus an API question, a version number, migration work, setup, or an error from a specific library. That is especially valuable on free or entry-tier AI models, whose default behavior is to answer from memory: the skill pulls the agent toward checking current documentation instead of hallucinating it. Auto-loading never means auto-querying: the consent gate still applies at the moment the lookup would be sent.
+**Proactive loading**: no invocation phrase is required. The skill auto-loads whenever the task matches a trigger, for example, a named dependency plus an API question, a version number, migration work, setup, or an error from a specific library. This matters most on models that default to answering from memory: the skill directs the agent to check current documentation instead. Auto-loading never means auto-querying. The consent gate still applies before any lookup is sent.
 
 </details>
 

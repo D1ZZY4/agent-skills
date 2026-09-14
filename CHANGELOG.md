@@ -55,6 +55,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   harnesses that install from a URL.
 - Polished README and CONTRIBUTING copy: centered the tagline, tightened install
   and channel wording, aligned setup terms, removed duplicated version rules.
+- Made the README compare section generic and neutral: the intro no longer singles
+  out one skill, entries follow as comparisons are completed, personal phrasing removed.
 
 ## [1.10.0] - 2026-09-13
 
