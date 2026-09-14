@@ -98,34 +98,35 @@ Manual path: copy or symlink the skill directory into the skills directory your 
 
 ## Compatible agents
 
+<details>
+<summary>12 tools that read the Agent Skills format</summary>
+
 These skills use the Agent Skills format and work with tools that read it, including:
 
-- Claude Code
-- Cursor
-- GitHub Copilot
-- Gemini CLI
-- Hermes
-- OpenCode
-- Cline
+| Logo | Agent |
+|---|---|
+| <img src="assets/logos/amp.svg" width="20" alt="Amp logo"> | Amp |
+| <img src="assets/logos/google.svg" width="20" alt="Antigravity logo"> | Antigravity |
+| <img src="assets/logos/anthropic.svg" width="20" alt="Claude Code logo"> | Claude Code |
+| <img src="assets/logos/cline.svg" width="20" alt="Cline logo"> | Cline |
+| <img src="assets/logos/openai.svg" width="20" alt="Codex logo"> | Codex |
+| <img src="assets/logos/cursor.svg" width="20" alt="Cursor logo"> | Cursor |
+| <img src="assets/logos/googlegemini.svg" width="20" alt="Gemini CLI logo"> | Gemini CLI |
+| <img src="assets/logos/githubcopilot.svg" width="20" alt="GitHub Copilot logo"> | GitHub Copilot |
+| <img src="assets/logos/hermes.png" width="20" alt="Hermes logo"> | Hermes |
+| <img src="assets/logos/opencode.svg" width="20" alt="OpenCode logo"> | OpenCode |
+| <img src="assets/logos/pi.svg" width="20" alt="Pi logo"> | Pi |
+| <img src="assets/logos/windsurf.svg" width="20" alt="Windsurf logo"> | Windsurf |
 
 Each agent stores skills in its own configuration directory. Check your agent docs for the correct path.
 
-## Design principles
+All logos and product names belong to their respective vendors.
 
-1. **Progressive disclosure**: `SKILL.md` is the routing and safety layer. Detailed procedures live in `references/`.
-2. **Evidence before certainty**: version-sensitive or environment-specific claims must be verified rather than inferred.
-3. **Project rules win**: repository and product-specific source-of-truth documents override portable defaults.
-4. **Minimal mutation**: inspect freely, mutate only when the user explicitly authorizes the relevant side effect.
-5. **Explicit uncertainty**: never invent tool availability, versions, renderer support, Git policy, or runtime behavior.
-6. **Tool-aware workflows**: use available native tools first; degrade gracefully when a dependency is unavailable.
-7. **No em dashes**: project preference applies to generated documentation, UI copy, and commit messages.
+</details>
 
-## Versioning
+## Contributing
 
-Two independent version tracks are recorded in [CHANGELOG.md](CHANGELOG.md):
-
-- **Project version** (`1.Y.Z`): the repository as a whole.
-- **Skill version** (`1.Y.Z`): each skill tracks `metadata.version` in its own `SKILL.md`.
+Want to fix a skill or propose a new one? Start with [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
