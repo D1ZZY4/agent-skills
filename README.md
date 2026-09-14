@@ -103,18 +103,18 @@ Manual path: copy or symlink the skill directory into the skills directory your 
 
 | Agents |
 |---|
-| <img src="assets/logos/amp.svg" width="20" alt="Amp logo"> Amp |
-| <img src="assets/logos/google-g.svg" width="20" alt="Antigravity logo"> Antigravity |
-| <img src="assets/logos/claude.svg" width="20" alt="Claude Code logo"> Claude Code |
-| <img src="assets/logos/cline.svg" width="20" alt="Cline logo"> Cline |
-| <img src="assets/logos/openai.svg" width="20" alt="Codex logo"> Codex |
-| <img src="assets/logos/cursor.svg" width="20" alt="Cursor logo"> Cursor |
-| <img src="assets/logos/gemini.svg" width="20" alt="Gemini CLI logo"> Gemini CLI |
-| <img src="assets/logos/githubcopilot.svg" width="20" alt="GitHub Copilot logo"> GitHub Copilot |
-| <img src="assets/logos/hermes.svg" width="20" alt="Hermes logo"> Hermes |
-| <img src="assets/logos/opencode.svg" width="20" alt="OpenCode logo"> OpenCode |
-| <img src="assets/logos/pi.svg" width="20" alt="Pi logo"> Pi |
-| <img src="assets/logos/windsurf.svg" width="20" alt="Windsurf logo"> Windsurf |
+| <img src="assets/logos/amp.svg" width="24" alt="Amp logo"> Amp |
+| <img src="assets/logos/google-g.svg" width="24" alt="Antigravity logo"> Antigravity |
+| <img src="assets/logos/claude.svg" width="24" alt="Claude Code logo"> Claude Code |
+| <img src="assets/logos/cline.svg" width="24" alt="Cline logo"> Cline |
+| <img src="assets/logos/openai.svg" width="24" alt="Codex logo"> Codex |
+| <img src="assets/logos/cursor.svg" width="24" alt="Cursor logo"> Cursor |
+| <img src="assets/logos/gemini.svg" width="24" alt="Gemini CLI logo"> Gemini CLI |
+| <img src="assets/logos/githubcopilot.svg" width="24" alt="GitHub Copilot logo"> GitHub Copilot |
+| <img src="assets/logos/hermes.svg" width="24" alt="Hermes logo"> Hermes |
+| <img src="assets/logos/opencode.svg" width="24" alt="OpenCode logo"> OpenCode |
+| <img src="assets/logos/pi.svg" width="24" alt="Pi logo"> Pi |
+| <img src="assets/logos/windsurf.svg" width="24" alt="Windsurf logo"> Windsurf |
 
 </details>
 

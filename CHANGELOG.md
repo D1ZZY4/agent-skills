@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   into a collapsible single-column table (added Amp, Antigravity, Codex, Pi, Windsurf).
 - Upgraded logos to colored brand marks where they exist: Claude starburst, Gemini
   gradient, multicolor Google G, official Cline bot mark, and a traced Hermes SVG.
+- Put every logo on a white rounded tile for a uniform look and dark-mode safety.
 - Removed the Design principles and Versioning sections from README; that content lives
   in `AGENTS.md` and duplicated it added noise for human readers.
 - Fixed a wrong audience pointer in README Setup: replaced the `AGENTS.md` link (agent

@@ -1,1 +1,4 @@
-<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>OpenCode</title><path d="M22 24H2V0h20zM17 4.8H7v14.4h10z"/></svg>
+<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="24" height="24" rx="5.76" fill="#ffffff"/>
+<g transform="translate(3.36,3.36) scale(0.72)"><title>OpenCode</title><path d="M22 24H2V0h20zM17 4.8H7v14.4h10z"/></g>
+</svg>
