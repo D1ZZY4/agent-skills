@@ -8,7 +8,7 @@ description: >
   where the project already has strong conventions.
 license: SSPL-1.0
 metadata:
-  version: 1.13.0
+  version: 1.14.0
   author: D1ZZY4
   priority: medium
 ---
@@ -131,7 +131,8 @@ Always use:
   platform-specific callouts.
 
 Include at least one realistic usage example. Show the common mistake and the corrected
-form when it helps the reader avoid a known pitfall.
+form when it helps the reader avoid a known pitfall. When the README needs a diagram,
+follow `references/diagrams.md`.
 
 ## Step 5: Verify before delivering
 
@@ -172,6 +173,8 @@ Load only the references needed for the README:
   content handling. Start here for any safety-related question.
 - `references/external-readme-sources.md`: external README examples for structural
   inspiration only, fetched only after user confirmation.
+- `references/diagrams.md`: when the README needs a diagram, use `mermaid-diagrams-expert`
+  or its canonical raw URL fallback.
 
 ## Examples
 

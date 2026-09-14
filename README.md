@@ -49,17 +49,23 @@ cline skill install D1ZZY4/agent-skills
 
 Cursor, Codex, and GitHub Copilot read the `plugin.json` Agent Plugins manifest at the repo root. Antigravity, OpenCode, Windsurf, and Amp have no public marketplace, so `npx skills add` above is their channel.
 
+If your harness installs from a URL, point it at a raw skill file. Replace `<skill>` with any name from the table below:
+
+```text
+https://raw.githubusercontent.com/D1ZZY4/agent-skills/refs/heads/main/skills/<skill>/SKILL.md
+```
+
 ---
 ## Skills
 
 | Skill | Category | Description |
 |---|---|---|
-| `context7-expert` | Documentation | Version-aware library and platform documentation lookup; auto-loads but always proposes the query to the user before running it. |
-| `copywriting-expert` | Content | User-facing product and UI copy, including buttons, errors, onboarding, accessibility text, and CLI output. |
-| `create-readme-expert` | Documentation | Source-driven README creation, improvement, and audit. |
-| `mermaid-diagrams-expert` | Documentation | Maintainable Mermaid diagrams for software documentation. |
-| `commit-expert` | Workflow | Repository-aware Git commit and push safety. |
-| `redis-expert` | Infrastructure | Redis architecture, clients, search, clustering, observability, security, and semantic caching. |
+| [`context7-expert`](skills/context7-expert/SKILL.md) | Documentation | Version-aware library and platform documentation lookup; auto-loads but always proposes the query to the user before running it. |
+| [`copywriting-expert`](skills/copywriting-expert/SKILL.md) | Content | User-facing product and UI copy, including buttons, errors, onboarding, accessibility text, and CLI output. |
+| [`create-readme-expert`](skills/create-readme-expert/SKILL.md) | Documentation | Source-driven README creation, improvement, and audit. |
+| [`mermaid-diagrams-expert`](skills/mermaid-diagrams-expert/SKILL.md) | Documentation | Maintainable Mermaid diagrams for software documentation. |
+| [`commit-expert`](skills/commit-expert/SKILL.md) | Workflow | Repository-aware Git commit and push safety. |
+| [`redis-expert`](skills/redis-expert/SKILL.md) | Infrastructure | Redis architecture, clients, search, clustering, observability, security, and semantic caching. |
 
 ## Why these skills
 

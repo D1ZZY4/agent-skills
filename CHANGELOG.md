@@ -10,6 +10,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### create-readme-expert
+
+- Bumped metadata.version to 1.14.0.
+- Added `references/diagrams.md`: use `mermaid-diagrams-expert` when the README needs
+  a diagram, with a canonical raw URL fallback when the skill is not installed.
+- Wired the new reference from Step 4 and the Bundled references list.
+
 ### Repository
 
 - Added official agent channels: Claude marketplace (`.claude-plugin/`), Agent Plugins
@@ -43,6 +50,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   strengths and weaknesses, and proactive loading. The context7 comparison is a collapsible
   block with a per-category table against the official `upstash/context7` layout (three skills
   plus two rules files) using HTML symbols for coverage markers; the other skills are pending.
+- Linked the six skill names in the README Skills table to their relative
+  `skills/<name>/SKILL.md` files and added a raw skill file URL pattern for
+  harnesses that install from a URL.
 
 ## [1.10.0] - 2026-09-13
 
