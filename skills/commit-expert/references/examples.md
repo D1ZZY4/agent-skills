@@ -65,7 +65,7 @@ Bump the metadata version for each skill:
 - context7-expert 1.12.0
 - copywriting-expert 1.6.0
 - create-readme-expert 1.12.0
-- dizzy-commit 1.15.0
+- commit-expert 1.15.0
 - mermaid-diagrams-expert 1.3.0
 - redis-expert 1.3.0
 ```

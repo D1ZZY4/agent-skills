@@ -19,7 +19,7 @@ npx skills add D1ZZY4/agent-skills --list
 Install only the skills you want, one `--skill` flag per skill:
 
 ```bash
-npx skills add D1ZZY4/agent-skills --skill context7-expert --skill dizzy-commit
+npx skills add D1ZZY4/agent-skills --skill context7-expert --skill commit-expert
 ```
 
 Running `npx skills add D1ZZY4/agent-skills` without any `--skill` flag installs every skill at once without letting you choose. List first and name the skills you actually use, so nothing is installed unless you select it.
@@ -33,7 +33,7 @@ Running `npx skills add D1ZZY4/agent-skills` without any `--skill` flag installs
 | `copywriting-expert` | Content | User-facing product and UI copy, including buttons, errors, onboarding, accessibility text, and CLI output. |
 | `create-readme-expert` | Documentation | Source-driven README creation, improvement, and audit. |
 | `mermaid-diagrams-expert` | Documentation | Maintainable Mermaid diagrams for software documentation. |
-| `dizzy-commit` | Workflow | Repository-aware Git commit and push safety. |
+| `commit-expert` | Workflow | Repository-aware Git commit and push safety. |
 | `redis-expert` | Infrastructure | Redis architecture, clients, search, clustering, observability, security, and semantic caching. |
 
 ## Why these skills

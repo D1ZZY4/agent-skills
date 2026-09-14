@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Repository
 
+- Renamed `dizzy-commit` to `commit-expert` to match the `*-expert` convention.
+  Skill version stays 1.17.0; rename only, no behavior change.
+- Unified the Hermes tile corner radius with the other logos (24 percent).
 - Moved all six skills into the standard `skills/` container directory (no functional
   change; skill names and discovery are unchanged).
 - Added `CONTRIBUTING.md`: self-contained contributor guide for humans (fork, branch,
@@ -84,7 +87,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed unicode dash naming from references/formatting-and-punctuation.md; the ASCII-hyphen
   safety warning remains.
 
-### dizzy-commit
+### commit-expert
 
 - Bumped metadata.version to 1.17.0.
 - Modernized the proactive trigger reference: consistent heading naming (When to act,
@@ -197,7 +200,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.8.0] - 2026-09-13
 
-### dizzy-commit
+### commit-expert
 
 - Bumped metadata.version to 1.11.0.
 - Added conflict resolution rule to SKILL.md.
@@ -387,7 +390,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Dependency-free repository validator.
 - Shared verification and failure-handling guidance.
 - Repository README and VERSION metadata.
-- Proactive trigger references for context7-expert, dizzy-commit, and mermaid-diagrams-expert.
+- Proactive trigger references for context7-expert, commit-expert, and mermaid-diagrams-expert.
 
 ### Changed
 
@@ -411,7 +414,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Initial release of agent-skills repository.
 - context7-expert: current, version-aware library and platform documentation lookup.
 - copywriting-expert: user-facing product and UI copy guidance.
-- dizzy-commit: repository-aware Git commit and push safety.
+- commit-expert: repository-aware Git commit and push safety.
 - mermaid-diagrams-expert: maintainable Mermaid diagrams for software documentation.
 - redis-expert: Redis architecture, clients, search, clustering, observability, security, and semantic caching.
 - Progressive disclosure pattern: SKILL.md routing layer with references/ for detailed content.
@@ -465,7 +468,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [⬆ Back to top](#changelog)
 
-### dizzy-commit
+### commit-expert
 
 | Version | Date | Changes |
 |---------|------|---------|

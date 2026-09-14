@@ -19,7 +19,7 @@ Each skill is a normal directory containing `SKILL.md` and optional `references/
 
 - `skills/context7-expert/` - version-aware library and platform documentation lookup
 - `skills/copywriting-expert/` - user-facing product and UI copy guidance
-- `skills/dizzy-commit/` - repository-aware Git commit and push safety
+- `skills/commit-expert/` - repository-aware Git commit and push safety
 - `skills/mermaid-diagrams-expert/` - maintainable Mermaid diagrams for software documentation
 - `skills/redis-expert/` - Redis architecture, clients, search, clustering, observability, security, and semantic caching
 - `skills/create-readme-expert/` - README creation guidance for software projects

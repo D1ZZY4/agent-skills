@@ -1,5 +1,5 @@
 ---
-name: dizzy-commit
+name: commit-expert
 description: >
   Guide safe, repository-aware Git commits and pushes. Inspect repository policy, working-tree
   state, diffs, hooks, tests, branch/upstream configuration, and commit conventions before any
@@ -12,7 +12,7 @@ metadata:
   priority: high
 ---
 
-# Dizzy Commit
+# Commit Expert
 
 ## Purpose
 
