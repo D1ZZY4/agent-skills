@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Repository
 
+- Removed the replit.md symlink and polished AGENTS.md: full six-skill overview,
+  complete structure map, no stale claims, tighter professional wording.
 - Fixed skills.sh.json grouping: redis-expert moves to a new Infrastructure and data
   group matching the README category, added the missing mermaid keyword to plugin.json.
 
