@@ -1,0 +1,5 @@
+{
+  "description": "Custom skills, ready to use: documentation lookup, copywriting, README creation, diagrams, Git safety, and Redis.",
+  "name": "agent-skills",
+  "version": "1.10.0"
+}

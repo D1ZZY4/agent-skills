@@ -1,0 +1,9 @@
+{
+  "author": {
+    "name": "D1ZZY4",
+    "url": "https://github.com/D1ZZY4"
+  },
+  "description": "Custom skills, ready to use: documentation lookup, copywriting, README creation, diagrams, Git safety, and Redis.",
+  "name": "agent-skills",
+  "version": "1.10.0"
+}

@@ -24,6 +24,31 @@ npx skills add D1ZZY4/agent-skills --skill context7-expert --skill commit-expert
 
 Running `npx skills add D1ZZY4/agent-skills` without any `--skill` flag installs every skill at once without letting you choose. List first and name the skills you actually use, so nothing is installed unless you select it.
 
+### Official agent channels
+
+Prefer your agent's own installer over the universal one above:
+
+```bash
+# Claude Code: add the marketplace, then install the plugin
+/plugin marketplace add D1ZZY4/agent-skills
+/plugin install agent-skills@d1zzy4-skills
+
+# Gemini CLI: install the extension
+gemini extensions install https://github.com/D1ZZY4/agent-skills
+
+# Pi: install from git
+pi install git:github.com/D1ZZY4/agent-skills
+
+# Hermes: add the tap, then install a skill
+hermes skills tap add D1ZZY4/agent-skills
+hermes skills install D1ZZY4/agent-skills/context7-expert
+
+# Cline: install from the repo
+cline skill install D1ZZY4/agent-skills
+```
+
+Cursor, Codex, and GitHub Copilot read the `plugin.json` Agent Plugins manifest at the repo root. Antigravity, OpenCode, Windsurf, and Amp have no public marketplace, so `npx skills add` above is their channel.
+
 ---
 ## Skills
 

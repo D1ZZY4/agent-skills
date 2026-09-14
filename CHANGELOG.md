@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Repository
 
+- Added official agent channels: Claude marketplace (`.claude-plugin/`), Agent Plugins
+  manifest (`plugin.json`, shared by Cursor, Codex, and Copilot), and Gemini
+  extension (`gemini-extension.json`), plus a README channel guide.
 - Renamed `dizzy-commit` to `commit-expert` to match the `*-expert` convention.
   Skill version stays 1.17.0; rename only, no behavior change.
 - Unified the Hermes tile corner radius with the other logos (24 percent).
