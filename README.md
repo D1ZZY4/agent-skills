@@ -101,26 +101,20 @@ Manual path: copy or symlink the skill directory into the skills directory your 
 <details>
 <summary>12 tools that read the Agent Skills format</summary>
 
-These skills use the Agent Skills format and work with tools that read it, including:
-
-| Logo | Agent |
-|---|---|
-| <img src="assets/logos/amp.svg" width="20" alt="Amp logo"> | Amp |
-| <img src="assets/logos/google.svg" width="20" alt="Antigravity logo"> | Antigravity |
-| <img src="assets/logos/anthropic.svg" width="20" alt="Claude Code logo"> | Claude Code |
-| <img src="assets/logos/cline.svg" width="20" alt="Cline logo"> | Cline |
-| <img src="assets/logos/openai.svg" width="20" alt="Codex logo"> | Codex |
-| <img src="assets/logos/cursor.svg" width="20" alt="Cursor logo"> | Cursor |
-| <img src="assets/logos/googlegemini.svg" width="20" alt="Gemini CLI logo"> | Gemini CLI |
-| <img src="assets/logos/githubcopilot.svg" width="20" alt="GitHub Copilot logo"> | GitHub Copilot |
-| <img src="assets/logos/hermes.png" width="20" alt="Hermes logo"> | Hermes |
-| <img src="assets/logos/opencode.svg" width="20" alt="OpenCode logo"> | OpenCode |
-| <img src="assets/logos/pi.svg" width="20" alt="Pi logo"> | Pi |
-| <img src="assets/logos/windsurf.svg" width="20" alt="Windsurf logo"> | Windsurf |
-
-Each agent stores skills in its own configuration directory. Check your agent docs for the correct path.
-
-All logos and product names belong to their respective vendors.
+| Agents |
+|---|
+| <img src="assets/logos/amp.svg" width="20" alt="Amp logo"> Amp |
+| <img src="assets/logos/google.svg" width="20" alt="Antigravity logo"> Antigravity |
+| <img src="assets/logos/anthropic.svg" width="20" alt="Claude Code logo"> Claude Code |
+| <img src="assets/logos/cline.svg" width="20" alt="Cline logo"> Cline |
+| <img src="assets/logos/openai.svg" width="20" alt="Codex logo"> Codex |
+| <img src="assets/logos/cursor.svg" width="20" alt="Cursor logo"> Cursor |
+| <img src="assets/logos/googlegemini.svg" width="20" alt="Gemini CLI logo"> Gemini CLI |
+| <img src="assets/logos/githubcopilot.svg" width="20" alt="GitHub Copilot logo"> GitHub Copilot |
+| <img src="assets/logos/hermes.png" width="20" alt="Hermes logo"> Hermes |
+| <img src="assets/logos/opencode.svg" width="20" alt="OpenCode logo"> OpenCode |
+| <img src="assets/logos/pi.svg" width="20" alt="Pi logo"> Pi |
+| <img src="assets/logos/windsurf.svg" width="20" alt="Windsurf logo"> Windsurf |
 
 </details>
 
