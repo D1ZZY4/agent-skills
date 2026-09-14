@@ -94,7 +94,7 @@ Each skill works once its directory is inside a skills path your agent reads. Th
 
 Preferred path: install with `npx skills add` as shown above.
 
-Manual path: copy or symlink the skill directory into the skills directory your agent documents, then confirm the agent lists the skill. See [AGENTS.md](AGENTS.md) for the rules these skills follow.
+Manual path: copy or symlink the skill directory into the skills directory your agent documents, then confirm the agent lists the skill. Each skill documents its own triggers and safety rules in its `SKILL.md`.
 
 ## Compatible agents
 

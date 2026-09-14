@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Repository
 
+- Fixed a wrong audience pointer in README Setup: replaced the `AGENTS.md` link (agent
+  working rules) with a pointer to each skill's own `SKILL.md` for human readers.
 - Polished README with `create-readme-expert` (Improve) and `copywriting-expert`:
   - fixed `context7-expert` reference count from 9 to 10 to match `context7-expert/references/`
   - corrected the "Why these skills" intro so only `context7-expert` claims a full upstream comparison
