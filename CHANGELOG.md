@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.11.0] - 2026-09-14
+
 ### create-readme-expert
 
 - Bumped metadata.version to 1.14.0.
@@ -449,6 +451,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Skills | Key changes |
 |---------|------|--------|-------------|
+| 1.11.0 | 2026-09-14 | 6 | Agent marketplace manifests, skills/ move, commit-expert rename, CONTRIBUTING, agent logos, README polish, create-readme-expert diagrams reference |
 | 1.9.0 | 2026-09-13 | 6 | context7-expert W011 response, skills.sh.json schema fix, README selective install docs |
 | 1.8.0 | 2026-09-13 | 6 | context7-expert security hardening, SSPL-1.0 relicensing, README install fix |
 | 1.6.0 | 2026-08-16 | 1 | create-readme-expert review feedback: scope control, missing info handling, audience id, inspection checklist, voice preservation, unsupported claims example |
@@ -531,6 +534,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.14.0 | 2026-09-14 | Diagrams reference with mermaid-diagrams-expert routing and canonical raw URL fallback |
 | 1.13.0 | 2026-09-13 | Proactive trigger reference modernization: consistent headings, how-to-offer section |
 | 1.11.0 | 2026-09-13 | GitHub-style alert callouts example for secrets and destructive actions, callout rules in formatting-and-punctuation, example wired into SKILL.md steps |
 | 1.10.0 | 2026-09-13 | W011 response: user consent before external README fetches, security.md with untrusted content rules, anti-pattern additions |
