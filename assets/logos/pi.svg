@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
-<defs><linearGradient id="tileGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e9e9ee"/></linearGradient><linearGradient id="glossGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.5"/><stop offset="0.45" stop-color="#ffffff" stop-opacity="0"/></linearGradient></defs>
+<defs>
+<linearGradient id="tileGrad" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#ffffff"/>
+<stop offset="1" stop-color="#F2F2F7"/>
+</linearGradient>
+<linearGradient id="glossGrad" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#ffffff" stop-opacity="0.5"/>
+<stop offset="0.45" stop-color="#ffffff" stop-opacity="0"/>
+</linearGradient>
+</defs>
 <rect x="0" y="0" width="800" height="800" rx="192" fill="url(#tileGrad)"/>
 <g transform="translate(112,112) scale(0.72)">
   <style>

@@ -18,6 +18,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   group matching the README category, added the missing mermaid keyword to plugin.json.
 - Restyled all twelve agent logo tiles with a unified macOS tile system
   (vertical gradient plus top gloss highlight, corner radius kept at 24 percent).
+- Tidied logo tile code (one element per line) and neutralized the tile
+  gradient foot to authentic white #F2F2F7.
 
 ## [1.11.0] - 2026-09-14
 

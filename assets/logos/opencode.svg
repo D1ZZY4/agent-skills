@@ -1,6 +1,18 @@
 <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<defs><linearGradient id="tileGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e9e9ee"/></linearGradient><linearGradient id="glossGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.5"/><stop offset="0.45" stop-color="#ffffff" stop-opacity="0"/></linearGradient></defs>
+<defs>
+<linearGradient id="tileGrad" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#ffffff"/>
+<stop offset="1" stop-color="#F2F2F7"/>
+</linearGradient>
+<linearGradient id="glossGrad" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#ffffff" stop-opacity="0.5"/>
+<stop offset="0.45" stop-color="#ffffff" stop-opacity="0"/>
+</linearGradient>
+</defs>
 <rect x="0" y="0" width="24" height="24" rx="5.76" fill="url(#tileGrad)"/>
-<g transform="translate(3.36,3.36) scale(0.72)"><title>OpenCode</title><path d="M22 24H2V0h20zM17 4.8H7v14.4h10z"/></g>
+<g transform="translate(3.36,3.36) scale(0.72)">
+<title>OpenCode</title>
+<path d="M22 24H2V0h20zM17 4.8H7v14.4h10z"/>
+</g>
 <rect x="0" y="0" width="24" height="24" rx="5.76" fill="url(#glossGrad)"/>
 </svg>

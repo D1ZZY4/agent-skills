@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg id="Ebene_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 466.73 487.04">
-<defs><linearGradient id="tileGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e9e9ee"/></linearGradient><linearGradient id="glossGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.5"/><stop offset="0.45" stop-color="#ffffff" stop-opacity="0"/></linearGradient></defs>
+<defs>
+<linearGradient id="tileGrad" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#ffffff"/>
+<stop offset="1" stop-color="#F2F2F7"/>
+</linearGradient>
+<linearGradient id="glossGrad" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#ffffff" stop-opacity="0.5"/>
+<stop offset="0.45" stop-color="#ffffff" stop-opacity="0"/>
+</linearGradient>
+</defs>
 <rect x="0" y="0" width="466.73" height="487.04" rx="112.015" fill="url(#tileGrad)"/>
 <g transform="translate(65.3422,68.1856) scale(0.72)">
   <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->
