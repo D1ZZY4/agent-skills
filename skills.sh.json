@@ -4,7 +4,7 @@
   "groupings": [
     {
       "title": "Documentation and content",
-      "description": "Skills for finding documentation and producing written content for agents.",
+      "description": "Current library docs, product copy, README files, and diagrams.",
       "skills": [
         "context7-expert",
         "copywriting-expert",
@@ -14,7 +14,7 @@
     },
     {
       "title": "Development workflow",
-      "description": "Skills for safe engineering workflows, version control, and data infrastructure.",
+      "description": "Safe Git commits and pushes, plus Redis architecture and operations.",
       "skills": [
         "dizzy-commit",
         "redis-expert"

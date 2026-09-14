@@ -17,12 +17,12 @@ Each skill is a normal directory containing `SKILL.md` and optional `references/
 
 ## Repository structure
 
-- `context7-expert/` - version-aware library and platform documentation lookup
-- `copywriting-expert/` - user-facing product and UI copy guidance
-- `dizzy-commit/` - repository-aware Git commit and push safety
-- `mermaid-diagrams-expert/` - maintainable Mermaid diagrams for software documentation
-- `redis-expert/` - Redis architecture, clients, search, clustering, observability, security, and semantic caching
-- `create-readme-expert/` - README creation guidance for software projects
+- `skills/context7-expert/` - version-aware library and platform documentation lookup
+- `skills/copywriting-expert/` - user-facing product and UI copy guidance
+- `skills/dizzy-commit/` - repository-aware Git commit and push safety
+- `skills/mermaid-diagrams-expert/` - maintainable Mermaid diagrams for software documentation
+- `skills/redis-expert/` - Redis architecture, clients, search, clustering, observability, security, and semantic caching
+- `skills/create-readme-expert/` - README creation guidance for software projects
 - `CHANGELOG.md` - project changelog with per-skill version tracking
 - `README.md` - project overview and design principles
 - `LICENSE` - SSPL-1.0 License, Copyright (c) 2026 D1ZZY4

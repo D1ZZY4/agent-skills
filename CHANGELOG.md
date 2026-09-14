@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Repository
 
+- Moved all six skills into the standard `skills/` container directory (no functional
+  change; skill names and discovery are unchanged).
 - Added `CONTRIBUTING.md`: self-contained contributor guide for humans (fork, branch,
   test, changelog, signed commit, pull request), with no pointer into agent rule files.
 - Added `assets/logos/` with verified agent logos and turned README Compatible agents
@@ -26,7 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed a wrong audience pointer in README Setup: replaced the `AGENTS.md` link (agent
   working rules) with a pointer to each skill's own `SKILL.md` for human readers.
 - Polished README with `create-readme-expert` (Improve) and `copywriting-expert`:
-  - fixed `context7-expert` reference count from 9 to 10 to match `context7-expert/references/`
+  - fixed `context7-expert` reference count from 9 to 10 to match `skills/context7-expert/references/`
   - corrected the "Why these skills" intro so only `context7-expert` claims a full upstream comparison
   - clarified Packaging and License rows against upstream `upstash/context7` (MIT)
   - added a Skills index table and a two-path Setup section (preferred `npx skills add`, manual copy or symlink)

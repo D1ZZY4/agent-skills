@@ -4,7 +4,7 @@
   <a href="https://skills.sh/D1ZZY4/agent-skills"><img src="https://skills.sh/b/D1ZZY4/agent-skills" alt="skills.sh"></a>
 </p>
 
-Reusable skills for coding agents. Each skill is a normal directory with `SKILL.md` plus optional `references/`, so you can copy or symlink it into any Agent Skills compatible directory.
+Custom skills, ready to use. Six expert skills that plug into your coding agent: documentation lookup, copywriting, README creation, diagrams, Git safety, and Redis.
 
 <p align="center"><img src="assets/logos/amp.svg" width="40" alt="Amp" title="Amp"> <img src="assets/logos/google-g.svg" width="40" alt="Antigravity" title="Antigravity"> <img src="assets/logos/claude.svg" width="40" alt="Claude Code" title="Claude Code"> <img src="assets/logos/cline.svg" width="40" alt="Cline" title="Cline"> <img src="assets/logos/openai.svg" width="40" alt="Codex" title="Codex"> <img src="assets/logos/cursor.svg" width="40" alt="Cursor" title="Cursor"> <img src="assets/logos/gemini.svg" width="40" alt="Gemini CLI" title="Gemini CLI"> <img src="assets/logos/githubcopilot.svg" width="40" alt="GitHub Copilot" title="GitHub Copilot"> <img src="assets/logos/hermes.svg" width="40" alt="Hermes" title="Hermes"> <img src="assets/logos/opencode.svg" width="40" alt="OpenCode" title="OpenCode"> <img src="assets/logos/pi.svg" width="40" alt="Pi" title="Pi"> <img src="assets/logos/windsurf.svg" width="40" alt="Windsurf" title="Windsurf"></p>
 
@@ -35,18 +35,6 @@ Running `npx skills add D1ZZY4/agent-skills` without any `--skill` flag installs
 | `mermaid-diagrams-expert` | Documentation | Maintainable Mermaid diagrams for software documentation. |
 | `dizzy-commit` | Workflow | Repository-aware Git commit and push safety. |
 | `redis-expert` | Infrastructure | Redis architecture, clients, search, clustering, observability, security, and semantic caching. |
-
-### Documentation and content
-
-- `context7-expert`: current, version-aware library and platform documentation lookup; auto-loads but always proposes the query to the user before running it.
-- `copywriting-expert`: user-facing product and UI copy, including buttons, errors, onboarding, accessibility text, and CLI output.
-- `create-readme-expert`: source-driven README creation, improvement, and audit.
-- `mermaid-diagrams-expert`: maintainable Mermaid diagrams for software documentation.
-
-### Development workflow
-
-- `dizzy-commit`: repository-aware Git commit and push safety.
-- `redis-expert`: Redis architecture, clients, search, clustering, observability, security, and semantic caching.
 
 ## Why these skills
 
