@@ -12,6 +12,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Repository
 
+- Polished README with `create-readme-expert` (Improve) and `copywriting-expert`:
+  - fixed `context7-expert` reference count from 9 to 10 to match `context7-expert/references/`
+  - corrected the "Why these skills" intro so only `context7-expert` claims a full upstream comparison
+  - clarified Packaging and License rows against upstream `upstash/context7` (MIT)
+  - added a Skills index table and a two-path Setup section (preferred `npx skills add`, manual copy or symlink)
 - Added a "Why these skills" README section comparing each skill against its original, framed
   around how the skill works, why it is worth it, the differences from the official version,
   strengths and weaknesses, and proactive loading. The context7 comparison is a collapsible
