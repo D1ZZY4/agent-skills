@@ -16,6 +16,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   test, changelog, signed commit, pull request), with no pointer into agent rule files.
 - Added `assets/logos/` with verified agent logos and turned README Compatible agents
   into a collapsible single-column table (added Amp, Antigravity, Codex, Pi, Windsurf).
+- Upgraded logos to colored brand marks where they exist: Claude starburst, Gemini
+  gradient, multicolor Google G, official Cline bot mark, and a traced Hermes SVG.
 - Removed the Design principles and Versioning sections from README; that content lives
   in `AGENTS.md` and duplicated it added noise for human readers.
 - Fixed a wrong audience pointer in README Setup: replaced the `AGENTS.md` link (agent
