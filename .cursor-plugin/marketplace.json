@@ -1,0 +1,69 @@
+{
+  "name": "agent-skills",
+  "owner": {
+    "name": "D1ZZY4",
+    "url": "https://github.com/D1ZZY4"
+  },
+  "metadata": {
+    "description": "Custom expert skills for Cursor",
+    "version": "1.12.0"
+  },
+  "plugins": [
+    {
+      "name": "context7-expert",
+      "source": "./skills/context7-expert",
+      "description": "Version-aware library and platform documentation lookup through Context7.",
+      "version": "1.13.1",
+      "category": "documentation",
+      "tags": ["documentation", "context7", "api-docs"]
+    },
+    {
+      "name": "copywriting-expert",
+      "source": "./skills/copywriting-expert",
+      "description": "User-facing product and UI copy, including errors, onboarding, and CLI output.",
+      "version": "1.7.1",
+      "category": "content",
+      "tags": ["copywriting", "content"]
+    },
+    {
+      "name": "create-readme-expert",
+      "source": "./skills/create-readme-expert",
+      "description": "Source-driven README creation, improvement, and audit.",
+      "version": "1.14.1",
+      "category": "documentation",
+      "tags": ["documentation", "readme"]
+    },
+    {
+      "name": "mermaid-diagrams-expert",
+      "source": "./skills/mermaid-diagrams-expert",
+      "description": "Maintainable Mermaid diagrams for software documentation.",
+      "version": "1.5.0",
+      "category": "documentation",
+      "tags": ["diagrams", "mermaid", "architecture"]
+    },
+    {
+      "name": "commit-expert",
+      "source": "./skills/commit-expert",
+      "description": "Repository-aware Git commit and push safety.",
+      "version": "1.17.0",
+      "category": "workflow",
+      "tags": ["git", "commit", "workflow"]
+    },
+    {
+      "name": "redis-expert",
+      "source": "./skills/redis-expert",
+      "description": "Redis architecture, clients, search, clustering, observability, security, semantic caching, and agent memory.",
+      "version": "1.5.0",
+      "category": "infrastructure",
+      "tags": ["redis", "vector-search", "rag", "semantic-cache", "agent-memory"]
+    },
+    {
+      "name": "deep-research-expert",
+      "source": "./skills/deep-research-expert",
+      "description": "Evidence-graded technical research, audits, and reviews against real sources.",
+      "version": "1.0.0",
+      "category": "research",
+      "tags": ["research", "audit"]
+    }
+  ]
+}

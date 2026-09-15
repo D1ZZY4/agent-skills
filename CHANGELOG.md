@@ -10,6 +10,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### redis-expert
+
+- Bumped metadata.version to 1.5.1.
+- Dropped the per-skill `.cursor-plugin/` packaging pointers from `SKILL.md`
+  following the move to project-level Cursor packaging.
+
+### Repository
+
+- Added project-level Cursor plugin marketplace at `.cursor-plugin/marketplace.json`
+  covering all seven skills with per-skill versions, categories, and tags.
+- Removed the per-skill `.cursor-plugin/` packaging from `skills/redis-expert/`
+  (merged manifest plus seven upstream per-domain manifests); Cursor packaging now
+  lives in one place at the repository root.
+
 ## [1.12.0] - 2026-09-15
 
 <details>

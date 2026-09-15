@@ -45,6 +45,10 @@ hermes skills install D1ZZY4/agent-skills/context7-expert
 
 # Cline: install from the repo
 cline skill install D1ZZY4/agent-skills
+
+# Cursor: add the marketplace, then install from chat
+# marketplace file: .cursor-plugin/marketplace.json in this repo
+/add-plugin agent-skills
 ```
 
 Cursor, Codex, and GitHub Copilot read the `plugin.json` Agent Plugins manifest at the repo root. Antigravity, OpenCode, Windsurf, and Amp have no public marketplace. For those, use `npx skills add` above.

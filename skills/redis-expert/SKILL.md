@@ -14,7 +14,7 @@ description: >
   right domain loads automatically without picking between separate ones.
 license: SSPL-1.0
 metadata:
-  version: 1.5.0
+  version: 1.5.1
   author: D1ZZY4
   priority: low
 ---
@@ -199,16 +199,11 @@ Organized by domain, matching the upstream official skills plus the Iris agent-m
 
 ## Non-reference bundled content
 
-- `.cursor-plugin/plugin.json`: a merged Cursor plugin manifest representing this skill as a
-  whole (combined keywords and description from all covered domains).
-- `.cursor-plugin/original-domains/`: the 7 original per-domain plugin manifests
-  (`redis-core.json`, `redis-search.json`, and so on), preserved unmodified in content, kept
-  for reference and in case a tool wants the original per-domain metadata rather than the
-  merged one. The Iris domain has no upstream per-domain manifest bundled; its routing lives
-  in `references/iris/`.
 - No evaluation suite is bundled in this aggregate. Validate Redis-specific guidance against the
   target Redis version, modules, client library, and deployment model before treating it as an
   authoritative implementation contract.
+- Cursor plugin packaging lives at the project level (`.cursor-plugin/marketplace.json`),
+  covering every skill in this repository rather than this skill alone.
 
 Original source: https://github.com/redis/agent-skills (MIT licensed, Redis, Inc.). This merge
 reorganizes the upstream domain skills into one, adds proactive triggering and cross-domain routing,
