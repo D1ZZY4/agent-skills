@@ -130,3 +130,7 @@ Rules for this trailer:
 | `revert` | Reverting a prior commit |
 
 Breaking change: append `!` after type/scope, explain in body with `BREAKING CHANGE: ...`.
+
+## Sources checked
+
+- Conventional Commits specification: https://www.conventionalcommits.org/en/v1.0.0/#specification

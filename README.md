@@ -113,6 +113,71 @@ Each skill defines its triggers, safety boundaries, and loading behavior in its 
 
 **Proactive loading**: no invocation phrase is required. The skill auto-loads whenever the task matches a trigger, for example, a named dependency plus an API question, a version number, migration work, setup, or an error from a specific library. This matters most on models that default to answering from memory: the skill directs the agent to check current documentation instead. Auto-loading never means auto-querying. The consent gate still applies before any lookup is sent.
 
+**Sources**: [upstash/context7](https://github.com/upstash/context7) (MIT) with its [find-docs](https://github.com/upstash/context7/tree/master/skills/find-docs), [context7-mcp](https://github.com/upstash/context7/tree/master/skills/context7-mcp), and [context7-cli](https://github.com/upstash/context7/tree/master/skills/context7-cli) skills plus [rules files](https://github.com/upstash/context7/tree/master/rules); [context7.com](https://context7.com) for API keys and rate limits.
+
+</details>
+
+### deep-research-expert
+
+<details>
+<summary>How it works, why it is worth it, and how it differs from upstream</summary>
+
+**How it works**: the skill proposes a research plan (scope, sources, stopping rule), reads the full scope before judging any of it, climbs a six-rung source ladder, grades each load-bearing claim with evidence labels, and delivers a severity-ranked report. For code review it switches to a dedicated two-axis flow (Standards vs Spec) against a caller-supplied fixed point.
+
+**Why it is worth it**: audits fail in predictable ways (sampled files presented as full coverage, one snippet treated as confirmation, invented links). This skill turns each failure into a named rule with a check, so the report states what was verified, what was partial, and what was never checked.
+
+**What differs from the originals**: there are two upstreams. [mattpocock/skills code-review](https://raw.githubusercontent.com/mattpocock/skills/refs/heads/main/skills/engineering/code-review/SKILL.md) is a single-purpose diff reviewer (two axes, parallel sub-agents, Fowler smell baseline). [199-biotechnologies/claude-deep-research-skill](https://github.com/199-biotechnologies/claude-deep-research-skill) (MIT) is a phased research pipeline with depth modes, disk-persisted evidence stores, and validation scripts. This repo generalizes the first beyond diffs (any technical surface, plus source ladder and grading) and keeps the second lean (no file outputs, scripts, or HTML reports by default; evidence labels instead of JSONL stores). Wording is original throughout. In the table, &check; means the version covers it, &cross; means it is absent or not specified, and &bull; means it is partial or varies.
+
+| Category | mattpocock `code-review` | `199-biotechnologies` deep-research | This repo `deep-research-expert` |
+|----------|--------------------------|-------------------------------------|----------------------------------|
+| Scope | &bull; diffs since a fixed point only | &check; any research question | &check; any technical surface, plus a dedicated review mode |
+| Depth control | &cross; one fixed flow | &check; quick/standard/deep/ultradeep modes | &bull; plan proposal with stopping rule, one critique loop max |
+| Source hierarchy | &cross; repo docs assumed | &bull; multi-provider search, no fixed ladder | &check; six-rung ladder, weaker never overrules stronger |
+| Claim verification | &bull; spec-line quotes per finding | &check; 3+ sources per claim, validation scripts | &check; two-source rule plus Verified/Partial/Unverified labels |
+| Evidence persistence | &cross; report only | &check; JSONL stores, HTML/PDF outputs | &cross; report carries methodology instead |
+| Code review mode | &check; Standards vs Spec axes | &cross; | &check; adapted axes plus smell baseline |
+| License | &bull; see upstream repo | &bull; MIT licensed | &check; unified SSPL-1.0 |
+
+**Strengths**: full-scope reading before judging; explicit uncertainty labels; raw URL fallbacks so missing skills degrade gracefully instead of guessing; a review mode with independent axes that stop one verdict from masking the other.
+
+**Weaknesses**: thorough by design, so slower than a spot check; needs network access for the fetch-and-verify steps (without it, it degrades to labeled uncertainty rather than answers); no executable validators, so citation hygiene relies on agent discipline rather than scripts.
+
+**Proactive loading**: offers research when accuracy, currency, or completeness is questioned, when a claim carries version/URL/syntax risk, or before material ships as authoritative. Stays quiet for small stable questions answerable from verified local material.
+
+**Sources**: [mattpocock/skills code-review](https://raw.githubusercontent.com/mattpocock/skills/refs/heads/main/skills/engineering/code-review/SKILL.md); [199-biotechnologies/claude-deep-research-skill](https://github.com/199-biotechnologies/claude-deep-research-skill) ([SKILL.md](https://raw.githubusercontent.com/199-biotechnologies/claude-deep-research-skill/main/SKILL.md), MIT). Later additions adapt its quality gates (as a checklist), outline refinement, and counterevidence discipline the same way.
+
+</details>
+
+### commit-expert
+
+<details>
+<summary>How it works, why it is worth it, and how it differs from upstream</summary>
+
+**How it works**: the skill inspects repository policy, working-tree state, diffs, hooks, branch/upstream configuration, and commit conventions before any mutation, then stages explicit paths, writes the message per repository convention, verifies checks, and mutates only within the granted scope. A dirty tree after real work triggers one short check-in, never silent commits.
+
+**Why it is worth it**: commits stay reviewable, revertible, signed, and secret-free without relying on agent goodwill. The safety boundary (inspection free, mutation needs explicit authorization) makes the most dangerous Git operations boring and predictable.
+
+**What differs from the originals**: there are two upstreams. [awesome-copilot conventional-commit](https://raw.githubusercontent.com/github/awesome-copilot/main/skills/conventional-commit/SKILL.md) is a 72-line XML prompt template for message format only, and it auto-runs `git commit` with no confirmation step. [caveman-commit](https://raw.githubusercontent.com/JuliusBrussee/caveman/main/skills/caveman-commit/SKILL.md) (106k stars) writes terse Conventional Commits messages with strict subject/body rules and explicit message-only boundaries. This repo keeps caveman-grade message discipline and adds the full safety workflow neither upstream has. In the table, &check; means the version covers it, &cross; means it is absent or not specified, and &bull; means it is partial or varies.
+
+| Category | awesome-copilot `conventional-commit` | `caveman-commit` | This repo `commit-expert` |
+|----------|---------------------------------------|------------------|---------------------------|
+| Scope | &bull; message format only | &bull; message text only | &check; full workflow: inspect, stage, message, verify, push |
+| Confirmation before mutating | &cross; commits with no confirmation | &check; never stages or commits at all | &check; explicit authorization per side effect |
+| Message format | &check; Conventional Commits XML template | &check; terse rules, 50/72 chars, never-include list | &check; same discipline, repo convention wins over template |
+| Commit strategy | &cross; | &cross; | &check; auto plus explicit grouping strategies |
+| Signing | &cross; | &cross; | &check; GPG inspection, mechanics, pre-push verification |
+| Push and upstream | &cross; | &cross; | &check; authorization, upstream checks, no force-push |
+| Proactive check-in | &cross; | &cross; | &check; one short prompt on a dirty tree after real work |
+| License | &bull; see upstream repo | &bull; see upstream repo | &check; unified SSPL-1.0 |
+
+**Strengths**: message quality on par with the best message-only skills; plus signed commits, secret scanning, strategy-driven grouping, and push safety they do not attempt; the check-in flow keeps trees from rotting silently.
+
+**Weaknesses**: heavier than a message-only skill: policy inspection, diff review, and explicit confirmations add steps to every commit; needs a configured signing key and upstream to use the full flow; overkill for a trivial single-file typo fix where `caveman-commit` style output alone would do.
+
+**Proactive loading**: checks in once when real work left the tree dirty, and stays silent on a clean tree. Never stages, commits, or pushes to earn that diligence.
+
+**Sources**: [awesome-copilot conventional-commit](https://raw.githubusercontent.com/github/awesome-copilot/main/skills/conventional-commit/SKILL.md); [caveman-commit](https://raw.githubusercontent.com/JuliusBrussee/caveman/main/skills/caveman-commit/SKILL.md); [Conventional Commits specification](https://www.conventionalcommits.org/en/v1.0.0/#specification).
+
 </details>
 
 ---

@@ -10,6 +10,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### commit-expert
+
+- Bumped metadata.version to 1.17.1.
+- Added the Conventional Commits specification source to
+  `references/message-style.md`.
+
+### deep-research-expert
+
+- Bumped metadata.version to 1.4.0.
+- Added `references/quality-checklist.md`: pre-delivery checks for truncation,
+  placeholders, citation hygiene, fact-versus-synthesis marking, and density.
+- Added outline check to `references/depth-modes.md` and counterevidence plus
+  metadata footer plus long-report delivery to `references/report-format.md`.
+- Wired the checklist into SKILL.md Step 4.
+- Added `references/code-review.md`: two-axis review (Standards vs Spec) against
+  a fixed point, smell baseline, and critique loop, adapted from
+  mattpocock/skills code-review and 199-biotechnologies/claude-deep-research-skill.
+- Added `references/depth-modes.md` (Spot, Standard, Deep) and
+  `references/critique.md` (three personas, delta queries, one-round stop rule).
+- Extended `references/source-ladder.md` with retrieval discipline (date check,
+  parallel fetches, structured notes, dedup by origin).
+- Review-mode routing: description triggers on code review, Step 4 defers to the
+  code-review aggregate format, trigger covers review tasks with fixed point
+  and spec source up front.
+- Large-diff guard in `references/code-review.md`; mode-switch rule in
+  `references/depth-modes.md`; downgrade cross-link in
+  `references/evidence-grading.md`.
+- Added a pair-to-compare README block for deep-research-expert and source links
+  to the context7-expert compare block.
+
 ## [1.13.0] - 2026-09-15
 
 <details>

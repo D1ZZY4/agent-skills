@@ -51,3 +51,16 @@ for example `references/cli-mode.md`.
   location for at least two or three samples before rewriting every link.
 - Never transmit secrets, tokens, personal data, or proprietary code to reach a
   source. Redact queries first or ask.
+
+## Retrieval discipline
+
+- Establish the current date before time-sensitive research so recency claims
+  ("latest", "new", "deprecated") anchor to something real.
+- Retrieve independent sources in parallel where the harness allows it; batch
+  the fetches, then triangulate. Parallel calls share nothing until the
+  comparison step, which keeps one source from framing the others.
+- Take structured notes per source (claim, quote or locator, source strength)
+  as you go. A claim ledger in the report (see `report-format.md`) is built
+  from these notes, not reconstructed from memory at the end.
+- Deduplicate by origin: three pages quoting the same upstream announcement
+  count as one source, not three.

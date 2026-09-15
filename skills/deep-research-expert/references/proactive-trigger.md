@@ -13,6 +13,9 @@ time and network calls, so the offer must earn its keep.
   as authoritative.
 - The same surface has drifted before (an upstream repo restructured, a docs site
   migrated paths, a preview feature went GA).
+- A branch, PR, or work-in-progress change is up for review, especially with a
+  spec or issue to check against: load `code-review.md` and run its two-axis
+  flow instead of a generic read-through.
 
 ## When to stay quiet
 
@@ -25,4 +28,6 @@ time and network calls, so the offer must earn its keep.
 
 Name the scope, the sources, and the stopping rule in one short proposal: "I can deep
 check the 14 links in this skill against the live docs and report dead ones. Proceed?"
-For ambiguous scope, offer two depths (spot check vs full audit) and let the user pick.
+For ambiguous scope, offer a depth from `depth-modes.md` (Spot, Standard, or Deep)
+and let the user pick. For review tasks, name the fixed point and the spec source
+before starting.

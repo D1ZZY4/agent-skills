@@ -30,7 +30,9 @@ comparisons ("3 skills", "10x faster"), and provenance statements ("official",
   clarifying sentence.
 
 One HIGH finding outweighs any number of LOWs. State that ordering in the
-report so a clean style score never hides a broken fact.
+report so a clean style score never hides a broken fact. Findings that fall in
+the critique loop get downgraded or cut with the reason recorded; see
+`critique.md`.
 
 ## Uncertainty labels
 

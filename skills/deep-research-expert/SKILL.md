@@ -4,11 +4,12 @@ description: >
   Plan and execute deep technical research, audits, and reviews: read a full scope before
   judging it, verify load-bearing claims against official docs, official repos, and community
   sources, grade evidence by strength, and deliver a severity-ranked report with explicit
-  uncertainty. Trigger when the user asks for deep research, deep audit, deep review, or
-  verification of a skill, library, or technical surface against its real sources.
+  uncertainty. Trigger when the user asks for deep research, deep audit, deep review,
+  code review of a branch or PR, or verification of a skill, library, or technical
+  surface against its real sources.
 license: SSPL-1.0
 metadata:
-  version: 1.0.0
+  version: 1.4.0
   author: D1ZZY4
   priority: medium
 ---
@@ -26,14 +27,18 @@ is not research; a narrow verified answer beats a wide guessed one.
 
 Not every question needs deep research. Use this skill when the user asks for a deep
 audit, review, or verification, or when a claim could be wrong in a way that costs real
-effort (wrong version gate, dead documentation link, invented API).
+effort (wrong version gate, dead documentation link, invented API). For code review
+tasks (branch, PR, or work-in-progress against a fixed point), read
+`references/code-review.md` and follow its two-axis flow instead of the generic
+steps below.
 
 Before starting, state the plan compactly: scope (what will be read fully), sources
-(official docs, repos, registries, community), and what counts as done. Wait for
-confirmation when the scope is large or the research transmits sensitive context
-outside the repository. Read `references/proactive-trigger.md` for when to offer
-research without being asked.
-
+(official docs, repos, registries, community), the depth mode from
+`references/depth-modes.md` (Spot, Standard, or Deep), the material assumptions
+the work rests on, and what counts as done. Establish the current date first
+whenever recency matters. Wait for confirmation when the scope is large or the
+research transmits sensitive context outside the repository. Read
+`references/proactive-trigger.md` for when to offer research without being asked.
 ## Step 1: Read the full scope first
 
 Read every file in scope before judging any of it. Do not sample three files and write
@@ -54,13 +59,17 @@ Extract the load-bearing claims (version gates, URLs, command syntax, default va
 comparisons against upstream) and check each one. Read
 `references/evidence-grading.md` for the verification rule, severity ranking, and
 uncertainty labels. A single failed load-bearing claim outranks ten stylistic notes;
-say so explicitly.
+say so explicitly. In Deep mode, run the one-round critique in
+`references/critique.md` after grading and before reporting.
 
 ## Step 4: Deliver the report
 
 Structure every report the same way so findings stay comparable across audits. Read
 `references/report-format.md` for the shape, tone rules, and what must never appear
 (an invented URL, an unverified version, a certainty claim over a single source).
+Run `references/quality-checklist.md` over the finished report before delivering it.
+Code review tasks use the aggregate format in `references/code-review.md` Step 5
+instead of the generic shape.
 
 ## Safety boundary
 
@@ -93,5 +102,9 @@ Load only the references needed for the current phase:
 - `references/proactive-trigger.md`: when to offer deep research without being asked, and when to stay quiet.
 - `references/source-ladder.md`: source classes in strength order, what each rung proves, and routing to `context7-expert`.
 - `references/evidence-grading.md`: claim extraction, the two-source rule, severity ranks, and uncertainty labels.
+- `references/depth-modes.md`: Spot, Standard, and Deep modes with stopping rules.
+- `references/critique.md`: one-round adversarial pass with three personas and delta queries (Deep mode).
 - `references/verification-and-failure.md`: shared verification and failure-handling principles.
 - `references/report-format.md`: report shape, professional tone rules, and forbidden content.
+- `references/quality-checklist.md`: pre-delivery checks for completeness, citation hygiene, fact-versus-synthesis marking, and density.
+- `references/code-review.md`: two-axis code review (Standards vs Spec) against a fixed point, with smell baseline and critique loop.
