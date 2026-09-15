@@ -15,7 +15,7 @@
       "description": "Version-aware library and platform documentation lookup through Context7.",
       "version": "1.13.1",
       "category": "documentation",
-      "tags": ["documentation", "context7", "api-docs"]
+      "tags": ["documentation", "context7", "api-docs", "library-docs", "mcp"]
     },
     {
       "name": "copywriting-expert",
@@ -23,7 +23,7 @@
       "description": "User-facing product and UI copy, including errors, onboarding, and CLI output.",
       "version": "1.7.1",
       "category": "content",
-      "tags": ["copywriting", "content"]
+      "tags": ["copywriting", "content", "ux-writing", "microcopy"]
     },
     {
       "name": "create-readme-expert",
@@ -31,7 +31,7 @@
       "description": "Source-driven README creation, improvement, and audit.",
       "version": "1.14.1",
       "category": "documentation",
-      "tags": ["documentation", "readme"]
+      "tags": ["documentation", "readme", "onboarding"]
     },
     {
       "name": "mermaid-diagrams-expert",
@@ -39,7 +39,7 @@
       "description": "Maintainable Mermaid diagrams for software documentation.",
       "version": "1.5.0",
       "category": "documentation",
-      "tags": ["diagrams", "mermaid", "architecture"]
+      "tags": ["diagrams", "mermaid", "architecture", "flowcharts", "c4"]
     },
     {
       "name": "commit-expert",
@@ -47,7 +47,7 @@
       "description": "Repository-aware Git commit and push safety.",
       "version": "1.17.0",
       "category": "workflow",
-      "tags": ["git", "commit", "workflow"]
+      "tags": ["git", "commit", "conventional-commits", "workflow"]
     },
     {
       "name": "redis-expert",
@@ -55,7 +55,7 @@
       "description": "Redis architecture, clients, search, clustering, observability, security, semantic caching, and agent memory.",
       "version": "1.5.1",
       "category": "infrastructure",
-      "tags": ["redis", "vector-search", "rag", "semantic-cache", "agent-memory"]
+      "tags": ["redis", "caching", "clustering", "vector-search", "rag", "semantic-cache", "agent-memory"]
     },
     {
       "name": "deep-research-expert",
@@ -63,7 +63,7 @@
       "description": "Evidence-graded technical research, audits, and reviews against real sources.",
       "version": "1.0.0",
       "category": "research",
-      "tags": ["research", "audit"]
+      "tags": ["research", "audit", "review", "verification"]
     }
   ]
 }

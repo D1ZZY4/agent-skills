@@ -10,6 +10,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Repository
+
+- Expanded `plugin.json` keywords from 20 to 32 and per-plugin Cursor
+  marketplace tags so every skill is findable by feature terms (library-docs,
+  mcp, ux-writing, microcopy, onboarding, flowcharts, c4,
+  conventional-commits, caching, clustering, review, verification).
+
 ### redis-expert
 
 - Bumped metadata.version to 1.5.1.
