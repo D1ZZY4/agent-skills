@@ -9,12 +9,22 @@
   "keywords": [
     "skills",
     "documentation",
+    "context7",
+    "api-docs",
     "copywriting",
     "readme",
     "diagrams",
     "mermaid",
+    "architecture",
     "git",
-    "redis"
+    "commit",
+    "workflow",
+    "redis",
+    "vector-search",
+    "rag",
+    "semantic-cache",
+    "agent-memory",
+    "iris"
   ],
   "license": "SSPL-1.0",
   "name": "agent-skills",

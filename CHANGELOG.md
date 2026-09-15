@@ -39,6 +39,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Repository
 
+- Expanded `plugin.json` keywords from 8 to 18 so each skill is searchable by its
+  own terms: `context7` and `api-docs` for docs lookup, `commit` and `workflow`
+  for Git safety, `architecture` for diagrams, plus `vector-search`, `rag`,
+  `semantic-cache`, `agent-memory`, and `iris` for the redis-expert 1.5.0 domains.
 - Removed the replit.md symlink and polished AGENTS.md: full six-skill overview,
   complete structure map, no stale claims, tighter professional wording.
 - Fixed skills.sh.json grouping: redis-expert moves to a new Infrastructure and data
