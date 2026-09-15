@@ -53,7 +53,7 @@
       "name": "redis-expert",
       "source": "./skills/redis-expert",
       "description": "Redis architecture, clients, search, clustering, observability, security, semantic caching, and agent memory.",
-      "version": "1.5.0",
+      "version": "1.5.1",
       "category": "infrastructure",
       "tags": ["redis", "vector-search", "rag", "semantic-cache", "agent-memory"]
     },

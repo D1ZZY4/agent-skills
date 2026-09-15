@@ -626,6 +626,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.13.1 | 2026-09-15 | Node.js 18 prerequisite, ctx7 remove and MCP server URL, alias drift note, official source links |
 | 1.13.0 | 2026-09-13 | Proactive trigger reference style alignment: consistent headings, comma-splice cleanup |
 | 1.12.0 | 2026-09-13 | SKILL.md style unification: Purpose section, priority heading renamed to Priority order |
 | 1.11.0 | 2026-09-13 | Snyk W011 response: propose lookup to the user before any query, auto-load without auto-query, MCP preferred over CLI, version options presented as choices |
@@ -646,6 +647,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.7.1 | 2026-09-15 | Em dash default clarifier, official language source links (KBBI, EYD, Merriam-Webster, Oxford) |
 | 1.7.0 | 2026-09-13 | Proactive trigger reference modernization: consistent headings and copy cleanup |
 | 1.6.0 | 2026-09-13 | SKILL.md style unification: Purpose section |
 | 1.5.0 | 2026-09-13 | Anti-AI-sounding patterns, domain adaptation, codebase copy discovery, navigation/loading/permission surfaces, copywork-specific verification, expanded examples |
@@ -687,6 +689,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.5.0 | 2026-09-15 | New diagram types reference (venn, ishikawa, kanban, packet, radar, treemap), security reference, renderer platform matrix, v11.13.0 label fix |
 | 1.4.2 | 2026-09-13 | Proactive trigger reference style alignment: consistent headings and tightened prose |
 | 1.4.1 | 2026-09-13 | Modernized against Mermaid v12 docs: flowchart shape swap and @{ shape } syntax, sequence bidirectional arrows/box/rect/critical/create-destroy/autonumber, class relationship and classifier fixes plus namespaces, xychart/gantt/gitgraph/state/pie corrections, architecture align, C4 dynamic and deployment types, full theme and look lists |
 | 1.4.0 | 2026-09-13 | Documented ERD cardinality and relationship-line corrections, PK/FK/UK key rules, %%{init}%% directives replaced with frontmatter config, example and wording cleanups |
@@ -705,6 +708,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.5.0 | 2026-09-15 | Iris agent-memory domain, native Vector Sets reference, DIALECT accuracy fix, redis.io link migration, HEXPIRE gate |
 | 1.4.0 | 2026-09-13 | Proactive trigger moved to a dedicated reference file, style aligned with the other skills |
 | 1.3.0 | 2026-09-13 | SKILL.md style unification: Purpose section, anti-patterns heading aligned |
 | 1.1.0 | 2026-07-13 | Initial release |
@@ -720,6 +724,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.14.1 | 2026-09-15 | Verified external README URLs with checked dates, GitHub alerts docs source |
 | 1.14.0 | 2026-09-14 | Diagrams reference with mermaid-diagrams-expert routing and canonical raw URL fallback |
 | 1.13.0 | 2026-09-13 | Proactive trigger reference modernization: consistent headings, how-to-offer section |
 | 1.11.0 | 2026-09-13 | GitHub-style alert callouts example for secrets and destructive actions, callout rules in formatting-and-punctuation, example wired into SKILL.md steps |
