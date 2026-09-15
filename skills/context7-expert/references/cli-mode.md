@@ -1,7 +1,7 @@
 # CLI Mode
 
 For when no Context7 MCP server is connected but a shell/bash tool is available. Prefer an
-already-installed `ctx7` CLI. A transient `npx` invocation is a fallback only when network
+already-installed `ctx7` CLI. The CLI requires Node.js 18 or newer. A transient `npx` invocation is a fallback only when network
 access and package execution are permitted for the current request. If that permission has not
 already been given, ask before using the network-backed fallback. Read
 `references/security.md` before any npx or network-backed execution; its trust boundaries
@@ -177,3 +177,8 @@ was exact-version or closest-version documentation.
 - One topic per query, split multi-concept questions into separate `docs` calls per concept,
   unless the question is specifically about how the concepts interact
 - Never put sensitive information (API keys, passwords, credentials) in a query
+
+## Sources checked
+
+- https://github.com/upstash/context7 (CLI + Skills and MCP modes, `ctx7 library` / `ctx7 docs` commands, Node.js 18 requirement, MIT license)
+- https://context7.com (API key dashboard for higher rate limits)

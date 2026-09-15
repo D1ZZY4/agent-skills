@@ -52,4 +52,6 @@ explain why when useful, give the next step) with tighter constraints:
   order.
 - Plain and precise; zero cleverness in errors and destructive confirmations, matching
   `voice-and-tone.md`.
-- Follow the repository's em dash preference in generated help text and output.
+- Follow the repository's em dash preference in generated help text and output. When no
+  project rule exists, the ban in `formatting-and-punctuation.md` is the strong default,
+  not an optional style choice.

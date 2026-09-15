@@ -6,6 +6,9 @@ are Markdown files that teach AI coding agents best practices, patterns, and wor
 specific library or task, the same shape as this skill itself. Covers install, search, suggest,
 generate, list, remove, and info commands.
 
+Command names and short aliases below follow the current CLI; aliases can shift between CLI
+releases, so confirm with `ctx7 --help` when a command is not recognized.
+
 Installation, suggestion, generation, and removal commands are mutating operations. Confirm the
 requested target and scope before running them, and review the write controls in
 `references/security.md` before any mutating command. Search, list, and info commands are

@@ -27,7 +27,12 @@ npx ctx7@latest setup                     # interactive, prompts for mode then a
 npx ctx7@latest setup --mcp               # skip the prompt, use MCP server mode
 npx ctx7@latest setup --cli               # skip the prompt, use CLI + Skills mode
 npx ctx7@latest setup --project           # configure the current project instead of globally
+npx ctx7@latest remove                    # undo a generated setup later
 ```
+
+To configure manually, use the Context7 server URL `https://mcp.context7.com/mcp` with the
+MCP client and pass the API key via the `Authorization: Bearer` header. See the
+client-specific setup instructions linked under Sources checked below.
 
 ## Authentication options
 
@@ -57,3 +62,7 @@ the environment doesn't support MCP servers, or when the user is working somewhe
 constraints around what can be installed or configured (for example, a mobile terminal
 environment where a persistent MCP server process isn't practical). Ask if genuinely unsure,
 don't default silently to one over the other when the tradeoff actually matters for the setup.
+
+## Sources checked
+
+- https://github.com/upstash/context7 (setup flows, `--cursor` / `--claude` / `--opencode` target flags, OAuth + API key auth, MIT license)

@@ -10,6 +10,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### context7-expert
+
+- Bumped metadata.version to 1.13.1.
+- Added Node.js 18 prerequisite to `references/cli-mode.md` plus official source links.
+- Added `npx ctx7 remove` and the manual MCP server URL to `references/setup.md`.
+- Softened alias claims in `references/cli-skills-management.md`: confirm with `--help`
+  since aliases shift between CLI releases.
+
+### copywriting-expert
+
+- Bumped metadata.version to 1.7.1.
+- Clarified in `references/cli-output-copy.md` that the em dash ban is the strong
+  default when no project rule exists.
+- Added official source links (KBBI, EYD, Merriam-Webster, Oxford) to
+  `references/language-and-vocabulary-verification.md`.
+
+### create-readme-expert
+
+- Bumped metadata.version to 1.14.1.
+- Verified all four `references/external-readme-sources.md` URLs live with per-URL
+  checked dates and a re-check note.
+- Added the GitHub alerts docs source to `references/formatting-and-punctuation.md`.
+
 ### redis-expert
 
 - Bumped metadata.version to 1.5.0.

@@ -8,7 +8,7 @@ description: >
   where the project already has strong conventions.
 license: SSPL-1.0
 metadata:
-  version: 1.14.0
+  version: 1.14.1
   author: D1ZZY4
   priority: medium
 ---

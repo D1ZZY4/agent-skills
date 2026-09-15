@@ -115,3 +115,10 @@ than relying on a generic result. This is a normal, expected part of writing or 
 any language other than pure, common-knowledge English, not an extra step to skip for speed.
 Getting a single word wrong in shipped UI copy is a visible, repeated, permanent mistake in a way
 that few other kinds of errors are.
+
+## Sources checked
+
+- KBBI Daring Edisi V (official): https://kbbi.kemdikbud.go.id (Badan Bahasa; use for word entries)
+- EYD Edisi V spelling standard (official): https://ejaan.kemdikbud.go.id (SK Kepala Badan Bahasa 0424/I/BS.00.01/2022; use for spelling and punctuation rules)
+- Merriam-Webster (American English): https://www.merriam-webster.com
+- Oxford English Dictionary (British English): https://www.oed.com

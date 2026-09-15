@@ -35,3 +35,5 @@ Do not use em dashes in README content. Use commas, colons, periods, or parenthe
 - Alert syntax is renderer-specific. Confirm the README's primary host supports it
   before relying on it; on unsupported platforms it renders as an ordinary blockquote.
 - See `examples/README-github-alerts.md` for a worked example with secrets and warnings.
+- Sources checked: GitHub alert types and syntax (NOTE, TIP, IMPORTANT, WARNING, CAUTION),
+  https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax

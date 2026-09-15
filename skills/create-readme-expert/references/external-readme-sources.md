@@ -22,9 +22,10 @@ Verify all project information against the target repository.
 
 ## Suggested sources
 
-Fetch only after user confirmation:
+Fetch only after user confirmation. All four URLs verified live on 2026-09-15; re-check
+before relying on them, since third-party repos can move or restructure:
 
-- https://raw.githubusercontent.com/Azure-Samples/serverless-chat-langchainjs/refs/heads/main/README.md
-- https://raw.githubusercontent.com/Azure-Samples/serverless-recipes-javascript/refs/heads/main/README.md
-- https://raw.githubusercontent.com/sinedied/run-on-output/refs/heads/main/README.md
-- https://raw.githubusercontent.com/sinedied/smoke/refs/heads/main/README.md
+- https://raw.githubusercontent.com/Azure-Samples/serverless-chat-langchainjs/refs/heads/main/README.md (full docs structure with alerts; checked 2026-09-15)
+- https://raw.githubusercontent.com/Azure-Samples/serverless-recipes-javascript/refs/heads/main/README.md (collection structure with alerts; checked 2026-09-15)
+- https://raw.githubusercontent.com/sinedied/run-on-output/refs/heads/main/README.md (CLI tool structure; checked 2026-09-15)
+- https://raw.githubusercontent.com/sinedied/smoke/refs/heads/main/README.md (mock server structure; checked 2026-09-15)
