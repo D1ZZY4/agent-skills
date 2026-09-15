@@ -190,7 +190,7 @@ Organized by domain, matching the upstream official skills plus the Iris agent-m
   timeouts.
 - `references/clustering/`: hash tags, read replicas.
 - `references/search/`: schema and field types, query syntax and optimization, aggregation
-  and cursors, vector and hybrid search, RAG patterns, dialect, index management and
+  and cursors, vector and hybrid search, native vector sets, RAG patterns, dialect, index management and
   debugging, and per-client examples in `references/search/clients/`.
 - `references/observability/`: metrics to monitor, built-in debugging commands.
 - `references/security/`: authentication and TLS, ACLs, network restriction.
@@ -200,16 +200,17 @@ Organized by domain, matching the upstream official skills plus the Iris agent-m
 ## Non-reference bundled content
 
 - `.cursor-plugin/plugin.json`: a merged Cursor plugin manifest representing this skill as a
-  whole (combined keywords and description from all 7 original domains).
+  whole (combined keywords and description from all covered domains).
 - `.cursor-plugin/original-domains/`: the 7 original per-domain plugin manifests
   (`redis-core.json`, `redis-search.json`, and so on), preserved unmodified in content, kept
   for reference and in case a tool wants the original per-domain metadata rather than the
-  merged one.
+  merged one. The Iris domain has no upstream per-domain manifest bundled; its routing lives
+  in `references/iris/`.
 - No evaluation suite is bundled in this aggregate. Validate Redis-specific guidance against the
   target Redis version, modules, client library, and deployment model before treating it as an
   authoritative implementation contract.
 
 Original source: https://github.com/redis/agent-skills (MIT licensed, Redis, Inc.). This merge
-reorganizes seven separate skills into one, adds proactive triggering and cross-domain routing,
+reorganizes the upstream domain skills into one, adds proactive triggering and cross-domain routing,
 and applies house formatting rules. The upstream repository remains the authority for provenance;
 the target Redis version and deployment documentation remain the authority for runtime behavior.

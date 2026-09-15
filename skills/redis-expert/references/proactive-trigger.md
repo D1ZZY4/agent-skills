@@ -12,6 +12,8 @@ Reach for this skill any time code, config, or a design decision touches Redis a
 - reviewing a PR that adds Redis usage
 - debugging a slow or failing Redis operation
 - hardening a deployment before production
+- wiring persistent memory for an AI agent (session events, long-term memory search,
+  promotion tuning with Iris); read `references/iris/` for that domain
 
 ## Confidence rule
 

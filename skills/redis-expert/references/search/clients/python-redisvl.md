@@ -881,7 +881,7 @@ redis-py equivalent: see [`python-redis-py.md#13-common-errors--version-gotchas`
 | `index.query(query)` returns rows where every field is `None` | The dict's `return_fields` was empty AND the index is JSON-storage. | Explicitly pass `return_fields=[...]`, RedisVL doesn't auto-return the full JSON doc. |
 | `index.create()` errors `Index already exists` on re-run | `.create()` is not idempotent without `overwrite=True`. | `.create(overwrite=True)` for dev bootstrap; gate on `.exists()` for production. |
 
-**DIALECT defaults:** RedisVL passes `dialect=2` on every query class by default. You do not need to set it. Override to `dialect=3` for GEOSHAPE `WITHIN`/`CONTAINS`. The Redis server default (DIALECT 2 from Redis 8.0+) does not affect RedisVL because RedisVL always sends DIALECT explicitly.
+**DIALECT defaults:** RedisVL passes `dialect=2` on every query class by default. You do not need to set it. Override to `dialect=3` for GEOSHAPE `WITHIN`/`CONTAINS`. The Redis server default is `DIALECT 1`, which does not affect RedisVL because RedisVL always sends DIALECT explicitly.
 
 **`rvl` CLI tool:** the `rvl` CLI (`rvl index info`, `rvl stats`, `rvl index list`) is a productivity tool for inspecting indexes from the shell. Deferred from v1 of this reference, agents generating Python code rarely need it. See `cli.ipynb` upstream.
 

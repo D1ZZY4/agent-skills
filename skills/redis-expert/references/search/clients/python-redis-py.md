@@ -39,7 +39,7 @@ Jedis equivalent: see [`java-jedis.md#1-minimum-supported-versions`](./java-jedi
 | Redis server (`FT.HYBRID`) | **8.4.0** | Hard floor. Older Redis returns `unknown command 'FT.HYBRID'`. Fall back to pre-filter + `=>[KNN ...]` via FT.SEARCH. |
 | Python | 3.8+ | Type hints in `redis.commands.search.*` assume `typing` from 3.8. |
 
-**DIALECT default:** `redis-py` does **not** set DIALECT on your behalf. Every query in this reference passes `DIALECT 2` explicitly (`.dialect(2)` or as a `Query()` argument), required for vector attribute syntax (`=>[KNN ...]`) and the modern numeric/tag parser. Redis 8 changed the server default to DIALECT 2, but client-side absence still emits the server's compatibility default for older servers.
+**DIALECT default:** `redis-py` does **not** set DIALECT on your behalf, and the server default is `DIALECT 1` on every Redis version (deprecated dialects stay accepted). Every query in this reference passes `DIALECT 2` explicitly (`.dialect(2)` or as a `Query()` argument), required for vector attribute syntax (`=>[KNN ...]`) and the modern numeric/tag parser.
 
 
 ## 2. Connection setup
@@ -741,7 +741,7 @@ Jedis equivalent: see [`java-jedis.md#13-common-errors--version-gotchas`](./java
 | Empty `.docs` but non-zero `.total` | `NOCONTENT` (via `.no_content()`) was set. | Remove `.no_content()` or call `.return_fields(...)`. |
 | `'@price:[270]' syntax not yet supported` | Single-value numeric-bracket form is a Redis 8 server feature, but `Query` builder validation may reject it pre-Redis-8 clients. | Use `@price:[270 270]` or `NumericFilter("price", 270, 270)` (mirrors `query_em.py`). |
 
-**DIALECT defaults:** server default is DIALECT 2 from Redis 8; older servers default to 1 and reject the vector attribute form (`=>[KNN ...]`). `redis-py` itself never injects DIALECT, *you* must pass `.dialect(2)`. This is the most common silent failure mode when porting code between Redis versions.
+**DIALECT defaults:** the server default is `DIALECT 1` on every Redis version; older servers reject the vector attribute form (`=>[KNN ...]`) unless `DIALECT 2` is passed. `redis-py` itself never injects DIALECT, *you* must pass `.dialect(2)`. This is the most common silent failure mode when porting code between Redis versions.
 
 
 ## 14. Upstream examples index

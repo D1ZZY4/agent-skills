@@ -62,6 +62,8 @@ FT.CREATE idx:big_vectors ON HASH PREFIX 1 doc:
 # then logging poor recall instead of raising EF_RUNTIME at query time.
 ```
 
+**Native alternative:** when the workload needs moderate-scale similarity without managing an FT index at all, use a vector set (`VADD` / `VSIM`) instead of either algorithm here. See [vector-sets.md](vector-sets.md) for the trade-off table.
+
 ## Client mirrors
 
 ```python
