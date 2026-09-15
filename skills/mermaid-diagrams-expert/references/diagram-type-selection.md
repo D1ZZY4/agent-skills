@@ -2,7 +2,8 @@
 
 Decision guide for choosing the right Mermaid diagram type based on what
 is being modeled: structure, sequence, process, data, architecture, lifecycle, branching,
-scheduling, or comparison.
+scheduling, comparison, work tracking, or set overlap. For full syntax of newer types, read
+`references/new-diagrams.md` after this guide.
 
 ## Decision guide
 
@@ -46,6 +47,22 @@ tasks over calendar time)
 **Is it about proportions or a simple category comparison?** (percentages, relative sizes,
 counts across a few categories)
 → Pie or bar chart (`references/misc-diagrams.md`)
+
+**Is it about work stages and handoff?** (todo, in progress, done, owner, ticket link)
+→ Kanban (`references/new-diagrams.md`)
+
+**Is it about packet layout by bit range?** (protocol fields, header structure)
+→ Packet (`references/new-diagrams.md`)
+
+**Is it about overlap between sets?** (shared skills, shared components, positioning)
+→ Venn (`references/new-diagrams.md`)
+
+**Is it about causes leading to one effect?** (incident causes, quality analysis)
+→ Ishikawa (`references/new-diagrams.md`)
+
+**Is it about hierarchy, experience over time, or flow volume?** (brainstorm, user journey,
+timeline, sankey, radar comparison, treemap proportions)
+→ Specialized type (`references/new-diagrams.md`)
 
 ## When more than one type could technically work
 

@@ -45,17 +45,20 @@ into a PR or shared doc.
 
 - **Unknown or misspelled keywords break the diagram.** `classDiagram` typo'd as
   `classDiagrm` doesn't degrade gracefully, it fails. Double check the diagram-type keyword
-  against the relevant reference file.
+  against the relevant reference file. Beta types need the exact suffix, for example
+  `venn-beta`, not `venn`.
 - **Parameters fail silently, not loudly.** An unrecognized config option or theme variable is
   often just ignored rather than raising an error, so a diagram can render "successfully"
   while quietly not applying an intended style. If a theming option doesn't seem to be taking
   effect, check the option name against `advanced-features.md` rather than assuming it's a
   rendering issue.
+- **Labels changed in v11.13.0.** Plain text labels render as plain text again. Use
+  `A["**bold**"]` when Markdown formatting inside a label is required. Do not rely on bare
+  `\n` for line breaks in labels, use `<br/>`. This restores v10 compatibility for plain labels.
 - **Special characters need escaping or quoting.** Characters like `{`, `}`, `"`, and `:`
   inside labels can be misread as syntax rather than literal text. Wrap labels containing them
-  in quotes: `A["Handles {retry} logic"]` rather than `A[Handles {retry} logic]`.
-- **Line breaks inside labels use `<br/>`, not a literal newline**, a literal newline in the
-  middle of a label definition usually breaks parsing rather than wrapping the text.
+  in quotes: `A["Handles {retry} logic"]` rather than `A[Handles {retry} logic]`. Colons are
+  allowed in state transition text on recent versions, but quoting remains the safe default.
 - **Reserved words as node IDs cause conflicts.** Avoid naming a flowchart node `end`, `class`,
   `state`, or other Mermaid keywords, even though it might look like a normal identifier.
 - **Overcomplexity reads as a bug even when it isn't one.** A diagram that's technically valid

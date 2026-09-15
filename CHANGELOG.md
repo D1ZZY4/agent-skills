@@ -10,6 +10,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### mermaid-diagrams-expert
+
+- Bumped metadata.version to 1.5.0.
+- Added `references/new-diagrams.md`: venn-beta, ishikawa-beta, kanban, packet, radar-beta,
+  treemap, plus mindmap, timeline, journey, sankey, block, quadrant, and requirement guidance
+  with version minima, beta rules, and official docs sources.
+- Added `references/security.md`: secrets handling, injection risks around click, classDef,
+  and config, plus local validation guidance.
+- Updated `SKILL.md`: expanded type table, beta fallback rule, security check in Step 4,
+  removed informal wording, wired new references.
+- Updated `references/diagram-type-selection.md`, `references/validation-and-rendering.md`
+  (v11.13.0 label fix), and `references/renderer-adapters.md` (platform matrix and version minima).
+
 ### Repository
 
 - Removed the replit.md symlink and polished AGENTS.md: full six-skill overview,
