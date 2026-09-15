@@ -10,12 +10,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-<details open>
-<summary>Pending changes (expanded by default)</summary>
+## [1.12.0] - 2026-09-15
+
+<details>
+<summary>1.12.0 - 2026-09-15</summary>
 
 ### deep-research-expert
 
-- New skill at version 1.0.0: `SKILL.md` plus `references/proactive-trigger.md`,
+- New skill at version 1.0.0 (initial experimental release, expect iteration as
+  audit feedback lands): `SKILL.md` plus `references/proactive-trigger.md`,
   `references/source-ladder.md`, `references/evidence-grading.md`,
   `references/verification-and-failure.md`, and `references/report-format.md`.
   Codifies the deep audit workflow: full-scope reading, source ladder with
@@ -591,6 +594,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Skills | Key changes |
 |---------|------|--------|-------------|
+| 1.12.0 | 2026-09-15 | 7 | New deep-research-expert skill, redis-expert Iris domain and Vector Sets, mermaid-diagrams-expert new types, changelog collapsibles, plugin keyword expansion |
 | 1.11.0 | 2026-09-14 | 6 | Agent marketplace manifests, skills/ move, commit-expert rename, CONTRIBUTING, agent logos, README polish, create-readme-expert diagrams reference |
 | 1.9.0 | 2026-09-13 | 6 | context7-expert W011 response, skills.sh.json schema fix, README selective install docs |
 | 1.8.0 | 2026-09-13 | 6 | context7-expert security hardening, SSPL-1.0 relicensing, README install fix |
@@ -723,7 +727,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
-| 1.0.0 | Unreleased | Initial release: full-scope reading, source ladder with context7-expert routing and raw URL fallback, two-source evidence grading, severity-ranked reports |
+| 1.0.0 | 2026-09-15 | Initial experimental release: full-scope reading, source ladder with context7-expert routing and raw URL fallback, two-source evidence grading, severity-ranked reports |
 
 [⬆ Back to top](#changelog)
 
