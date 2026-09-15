@@ -10,6 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.13.0] - 2026-09-15
+
+<details>
+<summary>1.13.0 - 2026-09-15</summary>
+
 ### Repository
 
 - Expanded `plugin.json` keywords from 20 to 32 and per-plugin Cursor
@@ -30,6 +35,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed the per-skill `.cursor-plugin/` packaging from `skills/redis-expert/`
   (merged manifest plus seven upstream per-domain manifests); Cursor packaging now
   lives in one place at the repository root.
+
+</details>
+
+---
 
 ## [1.12.0] - 2026-09-15
 
@@ -615,6 +624,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Skills | Key changes |
 |---------|------|--------|-------------|
+| 1.13.0 | 2026-09-15 | 7 | Project Cursor marketplace, discovery keyword expansion, redis-expert 1.5.1 |
 | 1.12.0 | 2026-09-15 | 7 | New deep-research-expert skill, redis-expert Iris domain and Vector Sets, mermaid-diagrams-expert new types, changelog collapsibles, plugin keyword expansion |
 | 1.11.0 | 2026-09-14 | 6 | Agent marketplace manifests, skills/ move, commit-expert rename, CONTRIBUTING, agent logos, README polish, create-readme-expert diagrams reference |
 | 1.9.0 | 2026-09-13 | 6 | context7-expert W011 response, skills.sh.json schema fix, README selective install docs |
@@ -715,6 +725,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.5.1 | 2026-09-15 | Dropped per-skill Cursor packaging pointers following the move to project-level packaging |
 | 1.5.0 | 2026-09-15 | Iris agent-memory domain, native Vector Sets reference, DIALECT accuracy fix, redis.io link migration, HEXPIRE gate |
 | 1.4.0 | 2026-09-13 | Proactive trigger moved to a dedicated reference file, style aligned with the other skills |
 | 1.3.0 | 2026-09-13 | SKILL.md style unification: Purpose section, anti-patterns heading aligned |
