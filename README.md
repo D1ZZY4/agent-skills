@@ -66,6 +66,7 @@ https://raw.githubusercontent.com/D1ZZY4/agent-skills/refs/heads/main/skills/<sk
 | [`mermaid-diagrams-expert`](skills/mermaid-diagrams-expert/SKILL.md) | Documentation | Maintainable Mermaid diagrams for software documentation. |
 | [`commit-expert`](skills/commit-expert/SKILL.md) | Workflow | Repository-aware Git commit and push safety. |
 | [`redis-expert`](skills/redis-expert/SKILL.md) | Infrastructure | Redis architecture, clients, search, clustering, observability, security, and semantic caching. |
+| [`deep-research-expert`](skills/deep-research-expert/SKILL.md) | Research | Evidence-graded technical research, audits, and reviews against real sources. |
 
 ## Why these skills
 

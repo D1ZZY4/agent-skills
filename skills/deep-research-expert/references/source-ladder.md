@@ -1,0 +1,43 @@
+# Source Ladder
+
+Sources in strength order for technical claims. A weaker rung never overrules a
+stronger one on the same claim. When two strong sources disagree, report both and
+let recency plus authority decide, stated explicitly.
+
+## The ladder, strongest first
+
+1. **Live official documentation.** The vendor's current docs site (fetched, not
+   snippeted). Proves: current syntax, version gates, deprecation status.
+   Example: a command reference page showing `"since": "8.4.0"`.
+2. **Official repositories and APIs.** Source files, release tags, package
+   registries, machine-readable directory listings. Proves: what actually ships,
+   file existence, exact structure. Example: a GitHub API listing proving a
+   directory holds exactly three skills.
+3. **Project-local evidence.** Lockfiles, manifests, changelogs, the checked-out
+   code itself. Proves: what this project pins, uses, and claims. Always the
+   authority for project-specific facts.
+4. **Maintainer and community channels.** Release announcements, changelogs,
+   maintainer blogs, issue threads. Proves: intent, timelines, known issues.
+   Treat dates and promises as provisional.
+5. **General web search.** Discovery only. A snippet is a pointer to a source,
+   never the source. Fetch the target before citing it.
+6. **Training memory.** Last resort. Usable only for stable, long-settled facts,
+   always flagged as unverified when it matters.
+
+## Routing to context7-expert
+
+When the question is library-specific (API signatures, version behavior, migration),
+do not rebuild documentation lookup here. If the `context7-expert` skill is
+installed, route through it: it owns the consent gate, mode selection, and budget
+rules for Context7 transmission. This skill owns the audit around it (scope,
+cross-verification, grading, reporting).
+
+## Practical rules
+
+- Fetch the page; do not cite a search excerpt. A fetch that fails (bot wall,
+  404, redirect) is itself a finding: record it as a fetch failure, not as proof.
+- Prefer primary URLs over mirrors and scrapers. If only a mirror loads, say so.
+- For documentation sites that reorganize (path migrations), verify the new
+  location for at least two or three samples before rewriting every link.
+- Never transmit secrets, tokens, personal data, or proprietary code to reach a
+  source. Redact queries first or ask.

@@ -25,6 +25,13 @@
       "skills": [
         "redis-expert"
       ]
+    },
+    {
+      "title": "Research and analysis",
+      "description": "Evidence-graded technical research, audits, and reviews.",
+      "skills": [
+        "deep-research-expert"
+      ]
     }
   ]
 }

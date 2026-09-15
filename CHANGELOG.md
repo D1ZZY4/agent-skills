@@ -10,6 +10,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### deep-research-expert
+
+- New skill at version 1.0.0: `SKILL.md` plus `references/proactive-trigger.md`,
+  `references/source-ladder.md`, `references/evidence-grading.md`,
+  `references/verification-and-failure.md`, and `references/report-format.md`.
+  Codifies the deep audit workflow: full-scope reading, source ladder with
+  `context7-expert` routing, two-source evidence grading, and severity-ranked reports.
+- Registered in README Skills table, `skills.sh.json` (new Research and analysis
+  group), and `plugin.json` keywords (`research`, `audit`).
+
 ### context7-expert
 
 - Bumped metadata.version to 1.13.1.

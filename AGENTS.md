@@ -21,6 +21,7 @@ Each skill is a standard directory containing `SKILL.md` and optional `reference
 - `skills/mermaid-diagrams-expert/` - maintainable Mermaid diagrams for software documentation
 - `skills/redis-expert/` - Redis architecture, clients, search, clustering, observability, security, and semantic caching
 - `skills/create-readme-expert/` - README creation guidance for software projects
+- `skills/deep-research-expert/` - evidence-graded technical research, audits, and reviews
 - `CHANGELOG.md` - project changelog with per-skill version tracking
 - `README.md` - project overview and usage
 - `CONTRIBUTING.md` - contributor guide for humans

@@ -24,7 +24,9 @@
     "rag",
     "semantic-cache",
     "agent-memory",
-    "iris"
+    "iris",
+    "research",
+    "audit"
   ],
   "license": "SSPL-1.0",
   "name": "agent-skills",
