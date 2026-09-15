@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Custom expert skills for Cursor",
-    "version": "1.13.0"
+    "version": "1.14.0"
   },
   "plugins": [
     {
@@ -45,7 +45,7 @@
       "name": "commit-expert",
       "source": "./skills/commit-expert",
       "description": "Repository-aware Git commit and push safety.",
-      "version": "1.17.0",
+      "version": "1.17.1",
       "category": "workflow",
       "tags": ["git", "commit", "conventional-commits", "workflow"]
     },
@@ -61,7 +61,7 @@
       "name": "deep-research-expert",
       "source": "./skills/deep-research-expert",
       "description": "Evidence-graded technical research, audits, and reviews against real sources.",
-      "version": "1.0.0",
+      "version": "1.4.0",
       "category": "research",
       "tags": ["research", "audit", "review", "verification"]
     }

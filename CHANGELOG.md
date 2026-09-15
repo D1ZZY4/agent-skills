@@ -10,6 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.14.0] - 2026-09-15
+
+<details>
+<summary>1.14.0 - 2026-09-15</summary>
+
 ### commit-expert
 
 - Bumped metadata.version to 1.17.1.
@@ -39,6 +44,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `references/evidence-grading.md`.
 - Added a pair-to-compare README block for deep-research-expert and source links
   to the context7-expert compare block.
+
+</details>
+
+---
 
 ## [1.13.0] - 2026-09-15
 
@@ -654,6 +663,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Skills | Key changes |
 |---------|------|--------|-------------|
+| 1.14.0 | 2026-09-15 | 2 | deep-research-expert review mode and quality checklist, commit-expert compare block and spec source |
 | 1.13.0 | 2026-09-15 | 7 | Project Cursor marketplace, discovery keyword expansion, redis-expert 1.5.1 |
 | 1.12.0 | 2026-09-15 | 7 | New deep-research-expert skill, redis-expert Iris domain and Vector Sets, mermaid-diagrams-expert new types, changelog collapsibles, plugin keyword expansion |
 | 1.11.0 | 2026-09-14 | 6 | Agent marketplace manifests, skills/ move, commit-expert rename, CONTRIBUTING, agent logos, README polish, create-readme-expert diagrams reference |
@@ -714,6 +724,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.17.1 | 2026-09-15 | Conventional Commits specification source in message-style reference |
 | 1.17.0 | 2026-09-13 | Proactive trigger reference style alignment: heading naming and prose cleanup |
 | 1.16.0 | 2026-09-13 | Punctuation ban clarified (em dash only), bulleted-list body rule, bulleted-body example |
 | 1.15.0 | 2026-09-13 | SKILL.md style unification: Purpose section, precedence headings renamed to Priority order |
@@ -794,6 +805,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.4.0 | 2026-09-15 | Review mode (code-review reference, routing), depth modes, critique loop, quality checklist, outline check, counterevidence and metadata footer |
 | 1.0.0 | 2026-09-15 | Initial experimental release: full-scope reading, source ladder with context7-expert routing and raw URL fallback, two-source evidence grading, severity-ranked reports |
 
 [⬆ Back to top](#changelog)
