@@ -32,6 +32,16 @@ installed, route through it: it owns the consent gate, mode selection, and budge
 rules for Context7 transmission. This skill owns the audit around it (scope,
 cross-verification, grading, reporting).
 
+If that skill is not installed on the current harness, fetch it from its canonical
+raw URL instead of guessing the lookup workflow:
+
+```text
+https://raw.githubusercontent.com/D1ZZY4/agent-skills/refs/heads/main/skills/context7-expert/SKILL.md
+```
+
+Reference files follow the same pattern. Replace `SKILL.md` with the reference path,
+for example `references/cli-mode.md`.
+
 ## Practical rules
 
 - Fetch the page; do not cite a search excerpt. A fetch that fails (bot wall,

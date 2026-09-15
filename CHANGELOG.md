@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+<details open>
+<summary>Pending changes (expanded by default)</summary>
+
 ### deep-research-expert
 
 - New skill at version 1.0.0: `SKILL.md` plus `references/proactive-trigger.md`,
@@ -85,7 +88,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tidied logo tile code (one element per line) and neutralized the tile
   gradient foot to authentic white #F2F2F7.
 
+</details>
+
+---
+
 ## [1.11.0] - 2026-09-14
+
+<details>
+<summary>1.11.0 - 2026-09-14</summary>
 
 ### create-readme-expert
 
@@ -137,7 +147,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Synced all marketplace manifest descriptions with the new README tagline so no
   fixed skill list rots as skills are added.
 
+</details>
+
 ## [1.10.0] - 2026-09-13
+
+<details>
+<summary>1.10.0 - 2026-09-13</summary>
 
 ### create-readme-expert
 
@@ -272,9 +287,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [⬆ Back to top](#changelog)
 
+</details>
+
 ---
 
 ## [1.9.0] - 2026-09-13
+
+<details>
+<summary>1.9.0 - 2026-09-13</summary>
 
 ### Repository
 
@@ -292,9 +312,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [⬆ Back to top](#changelog)
 
+</details>
+
 ---
 
 ## [1.8.0] - 2026-09-13
+
+<details>
+<summary>1.8.0 - 2026-09-13</summary>
 
 ### commit-expert
 
@@ -351,9 +376,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [⬆ Back to top](#changelog)
 
+</details>
+
 ---
 
 ## [1.7.0] - 2026-08-16
+
+<details>
+<summary>1.7.0 - 2026-08-16</summary>
 
 ### Added
 
@@ -370,9 +400,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [⬆ Back to top](#changelog)
 
+</details>
+
 ---
 
 ## [1.6.0] - 2026-08-16
+
+<details>
+<summary>1.6.0 - 2026-08-16</summary>
 
 ### Added
 
@@ -402,9 +437,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [⬆ Back to top](#changelog)
 
+</details>
+
 ---
 
 ## [1.5.0] - 2026-08-16
+
+<details>
+<summary>1.5.0 - 2026-08-16</summary>
 
 ### Added
 
@@ -421,9 +461,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [⬆ Back to top](#changelog)
 
+</details>
+
 ---
 
 ## [1.4.0] - 2026-08-16
+
+<details>
+<summary>1.4.0 - 2026-08-16</summary>
 
 ### Added
 
@@ -438,9 +483,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [⬆ Back to top](#changelog)
 
+</details>
+
 ---
 
 ## [1.3.0] - 2026-08-16
+
+<details>
+<summary>1.3.0 - 2026-08-16</summary>
 
 ### Added
 
@@ -474,9 +524,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [⬆ Back to top](#changelog)
 
+</details>
+
 ---
 
 ## [1.2.0] - 2026-08-11
+
+<details>
+<summary>1.2.0 - 2026-08-11</summary>
 
 ### Added
 
@@ -501,9 +556,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [⬆ Back to top](#changelog)
 
+</details>
+
 ---
 
 ## [1.1.0] - 2026-07-13
+
+<details>
+<summary>1.1.0 - 2026-07-13</summary>
 
 ### Added
 
@@ -518,9 +578,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [⬆ Back to top](#changelog)
 
+</details>
+
 ---
 
 ## Per-skill changelog
+
+<details>
+<summary>Per-skill version tables</summary>
 
 ### Version comparison
 
@@ -538,6 +603,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### context7-expert
 
+<details>
+<summary>context7-expert version history</summary>
+
 | Version | Date | Changes |
 |---------|------|---------|
 | 1.13.0 | 2026-09-13 | Proactive trigger reference style alignment: consistent headings, comma-splice cleanup |
@@ -551,7 +619,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [⬆ Back to top](#changelog)
 
+</details>
+
 ### copywriting-expert
+
+<details>
+<summary>copywriting-expert version history</summary>
 
 | Version | Date | Changes |
 |---------|------|---------|
@@ -565,7 +638,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [⬆ Back to top](#changelog)
 
+</details>
+
 ### commit-expert
+
+<details>
+<summary>commit-expert version history</summary>
 
 | Version | Date | Changes |
 |---------|------|---------|
@@ -582,7 +660,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [⬆ Back to top](#changelog)
 
+</details>
+
 ### mermaid-diagrams-expert
+
+<details>
+<summary>mermaid-diagrams-expert version history</summary>
 
 | Version | Date | Changes |
 |---------|------|---------|
@@ -595,7 +678,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [⬆ Back to top](#changelog)
 
+</details>
+
 ### redis-expert
+
+<details>
+<summary>redis-expert version history</summary>
 
 | Version | Date | Changes |
 |---------|------|---------|
@@ -605,7 +693,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [⬆ Back to top](#changelog)
 
+</details>
+
 ### create-readme-expert
+
+<details>
+<summary>create-readme-expert version history</summary>
 
 | Version | Date | Changes |
 |---------|------|---------|
@@ -620,3 +713,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 | 1.1.0 | 2026-07-13 | Initial release |
 
 [⬆ Back to top](#changelog)
+
+</details>
+
+### deep-research-expert
+
+<details>
+<summary>deep-research-expert version history</summary>
+
+| Version | Date | Changes |
+|---------|------|---------|
+| 1.0.0 | Unreleased | Initial release: full-scope reading, source ladder with context7-expert routing and raw URL fallback, two-source evidence grading, severity-ranked reports |
+
+[⬆ Back to top](#changelog)
+
+</details>
+
+</details>
