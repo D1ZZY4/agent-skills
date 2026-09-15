@@ -1,6 +1,6 @@
 # Index JSON Documents with JSONPath and Aliases
 
-For JSON documents, the schema declares `ON JSON` and each field is a JSONPath plus an `AS <alias>`. The alias is what you query against (`@alias:...`), without `AS`, Redis Search generates one from the path that is awkward to type and easy to typo. Array elements (`$.tags[*]`) and nested objects (`$.address.city`) work seamlessly.
+For JSON documents, the schema declares `ON JSON` and each field is a JSONPath plus an `AS <alias>`. The alias is what you query against (`@alias:...`), without `AS`, Redis Search generates one from the path that is awkward to type and easy to typo. Array elements (`$.tags[*]`) and nested objects (`$.address.city`) map directly.
 
 **Correct:** Index a JSON Bicycle catalog: TEXT, TAG, NUMERIC, an array of TAGs, and a vector.
 
@@ -133,4 +133,4 @@ try (UnifiedJedis jedis = new UnifiedJedis("redis://localhost:6379")) {
 
 - redis-py: [`doctests/home_json.py`](https://github.com/redis/redis-py/blob/master/doctests/home_json.py), [`dt_json.py`](https://github.com/redis/redis-py/blob/master/doctests/dt_json.py)
 - Jedis: [`HomeJsonExample.java`](https://github.com/redis/jedis/blob/master/src/test/java/io/redis/examples/HomeJsonExample.java), [`JsonExample.java`](https://github.com/redis/jedis/blob/master/src/test/java/io/redis/examples/JsonExample.java)
-- Reference: [Index JSON documents](https://redis.io/docs/latest/develop/interact/search-and-query/indexing/json/), [JSONPath](https://redis.io/docs/latest/develop/data-types/json/path/)
+- Reference: [Index JSON documents](https://redis.io/docs/latest/develop/ai/search-and-query/indexing/json/), [JSONPath](https://redis.io/docs/latest/develop/data-types/json/path/)

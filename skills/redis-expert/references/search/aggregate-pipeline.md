@@ -378,4 +378,4 @@ try (UnifiedJedis jedis = new UnifiedJedis("redis://localhost:6379")) {
 
 - redis-py: [`doctests/query_agg.py`](https://github.com/redis/redis-py/blob/master/doctests/query_agg.py)
 - Jedis: [`QueryAggExample.java`](https://github.com/redis/jedis/blob/master/src/test/java/io/redis/examples/QueryAggExample.java)
-- Reference: [FT.AGGREGATE](https://redis.io/docs/latest/commands/ft.aggregate/), [Aggregations](https://redis.io/docs/latest/develop/interact/search-and-query/advanced-concepts/aggregations/)
+- Reference: [FT.AGGREGATE](https://redis.io/docs/latest/commands/ft.aggregate/), [Aggregations](https://redis.io/docs/latest/develop/ai/search-and-query/advanced-concepts/aggregations/)

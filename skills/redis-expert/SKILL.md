@@ -4,16 +4,17 @@ description: >
   All-in-one Redis expertise covering data modeling and key naming, client connections
   (pooling, pipelining, client-side caching, timeouts), clustering and replication, Redis
   Search (FT.CREATE, vector and hybrid search, RAG pipelines), observability and incident
-  triage, production security hardening, and semantic caching for LLM responses via
-  LangCache. Use whenever designing, writing, reviewing, or debugging anything that touches
+  triage, production security hardening, semantic caching for LLM responses via
+  LangCache, and agent memory via Redis Iris (session events, long-term memory,
+  background promotion). Use whenever designing, writing, reviewing, or debugging anything that touches
   Redis: choosing a data structure, naming keys, configuring a client, sharding across a
   cluster, building or tuning a search index, monitoring or diagnosing performance, hardening
-  a deployment, or caching LLM completions. Adapted from Redis, Inc.'s official agent-skills
+  a deployment, caching LLM completions, or wiring persistent memory for an AI agent. Adapted from Redis, Inc.'s official agent-skills
   repository (https://github.com/redis/agent-skills, MIT licensed), merged into one skill so the
-  right domain loads automatically without picking between seven separate ones.
+  right domain loads automatically without picking between separate ones.
 license: SSPL-1.0
 metadata:
-  version: 1.4.0
+  version: 1.5.0
   author: D1ZZY4
   priority: low
 ---
@@ -22,9 +23,9 @@ metadata:
 
 ## Purpose
 
-Provide all-in-one Redis expertise across seven domains: data modeling and key naming,
-client connections, clustering and replication, Redis Search, observability, security, and
-semantic caching. Reach for this skill any time code, config, or a design decision touches
+Provide all-in-one Redis expertise across eight domains: data modeling and key naming,
+client connections, clustering and replication, Redis Search, observability, security,
+semantic caching, and agent memory. Reach for this skill any time code, config, or a design decision touches
 Redis. Details live in `references/<domain>/`; load the file for the domain and topic in
 question rather than guessing. Retained technical guidance follows the upstream material
 where available, with qualifiers where the aggregate must distinguish Redis versions,
@@ -47,6 +48,7 @@ list, the confidence rule, and when to stay quiet.
 | Metrics, SLOWLOG, INFO, incident triage, Redis Insight | Observability | `references/observability/` |
 | Auth, ACLs, TLS, network exposure, hardening for production | Security | `references/security/` |
 | Semantic caching of LLM responses with LangCache | Semantic cache | `references/semantic-cache/` |
+| Agent session events, long-term memory, background promotion with Iris | Agent memory | `references/iris/` |
 
 More than one domain is often relevant to a single task (a production search deployment
 touches core, search, security, and observability at once), load each relevant domain file
@@ -103,7 +105,7 @@ application error. `HNSW` for production-scale approximate search,
 never repoint application queries at a raw index name directly.
 
 See `references/search/` for the full breakdown: schema and field types, query syntax,
-aggregation and cursors, vector and hybrid search, RAG patterns, index management, debugging
+aggregation and cursors, vector and hybrid search, native vector sets, RAG patterns, index management, debugging
 with `FT.EXPLAIN`/`FT.PROFILE`, and per-client examples (`references/search/clients/`) for
 redis-py, Jedis, and RedisVL.
 
@@ -149,6 +151,15 @@ See `references/semantic-cache/langcache-usage.md` and
 `references/semantic-cache/best-practices.md`. LangCache is currently in preview on Redis
 Cloud, behavior may change.
 
+## Agent memory: session and long-term memory with Iris
+
+Two tiers served by the managed Redis Agent Memory data plane: append-only session events per conversation (cheap, ordered, no LLM on the write path) and semantically searchable long-term memory with a default 1-year TTL. A background promotion worker extracts durable facts from sessions on a 5-minute deduplication window, so long-term memory is eventually consistent after each write.
+
+Append every turn with one stable `session_id` and a tz-aware UTC timestamp; scope long-term records with `owner_id`, `namespace`, `topics`, and `memory_type` at write time; search server-side with structured filters plus a similarity threshold instead of filtering client-side.
+
+See `references/iris/setup-and-auth.md`, `references/iris/session-memory.md`,
+`references/iris/long-term-memory.md`, and `references/iris/promotion.md`. Iris-side concepts follow the upstream `iris-development` skill (MIT); wording here is original.
+
 ## Anti-patterns
 
 - Storing a flat, independently-updated object as a serialized string instead of a Hash
@@ -161,6 +172,8 @@ Cloud, behavior may change.
 - A `VECTOR` field whose `DIM` or `DISTANCE_METRIC` doesn't match the actual embedding model
 - Production Redis with no password, no TLS, or bound to `0.0.0.0` with protected mode off
 - One shared semantic cache spanning unrelated task types
+- Using long-term memory as the conversation buffer instead of session events
+- Assuming promoted memories are searchable synchronously after a session write
 - Guessing at a Redis-specific best practice from general database intuition instead of
   checking the relevant reference, Redis has enough specific behavior (CROSSSLOT, silent
   vector dimension mismatches, RESP3 requirements) that intuition from other databases
@@ -168,7 +181,7 @@ Cloud, behavior may change.
 
 ## Bundled references
 
-Organized by domain, matching the seven original official skills:
+Organized by domain, matching the upstream official skills plus the Iris agent-memory domain:
 
 - `references/proactive-trigger.md`: when to reach for this skill without being asked, and the
   confidence rule.
@@ -182,6 +195,7 @@ Organized by domain, matching the seven original official skills:
 - `references/observability/`: metrics to monitor, built-in debugging commands.
 - `references/security/`: authentication and TLS, ACLs, network restriction.
 - `references/semantic-cache/`: LangCache usage and tuning best practices.
+- `references/iris/`: Agent Memory store setup and auth, session memory, long-term memory, background promotion.
 
 ## Non-reference bundled content
 

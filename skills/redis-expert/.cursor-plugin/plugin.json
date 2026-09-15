@@ -1,7 +1,7 @@
 {
   "name": "redis-expert",
   "version": "1.0.0",
-  "description": "Adapted all-in-one Redis expertise: data modeling and key naming, client connections and performance, clustering and replication, Redis Search including vector and hybrid search and RAG, observability and incident triage, production security hardening, and semantic caching for LLM responses via LangCache. Merged from 7 official Redis domain skills into one.",
+  "description": "Adapted all-in-one Redis expertise: data modeling and key naming, client connections and performance, clustering and replication, Redis Search including vector and hybrid search and RAG, observability and incident triage, production security hardening, semantic caching for LLM responses via LangCache, and agent memory via Redis Iris. Merged from 8 official Redis domain skills into one.",
   "author": {
     "name": "Redis",
     "email": "support@redis.com"
@@ -45,6 +45,10 @@
     "hardening",
     "semantic-cache",
     "langcache",
+    "agent-memory",
+    "iris",
+    "session-memory",
+    "long-term-memory",
     "llm",
     "ai"
   ],
@@ -55,7 +59,8 @@
     "redis-search",
     "redis-observability",
     "redis-security",
-    "redis-semantic-cache"
+    "redis-semantic-cache",
+    "iris-development"
   ],
-  "note": "This is a merge of 7 separate official Redis skills into one all-in-one skill. The original per-domain manifests are preserved as-is under .cursor-plugin/original-domains/ for reference."
+  "note": "This is a merge of 8 separate official Redis skills into one all-in-one skill. The original per-domain manifests are preserved as-is under .cursor-plugin/original-domains/ for reference."
 }

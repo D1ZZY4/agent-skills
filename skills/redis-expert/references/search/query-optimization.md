@@ -88,4 +88,4 @@ try (UnifiedJedis jedis = new UnifiedJedis("redis://localhost:6379")) {
 
 - redis-py: [`doctests/search_quickstart.py`](https://github.com/redis/redis-py/blob/master/doctests/search_quickstart.py)
 - Jedis: [`SearchQuickstartExample.java`](https://github.com/redis/jedis/blob/master/src/test/java/io/redis/examples/SearchQuickstartExample.java)
-- Reference: [Query Syntax](https://redis.io/docs/latest/develop/interact/search-and-query/query/), [FT.PROFILE](https://redis.io/docs/latest/commands/ft.profile/)
+- Reference: [Query Syntax](https://redis.io/docs/latest/develop/ai/search-and-query/query/), [FT.PROFILE](https://redis.io/docs/latest/commands/ft.profile/)

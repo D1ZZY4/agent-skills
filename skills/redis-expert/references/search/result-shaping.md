@@ -140,4 +140,4 @@ try (UnifiedJedis jedis = new UnifiedJedis("redis://localhost:6379")) {
 
 - redis-py: covered across the upstream `doctests/query_*.py` set, including [`doctests/query_ft.py`](https://github.com/redis/redis-py/blob/master/doctests/query_ft.py)
 - Jedis: covered across the upstream `Query*Example.java` set, including [`QueryFtExample.java`](https://github.com/redis/jedis/blob/master/src/test/java/io/redis/examples/QueryFtExample.java)
-- Reference: [FT.SEARCH](https://redis.io/docs/latest/commands/ft.search/), [Highlighting](https://redis.io/docs/latest/develop/interact/search-and-query/advanced-concepts/highlight/)
+- Reference: [FT.SEARCH](https://redis.io/docs/latest/commands/ft.search/), [Highlighting](https://redis.io/docs/latest/develop/ai/search-and-query/advanced-concepts/highlight/)

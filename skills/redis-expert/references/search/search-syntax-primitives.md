@@ -141,4 +141,4 @@ Operators combine multiple query terms in a single expression:
 - Tokenization, stemming, stopwords: [text-tokenization.md](text-tokenization.md)
 - Result shaping (`RETURN`, `SORTBY`, `HIGHLIGHT`, `SUMMARIZE`): [result-shaping.md](result-shaping.md)
 
-Reference: [Query Syntax](https://redis.io/docs/latest/develop/interact/search-and-query/query/), [Aggregations](https://redis.io/docs/latest/develop/interact/search-and-query/advanced-concepts/aggregations/)
+Reference: [Query Syntax](https://redis.io/docs/latest/develop/ai/search-and-query/query/), [Aggregations](https://redis.io/docs/latest/develop/ai/search-and-query/advanced-concepts/aggregations/)

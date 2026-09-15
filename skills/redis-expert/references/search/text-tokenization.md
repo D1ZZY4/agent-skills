@@ -104,4 +104,4 @@ try (UnifiedJedis jedis = new UnifiedJedis("redis://localhost:6379")) {
 
 ## Upstream sources
 
-- Reference: [Stemming](https://redis.io/docs/latest/develop/interact/search-and-query/advanced-concepts/stemming/), [Stopwords](https://redis.io/docs/latest/develop/interact/search-and-query/advanced-concepts/stopwords/), [Phonetic Matching](https://redis.io/docs/latest/develop/interact/search-and-query/advanced-concepts/phonetic_matching/)
+- Reference: [Stemming](https://redis.io/docs/latest/develop/ai/search-and-query/advanced-concepts/stemming/), [Stopwords](https://redis.io/docs/latest/develop/ai/search-and-query/advanced-concepts/stopwords/), [Phonetic Matching](https://redis.io/docs/latest/develop/ai/search-and-query/advanced-concepts/phonetic_matching/)

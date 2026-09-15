@@ -10,6 +10,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### redis-expert
+
+- Bumped metadata.version to 1.5.0.
+- Added `references/iris/` domain (setup-and-auth, session-memory, long-term-memory,
+  promotion): Iris Agent Memory now covered, matching upstream `iris-development`.
+- Added `references/search/vector-sets.md`: native VADD/VSIM similarity search with
+  quantization, filters, and Vector Set vs FT index guidance.
+- Fixed `references/search/dialect.md`: dialects 1, 3, 4 are deprecated but functional
+  with DIALECT 1 still the server default; explicit DIALECT 2 remains required.
+- Migrated all `redis.io` search links from the retired `/develop/interact/` prefix to
+  `/develop/ai/`.
+- Added HEXPIRE 7.4 gate to the Hash row and refreshed the Cursor plugin manifest
+  keywords for the new domain.
+
 ### mermaid-diagrams-expert
 
 - Bumped metadata.version to 1.5.0.

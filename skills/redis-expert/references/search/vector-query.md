@@ -103,4 +103,4 @@ try (UnifiedJedis jedis = new UnifiedJedis("redis://localhost:6379")) {
 
 - redis-py: [`doctests/search_vss.py`](https://github.com/redis/redis-py/blob/master/doctests/search_vss.py), [`query_combined.py`](https://github.com/redis/redis-py/blob/master/doctests/query_combined.py)
 - Jedis: [`VectorSearchExample.java`](https://github.com/redis/jedis/blob/master/src/test/java/io/redis/examples/VectorSearchExample.java)
-- Reference: [Vector Search](https://redis.io/docs/latest/develop/interact/search-and-query/advanced-concepts/vectors/), [Vector Queries](https://redis.io/docs/latest/develop/interact/search-and-query/query/vector-search/)
+- Reference: [Vector Search](https://redis.io/docs/latest/develop/ai/search-and-query/advanced-concepts/vectors/), [Vector Queries](https://redis.io/docs/latest/develop/ai/search-and-query/query/vector-search/)

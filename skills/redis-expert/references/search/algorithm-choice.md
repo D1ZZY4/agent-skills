@@ -100,4 +100,4 @@ RedisVL schema-dict examples for HNSW and FLAT live in [clients/python-redisvl.m
 
 ## Upstream sources
 
-- Reference: [Vector Reference](https://redis.io/docs/latest/develop/interact/search-and-query/advanced-concepts/vectors/)
+- Reference: [Vector Reference](https://redis.io/docs/latest/develop/ai/search-and-query/advanced-concepts/vectors/)

@@ -5,7 +5,7 @@ Selecting the appropriate Redis data type for your use case is fundamental to pe
 | Use Case | Recommended Type | Why |
 |----------|------------------|-----|
 | Simple values, counters | String | Fast, atomic operations |
-| Object with fields | Hash | Memory efficient, partial updates, field-level expiration |
+| Object with fields | Hash | Memory efficient, partial updates, per-field TTL via `HEXPIRE` (Redis 7.4+) |
 | Queue, recent items | List | O(1) push/pop at ends |
 | Unique items, membership | Set | O(1) add/remove/check |
 | Rankings, ranges | Sorted Set | Score-based ordering |

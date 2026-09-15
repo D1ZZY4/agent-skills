@@ -107,4 +107,4 @@ RedisVL `SearchIndex.load()` for bulk doc + embedding insertion and `VectorQuery
 
 - redis-py: [`doctests/search_vss.py`](https://github.com/redis/redis-py/blob/master/doctests/search_vss.py)
 - Jedis: [`VectorSearchExample.java`](https://github.com/redis/jedis/blob/master/src/test/java/io/redis/examples/VectorSearchExample.java)
-- Reference: [Redis RAG Quickstart](https://redis.io/docs/latest/develop/get-started/rag/), [Vector Search](https://redis.io/docs/latest/develop/interact/search-and-query/advanced-concepts/vectors/)
+- Reference: [Redis RAG Quickstart](https://redis.io/docs/latest/develop/get-started/rag/), [Vector Search](https://redis.io/docs/latest/develop/ai/search-and-query/advanced-concepts/vectors/)
