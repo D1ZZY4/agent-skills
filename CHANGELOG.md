@@ -10,6 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.15.0] - 2026-09-18
+
+<details>
+<summary>1.15.0 - 2026-09-18</summary>
+
 ### deep-research-expert
 
 - Bumped metadata.version to 1.5.0.
@@ -71,6 +76,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   with the current skill state.
 - Expanded `plugin.json` keywords with `comparison`, `decision`, and `forensic`
   to mirror the Cursor marketplace tags for deep-research-expert.
+
+</details>
+
+---
 
 ## [1.14.0] - 2026-09-15
 
@@ -725,6 +734,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Skills | Key changes |
 |---------|------|--------|-------------|
+| 1.15.0 | 2026-09-18 | 3 | deep-research-expert auto plus 8 modes and attribution removals, mermaid and redisvl trims, README compare sync |
 | 1.14.0 | 2026-09-15 | 2 | deep-research-expert review mode and quality checklist, commit-expert compare block and spec source |
 | 1.13.0 | 2026-09-15 | 7 | Project Cursor marketplace, discovery keyword expansion, redis-expert 1.5.1 |
 | 1.12.0 | 2026-09-15 | 7 | New deep-research-expert skill, redis-expert Iris domain and Vector Sets, mermaid-diagrams-expert new types, changelog collapsibles, plugin keyword expansion |
@@ -809,6 +819,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.5.1 | 2026-09-18 | Trimmed generic web content from advanced-features reference |
 | 1.5.0 | 2026-09-15 | New diagram types reference (venn, ishikawa, kanban, packet, radar, treemap), security reference, renderer platform matrix, v11.13.0 label fix |
 | 1.4.2 | 2026-09-13 | Proactive trigger reference style alignment: consistent headings and tightened prose |
 | 1.4.1 | 2026-09-13 | Modernized against Mermaid v12 docs: flowchart shape swap and @{ shape } syntax, sequence bidirectional arrows/box/rect/critical/create-destroy/autonumber, class relationship and classifier fixes plus namespaces, xychart/gantt/gitgraph/state/pie corrections, architecture align, C4 dynamic and deployment types, full theme and look lists |
@@ -828,6 +839,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.5.3 | 2026-09-18 | Iris and whole-skill attribution removals, runtime rule kept |
+| 1.5.2 | 2026-09-18 | Summary-level LLM primitives removal from redisvl client reference |
 | 1.5.1 | 2026-09-15 | Dropped per-skill Cursor packaging pointers following the move to project-level packaging |
 | 1.5.0 | 2026-09-15 | Iris agent-memory domain, native Vector Sets reference, DIALECT accuracy fix, redis.io link migration, HEXPIRE gate |
 | 1.4.0 | 2026-09-13 | Proactive trigger moved to a dedicated reference file, style aligned with the other skills |
@@ -867,6 +880,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.5.2 | 2026-09-18 | Quality-gates attribution removal from quality-checklist |
+| 1.5.1 | 2026-09-18 | Sources-checked block removal from code-review |
+| 1.5.0 | 2026-09-18 | Auto default plus eight modes, per-mode routing, falsification and symmetry add-ons |
 | 1.4.0 | 2026-09-15 | Review mode (code-review reference, routing), depth modes, critique loop, quality checklist, outline check, counterevidence and metadata footer |
 | 1.0.0 | 2026-09-15 | Initial experimental release: full-scope reading, source ladder with context7-expert routing and raw URL fallback, two-source evidence grading, severity-ranked reports |
 
