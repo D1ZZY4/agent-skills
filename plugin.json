@@ -38,7 +38,10 @@
     "research",
     "audit",
     "review",
-    "verification"
+    "verification",
+    "comparison",
+    "decision",
+    "forensic"
   ],
   "license": "SSPL-1.0",
   "name": "agent-skills",

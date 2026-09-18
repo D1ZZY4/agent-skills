@@ -69,6 +69,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Synced the README Skills table (redis agent memory, deep-research comparisons
   and decisions) and the deep-research compare block (auto plus eight modes)
   with the current skill state.
+- Expanded `plugin.json` keywords with `comparison`, `decision`, and `forensic`
+  to mirror the Cursor marketplace tags for deep-research-expert.
 
 ## [1.14.0] - 2026-09-15
 
