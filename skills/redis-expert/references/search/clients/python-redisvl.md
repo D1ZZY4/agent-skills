@@ -23,9 +23,8 @@ Examples below trace to the upstream **RedisVL user-guide notebooks** under `red
 10. [Vectorizers](#10-vectorizers)
 11. [Hybrid retrieval](#11-hybrid-retrieval)
 12. [Async](#12-async)
-13. [LLM primitives (summary level)](#13-llm-primitives-summary-level)
-14. [Common errors & version gotchas](#14-common-errors--version-gotchas)
-15. [Upstream examples index](#15-upstream-examples-index)
+13. [Common errors & version gotchas](#13-common-errors--version-gotchas)
+14. [Upstream examples index](#14-upstream-examples-index)
 
 
 ## 1. When to choose RedisVL over raw redis-py
@@ -781,88 +780,7 @@ Mirrors `01_getting_started.ipynb` cells 41-47.
 Vectorizers expose `.aembed(text)` and `.aembed_many(texts)` for the embedding call itself, pair them with `AsyncSearchIndex` for end-to-end async pipelines (see §10).
 
 
-## 13. LLM primitives (summary level)
-
-Full coverage of the LLM-primitive surface is deferred to a future dedicated spec. The summaries below are intentionally narrow, minimal constructor + the upstream notebook to read for depth. None of these primitives are necessary for the core search/index/query surface this reference covers.
-
-### SemanticCache, semantic prompt → response cache
-
-Mirrors `03_llmcache.ipynb` cell 5.
-
-```python
-from redisvl.extensions.cache.llm import SemanticCache
-from redisvl.utils.vectorize import HFTextVectorizer
-
-llmcache = SemanticCache(
-    name="llmcache",                                              # underlying search index name
-    redis_url="redis://localhost:6379",
-    distance_threshold=0.1,                                       # cosine distance [0, 2]; lower = stricter
-    vectorizer=HFTextVectorizer("redis/langcache-embed-v2"),
-)
-
-llmcache.store(prompt="What is the capital of France?", response="Paris")
-hit = llmcache.check(prompt="capital city of France?")          # returns cached response on semantic match
-```
-
-`filterable_fields=[{"name": "user_id", "type": "tag"}]` partitions the cache by tenant/user. Defer to `03_llmcache.ipynb` for filterable-field semantics, TTLs, and metadata.
-
-**LangCache vs SemanticCache:** `SemanticCache` is the in-process Python class shown above. **LangCache** (`13_langcache_semantic_cache.ipynb`) is a separate Redis-hosted product, a managed semantic-cache service on Redis Cloud. They share a vector-search shape but live in different scopes. For LangCache coverage, see this skill's `references/semantic-cache/` rather than treating it inline as a RedisVL primitive.
-
-### MessageHistory, durable chat-history with optional semantic recall
-
-Mirrors `07_message_history.ipynb` cells 1, 12.
-
-```python
-from redisvl.extensions.message_history import MessageHistory, SemanticMessageHistory
-
-# Plain FIFO chat history.
-chat = MessageHistory(name="student tutor")
-chat.add_message({"role": "user", "content": "Explain backprop."})
-recent = chat.get_recent(top_k=8)
-
-# Vector-recall over the same history, fetches semantically similar past turns.
-semantic = SemanticMessageHistory(name="tutor")
-semantic.add_messages(recent)
-relevant = semantic.get_relevant("How does gradient descent relate to backprop?")
-```
-
-Defer to `07_message_history.ipynb` for session tagging, role filtering, TTLs.
-
-### SemanticRouter, route a query to a labelled bucket via vector match
-
-Mirrors `08_semantic_router.ipynb` cells 2, 4.
-
-```python
-from redisvl.extensions.router import SemanticRouter, Route
-from redisvl.utils.vectorize import HFTextVectorizer
-
-tech = Route(
-    name="technology",
-    references=["what are the latest advancements in AI?", "tell me about the newest gadgets"],
-    metadata={"category": "tech"},
-    distance_threshold=0.71,
-)
-
-router = SemanticRouter(
-    name="topic-router",
-    vectorizer=HFTextVectorizer(),
-    routes=[tech, ...],
-    redis_url="redis://localhost:6379",
-    overwrite=True,
-)
-
-match = router("what's new in machine learning?")           # -> Route name + score
-```
-
-Defer to `08_semantic_router.ipynb` for multi-route disambiguation, `from_dict` / `from_yaml` persistence, and threshold tuning.
-
-### Other extensions (also summary-only)
-
-- **EmbeddingsCache** (`redisvl.extensions.cache.embeddings.EmbeddingsCache`), cache for `embed()` calls to avoid recomputation. See `10_embeddings_cache.ipynb`.
-- **Rerankers** (`redisvl.utils.rerank`), `HFCrossEncoderReranker`, `CohereReranker`, `VoyageAIReranker` for second-stage cross-encoder reranking after initial vector retrieval. See `06_rerankers.ipynb`.
-
-
-## 14. Common errors & version gotchas
+## 13. Common errors & version gotchas
 
 redis-py equivalent: see [`python-redis-py.md#13-common-errors--version-gotchas`](./python-redis-py.md#13-common-errors--version-gotchas).
 
@@ -886,7 +804,7 @@ redis-py equivalent: see [`python-redis-py.md#13-common-errors--version-gotchas`
 **`rvl` CLI tool:** the `rvl` CLI (`rvl index info`, `rvl stats`, `rvl index list`) is a productivity tool for inspecting indexes from the shell. Deferred from v1 of this reference, agents generating Python code rarely need it. See `cli.ipynb` upstream.
 
 
-## 15. Upstream examples index
+## 14. Upstream examples index
 
 redis-py equivalent: see [`python-redis-py.md#14-upstream-examples-index`](./python-redis-py.md#14-upstream-examples-index).
 

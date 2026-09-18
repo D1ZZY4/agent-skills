@@ -32,6 +32,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Synced `.cursor-plugin/marketplace.json` deep-research-expert to 1.5.0 with
   comparison and decision findability.
 
+### mermaid-diagrams-expert
+
+- Bumped metadata.version to 1.5.1.
+- Trimmed generic web content from `references/advanced-features.md`: removed the
+  Responsive Sizing CSS snippet, SVG Export Options (covered by
+  `references/validation-and-rendering.md`), and the Integration Examples section
+  (Markdown, HTML, and React boilerplate).
+- Synced `.cursor-plugin/marketplace.json` mermaid-diagrams-expert to 1.5.1.
+
+### redis-expert
+
+- Bumped metadata.version to 1.5.2.
+- Removed the summary-level `13. LLM primitives` section from
+  `references/search/clients/python-redisvl.md` (deferred coverage by its own text);
+  kept the section 1 routing signal and the upstream index entries, renumbered the
+  two following sections.
+- Synced `.cursor-plugin/marketplace.json` redis-expert to 1.5.2.
+
 ## [1.14.0] - 2026-09-15
 
 <details>

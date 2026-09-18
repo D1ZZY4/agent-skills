@@ -14,7 +14,7 @@ description: >
   right domain loads automatically without picking between separate ones.
 license: SSPL-1.0
 metadata:
-  version: 1.5.1
+  version: 1.5.2
   author: D1ZZY4
   priority: low
 ---
