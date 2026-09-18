@@ -45,6 +45,19 @@ a Remaining gaps entry instead of a silent pass.
 - Severity ordering holds: re-read the findings top to bottom and confirm a
   LOW never sits above an unresolved HIGH.
 
+## Mode hygiene
+
+- The resolved mode is named in Methodology (for auto, "auto -> X") with depth
+  versus specialized stated.
+- Comparative reports include the symmetry matrix; asymmetry without a gap entry
+  fails the check.
+- Decision reports include the decision matrix with requirement traceability;
+  "best" without the matrix fails the check.
+- Exhaustive reports include the coverage table; an open class without a gap
+  entry fails the check.
+- Forensic reports include the timeline with provenance; Adversarial reports
+  include the falsification section.
+
 ## Sources checked
 
 Checklist discipline adapted (wording original) from the quality gates of

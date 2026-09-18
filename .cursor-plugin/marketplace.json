@@ -60,10 +60,10 @@
     {
       "name": "deep-research-expert",
       "source": "./skills/deep-research-expert",
-      "description": "Evidence-graded technical research, audits, and reviews against real sources.",
-      "version": "1.4.0",
+      "description": "Evidence-graded technical research, audits, comparisons, decisions, and reviews against real sources.",
+      "version": "1.5.0",
       "category": "research",
-      "tags": ["research", "audit", "review", "verification"]
+      "tags": ["research", "audit", "review", "verification", "comparison", "decision", "forensic"]
     }
   ]
 }

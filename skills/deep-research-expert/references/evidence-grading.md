@@ -45,6 +45,24 @@ Use exactly these, no synonyms:
   without a follow-up check.
 - **Fetch failed**: the source could not be retrieved; record URL and error.
 
+## Mode add-ons
+
+- **Comparative symmetry.** Use the same evidence categories for every candidate
+  (capabilities, limitations, architecture, performance, maintenance, licensing,
+  deployment, ecosystem). A missing cell is a finding with grade Unverified or
+  Fetch failed, never a blank. Never declare a winner from an asymmetric matrix.
+- **Adversarial falsification.** A "safe", "ready", or "best" claim needs failed
+  falsification attempts on record per `critique.md`. Without them, cap the grade
+  at Partially verified.
+- **Exhaustive coverage.** Grade the coverage ledger itself: each source class is
+  met, waived with reason, or open. An open class without a Remaining gaps entry
+  fails the quality checklist.
+- **Decision traceability.** Every requirement (R1 to Rn) traces to evidence per
+  option. An untraced requirement blocks a final recommendation; report options
+  with trade-offs instead.
+- **Forensic provenance.** Each timeline link needs origin, date, and strength.
+  Conflicting links are preserved side by side with both sources, not merged.
+
 ## Consistency sweep
 
 After the main pass, grep the whole scope for the fixed claim's siblings: the

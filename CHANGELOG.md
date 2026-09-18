@@ -10,6 +10,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### deep-research-expert
+
+- Bumped metadata.version to 1.5.0.
+- Added auto default mode plus eight modes (Spot, Standard, Deep, Forensic,
+  Comparative, Adversarial, Exhaustive, Decision) with depth chain versus
+  specialized split, per-mode stopping rule, evidence requirement, query strategy,
+  and reporting add-on in `references/depth-modes.md`.
+- Updated SKILL.md Step 0 to auto resolution, Steps 1 to 4 to per-mode routing,
+  and the bundled references list.
+- Updated `references/proactive-trigger.md` with mode-aware triggers and offers
+  while keeping the house headings (When to act, When to stay quiet, How to offer).
+- Extended `references/critique.md` with an Adversarial falsification checklist,
+  `references/evidence-grading.md` with symmetry plus falsification plus coverage
+  plus traceability add-ons, `references/report-format.md` with per-mode add-ons
+  and auto to X methodology, `references/source-ladder.md` with coverage targets
+  and provenance notes, `references/quality-checklist.md` with mode hygiene, and
+  `references/verification-and-failure.md` with mode-specific checks.
+- Clarified `references/code-review.md` precedence: two-axis flow wins for review
+  tasks, depth mode sets rigor only.
+- Synced `.cursor-plugin/marketplace.json` deep-research-expert to 1.5.0 with
+  comparison and decision findability.
+
 ## [1.14.0] - 2026-09-15
 
 <details>

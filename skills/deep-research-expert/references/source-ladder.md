@@ -64,3 +64,16 @@ for example `references/cli-mode.md`.
   from these notes, not reconstructed from memory at the end.
 - Deduplicate by origin: three pages quoting the same upstream announcement
   count as one source, not three.
+
+## Mode notes
+
+- **Exhaustive coverage targets.** Declare the target classes up front: official
+  docs, repos, registries, changelogs, issue trackers, academic sources,
+  independent sources. Mark each as met, waived with reason, or open. Do not
+  claim full coverage from a sampled sweep.
+- **Forensic provenance.** Record origin, date, and strength per timeline link.
+  Prefer primary URLs over mirrors and scrapers. If only a mirror loads, say so.
+  Preserve contradictions side by side instead of merging them.
+- **Comparative symmetry.** Run the same query template and the same source
+  classes per candidate. Fill the matrix row by row across candidates, not one
+  candidate fully before the next.

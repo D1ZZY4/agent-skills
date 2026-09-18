@@ -22,3 +22,6 @@ that can invalidate an otherwise plausible answer.
   against another sentence in the same draft.
 - State plainly what was not checked (sampled URLs, untested commands, paywalled
   sources) instead of implying full coverage.
+- For Exhaustive, state the coverage target status per source class. For Comparative,
+  state symmetry gaps. For Decision, state untraced requirements. For Adversarial,
+  state falsification attempts that found nothing.

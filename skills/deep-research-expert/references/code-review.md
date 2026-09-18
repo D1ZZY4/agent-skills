@@ -5,7 +5,10 @@ separate axes: Standards (does the code follow this repo's documented rules?)
 and Spec (does the code implement what was asked?). The axes run independently
 and report side by side; one axis never masks the other. Use for branch, PR,
 or work-in-progress review, or whenever the user says "review since X". Not
-for single-file typo checks or questions answerable from the diff alone.
+for single-file typo checks or questions answerable from the diff alone. This
+flow takes precedence over depth modes; the resolved depth mode only sets the
+rigor (Standard by default, Deep with one critique round for high-stakes
+reviews).
 
 ## Step 1: Pin the fixed point
 

@@ -1,7 +1,8 @@
 # Proactive Trigger
 
 When to offer deep research without being asked, and when to stay quiet. Research costs
-time and network calls, so the offer must earn its keep.
+time and network calls, so the offer must earn its keep. Default mode is auto; the
+offer names the resolved mode from `depth-modes.md` plus its stopping rule.
 
 ## When to act
 
@@ -16,6 +17,16 @@ time and network calls, so the offer must earn its keep.
 - A branch, PR, or work-in-progress change is up for review, especially with a
   spec or issue to check against: load `code-review.md` and run its two-axis
   flow instead of a generic read-through.
+- The user compares options (A vs B, library or architecture candidates): offer
+  Comparative with a symmetry requirement, not a generic deep dive.
+- The user must pick an option (build vs buy, migration, framework or vendor
+  selection): offer Decision with a decision matrix.
+- The user investigates an incident, regression, or disputed history: offer Forensic
+  with a timeline and provenance chain.
+- The user asserts production readiness, security, compliance, or a controversial
+  best claim: offer Adversarial falsification.
+- The user asks for full coverage (landscape scan, full repo audit, every candidate
+  meeting constraints): offer Exhaustive with explicit coverage targets.
 
 ## When to stay quiet
 
@@ -26,8 +37,8 @@ time and network calls, so the offer must earn its keep.
 
 ## How to offer
 
-Name the scope, the sources, and the stopping rule in one short proposal: "I can deep
-check the 14 links in this skill against the live docs and report dead ones. Proceed?"
-For ambiguous scope, offer a depth from `depth-modes.md` (Spot, Standard, or Deep)
-and let the user pick. For review tasks, name the fixed point and the spec source
-before starting.
+Name the scope, the sources, the resolved mode, and the stopping rule in one short
+proposal: "I can deep check the 14 links in this skill against the live docs and
+report dead ones in Standard mode, one pass, no critique loop. Proceed?" For ambiguous
+scope, name the auto pick plus one alternative (depth versus specialized) and let the
+user pick. For review tasks, name the fixed point and the spec source before starting.

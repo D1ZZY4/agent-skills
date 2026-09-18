@@ -8,8 +8,9 @@ across audits. Short reports keep every section; they just keep each one brief.
 1. **Verdict first.** One paragraph: what was audited, the overall judgment, and
    the count of HIGH findings. If there are zero HIGH findings, say so.
 2. **Methodology.** What was read in full (file counts), what was fetched live
-   (named sources), the depth mode used, and the material assumptions the work
-   rests on. No checked-looking claims about unchecked work.
+   (named sources), the resolved mode (for auto, write "auto -> X") and whether it
+   is a depth or specialized mode, and the material assumptions the work rests on.
+   No checked-looking claims about unchecked work.
 3. **Strengths.** What verified as correct and current, with the source that
    confirms each. This is evidence, not praise.
 4. **Findings by severity.** HIGH first, then MEDIUM, then LOW. Each finding:
@@ -26,9 +27,28 @@ across audits. Short reports keep every section; they just keep each one brief.
    note: the strongest evidence found against the verdict, why it does not
    overturn it, and what would change that assessment.
 7. **Recommendations.** Numbered, ordered by severity, each one actionable.
-8. **Metadata footer.** Mode, source count, fetch date, and validation status
+8. **Metadata footer.** Resolved mode, source count, fetch date, and validation status
    (which checklist items passed, which were waived and why), so a later
    reader can judge the report without rerunning it.
+
+## Per-mode add-ons
+
+Keep the base shape above in every mode. Add one block when the mode needs it:
+
+- **Forensic:** timeline table with date, event, and source per link, plus a
+  provenance note for conflicting links.
+- **Comparative:** symmetry matrix. Rows are evidence categories, columns are
+  candidates, cells carry grade plus source. State the asymmetry explicitly when
+  a cell cannot be filled.
+- **Adversarial:** falsification section. List what was attacked, what survived,
+  what fell, and the queries or fetches behind each attempt.
+- **Exhaustive:** coverage table. Rows are source classes, columns are target,
+  status (met, waived, open), and key sources.
+- **Decision:** decision matrix. Rows are requirements R1 to Rn, columns are
+  options with per-cell evidence grades, then trade-offs, risks, and the numbered
+  recommendation that follows from the matrix.
+- **Spot, Standard, Deep:** no add-on, except Deep keeps the counterevidence note
+  in Remaining gaps.
 
 ## Long reports
 
