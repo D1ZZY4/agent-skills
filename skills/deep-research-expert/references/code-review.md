@@ -95,12 +95,3 @@ the spec, or the reverse.
 Grade review findings with the labels in `evidence-grading.md`. A finding that
 quotes both the offending hunk and the violated rule (or spec line) is
 Verified; a smell with no repo rule behind it stays a judgement call.
-
-## Sources checked
-
-Concepts adapted (wording original) from two upstream skills:
-
-- Two-axis review, fixed-point pinning, smell baseline:
-  [mattpocock/skills code-review](https://raw.githubusercontent.com/mattpocock/skills/refs/heads/main/skills/engineering/code-review/SKILL.md)
-- Depth modes, critique loop-back, claim-level verification discipline:
-  [199-biotechnologies/claude-deep-research-skill](https://github.com/199-biotechnologies/claude-deep-research-skill)

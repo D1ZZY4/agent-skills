@@ -31,6 +31,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   tasks, depth mode sets rigor only.
 - Synced `.cursor-plugin/marketplace.json` deep-research-expert to 1.5.0 with
   comparison and decision findability.
+- Bumped metadata.version to 1.5.1.
+- Removed the `Sources checked` upstream-attribution block from
+  `references/code-review.md` per owner instruction; flow, smell baseline, and
+  grading cross-links unchanged.
+- Synced `.cursor-plugin/marketplace.json` deep-research-expert to 1.5.1.
 
 ### mermaid-diagrams-expert
 
