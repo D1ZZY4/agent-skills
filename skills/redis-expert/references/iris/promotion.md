@@ -26,7 +26,3 @@ def wait_for_ltm(agent_memory, *, query, owner_id, timeout_s=30.0):
 
 - **Failures do not fail the write.** Submission errors are logged data-plane side while the write still returns 200; worker failures (LLM timeout, provider 429) retry in the workflow engine. A queue outage therefore delays promotion silently until Cloud monitoring catches it.
 - **Idle sessions trail.** Turns that arrive after the last promotion for a quiet session wait for the next event before they are extracted.
-
-## Sources checked
-
-- https://github.com/redis/agent-skills (upstream `iris-development` promotion rules, MIT; concepts followed, wording original)

@@ -11,7 +11,7 @@ description: >
   skill, library, or technical surface against its real sources.
 license: SSPL-1.0
 metadata:
-  version: 1.5.1
+  version: 1.5.2
   author: D1ZZY4
   priority: medium
 ---

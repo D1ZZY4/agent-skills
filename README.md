@@ -69,8 +69,8 @@ https://raw.githubusercontent.com/D1ZZY4/agent-skills/refs/heads/main/skills/<sk
 | [`create-readme-expert`](skills/create-readme-expert/SKILL.md) | Documentation | Source-driven README creation, improvement, and audit. |
 | [`mermaid-diagrams-expert`](skills/mermaid-diagrams-expert/SKILL.md) | Documentation | Maintainable Mermaid diagrams for software documentation. |
 | [`commit-expert`](skills/commit-expert/SKILL.md) | Workflow | Repository-aware Git commit and push safety. |
-| [`redis-expert`](skills/redis-expert/SKILL.md) | Infrastructure | Redis architecture, clients, search, clustering, observability, security, and semantic caching. |
-| [`deep-research-expert`](skills/deep-research-expert/SKILL.md) | Research | Evidence-graded technical research, audits, and reviews against real sources. |
+| [`redis-expert`](skills/redis-expert/SKILL.md) | Infrastructure | Redis architecture, clients, search, clustering, observability, security, semantic caching, and agent memory. |
+| [`deep-research-expert`](skills/deep-research-expert/SKILL.md) | Research | Evidence-graded technical research, audits, comparisons, decisions, and reviews against real sources. |
 
 ## Why these skills
 
@@ -122,7 +122,7 @@ Each skill defines its triggers, safety boundaries, and loading behavior in its 
 <details>
 <summary>How it works, why it is worth it, and how it differs from upstream</summary>
 
-**How it works**: the skill proposes a research plan (scope, sources, stopping rule), reads the full scope before judging any of it, climbs a six-rung source ladder, grades each load-bearing claim with evidence labels, and delivers a severity-ranked report. For code review it switches to a dedicated two-axis flow (Standards vs Spec) against a caller-supplied fixed point.
+**How it works**: the skill resolves an auto-selected mode (Spot, Standard, Deep, Forensic, Comparative, Adversarial, Exhaustive, or Decision), proposes a research plan (scope, sources, stopping rule), reads the full scope before judging any of it, climbs a six-rung source ladder, grades each load-bearing claim with evidence labels, and delivers a severity-ranked report. For code review it switches to a dedicated two-axis flow (Standards vs Spec) against a caller-supplied fixed point.
 
 **Why it is worth it**: audits fail in predictable ways (sampled files presented as full coverage, one snippet treated as confirmation, invented links). This skill turns each failure into a named rule with a check, so the report states what was verified, what was partial, and what was never checked.
 
@@ -131,7 +131,7 @@ Each skill defines its triggers, safety boundaries, and loading behavior in its 
 | Category | mattpocock `code-review` | `199-biotechnologies` deep-research | This repo `deep-research-expert` |
 |----------|--------------------------|-------------------------------------|----------------------------------|
 | Scope | &bull; diffs since a fixed point only | &check; any research question | &check; any technical surface, plus a dedicated review mode |
-| Depth control | &cross; one fixed flow | &check; quick/standard/deep/ultradeep modes | &bull; plan proposal with stopping rule, one critique loop max |
+| Depth control | &cross; one fixed flow | &check; quick/standard/deep/ultradeep modes | &check; auto-selected 8 modes (Spot, Standard, Deep, Forensic, Comparative, Adversarial, Exhaustive, Decision), one critique loop max |
 | Source hierarchy | &cross; repo docs assumed | &bull; multi-provider search, no fixed ladder | &check; six-rung ladder, weaker never overrules stronger |
 | Claim verification | &bull; spec-line quotes per finding | &check; 3+ sources per claim, validation scripts | &check; two-source rule plus Verified/Partial/Unverified labels |
 | Evidence persistence | &cross; report only | &check; JSONL stores, HTML/PDF outputs | &cross; report carries methodology instead |

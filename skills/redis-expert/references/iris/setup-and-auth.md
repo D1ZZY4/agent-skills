@@ -49,7 +49,6 @@ export const agentMemory = new AgentMemory({
 
 ## Sources checked
 
-- https://github.com/redis/agent-skills (upstream `iris-development` skill, MIT; concepts followed, wording original)
 - https://pypi.org/project/redis-agent-memory/
 - https://www.npmjs.com/package/@redis-iris/agent-memory
 - Redis Cloud console: Agent Memory service provisioning

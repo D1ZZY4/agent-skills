@@ -53,7 +53,7 @@
       "name": "redis-expert",
       "source": "./skills/redis-expert",
       "description": "Redis architecture, clients, search, clustering, observability, security, semantic caching, and agent memory.",
-      "version": "1.5.2",
+      "version": "1.5.3",
       "category": "infrastructure",
       "tags": ["redis", "caching", "clustering", "vector-search", "rag", "semantic-cache", "agent-memory"]
     },
@@ -61,7 +61,7 @@
       "name": "deep-research-expert",
       "source": "./skills/deep-research-expert",
       "description": "Evidence-graded technical research, audits, comparisons, decisions, and reviews against real sources.",
-      "version": "1.5.1",
+      "version": "1.5.2",
       "category": "research",
       "tags": ["research", "audit", "review", "verification", "comparison", "decision", "forensic"]
     }

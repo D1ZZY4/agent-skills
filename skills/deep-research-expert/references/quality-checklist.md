@@ -57,8 +57,3 @@ a Remaining gaps entry instead of a silent pass.
   entry fails the check.
 - Forensic reports include the timeline with provenance; Adversarial reports
   include the falsification section.
-
-## Sources checked
-
-Checklist discipline adapted (wording original) from the quality gates of
-[199-biotechnologies/claude-deep-research-skill](https://github.com/199-biotechnologies/claude-deep-research-skill).

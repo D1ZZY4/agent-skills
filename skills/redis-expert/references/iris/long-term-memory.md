@@ -48,7 +48,3 @@ Filter operators: `eq`, `ne`, `in`, `all` on `session_id`, `owner_id`, `namespac
 | `memory_type` | `semantic` (durable fact), `episodic` (dated event), `message` (verbatim turn). |
 
 Keep structure in fields, not in prose: a fact like `[owner=user-42] prefers dark mode` inside `text` cannot be filtered without an LLM re-parse. Clearing a field on update takes an empty string; omitting it leaves the value unchanged.
-
-## Sources checked
-
-- https://github.com/redis/agent-skills (upstream `iris-development` LTM rules, MIT; concepts followed, wording original)

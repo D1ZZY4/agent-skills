@@ -36,6 +36,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `references/code-review.md` per owner instruction; flow, smell baseline, and
   grading cross-links unchanged.
 - Synced `.cursor-plugin/marketplace.json` deep-research-expert to 1.5.1.
+- Bumped metadata.version to 1.5.2.
+- Removed the `Sources checked` quality-gates attribution from
+  `references/quality-checklist.md` per owner instruction.
+- Synced `.cursor-plugin/marketplace.json` deep-research-expert to 1.5.2.
 
 ### mermaid-diagrams-expert
 
@@ -54,6 +58,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   kept the section 1 routing signal and the upstream index entries, renumbered the
   two following sections.
 - Synced `.cursor-plugin/marketplace.json` redis-expert to 1.5.2.
+- Bumped metadata.version to 1.5.3.
+- Removed the upstream `iris-development` attribution blocks from the four
+  `references/iris/` files and the whole-skill origin note from `SKILL.md` per
+  owner instruction; kept the runtime-authority rule sentence.
+- Synced `.cursor-plugin/marketplace.json` redis-expert to 1.5.3.
+
+### Repository
+
+- Synced the README Skills table (redis agent memory, deep-research comparisons
+  and decisions) and the deep-research compare block (auto plus eight modes)
+  with the current skill state.
 
 ## [1.14.0] - 2026-09-15
 

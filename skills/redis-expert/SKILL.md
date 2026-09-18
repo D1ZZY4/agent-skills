@@ -9,12 +9,11 @@ description: >
   background promotion). Use whenever designing, writing, reviewing, or debugging anything that touches
   Redis: choosing a data structure, naming keys, configuring a client, sharding across a
   cluster, building or tuning a search index, monitoring or diagnosing performance, hardening
-  a deployment, caching LLM completions, or wiring persistent memory for an AI agent. Adapted from Redis, Inc.'s official agent-skills
-  repository (https://github.com/redis/agent-skills, MIT licensed), merged into one skill so the
-  right domain loads automatically without picking between separate ones.
+  a deployment, caching LLM completions, or wiring persistent memory for an AI agent, merged
+  into one skill so the right domain loads automatically without picking between separate ones.
 license: SSPL-1.0
 metadata:
-  version: 1.5.2
+  version: 1.5.3
   author: D1ZZY4
   priority: low
 ---
@@ -158,7 +157,7 @@ Two tiers served by the managed Redis Agent Memory data plane: append-only sessi
 Append every turn with one stable `session_id` and a tz-aware UTC timestamp; scope long-term records with `owner_id`, `namespace`, `topics`, and `memory_type` at write time; search server-side with structured filters plus a similarity threshold instead of filtering client-side.
 
 See `references/iris/setup-and-auth.md`, `references/iris/session-memory.md`,
-`references/iris/long-term-memory.md`, and `references/iris/promotion.md`. Iris-side concepts follow the upstream `iris-development` skill (MIT); wording here is original.
+`references/iris/long-term-memory.md`, and `references/iris/promotion.md`.
 
 ## Anti-patterns
 
@@ -205,7 +204,4 @@ Organized by domain, matching the upstream official skills plus the Iris agent-m
 - Cursor plugin packaging lives at the project level (`.cursor-plugin/marketplace.json`),
   covering every skill in this repository rather than this skill alone.
 
-Original source: https://github.com/redis/agent-skills (MIT licensed, Redis, Inc.). This merge
-reorganizes the upstream domain skills into one, adds proactive triggering and cross-domain routing,
-and applies house formatting rules. The upstream repository remains the authority for provenance;
-the target Redis version and deployment documentation remain the authority for runtime behavior.
+The target Redis version and deployment documentation remain the authority for runtime behavior.

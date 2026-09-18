@@ -37,7 +37,3 @@ Constraints: IDs (`store_id`, `session_id`, `actor_id`) are 1-64 chars of `[a-zA
 The session `owner_id` comes from the first event's `actor_id` and never changes. Each event carries two timestamps: client-supplied `created_at` (ordering, agent truth) and server-set `system_timestamp` (ingestion time, diagnostics for clock skew or replays). Pass page tokens back verbatim.
 
 Deleting a session or event does not remove already-promoted long-term memories; delete those separately.
-
-## Sources checked
-
-- https://github.com/redis/agent-skills (upstream `iris-development` session rules, MIT; concepts followed, wording original)
