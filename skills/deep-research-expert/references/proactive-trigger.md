@@ -34,6 +34,17 @@ offer names the resolved mode from `depth-modes.md` plus its stopping rule.
 - The user asked for speed over certainty and accepted the risk explicitly.
 - The same scope was audited earlier and nothing about it has changed; say so instead
   of re-running the work.
+- The offer would require transmitting confidential material, and the user has not approved sending
+  it. Report what can be checked locally instead.
+
+## Confidence rule
+
+The offer must earn its keep. Offer research only when being wrong would cost real effort, for
+example a wrong version gate, a dead documentation link, or an invented API.
+
+Do not offer research as a general quality upgrade, and do not offer a mode heavier than the
+question needs. Name the resolved mode and its stopping rule in the offer so the user can judge the
+cost before agreeing.
 
 ## How to offer
 

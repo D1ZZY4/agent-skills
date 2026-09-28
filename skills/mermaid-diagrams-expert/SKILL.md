@@ -9,7 +9,7 @@ description: >
   or beta syntax.
 license: SSPL-1.0
 metadata:
-  version: 1.5.1
+  version: 1.6.0
   author: D1ZZY4
   priority: medium
 ---
@@ -23,6 +23,30 @@ relationships, sequencing, or architecture would be clearer visually: flowcharts
 class, ER, C4, architecture, state, git, gantt, chart, kanban, packet, venn, and ishikawa
 diagrams. Verify the target renderer and Mermaid version before using version-sensitive or
 beta syntax. Load the references needed for the chosen diagram type.
+
+## Core principles
+
+1. Use a diagram only when the reader must reason about relationships, sequence, state, topology, branching, or dependencies. Prose explains a simple fact better.
+2. Mermaid syntax is portable; renderer behavior is not. Treat the target renderer as a compatibility constraint.
+3. Model before styling. Nodes, edges, labels, direction, and boundaries come first.
+4. Verify the target renderer and version before using version-sensitive syntax.
+5. If no renderer is available, say the diagram is unrendered rather than implying it was checked.
+6. Keep diagrams small enough to read. Split at roughly 10 to 15 entities rather than shrinking the font.
+7. Never send proprietary architecture, credentials, or personal data to an online renderer.
+8. No em dashes in diagram labels or surrounding documentation.
+
+## Authorization model
+
+| User instruction | Authorized scope |
+| --- | --- |
+| "diagram this" | Produce the Mermaid block for the named structure |
+| "add a diagram to the README" | The diagram plus the surrounding explanation the file needs |
+| "check if this renders" | Render it, if a renderer is already available |
+| "install Mermaid CLI and check" | A separate authorization that covers installing the tool |
+| "put this in the online editor" | Only after naming the content being sent, and never for confidential material |
+
+Installing a renderer, an icon pack, or Docker changes the environment and needs its own
+authorization. Do not set one up implicitly to validate a diagram.
 
 ## Step 0: Decide whether a diagram earns its keep
 
@@ -94,6 +118,20 @@ label the result as unrendered.
 
 For chat, provide the Mermaid block plus a short interpretation when useful. For README/wiki/PR
 content, preserve the exact fenced block and any required surrounding explanation.
+
+## Failure handling
+
+When a diagram does not render or a target rejects it:
+
+1. report the actual parser or renderer error rather than describing the intended appearance
+2. check the diagram-type keyword against the relevant reference, since a typo fails loudly instead of degrading
+3. check config and theme option names, because unrecognized options are usually ignored silently, so a diagram can appear to render while the intended style was never applied
+4. simplify by splitting the diagram, not by shrinking the text
+5. if the target renderer lacks the required feature, say so and offer broadly supported syntax
+6. never claim a diagram was rendered when it was only linted
+
+A clean exit with an output file means the syntax parsed. Anything else means fix it before
+presenting the diagram as finished.
 
 ## Anti-patterns
 

@@ -9,7 +9,7 @@ description: >
   and adapt to the product's language and audience rather than imposing generic voice.
 license: SSPL-1.0
 metadata:
-  version: 1.7.1
+  version: 1.8.0
   author: D1ZZY4
   priority: medium
 ---
@@ -23,6 +23,32 @@ empty states, errors, tooltips, dialogs, toasts, onboarding, accessibility text,
 output. Check project-specific content guidance first and adapt to the product's language
 and audience rather than imposing a generic voice. Load only the component-specific
 reference that matches the problem.
+
+## Core principles
+
+1. The project's own content guidance wins over any portable voice default.
+2. Read the existing copy before writing new copy. The codebase is the house style.
+3. Comprehension outranks cleverness. A reader who must re-read a line has not been served.
+4. Accessibility and localization are requirements, not polish applied at the end.
+5. Never invent product behavior, legal terms, or accessibility guarantees the product does not have.
+6. Verify terminology against authoritative sources instead of guessing.
+7. Match tone to stakes. Friendly copy must never trivialize a destructive action.
+8. No em dashes in generated copy.
+
+## Authorization model
+
+Interpret a request as covering the copy it names, not the surrounding surface:
+
+| User instruction | Authorized scope |
+| --- | --- |
+| "write copy for this empty state" | That empty state, plus the terms it introduces |
+| "audit this flow" | Report findings across the flow; change nothing until asked |
+| "rewrite this onboarding" | The onboarding sequence the request names |
+| "fix this screen" | User-visible strings on that screen, including error and empty states it reaches |
+| "add a feature" | Copy for the new user-visible surface only, not a voice pass over existing screens |
+
+When a request is ambiguous about breadth, do the named scope and say what you left untouched,
+rather than silently sweeping the rest of the interface.
 
 ## Step 0: Establish the source of truth
 
@@ -75,6 +101,18 @@ from authoritative sources, not guesswork.
 
 Read `references/examples-and-anti-patterns.md` and `references/formatting-and-punctuation.md`.
 Check consistency across the whole flow, not just the changed string.
+
+## Failure handling
+
+When the copy cannot be completed as asked:
+
+1. state what is missing, specifically, rather than filling the gap with plausible text
+2. leave an explicit placeholder only when the user asked for a draft
+3. flag terminology you could not verify instead of choosing silently
+4. report accessibility or localization problems the string introduces even when out of scope
+5. never ship copy that promises behavior the product does not have
+
+A placeholder the user can see is better than confident text that is wrong.
 
 ## Anti-patterns
 

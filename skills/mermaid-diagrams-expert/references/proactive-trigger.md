@@ -5,23 +5,21 @@ persistent, renderable Mermaid syntax; it is not a general-purpose inline chart 
 
 ## When to act
 
-- **Explaining architecture or system structure**: describing how services, components, or
-  modules relate. A paragraph like "the frontend calls the API, which calls the database, which
-  then notifies the queue" is exactly the shape a diagram communicates faster and more precisely
-  than prose.
-- **Explaining a flow over time**: API request and response cycles, auth flows, and event
-  sequences, anything where order and timing matter.
-- **Explaining a database schema or data model**: table relationships, foreign keys, and
-  cardinality. Prose descriptions of schemas are hard to follow; an ERD is not.
-- **Explaining a decision process, algorithm, or user journey**: anything with branches,
-  conditions, or a "then this happens, unless that happens" structure.
-- **Designing or documenting a domain model**: classes, their attributes, methods, and how they
+- Explaining architecture or system structure. A paragraph like "the frontend calls the API,
+  which calls the database, which then notifies the queue" is exactly the shape a diagram
+  communicates faster and more precisely than prose.
+- Explaining a flow over time: API request and response cycles, auth flows, and event sequences,
+  anything where order and timing matter.
+- Explaining a database schema or data model. Prose descriptions of schemas are hard to follow;
+  an ERD is not.
+- Explaining a decision process, algorithm, or user journey: anything with branches, conditions,
+  or a "then this happens, unless that happens" structure.
+- Designing or documenting a domain model: classes, their attributes, methods, and how they
   relate through inheritance, composition, or association.
-- **Onboarding, a README, a PR, or a design doc is coming**: these are the contexts where a
-  diagram becomes living, version-controlled documentation instead of a one-off explanation
-  that goes stale.
-- **A plan or architecture is being discussed before implementation**: sketching the diagram
-  first catches structural problems earlier and cheaper than catching them in code review.
+- Onboarding, a README, a PR, or a design doc is coming. These are the contexts where a diagram
+  becomes living, version-controlled documentation instead of a one-off explanation that goes stale.
+- A plan or architecture is being discussed before implementation. Sketching the diagram first
+  catches structural problems earlier and cheaper than catching them in code review.
 
 ## When to stay quiet
 
@@ -30,6 +28,17 @@ persistent, renderable Mermaid syntax; it is not a general-purpose inline chart 
 - The user is asking a narrow, single-fact question where a diagram would be a non-sequitur.
 - A diagram was already produced for the same structure earlier in the conversation, and nothing
   about that structure has changed. Do not regenerate it just to re-illustrate the same answer.
+- The target renderer is unknown and the syntax needed is version-sensitive. Ask which platform
+  will render it rather than guessing a version.
+
+## Confidence rule
+
+- Offer a diagram only when the structure has real entities and relationships, not because the
+  topic feels visual.
+- If more than one diagram type could technically show it, pick the one that matches what the
+  reader must walk away understanding and say why in one line.
+- Never claim a diagram renders in a target platform you have not verified. When the renderer is
+  unknown, prefer broadly supported syntax and state the assumption.
 
 ## How to offer
 

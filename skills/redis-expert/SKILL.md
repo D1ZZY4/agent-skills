@@ -13,7 +13,7 @@ description: >
   into one skill so the right domain loads automatically without picking between separate ones.
 license: SSPL-1.0
 metadata:
-  version: 1.5.4
+  version: 1.6.0
   author: D1ZZY4
   priority: low
 ---
@@ -29,6 +29,33 @@ Redis. Details live in `references/<domain>/`; load the file for the domain and 
 question rather than guessing. Retained technical guidance follows the upstream material
 where available, with qualifiers where the aggregate must distinguish Redis versions,
 modules, clients, or deployment models.
+
+## Core principles
+
+1. Reach for this skill whenever code, config, or a design decision touches Redis, not only when the user names it.
+2. Pick the data structure from the access pattern, not the data's shape.
+3. Load every domain the task touches. A production search deployment spans core, search, security, and observability at once.
+4. Validate Redis-specific guidance against the target version, modules, client library, and deployment model. General database intuition leads in the wrong direction often enough to be unreliable here.
+5. Qualify version-dependent behavior explicitly, since a dimension mismatch may be rejected while a metric mismatch only degrades relevance silently.
+6. Prefer the incremental `SCAN` family and pooled connections over shortcuts that only work at small scale.
+7. Prefer per-application ACLs with least privilege over one shared credential.
+8. No em dashes in generated guidance.
+
+## Authorization model
+
+Redis work is mostly advisory. Authorization matters for the operations that reach a live system:
+
+| User instruction | Authorized scope |
+| --- | --- |
+| "which data structure" | Reasoning and recommendation, no connection required |
+| "how do I index this" | Schema and query design, no index is created |
+| "this is slow" | Diagnosis from metrics, SLOWLOG, and FT.PROFILE output you provide |
+| "apply this config" | The configuration change as a proposal, applied only when asked to apply it |
+| "connect to production" | A separate authorization naming the target; report the risk before connecting |
+| "flush the cache" | Explicit and specific. Never a step toward another task. |
+
+Never connect to a live deployment, run a destructive command, or change security settings as a
+convenience step toward answering a question.
 
 ## Step 0: Trigger proactively
 
@@ -158,6 +185,18 @@ Append every turn with one stable `session_id` and a tz-aware UTC timestamp; sco
 
 See `references/iris/setup-and-auth.md`, `references/iris/session-memory.md`,
 `references/iris/long-term-memory.md`, and `references/iris/promotion.md`.
+
+## Failure handling
+
+When Redis guidance depends on a fact that could not be confirmed:
+
+1. state the version, module, or client assumption the guidance rests on
+2. distinguish a hard rejection from a silent degradation, since the second is the more dangerous case
+3. do not present a best practice as portable when it is workload- or version-specific
+4. say when the right answer is to measure, for example a similarity threshold that must be calibrated
+5. never connect to, reconfigure, or flush a live deployment to resolve your own uncertainty
+
+A wrong similarity threshold degrades quietly. An unverified claim about one does too.
 
 ## Anti-patterns
 

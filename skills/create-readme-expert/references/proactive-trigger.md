@@ -20,6 +20,8 @@ When to propose README creation or improvement without being asked, and when to 
 
 - Only propose README changes when the content can be verified against the actual project.
 - Do not rewrite a README based on assumptions, memory, or generic templates.
+- An outdated-looking README is not automatically a wrong README. Check the project state before
+  proposing a change.
 
 ## How to offer
 

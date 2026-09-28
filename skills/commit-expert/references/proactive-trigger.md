@@ -9,25 +9,34 @@ The goal is one useful check-in, not a running Git conversation.
 
 - After the agent creates or edits repository files and the working tree contains new task-owned
   changes, inspect `git status --short` before ending the turn.
-- If the user explicitly asked to commit or stage, skip this check-in and enter the normal workflow.
-- If the user explicitly asked to push, inspect push state, then follow `push-and-upstream.md`.
 - Before declaring the task complete, inspect the tree when the task involved repository changes.
-- Do not prompt about a dirty tree caused only by clearly pre-existing work.
+- If the user explicitly asked to commit or stage, skip this check-in and enter the normal
+  workflow.
+- If the user explicitly asked to push, inspect push state, then follow `push-and-upstream.md`.
 
-## Ownership first
+## When to stay quiet
 
-A dirty tree is not enough to trigger a commit prompt.
+- The tree is clean.
+- The dirty state is caused only by clearly pre-existing work the user never claimed.
+- The same task-owned diff was already offered for commit and the user declined. Do not ask again
+  unless new task-owned changes appear.
+- The user asked a narrow question that happened to touch a file. Reading a file is not authoring
+  a change.
 
-First distinguish:
+## Confidence rule
+
+A dirty tree is not enough to trigger a commit prompt. Ownership must be established first.
+
+Distinguish:
 
 - changes created by this task
 - changes that predate this task
 - changes with unclear provenance
 
-If the task-owned changes are mixed with pre-existing changes, report that distinction and propose
-only the task-owned scope for the commit discussion.
+Unclear provenance is not permission to offer the whole tree. If task-owned changes are mixed with
+pre-existing ones, report the distinction and propose only the task-owned scope.
 
-## Check-in flow
+## How to offer
 
 Ask once:
 
@@ -49,10 +58,6 @@ Routing:
 Only request extra context when the diff cannot explain an important part of the message, such as a
 business reason, an issue reference, an intentional compatibility decision, or a migration rationale.
 
-## Do not become nagging
-
-A clean tree means silence.
-
-A dirty tree after real work means one short check-in, then stop and follow the user's answer.
-Do not repeat the same prompt merely because the user continues unrelated work without changing the
-task-owned diff.
+A clean tree means silence. A dirty tree after real work means one short check-in, then stop and
+follow the user's answer. Do not repeat the same prompt merely because the user continues unrelated
+work without changing the task-owned diff.

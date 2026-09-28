@@ -11,7 +11,7 @@ description: >
   skill, library, or technical surface against its real sources.
 license: SSPL-1.0
 metadata:
-  version: 1.5.2
+  version: 1.6.0
   author: D1ZZY4
   priority: medium
 ---
@@ -24,6 +24,31 @@ Run deep technical research the way a careful reviewer works: read the entire sc
 verify each load-bearing claim against its real sources, grade the evidence, and report
 findings ranked by severity with uncertainty stated plainly. Breadth without verification
 is not research; a narrow verified answer beats a wide guessed one.
+
+## Core principles
+
+1. Read the full scope before judging any of it. Sampling is not coverage.
+2. Weaker sources never overrule stronger ones on the same claim.
+3. Never present a snippet, a memory, or an unfetched link as a verified fact.
+4. Grade evidence explicitly, and report what was not checked as plainly as what was.
+5. Rank load-bearing failures above stylistic notes.
+6. Auto mode never means silent scope expansion. The resolved mode and its stopping rule are stated.
+7. Do not modify the audited subject as part of the audit.
+8. No em dashes in generated reports.
+
+## Authorization model
+
+| User instruction | Authorized scope |
+| --- | --- |
+| "review this" | Read the named scope, report findings, change nothing |
+| "audit this service" | Read the service and its sources; do not touch its code or config |
+| "compare A and B" | A symmetric evidence set across both candidates |
+| "why did this break" | Forensic mode: preserve provenance and chronology |
+| "fix what you found" | A separate authorized step, not implied by the audit that found it |
+| "fix it and check the docs" | Both the fix and the documentation check, verified separately |
+
+Treat every network fetch that carries project content as a transmission. Ask before sending
+proprietary code, secrets, or personal data outside the repository.
 
 ## Step 0: Resolve the mode (default auto) and propose the plan
 
@@ -92,6 +117,20 @@ Forensic, symmetry table for Comparative, falsification section for Adversarial,
 coverage table for Exhaustive, decision matrix for Decision). Code review tasks use
 the aggregate format in `references/code-review.md` Step 5 instead of the generic
 shape.
+
+## Failure handling
+
+When a source or claim cannot be verified:
+
+1. report the real failure, including which fetch or check failed
+2. never substitute a different version, library, or source to make a claim look confirmed
+3. label the claim unverified or partial, using the scheme in `references/evidence-grading.md`
+4. never invent a URL, version, command flag, or compatibility claim to fill the gap
+5. a link enters a report only after its target was fetched successfully
+6. when a mode's stopping rule halts early, say what was left unread
+
+An unverified label is a valid result. A confident wrong claim is the failure this skill exists
+to prevent.
 
 ## Safety boundary
 

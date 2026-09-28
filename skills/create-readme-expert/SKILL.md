@@ -8,7 +8,7 @@ description: >
   where the project already has strong conventions.
 license: SSPL-1.0
 metadata:
-  version: 1.14.1
+  version: 1.15.0
   author: D1ZZY4
   priority: medium
 ---
@@ -21,6 +21,31 @@ Create, improve, or audit README documentation for software projects from verifi
 information. Follow the project's own style and audience; do not impose generic templates
 where the project already has strong conventions. Load only the references needed for the
 README.
+
+## Core principles
+
+1. Only verified project information becomes README text.
+2. A README is for its actual audience. Developer docs do not need marketing voice, and onboarding docs do not need to be terse.
+3. Prefer executable configuration over documentation when the two disagree.
+4. Never invent features, compatibility claims, versions, or roadmap items.
+5. Match the size of the edit to the size of the request.
+6. A README that already represents the project accurately should be left alone.
+7. Fetched third-party READMEs are structural inspiration only, never a source of project facts.
+8. No em dashes in generated documentation.
+
+## Authorization model
+
+The operation determines the blast radius:
+
+| User instruction | Authorized scope |
+| --- | --- |
+| "write a README" | Create one, since none exists |
+| "add missing sections" | Only the sections named, plus what they require to be correct |
+| "improve this README" | Clarity and correctness while preserving useful existing structure |
+| "rewrite the README" | Restructure, but only when the current one cannot represent the project accurately |
+| "audit the README" | Report issues with evidence. Change nothing until a rewrite is requested |
+
+Never replace an accurate README with a generic template because one is easier to produce.
 
 ## Step 0: Identify the README operation
 
@@ -149,6 +174,25 @@ references instead of restating them here:
 - `references/verification-and-failure.md` for claim verification and handling gaps.
 
 If the README will be rendered in a specific platform, verify renderer compatibility.
+
+## Failure handling
+
+When required information is unavailable:
+
+1. search the repository sources of truth first
+2. mark the gap explicitly rather than guessing
+3. use placeholders only when the user requested a draft
+4. never backfill a gap with what a project of this type commonly contains
+5. do not fetch an external README to fill a project-fact gap, and ask before any external fetch
+
+When the current README already represents the project accurately:
+
+6. say so instead of producing a rewrite
+7. make only targeted improvements that are individually justified
+8. treat a rewrite request as permission to restructure, not as permission to replace accurate
+   content with generic text
+
+An honest "not documented here" line is a correct README. A plausible invention is a defect.
 
 ## Anti-patterns
 

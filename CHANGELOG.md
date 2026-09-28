@@ -58,8 +58,68 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### redis-expert
 
 - Bumped metadata.version to 1.5.4.
+- Standardized `references/proactive-trigger.md` on the four sections every skill now uses. The file previously ended without any offer guidance, so a how-to-offer section was added that names the single relevant domain instead of listing all eight.
 - Updated the non-reference content note to point at `.cursor-plugin/plugin.json`
   instead of the removed `.cursor-plugin/marketplace.json`.
+
+### context7-expert
+
+- Bumped metadata.version to 1.14.0.
+- Standardized `references/proactive-trigger.md` on the four sections every skill now uses: when to act, when to stay quiet, confidence rule, and how to offer. Added the missing stay-quiet section, covering an explicit decline in the same conversation and an answer already present in local project files.
+- Replaced the `Priority order` section with `Core principles` and
+  `Authorization model`, matching the structure `commit-expert` adopted in
+  1.18.0. The existing five-level conflict resolution is kept inside the
+  authorization section.
+- Added `Failure handling` covering failed lookups, including the rule that a
+  failed lookup is a valid outcome while an invented answer is not.
+
+### copywriting-expert
+
+- Bumped metadata.version to 1.8.0.
+- Standardized `references/proactive-trigger.md` on the four sections every skill now uses. The new confidence rule separates a real defect from a register preference, and the stay-quiet section covers a project with no established voice when a draft was requested.
+- Added `Core principles`, `Authorization model`, and `Failure handling`
+  sections to match the `commit-expert` structure. The authorization table
+  scopes an edit to the surface the request names instead of a silent sweep of
+  the interface.
+
+### create-readme-expert
+
+- Bumped metadata.version to 1.15.0.
+- Standardized `references/proactive-trigger.md` on the four sections every skill now uses, with one added confidence bullet noting that a stale-looking README is not automatically a wrong README.
+- Added `Core principles`, `Authorization model`, and `Failure handling`
+  sections to match the `commit-expert` structure. The operation-to-scope table
+  makes an audit distinct from a rewrite, and the failure section keeps "the
+  README is already accurate" as a valid outcome.
+
+### deep-research-expert
+
+- Bumped metadata.version to 1.6.0.
+- Standardized `references/proactive-trigger.md` on the four sections every skill now uses. The new confidence rule requires the offer to earn its keep and forbids proposing a mode heavier than the question needs.
+- Added `Core principles`, `Authorization model`, and `Failure handling`
+  sections to match the `commit-expert` structure. The authorization table
+  separates finding issues from fixing them, and the failure section covers
+  unverifiable claims without inventing a substitute source.
+- Kept `Safety boundary` alongside the new sections because it carries network
+  transmission rules that do not fit the authorization table.
+
+### mermaid-diagrams-expert
+
+- Bumped metadata.version to 1.6.0.
+- Standardized `references/proactive-trigger.md` on the four sections every skill now uses, and dropped the bold-label bullet style used in the trigger list.
+- Added `Core principles`, `Authorization model`, and `Failure handling`
+  sections to match the `commit-expert` structure. The failure section records
+  that unrecognized config options are ignored silently, so a diagram can
+  appear to render while the intended style was never applied.
+
+### redis-expert
+
+- Bumped metadata.version to 1.6.0.
+- Standardized `references/proactive-trigger.md` on the four sections every skill now uses. The file previously ended without any offer guidance, so a how-to-offer section was added that names the single relevant domain instead of listing all eight.
+- Added `Core principles`, `Authorization model`, and `Failure handling`
+  sections to match the `commit-expert` structure. The authorization table
+  separates advisory work from operations that reach a live deployment.
+- Kept the domain sections as the body after `Step 1`, since this skill routes
+  by domain rather than running a linear workflow.
 
 ### commit-expert
 
@@ -829,6 +889,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.14.0 | 2026-09-28 | Core principles, Authorization model, and Failure handling sections aligned with the commit-expert 1.18.0 structure |
 | 1.13.1 | 2026-09-15 | Node.js 18 prerequisite, ctx7 remove and MCP server URL, alias drift note, official source links |
 | 1.13.0 | 2026-09-13 | Proactive trigger reference style alignment: consistent headings, comma-splice cleanup |
 | 1.12.0 | 2026-09-13 | SKILL.md style unification: Purpose section, priority heading renamed to Priority order |
@@ -851,6 +912,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.8.0 | 2026-09-28 | Core principles, Authorization model, and Failure handling sections aligned with the commit-expert 1.18.0 structure |
 | 1.7.1 | 2026-09-15 | Em dash default clarifier, official language source links (KBBI, EYD, Merriam-Webster, Oxford) |
 | 1.7.0 | 2026-09-13 | Proactive trigger reference modernization: consistent headings and copy cleanup |
 | 1.6.0 | 2026-09-13 | SKILL.md style unification: Purpose section |
@@ -871,6 +933,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.18.0 | 2026-09-28 | Authorization model separating policy from permission, in-progress Git state detection, widened signature verification |
 | 1.17.1 | 2026-09-15 | Conventional Commits specification source in message-style reference |
 | 1.17.0 | 2026-09-13 | Proactive trigger reference style alignment: heading naming and prose cleanup |
 | 1.16.0 | 2026-09-13 | Punctuation ban clarified (em dash only), bulleted-list body rule, bulleted-body example |
@@ -894,6 +957,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.6.0 | 2026-09-28 | Core principles, Authorization model, and Failure handling sections aligned with the commit-expert 1.18.0 structure |
 | 1.5.1 | 2026-09-18 | Trimmed generic web content from advanced-features reference |
 | 1.5.0 | 2026-09-15 | New diagram types reference (venn, ishikawa, kanban, packet, radar, treemap), security reference, renderer platform matrix, v11.13.0 label fix |
 | 1.4.2 | 2026-09-13 | Proactive trigger reference style alignment: consistent headings and tightened prose |
@@ -914,6 +978,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.6.0 | 2026-09-28 | Core principles, Authorization model, and Failure handling sections added, domain sections kept as the body |
 | 1.5.4 | 2026-09-28 | Non-reference note repointed at `.cursor-plugin/plugin.json` after the Cursor marketplace was replaced |
 | 1.5.3 | 2026-09-18 | Iris and whole-skill attribution removals, runtime rule kept |
 | 1.5.2 | 2026-09-18 | Summary-level LLM primitives removal from redisvl client reference |
@@ -934,6 +999,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.15.0 | 2026-09-28 | Core principles, Authorization model, and Failure handling sections aligned with the commit-expert 1.18.0 structure |
 | 1.14.1 | 2026-09-15 | Verified external README URLs with checked dates, GitHub alerts docs source |
 | 1.14.0 | 2026-09-14 | Diagrams reference with mermaid-diagrams-expert routing and canonical raw URL fallback |
 | 1.13.0 | 2026-09-13 | Proactive trigger reference modernization: consistent headings, how-to-offer section |
@@ -956,6 +1022,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.6.0 | 2026-09-28 | Core principles, Authorization model, and Failure handling sections aligned with the commit-expert 1.18.0 structure |
 | 1.5.2 | 2026-09-18 | Quality-gates attribution removal from quality-checklist |
 | 1.5.1 | 2026-09-18 | Sources-checked block removal from code-review |
 | 1.5.0 | 2026-09-18 | Auto default plus eight modes, per-mode routing, falsification and symmetry add-ons |

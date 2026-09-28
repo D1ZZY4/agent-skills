@@ -8,7 +8,7 @@ its own.
 ## When to act
 
 Reach for this skill any time one of these is true, whether or not the user names Context7 or
-even names a library explicitly:
+mentions a library explicitly:
 
 - The user asks a setup, configuration, "how do I", or API signature question that names a
   library, framework, SDK, CLI tool, or cloud service, however casually phrased.
@@ -23,6 +23,17 @@ even names a library explicitly:
 - You catch yourself about to answer from memory about a library's API with a hedge such as
   "I believe" or "as of my training". That hedge is itself the trigger: check the documentation
   instead of stating the hedge.
+
+## When to stay quiet
+
+- The question is about a general programming concept that does not depend on a specific library
+  version, for example what a closure is or what REST means.
+- The repository already contains the authoritative answer in local documentation, README,
+  lockfiles, or manifests.
+- The user explicitly declined a lookup in this conversation. Honor that and answer from
+  project-local material or training knowledge with the uncertainty flagged.
+- The same library question was already resolved earlier in the conversation and nothing about the
+  version has changed.
 
 ## Confidence rule
 
