@@ -43,6 +43,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   repository of markdown `SKILL.md` files has no manifest to publish.
   `cline skill install` remains the supported path and takes the same
   `--skill` flag.
+- Correct three claims in the documentation. The `### Repository` row for
+  Codex now names the `.claude-plugin/plugin.json` fallback instead of
+  repeating the manifest path, the deep-research-expert sources paragraph no
+  longer ends on a dangling "the same way", and `caveman-commit`-style takes
+  the hyphen it needs as a compound modifier.
+- Removed a phantom `context7-expert` 1.5.0 row from the per-skill table. No
+  release section ever recorded that version, and its description was a
+  verbatim copy of the 1.2.0 row. Added the 1.6.0 and 1.9.0 rows the table was
+  missing, sourced from the 1.6.0 and 1.8.0 release sections. Versions 1.4.0
+  and 1.5.0 remain absent because no release section records a bump to
+  either.
 
 ### redis-expert
 
@@ -796,7 +807,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 | 1.12.0 | 2026-09-13 | SKILL.md style unification: Purpose section, priority heading renamed to Priority order |
 | 1.11.0 | 2026-09-13 | Snyk W011 response: propose lookup to the user before any query, auto-load without auto-query, MCP preferred over CLI, version options presented as choices |
 | 1.10.0 | 2026-09-13 | Security audit response: trust boundaries, npx execution policy, query redaction, indirect prompt injection handling, skills management write controls; repo license moved to SSPL-1.0 |
-| 1.5.0 | 2026-08-16 | Evidence hierarchy, version-awareness, MCP/CLI mode selection, proactive trigger |
+| 1.9.0 | 2026-09-13 | Priority hierarchy for conflict resolution, concrete risk classification, environment detection, explicit do-not-use-Context7 boundaries, setup.md defers to agent documentation |
+| 1.6.0 | 2026-08-16 | Risk-tiered operation budget, traceability requirements, agent-adapters.md for host generalization, tightened setup safety boundaries, verification-and-failure rewrite |
 | 1.3.0 | 2026-08-16 | License, metadata, self-contained references, verification-and-failure reference |
 | 1.2.0 | 2026-08-11 | Evidence hierarchy, version-awareness, MCP/CLI mode selection, proactive trigger |
 | 1.1.0 | 2026-07-13 | Initial release |

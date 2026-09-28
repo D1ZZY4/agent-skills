@@ -60,7 +60,7 @@ Each agent reads its manifest from the path its own plugin spec defines, so the 
 
 | Manifest | Read by | Spec |
 |---|---|---|
-| `.codex-plugin/plugin.json` | Codex | Codex plugin layout, discovered as `.codex-plugin/plugin.json` |
+| `.codex-plugin/plugin.json` | Codex | Codex plugin layout, preferred over the `.claude-plugin/plugin.json` fallback |
 | `.claude-plugin/plugin.json` | Claude Code | Claude Code plugin manifest |
 | `.claude-plugin/marketplace.json` | Claude Code | Claude Code marketplace index |
 | `.cursor-plugin/plugin.json` | Cursor | Cursor Plugin manifest, one plugin bundling every skill |
@@ -163,7 +163,7 @@ Each skill defines its triggers, safety boundaries, and loading behavior in its 
 
 **Proactive loading**: offers research when accuracy, currency, or completeness is questioned, when a claim carries version/URL/syntax risk, or before material ships as authoritative. Stays quiet for small stable questions answerable from verified local material.
 
-**Sources**: [mattpocock/skills code-review](https://raw.githubusercontent.com/mattpocock/skills/refs/heads/main/skills/engineering/code-review/SKILL.md); [199-biotechnologies/claude-deep-research-skill](https://github.com/199-biotechnologies/claude-deep-research-skill) ([SKILL.md](https://raw.githubusercontent.com/199-biotechnologies/claude-deep-research-skill/main/SKILL.md), MIT). Later additions adapt its quality gates (as a checklist), outline refinement, and counterevidence discipline the same way.
+**Sources**: [mattpocock/skills code-review](https://raw.githubusercontent.com/mattpocock/skills/refs/heads/main/skills/engineering/code-review/SKILL.md); [199-biotechnologies/claude-deep-research-skill](https://github.com/199-biotechnologies/claude-deep-research-skill) ([SKILL.md](https://raw.githubusercontent.com/199-biotechnologies/claude-deep-research-skill/main/SKILL.md), MIT). Later additions adapt its quality gates into a checklist and take its outline refinement and counterevidence discipline, keeping the lean, script-free shape described above.
 
 </details>
 
@@ -191,7 +191,7 @@ Each skill defines its triggers, safety boundaries, and loading behavior in its 
 
 **Strengths**: message quality on par with the best message-only skills; plus signed commits, secret scanning, strategy-driven grouping, and push safety they do not attempt; the check-in flow keeps trees from rotting silently.
 
-**Weaknesses**: heavier than a message-only skill: policy inspection, diff review, and explicit confirmations add steps to every commit; needs a configured signing key and upstream to use the full flow; overkill for a trivial single-file typo fix where `caveman-commit` style output alone would do.
+**Weaknesses**: heavier than a message-only skill: policy inspection, diff review, and explicit confirmations add steps to every commit; needs a configured signing key and upstream to use the full flow; overkill for a trivial single-file typo fix where `caveman-commit`-style output alone would do.
 
 **Proactive loading**: checks in once when real work left the tree dirty, and stays silent on a clean tree. Never stages, commits, or pushes to earn that diligence.
 
