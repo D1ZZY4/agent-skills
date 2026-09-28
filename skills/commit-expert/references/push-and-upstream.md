@@ -1,45 +1,113 @@
 # Push and Upstream Safety
 
-Pushing changes is a separate mutation from creating a commit. Treat it as an explicit,
-repository-aware operation, even when the user asked to commit and push in the same sentence.
+Pushing is a separate repository mutation from creating a commit.
+
+A request to push authorizes the push operation within the requested destination. It does not
+authorize new commits, rebases, force-pushes, tag deletion, remote changes, or upstream changes
+unless those operations are explicitly included.
 
 ## Inspect before pushing
 
 ```bash
 git remote -v
 git branch --show-current
-git rev-parse --abbrev-ref --symbolic-full-name '@{upstream}'
-git status --short
+git status --short --branch
+git rev-parse --abbrev-ref --symbolic-full-name '@{upstream}' 2>/dev/null || true
 ```
 
-- Use the configured remote and upstream. Never assume the remote is named `origin` or that the
-  branch is `main`.
-- Confirm the current branch and destination before pushing.
-- Check repository contribution or hosting guidance for protected branches, review requirements,
-  and required checks.
-- Do not push ignored files, uncommitted changes, or an unintended branch.
-
-## Safety boundaries
-
-- Push only after explicit user approval.
-- Never force-push, delete a remote branch, rewrite public history, or change remotes without
-  explicit, operation-specific instruction.
-- Do not change Git identity, signing, credentials, or upstream configuration as part of a normal
-  push.
-- If no upstream is configured, explain the destination that would be needed and ask before
-  creating or changing tracking configuration.
-
-## Verify after pushing
-
-After a successful push, confirm the local status and upstream:
+When a remote is known, inspect its exact URL without exposing embedded credentials in user-facing
+output:
 
 ```bash
-git status --short
+git remote get-url <remote>
+```
+
+Do not assume `origin`, `main`, or any provider.
+
+## Confirm the destination
+
+Determine:
+
+- local branch or detached HEAD state
+- remote name
+- remote branch/ref
+- current upstream, if any
+- commits that are about to be pushed
+- whether the destination is protected or subject to review
+
+For an existing upstream:
+
+```bash
+git log --oneline '@{upstream}..HEAD'
+git status --short --branch
+```
+
+If there is no upstream, do not invent one. Identify the remote and target branch from repository
+configuration or explicit user instruction.
+
+## Upstream setup
+
+`git push -u <remote> <branch>` both pushes and changes local tracking configuration.
+
+Only use `-u` or `--set-upstream` when:
+
+- an upstream is already intended by repository/user policy, or
+- the user explicitly requested that the branch start tracking that remote branch.
+
+Do not change tracking configuration as a hidden side effect of an ordinary push.
+
+## Push boundaries
+
+Require explicit authorization for:
+
+- force-push
+- deleting a remote branch
+- pushing all branches
+- pushing all tags
+- changing a remote URL
+- changing fetch/push refspecs
+- rewriting public history
+
+A plain push must not be upgraded into any of those operations to work around a rejection.
+
+## Signed commits
+
+If signed commits are required, verify every commit that will be pushed, not just the latest commit.
+
+For a small range this can be inspected with:
+
+```bash
+git log --show-signature --oneline '@{upstream}..HEAD'
+```
+
+For a new branch without an upstream, determine the exact commit range from the intended base and
+verify that range according to repository policy.
+
+See `commit-signing.md`.
+
+## Push failure
+
+If the remote rejects a push:
+
+1. preserve the local commits
+2. report the provider's actual error
+3. do not force-push automatically
+4. do not automatically pull, merge, rebase, or reset
+5. explain what repository state is now known
+
+Common non-fast-forward failures require a repository-specific integration decision. That decision
+is separate from the original push.
+
+## Verify after push
+
+After success:
+
+```bash
+git status --short --branch
 git branch -vv
 ```
 
-Report the branch and remote that were updated. If the push fails, preserve the local commits and
-report the provider's error instead of retrying with a destructive or force option.
+Verify that the intended branch and remote-tracking relationship were updated.
 
-When the repository requires signed commits, verify the signature before pushing per
-`references/commit-signing.md`.
+If the push was meant to publish a new branch, confirm the configured upstream only when upstream
+creation was part of the authorized operation.

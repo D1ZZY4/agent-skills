@@ -1,55 +1,62 @@
 # Policy Configuration
 
-This reference separates portable Git safety from repository-specific commit style. The skill
-can work without a policy file, but it must inspect the repository before assuming conventions.
+This reference separates repository-specific policy from portable Git safety.
+
+The skill must work even when no dedicated policy file exists. Do not manufacture a policy file,
+commit convention, author identity, remote name, branch name, or prohibited-word list.
 
 ## Priority order
 
-Resolve settings in this order:
+Resolve applicable settings in this order:
 
-1. Host or system safety constraints
-2. Repository policy and contribution documentation
-3. Explicit user preferences or instructions
-4. Portable defaults in this skill
+1. Platform, system, and tool safety constraints.
+2. Repository policy and contribution documentation.
+3. Explicit user instructions and preferences.
+4. Portable defaults in this skill.
 
-When two sources conflict, use the higher-precedence source and report the conflict if it
-changes the requested operation.
+A mandatory repository rule can override a portable style default. A user preference can override a
+style default when the repository does not require the opposite. A user request does not authorize
+a destructive operation that was not requested.
+
+When a conflict changes the planned mutation, report the conflict before proceeding.
+
+## What counts as repository policy
+
+Inspect policy locations that the repository itself documents or conventionally uses, including:
+
+- contribution and development guidance
+- repository-maintained agent instructions
+- release or workflow documentation
+- project configuration that explicitly declares commit rules
+- local Git configuration relevant to the operation
+
+Do not assume any particular filename exists.
+
+Host-specific requirements belong in `host-adapters.md`.
+
+A repository policy file being present does not automatically make every line mandatory. Distinguish
+normative rules from examples, recommendations, and explanatory prose.
 
 ## Portable defaults
 
-Unless the repository or user says otherwise:
+Unless repository policy or the user says otherwise:
 
-- Inspect ownership before mutating a dirty tree.
-- Do not restore, delete, clean, or commit without explicit approval.
-- Preserve the repository's configured Git author and upstream.
-- Use Conventional Commit structure when the repository already uses it.
-- Resolve commit grouping and message strategy per `references/commit-strategy.md`. Default
-  is `auto`, overridable by repository policy or an explicit user instruction.
-- Prefer a meaningful scope when one is clear, but do not invent a scope.
-- Add a body for non-trivial changes or whenever the repository requires one.
-- Use the repository's commit-language convention. If none exists, follow the user's language
-  preference.
-- Reject em dashes (U+2014) in commit messages when the active punctuation policy disallows
-  them. Technical strings, including commands, flags, and paths, must preserve their ASCII
-  hyphens.
-- When the repository signs commits, follow `references/commit-signing.md` for signing and
-  verification. Changing signing, credentials, or identity is a separate mutation needing
-  explicit approval.
-- Treat prohibited words, fixed author identities, branch names, and remote names as policy
-  inputs, never as universal defaults.
+- inspect ownership before mutating a dirty tree
+- preserve the configured author, committer, signing setup, remote, and upstream
+- use Conventional Commits only when the repository already uses them or the user requests them
+- prefer a meaningful scope when one is clear, but never invent one
+- add a body for non-trivial changes when the policy permits or expects it
+- follow the repository's documented commit language
+- keep commit messages free of em dashes
+- keep literal commands, paths, and flags exactly as valid ASCII syntax
+- do not add emojis to commit messages
+- resolve grouping through `commit-strategy.md`
+- verify before and after mutation
+- never cite an ignored or untracked file as a durable repository authority in a commit message
 
-## What to inspect
+## Settings that may be policy-controlled
 
-Look for repository policy in the files and directories documented by the repository itself,
-including contribution guidance, release documentation, project rules, and Git configuration.
-Host-specific policy locations belong in the host adapter rather than in this portable core.
-
-Do not assume any of these files exist. Do not cite an ignored or untracked file as the source
-of a commit rule.
-
-## Optional policy shape
-
-A repository may document its preferences in any existing project policy file. A useful shape is:
+A repository policy may define:
 
 ```yaml
 commit:
@@ -60,24 +67,83 @@ commit:
   prohibited_words: []
   punctuation:
     em_dash: disallow
+    emoji: disallow
   signing: required
-  strategy: auto
+  strategy:
+    grouping: auto
+    message: conventional-commit
   author:
     source: git-config
   upstream:
     source: git-config
 ```
 
-The `strategy` field accepts the values from `references/commit-strategy.md`. The default is
-`auto`; repository policy or an explicit user instruction can set any of the documented
-values.
+This is a documentation shape, not a requirement to create a new configuration file.
 
-This is a documentation shape, not a requirement to add a new configuration file. Signing
-follows `commit-signing.md` when the policy marks it required.
+If the policy defines a stricter rule, apply that rule. If a field is absent, fall back to the next
+priority level instead of guessing a value.
+
+## Authorization is not policy
+
+Policy answers "how the repository expects this operation to be performed".
+
+Authorization answers "whether this operation is allowed right now".
+
+A repository may require signed commits, but that does not itself authorize creating a commit.
+A user may authorize a commit, but that does not authorize force-pushing it.
+
+Keep those two questions separate.
+
+## Identity and signing
+
+Fixed author identities, signing keys, credentials, and `gpg.program` settings are policy inputs,
+not defaults.
+
+If the repository requires a specific identity or signer and the active configuration does not
+satisfy it:
+
+1. report the mismatch
+2. do not silently change global configuration
+3. obtain approval before changing configuration
+4. verify the resulting identity before committing or pushing
+
+See `strict-mode.md` and `commit-signing.md`.
+
+## Upstream and remote policy
+
+Do not infer that the remote is `origin` or that the branch is `main`.
+
+Use the repository's configured relationship:
+
+```bash
+git remote -v
+git branch --show-current
+git rev-parse --abbrev-ref --symbolic-full-name '@{upstream}' 2>/dev/null || true
+```
+
+If policy requires a particular push destination and the current upstream does not match, stop before
+changing tracking configuration or remotes.
+
+## Ignored and untracked policy files
+
+A locally present ignored or untracked file may still be useful for the current task, but do not cite
+it in a durable commit message as though it were available to future repository readers.
+
+Before citing a path as repository authority:
+
+```bash
+git check-ignore -v -- <file> || true
+git ls-files --error-unmatch -- <file>
+```
+
+If it is not tracked, prefer stating the actual rule or rationale directly in the commit body.
+
+If the file should be shared project policy, flag that its tracking state may be wrong rather than
+silently changing it.
 
 ## Strict mode
 
-Strict mode applies only the stricter rules found in repository policy or explicitly requested
-by the user. It must not manufacture an author, email, branch, remote, language, or prohibited
-word list. If a required strict setting is missing, ask before mutating configuration or making
-the commit.
+Strict mode applies only when enabled by repository policy or explicitly requested by the user.
+
+It must not manufacture missing values. If a strict setting is required but missing, stop before
+the relevant mutation and ask for the missing information or authorization to change configuration.

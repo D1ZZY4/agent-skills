@@ -1,46 +1,58 @@
 # Proactive Trigger
 
-When to check in about committing without waiting for an explicit commit request, and the
-check-in flow to use when the working tree is dirty after real work.
+Use this reference when the agent has finished real work and the user did not explicitly request a
+commit.
+
+The goal is one useful check-in, not a running Git conversation.
 
 ## When to act
 
-- **You just finished a coding task** (wrote, edited, or generated files) and the working tree
-  now has uncommitted changes. Before ending your turn, run `git status --short`, inspect
-  ownership, and report the changes. Ask for commit approval using the flow below.
-- **The user explicitly asked to commit or stage** (or used a clear synonym, or named this skill
-  directly). Skip the check-in entirely and go straight to Step 1 in SKILL.md. A push request
-  also authorizes inspecting push state, but pushing remains a separate explicit operation
-  covered by `push-and-upstream.md`.
-- **You are about to end a session or declare a task done** and the tree is dirty. Check in
-  before finishing; do not leave the tree dirty and move on to something else.
+- After the agent creates or edits repository files and the working tree contains new task-owned
+  changes, inspect `git status --short` before ending the turn.
+- If the user explicitly asked to commit or stage, skip this check-in and enter the normal workflow.
+- If the user explicitly asked to push, inspect push state, then follow `push-and-upstream.md`.
+- Before declaring the task complete, inspect the tree when the task involved repository changes.
+- Do not prompt about a dirty tree caused only by clearly pre-existing work.
+
+## Ownership first
+
+A dirty tree is not enough to trigger a commit prompt.
+
+First distinguish:
+
+- changes created by this task
+- changes that predate this task
+- changes with unclear provenance
+
+If the task-owned changes are mixed with pre-existing changes, report that distinction and propose
+only the task-owned scope for the commit discussion.
 
 ## Check-in flow
 
-1. Ask "Need to commit these changes?" with three possible answers:
-   - **Yes**
-   - **No**
-   - a **free-text custom answer**, for example "commit only the docs part", "wait, let me
-     finish first", or "yes, but split it by folder"
-2. Route based on the answer:
-   - **No**: stop. Do not touch git. Do not ask again unless the tree changes further after
-     this point.
-   - **Yes**: ask one more short follow-up: does this change need an explanation from the user
-     before writing the message, or is the diff self-explanatory? If it is self-explanatory,
-     skip straight to Step 1 in SKILL.md and do not make the user type anything else. Only ask
-     for context when the diff genuinely does not explain its own why: a business reason, a
-     decision between two approaches, a ticket number, or something not visible in the code
-     itself.
-   - **Custom answer**: follow what the user actually asked for instead of the binary Yes/No
-     flow. Treat it as an explicit instruction, not as a request that still needs the two
-     questions above.
-3. Once confirmed, proceed through the commit workflow. If ownership is unclear, a new ignored
-   file is involved, or cleanup would be destructive, stop and ask a focused question instead
-   of making the change.
+Ask once:
 
-## Why this matters
+> Need to commit these changes?
 
-This flow makes commits feel like something the assistant naturally keeps on top of, the way a
-careful developer would, rather than something that only happens when explicitly summoned. It
-should never feel naggy: a clean tree means total silence, and a dirty tree after real work
-means one short check-in, not a running commentary.
+Supported responses are:
+
+- yes
+- no
+- a specific instruction such as "commit docs only", "split by package", or "not yet"
+
+Routing:
+
+- `no`: do not touch Git. Do not ask again unless new task-owned changes appear.
+- `yes`: continue with the normal commit workflow. Do not ask for extra explanation when the diff
+  clearly explains the change.
+- custom instruction: follow the actual instruction and resolve scope before mutation.
+
+Only request extra context when the diff cannot explain an important part of the message, such as a
+business reason, an issue reference, an intentional compatibility decision, or a migration rationale.
+
+## Do not become nagging
+
+A clean tree means silence.
+
+A dirty tree after real work means one short check-in, then stop and follow the user's answer.
+Do not repeat the same prompt merely because the user continues unrelated work without changing the
+task-owned diff.

@@ -1,171 +1,360 @@
 # Worked Examples
 
-## Good, default mode
+These examples illustrate the workflow, not a universal commit style. Repository policy always wins.
 
-```
+## 1. Good default mode
+
+```text
 feat(api): add GET /users/:id/profile
 
-Mobile client needs profile data without the full user payload
-to reduce LTE bandwidth on cold-launch screens.
+Add a dedicated profile endpoint so mobile clients can request
+profile data without the full user payload.
 
 Closes #128
 ```
 
-## Good, specific agent identity in the co-author trailer
+Why it works:
 
-```
-fix(ui): count free-tier oauth connections on providers list
+- describes the resulting change
+- explains the reason
+- keeps the issue reference in the footer area
+- contains no fabricated process narration
 
-Free-tier cards hardcoded apikey for stats and toggle, so oauth
-connections were invisible on the providers list despite showing
-on the detail page. Use dualAuthTypes per provider instead.
+## 2. Good strict mode
 
-Co-authored-by: Agent model/version <provider-issued-address>
-```
+```text
+fix(button): restore dark mode danger contrast
 
-Naming the specific model and version, not just a bare tool name, tells a future reader
-which agent produced the commit, useful when debugging model-specific patterns later.
-A non-default configuration (extended context, a specific mode) can go in parentheses after
-the name when it's actually known, never guessed.
-
-## Good, strict mode
-
-Two unrelated dark-mode fixes, split into two commits. See `strict-mode.md` for the author
-and banned-word rules applied here.
-
-```
-fix(button): dark mode contrast on danger variant
-
-Add `dark:text-[#f07060]` and `dark:border-[#d44a30]` to danger variant.
-
-Aligns with `--status-unstable-text` and `--status-unstable-border` dark
-variants already defined in `globals.css`.
+Use the existing danger-state tokens so the dark variant keeps the
+same semantic meaning as the light variant.
 ```
 
-```
-fix(info-tab): status tokens for stable/bug colors
+Strict mode is concerned with policy compliance, staged scope, checks,
+author, and signing. It does not require a different semantic grouping.
 
-- `text-[var(--color-stable)]` -> `text-[var(--status-stable-text)]`
-- `bg-[var(--color-unstable)]` -> `bg-[var(--status-unstable-border)]`
+## 3. Good atomic split
 
-Fixes dark mode contrast. The raw color vars have no dark override.
-```
+Two independent changes:
 
-## Good, bulleted body for enumerated changes
-
-When a change touches several distinct items with no single synthesis (for example, multiple
-version bumps), list them as Markdown bullets, one per line. Do not compress them into a
-comma-separated run.
-
-```
-chore(skills): bump versions after style unification
-
-Bump the metadata version for each skill:
-
-- context7-expert 1.12.0
-- copywriting-expert 1.6.0
-- create-readme-expert 1.12.0
-- commit-expert 1.15.0
-- mermaid-diagrams-expert 1.3.0
-- redis-expert 1.3.0
+```text
+fix(cache): invalidate stale profile entries
 ```
 
-## Bad: bundled and policy-violating
-
-```
-refactor: combine security, bug, and accessibility changes
-
-Security:
-- Remove spam-protection note from FeedbackForm
-- Add URL scheme guards for download_link/donate_link
-
-Bug fixes:
-- Wire filter variants into a brand filter
-- Replace inconsistent shape tokens across several components
-...
+```text
+docs(api): document profile cache behavior
 ```
 
-17 unrelated changes in one commit, with no useful reason. Split it into one focused commit per
-concern instead. A missing scope or a prohibited word is also a rejection only when the resolved
-repository policy requires that rule.
+Do not combine them simply because both touch the same feature area.
 
-## Bad: subject and body run together, changelog-dump body (real failure mode)
+## 4. Good coherent multi-file commit
 
-```
-docs(repo): sync references after a documentation rename Update
-references across several README files and register the replacement guide
-in the documentation index - Remove redundant notes already integrated
-elsewhere
-```
+A single feature spans:
 
-Broken in three ways: no blank line between subject and body, so it reads as one run-on
-sentence; the body lists individual files instead of the actual change; and it never checked
-whether the source directory was ignored before including its content.
-
-Fixed version, using the `-F` file method from `commit-execution.md` to guarantee real
-separation:
-
-```
-docs(docs): sync references after a documentation rename
-
-Update references across the affected documentation and register the
-replacement guide in the relevant documentation index.
-
-Remove redundant local notes that were already integrated elsewhere.
+```text
+apps/api/profile.ts
+apps/api/profile.test.ts
+docs/api-profile.md
 ```
 
-## Bad: wall-of-text body (real failure mode)
+If all three are required for the same feature and were changed together intentionally, keeping them
+in one commit is valid.
 
-```
-fix(skills): add missing references/ line to 3 README.md structure trees
+## 5. Good focused task commit
 
-  Several documentation indexes omitted a references/ directory that
-  the project rules already declare.
+A migration task changes schema, worker code, tests, and migration documentation.
 
-Co-Authored-By: Agent model/version <provider-issued-address>
-```
+When all pieces are required for the same migration, one focused commit can be appropriate:
 
-The real bug here is the body: three separate facts about the missing
-directory, the established pattern, and the fix are crammed into one dense sentence
-instead of Markdown bullets. The trailer's `Co-Authored-By` casing looks off compared to the
-canonical `Co-authored-by`, but it's not actually broken, git trailer keys are
-case-insensitive, so this still gets recognized. Still worth matching the canonical casing for
-consistency. Fixed version:
-
-```
-fix(skills): add missing references/ to 3 README trees
-
-  Several documentation indexes omitted references/, which the project
-  rules already declare.
-
-  - One existing module provides the established directory pattern
-  - Other modules only need a placeholder until content is added
-
-  Synced the documentation indexes to match the project folder maps.
-
-Co-authored-by: Agent model/version <provider-issued-address>
+```text
+feat(storage): migrate job records to versioned schema
 ```
 
-## Bad: a single unicode dash replaces the hyphens in a command flag
+Do not split the migration solely because it crosses four directories.
 
+## 6. Bad bundled commit
+
+```text
+refactor: clean up repository changes
+
+- fix auth redirect
+- update database indexes
+- reformat UI
+- remove old docs
+- bump unrelated packages
 ```
-docs(readme): add LFS clone instructions
 
-Recommended clone command with [unicode dash]recurse-submodules or git lfs
-clone. Users without git-lfs can still use the skill docs, only
-binary assets are affected.
+If these changes are independent, split them.
+
+## 7. Bad generic message
+
+```text
+chore: update files
 ```
 
-The flag incorrectly replaces the leading two ASCII hyphens of `--recurse-submodules` with a
-single unicode dash character (U+2013), shown above as `[unicode dash]` so the broken
-character is clear without presenting it as a valid command. Copied straight into a terminal,
-that single character fails to parse as the flag it is supposed to be. The fixed version
-preserves the plain ASCII hyphens:
+This communicates almost nothing about the resulting diff.
 
-```
-docs(readme): add LFS clone instructions
+Prefer the actual behavior or maintenance reason.
 
-Recommend cloning with --recurse-submodules or using git lfs clone.
-Users without git-lfs can still read the skill docs, only binary
-assets are affected.
+## 8. Bad process narration
+
+```text
+fix(api): changes after running tests
 ```
+
+The tests are verification evidence, not the reason for the change.
+
+## 9. Multi-line body using `-m`
+
+```bash
+git commit   -m "fix(auth): reject expired refresh tokens"   -m "Reject expired tokens before session lookup.
+
+- Preserve the existing valid-token path
+- Keep the established error contract"
+```
+
+Do not put a literal `\n` sequence into a shell argument and assume it is a line break.
+
+## 10. Multi-line body using a message file
+
+Message file:
+
+```text
+docs(api): document versioned profile responses
+
+Document the response versions and the migration path.
+
+- Explain the new field
+- Explain compatibility with the previous response
+
+Refs #421
+```
+
+Commit:
+
+```bash
+git commit -F <message-file>
+```
+
+## 11. Good staged-scope check
+
+Before commit:
+
+```bash
+git diff --cached --name-status
+git diff --cached --stat
+git diff --cached --check
+```
+
+If the output contains an unrelated file, do not silently unstage or delete it. Re-scope the index
+within the authorized operation.
+
+## 12. Pre-existing user work
+
+Status:
+
+```text
+ M src/feature.ts
+ M notes/local-work.md
+?? tmp/debug.log
+```
+
+If the task only changed `src/feature.ts`, the agent must not stage the notes or log.
+
+The clean result may intentionally remain:
+
+```text
+ M notes/local-work.md
+?? tmp/debug.log
+```
+
+That is not a failure.
+
+## 13. New ignored file
+
+Status does not show:
+
+```text
+.env.local
+```
+
+But:
+
+```bash
+git check-ignore -v -- .env.local
+```
+
+reports that it is ignored.
+
+Do not force-add it. Treat the ignore rule as intentional unless the user explicitly names and
+authorizes that specific file.
+
+## 14. Ignored local policy citation
+
+Bad:
+
+```text
+docs(repo): update references
+
+Per local-prompt.md, remove the generated guide.
+```
+
+when `local-prompt.md` is ignored.
+
+Better:
+
+```text
+docs(repo): update references
+
+Remove the generated guide from the tracked reference index because
+the release workflow regenerates it.
+```
+
+## 15. No upstream configured
+
+Inspection:
+
+```text
+git rev-parse --abbrev-ref --symbolic-full-name '@{upstream}'
+fatal: no upstream configured for branch 'feature/profile'
+```
+
+Do not assume `origin/feature/profile`.
+
+Report the missing upstream and use the remote/branch explicitly identified by the user or repository
+workflow. Creating tracking configuration requires its own authorization.
+
+## 16. Push rejection
+
+A push returns:
+
+```text
+! [rejected] feature/profile -> feature/profile (non-fast-forward)
+```
+
+Correct behavior:
+
+- keep the local commits
+- report the rejection
+- do not force-push
+- do not automatically rebase or reset
+- wait for the repository/user's integration decision
+
+## 17. Signed commit verification
+
+Before push:
+
+```bash
+git log --show-signature -1
+```
+
+If verification reports a bad or missing signature under a policy that requires signing, do not pretend
+the commit is verified.
+
+Do not change the signing key merely to make the check pass.
+
+## 18. Hook rejection
+
+A `commit-msg` or `pre-commit` hook fails.
+
+Correct behavior:
+
+- preserve the staged diff
+- report the hook failure
+- inspect the repository's expected fix
+- do not use `--no-verify` automatically
+
+## 19. Merge or rebase in progress
+
+If Git reports an active merge or rebase state, do not write an ordinary feature/fix commit on top
+of it without understanding what operation is already in progress.
+
+Follow the existing operation's rules.
+
+## 20. Direct commit request
+
+User says:
+
+```text
+commit these changes
+```
+
+This authorizes the commit workflow for the intended task scope.
+
+It does not authorize:
+
+- pushing
+- force-pushing
+- changing Git identity
+- changing signing keys
+- deleting unrelated work
+
+## 21. Commit and push request
+
+User says:
+
+```text
+commit these changes and push the branch
+```
+
+This authorizes both operations, subject to repository policy and the normal verification gates.
+
+If the branch has no upstream, determine the required destination. Do not silently add `-u` unless the
+request or repository policy also authorizes creating tracking configuration.
+
+## 22. Good breaking change
+
+```text
+feat(api)!: rename profile response field
+
+Clients must migrate from `displayName` to `name` before the old
+field is removed.
+
+BREAKING CHANGE: `displayName` is no longer returned by the profile
+endpoint.
+```
+
+The body explains consumer impact rather than merely announcing that the change is breaking.
+
+## 23. Bad "changelog dump"
+
+```text
+feat(api): update profile
+
+- modified profile.ts
+- modified profile.test.ts
+- modified README.md
+- modified types.ts
+- modified route.ts
+```
+
+The commit body should summarize the engineering change, not reproduce the file list.
+
+## 24. Bad forced cleanup
+
+Working tree:
+
+```text
+ M src/feature.ts
+ M notes/todo.md
+```
+
+Bad response:
+
+```bash
+git restore notes/todo.md
+git clean -fd
+```
+
+The goal of the skill is not a pretty status output. Preserve user work.
+
+## 25. Verify the final commit
+
+After commit:
+
+```bash
+git log -1 --format=fuller
+git log -1 --format=%B
+git status --short --branch
+```
+
+Do not report "committed successfully" from the exit code alone without checking the resulting state.

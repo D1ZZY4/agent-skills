@@ -1,75 +1,150 @@
 # Staging Discipline and Gitignore Safety
 
-This file covers how to stage safely: group by logical concern, never cite an ignored or
-untracked file as authority in a commit message, never add a new ignored file, and verify
-gitignore status before staging.
+The index is the exact boundary of the next commit. Treat staging as a deliberate selection step,
+not as cleanup.
+
+## Ownership before staging
+
+Before staging, determine which changes belong to the current task.
+
+```bash
+git status --short --branch
+git diff --name-status
+git diff --cached --name-status
+```
+
+Classify candidates as:
+
+- task-owned changes
+- pre-existing user changes
+- generated or derived files
+- ignored files
+- files with unclear ownership
+
+Unclear ownership is not permission to stage. Leave it untouched and report the ambiguity.
 
 ## Atomic commits
 
-One commit should represent one logical change. Mixing unrelated changes in one commit makes
-revert, cherry-pick, and bisect harder later. Typical atomic units:
+One commit should represent one logical change.
 
-- one bug fix
-- one refactor
-- one feature
-- one docs update
-- one dependency bump
+Valid logical units can span multiple files or directories when they are one coherent change:
 
-If the staged diff clearly contains unrelated changes, recommend splitting before committing.
-The user can override this, but do so only after they have seen the grouped diff and understand
-the cost.
+- implementation and its tests
+- a feature and required documentation
+- a schema change and the migration that makes it usable
+- a dependency update together with required lockfile changes
 
-## Never cite an ignored or untracked file as authority in the message
+Do not split a coherent change merely because it crosses directories.
 
-This is a distinct failure from staging an ignored file, and just as real: writing something
-like "per prompt.md § SKILL.md frontmatter" in a commit body, when `prompt.md` lives in a
-gitignored folder. The commit itself might be correct, but the citation points at a file that
-isn't part of the tracked repo, so anyone who clones it, reviews the commit on GitHub, or
-reads `git log` later has no way to verify or even find what's being cited. It reads like a
-reference to shared context that doesn't actually exist for them.
+Split independent concerns when they can be reviewed, reverted, or understood independently.
 
-Before citing any file as the source of a rule or rationale in a commit message:
+## Check ignore rules before staging
+
+Before staging a new or unknown file:
 
 ```bash
-git check-ignore -v <the file being cited>
-git ls-files --error-unmatch <the file being cited>
+git check-ignore -v -- <file>
 ```
 
-- If the file is tracked, citing it by path is fine, anyone with the repo can open it.
-- If the file is ignored or untracked, don't cite its path as an external authority. Instead,
-  paraphrase the actual rule or reasoning directly into the commit body in plain language, so
-  the message is self-contained and makes sense to someone who will never see that file. What
-  matters is the substance of the rule, not the specific filename it happened to live in
-  locally.
-- If the cited file genuinely should be shared context for anyone working on the repo (a spec,
-  a style guide, a set of project rules), that's a signal it likely shouldn't be gitignored at
-  all, flag that to the user as a separate observation rather than silently working around it.
-
-## Never add a new ignored file
-
-Before staging anything, check whether it's ignored:
+For tracked status:
 
 ```bash
-git check-ignore -v <file>
+git ls-files --error-unmatch -- <file>
 ```
 
-Rules:
+Interpret the result carefully:
 
-- A new untracked file matched by `.gitignore` stays out of the commit, full stop.
-- A file already tracked by Git remains eligible for normal modifications even if a later
-  `.gitignore` rule matches it. Treat deletion, untracking, or broad ignore-rule changes as
-  separate operations requiring the user's explicit instruction.
-- If content originated from an ignored path (for example, a file inside an ignored folder
-  was used as the basis for changes made to a tracked file elsewhere), that's fine, the
-  tracked result can be committed. But the ignored file itself never gets added, and this
-  should be mentioned to the user rather than silently decided either way.
-- If something looks like it should be ignored but isn't (a `.gitignore` gap), or looks like it
-  shouldn't be ignored but is untracked and ignored, flag it and ask instead of guessing.
-- Run `git status --short` right before staging, not just at the start of the task, since
-  files can appear or change state partway through a session.
+- tracked files remain tracked even if a later `.gitignore` rule matches them
+- new files matched by `.gitignore` are presumed intentionally excluded
+- an ignored new file is not staged with normal `git add`
+- do not use `git add -f` unless the user explicitly names and authorizes the ignored file
+- if the ignore status contradicts project intent, flag the gap instead of guessing
 
-## Staging itself
+## Never cite an ignored or untracked file as commit authority
 
-Stage only the files belonging to the current concern (`git add <file>`), not `git add -A`
-or `git add .` unless the whole diff genuinely is one concern and has already been checked
-against the gitignore rule above.
+A commit message must remain understandable to someone who clones the repository later.
+
+Do not write a body such as:
+
+```text
+Per local-prompt.md, keep the generated files out of the commit.
+```
+
+when `local-prompt.md` is ignored or untracked.
+
+Instead write the actual rule:
+
+```text
+Keep generated artifacts out of version control because the repository
+rebuilds them during the release workflow.
+```
+
+The same principle applies to temporary instructions, local prompts, logs, and machine-specific notes.
+
+## Staging commands
+
+Prefer explicit pathspecs:
+
+```bash
+git add -- path/to/file-a path/to/file-b
+```
+
+For a deletion that is already part of the intended task, stage the exact path after review.
+
+Avoid:
+
+```bash
+git add .
+git add -A
+```
+
+unless the entire repository diff has already been inspected and the whole diff is intentionally
+one coherent change.
+
+## Verify the index before commit
+
+Always inspect the staged result after staging:
+
+```bash
+git diff --cached --name-status
+git diff --cached --stat
+git diff --cached --check
+```
+
+When the change is security-sensitive or otherwise high-risk, inspect the full staged patch:
+
+```bash
+git diff --cached
+```
+
+The working-tree diff and staged diff can differ. Verify the staged diff, not just the working tree.
+
+## Gitignore changes are special
+
+If `.gitignore` is itself being changed:
+
+1. inspect both the old and new ignore behavior
+2. verify which newly visible files are affected
+3. do not stage newly untracked files just because the ignore rule changed
+4. keep the `.gitignore` change and any affected files grouped only when they form one logical change
+
+Do not use a broad add command to discover the consequences of an ignore-rule change.
+
+## Generated and derived files
+
+Generated files require repository-specific evidence.
+
+Do not add them merely because they appeared after a build or test run. Check repository guidance,
+existing history, and ignore rules first.
+
+Conversely, do not delete or unstage generated files simply because they look derived. Their status may
+be intentional.
+
+## Submodules and nested repositories
+
+A parent repository may report a submodule as modified without exposing the nested repository's full
+diff through the parent index.
+
+Do not enter or mutate a nested repository merely because the parent shows a change.
+
+Treat nested repository mutations as a separate scope unless the user explicitly asks for them.

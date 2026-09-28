@@ -1,91 +1,160 @@
 # Commit Execution Mechanics
 
-This file covers the actual commit command mechanics: checking for duplicate commits before
-committing, keeping subject and body structurally correct, avoiding literal `\n` in shell
-strings, two `-m` flags versus file plus `-F`, and verifying the result after committing. Also
-covers author identity in strict mode.
+This reference covers the mechanics of creating a commit after scope, policy, staging, and
+verification have already been resolved.
 
-## Check for duplicate commits before committing
+## Re-check before committing
 
-Before running the actual commit command, check recent history isn't about to get the same
-change committed twice:
+A long-running agent session can change the repository between inspection and mutation.
+
+Immediately before the commit command:
 
 ```bash
-git log --oneline -5
+git status --short --branch
+git diff --cached --name-status
 git diff --cached --stat
+git diff --cached --check
+git log --oneline -5
 ```
 
-If a commit with essentially the same subject and the same file set as the one about to be
-made already exists in the last few entries, stop and check what happened instead of
-proceeding. This usually means an earlier step already committed the change and the working
-tree state wasn't re-checked before starting this one, or the same task got run twice. Re-run
-`git status --short` to see what's actually still uncommitted before writing another message
-for it.
+If the staged state changed unexpectedly, stop and re-scope it.
 
-## Keep subject and body structurally correct
+## Duplicate-commit check
 
-A commit with a body uses two blocks separated by a blank line: subject, then body. If they get
-concatenated into a single run-on string, the result reads like a wall of text and defeats the
-point of a structured commit message. A genuinely trivial subject-only commit may omit the body
-when the resolved policy allows it.
+Do not create a duplicate commit simply because the workflow resumed.
 
-## Never use literal backslash-n as a stand-in for a real line break
+If a recent commit has essentially the same subject and affected file set as the intended change:
 
-This is a distinct and very common failure: writing `-m "subject\nbody"` with `\n` inside a
-plain double-quoted bash string does not produce a newline. Bash does not interpret `\n`
-there, it becomes the two literal characters backslash and `n`, sitting right in the commit
-message text where a human will read them. If a generated message ever contains a visible
-`\n`, `\n\n`, or similar escape sequence as text, that's this bug, not a real newline. Always
-use one of the two methods below instead, both of which produce real newline bytes, never a
-typed-out escape sequence.
+1. inspect `git status`
+2. inspect recent history
+3. determine whether the earlier commit already completed the task
+4. create another commit only when real uncommitted work remains
 
-## Method 1: two `-m` flags
+Do not compare only the subject. The actual staged diff is authoritative.
 
-Works for short, simple bodies when a body is required:
+## Special repository states
 
-```bash
-git commit -m "type(scope): summary" -m "body line one
+Before creating an ordinary commit, check for active operations such as merge, cherry-pick, revert,
+or rebase.
 
-- bullet if needed"
+A commit that finalizes one of those operations is not equivalent to an ordinary task commit. Follow
+the existing operation and repository guidance rather than replacing it with a new message strategy.
+
+## Commit message structure
+
+A message with a body has this shape:
+
+```text
+subject
+
+body
+
+trailers-or-footers
 ```
 
-Each `-m` becomes its own paragraph, separated by a blank line automatically.
+There must be a real blank line between subject and body.
 
-## Method 2: file plus `-F` (preferred for anything multi-line or with bullets)
+Do not assume that typing the characters `
+` into a shell string creates a newline. Shell behavior
+differs, and literal escape text is easy to introduce by accident.
 
-Safer, since it avoids shell quoting issues entirely. Use a unique temporary path and clean it up
-after the commit:
+## Method 1: multiple `-m` blocks
+
+For a short body:
 
 ```bash
-msg_file="$(mktemp)"
-trap 'rm -f "$msg_file"' EXIT
-cat > "$msg_file" << 'EOF'
+git commit -m "type(scope): summary" -m "Why the change exists.
+
+- Related reason
+- Important constraint"
+```
+
+Each `-m` argument supplies a separate paragraph.
+
+## Method 2: message file with `-F`
+
+For multi-line bodies, bullets, breaking changes, or trailers, prefer a message file:
+
+```text
+<message-file>
+
 type(scope): summary
 
-Body explaining why, in Markdown.
-- bullet one
-- bullet two
-EOF
-git commit -F "$msg_file"
+Why the change exists.
+
+- Related reason
+- Important constraint
+
+Refs #123
 ```
 
-## Always verify after committing
+Then:
 
 ```bash
-git log -1
+git commit -F <message-file>
 ```
 
-Confirm that a required body rendered as a separate block with a blank line, not a run-on
-paragraph; there's no literal `\n` text sitting anywhere in the message (that means the
-escape-sequence bug happened, not a real newline); and
-if a `Co-authored-by` trailer is present, the email is wrapped in angle brackets, `<email>`,
-since that part is what actually breaks recognition if missing. Casing of the trailer key
-itself is case-insensitive per the git trailer spec and works either way, default to
-`Co-authored-by` for consistency but it's not a functional bug if it varies. If the brackets
-are missing, the commit needs to be amended before moving on (only if not yet pushed; see the
-no-amend-after-push rule in `strict-mode.md` when strict mode is active).
+Create and remove the temporary file using the host environment's native file-writing and cleanup
+mechanism. Do not assume Bash syntax when the host shell is different.
+
+## Hooks are part of execution
+
+Git may run `pre-commit`, `prepare-commit-msg`, `commit-msg`, and post-commit/rewrite hooks.
+
+Hooks can:
+
+- modify the message
+- reject the commit
+- add or normalize trailers
+- run formatters or checks
+
+Do not bypass hooks with `--no-verify` unless explicitly authorized.
+
+If a hook fails, preserve the error and fix the underlying issue or obtain a specific authorization
+for an exception.
+
+## Verify the resulting commit
+
+After success:
+
+```bash
+git log -1 --format=fuller
+git status --short --branch
+```
+
+Also verify:
+
+- the subject and body are separated correctly
+- required trailers are present
+- no literal `\n` text was introduced
+- the author/committer match the resolved policy
+- required signing is valid
+- the expected changes are in the new commit
+- unrelated working-tree changes remain untouched
+
+For precise message inspection:
+
+```bash
+git log -1 --format=%B
+```
 
 ## Author identity
 
-In strict mode, set the commit author per `strict-mode.md` before running any of the above,
-and verify with `git log -1 --format="%an <%ae>"` before pushing.
+In strict mode, resolve the author before committing and verify the resulting commit:
+
+```bash
+git log -1 --format="%an <%ae>"
+```
+
+Also remember that author and committer identity are distinct Git fields. If a repository uses a
+non-default environment, inspect both when policy cares about them.
+
+## Amendments
+
+Amending is history rewriting.
+
+Only amend an unpublished commit when the user has authorized the amendment or the normal workflow
+explicitly requires it.
+
+Do not amend a commit already pushed to the configured upstream unless the user explicitly instructs
+the history rewrite.

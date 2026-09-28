@@ -1,91 +1,141 @@
 # Strict Mode Rules
 
-Apply these on top of the default rules in SKILL.md when strict mode is active.
+Strict mode adds stronger validation on top of the default workflow. It is active only when enabled
+by repository policy or explicitly requested by the user.
+
+Strict mode is fail-closed for required metadata and verification. It never invents missing values.
 
 ## Author policy
 
-Use the repository's configured Git author by default. If repository policy requires a specific
-author, verify that policy and ask for approval before changing `user.name`, `user.email`, or
-signing configuration. Never invent an identity, provider email, or project-specific address.
+Use the repository's configured Git author by default.
 
-Verify the resulting author with:
+Inspect the effective identity when strict mode requires author verification:
+
+```bash
+git var GIT_AUTHOR_IDENT
+git var GIT_COMMITTER_IDENT
+```
+
+When a repository policy requires a specific author, verify that policy before changing any identity
+configuration.
+
+Never invent:
+
+- a name
+- an email
+- a provider identity
+- a signing key
+
+If the configured identity does not satisfy a mandatory policy and the commit is not yet public:
+
+1. stop
+2. report the mismatch
+3. ask for authorization before changing identity configuration or rewriting the commit
+
+After a commit, verify:
 
 ```bash
 git log -1 --format="%an <%ae>"
 ```
 
-If the author does not satisfy an explicit repository policy and the commit has not been pushed,
-stop and ask before amending or changing configuration. Never rewrite a commit that is already
-public unless the user explicitly instructs it.
+When committer identity also matters:
 
-## Rules
-
-- **Language.** Follow the repository's documented commit language or the user's explicit
-  preference. Do not impose English when the project uses another convention.
-- **Scope.** Require `type(scope): summary` only when repository policy requires it. Otherwise,
-  use a meaningful scope when one is clear and do not invent one.
-- **Body.** Require a Markdown body when repository policy requires it or when the change is
-  non-trivial. Never hide the why for a non-trivial change.
-- **No em dashes (U+2014).** Not in the subject, not in the body, not anywhere in the message.
-  Literal shell commands, flags, and paths must keep the plain ASCII hyphens they require. Use
-  a comma, colon, period, or parentheses instead of an em dash.
-- **Signing.** When repository policy requires signed commits, follow `commit-signing.md`:
-  verify the signature with `git log --show-signature` before pushing and never sign with an
-  invented key. Do not change signing configuration without explicit approval.
-- **No emoji.** Not in the subject, not in the body, ever.
-- **One concern per commit.** Must be reversible without losing unrelated work. If you find
-  yourself writing "and also," split it.
-- **Never bundle unrelated files.** A single commit touching 15+ files across 5 different
-  concerns is an AI anti-pattern. Split by concern.
-- **Prohibited words.** Apply only the words configured by repository policy or explicitly
-  requested by the user.
-- **No generic summaries** like "Update agent documentation while refreshing..." or "Address
-  findings from audit." Write the actual change. A `Co-authored-by` trailer for an agentic tool
-  is still fine when the provider supplied a valid identity.
-- **Derive the message from the real diff**, never from a checklist or plan document.
-- **Verify before committing.** Run the project's declared and relevant verification commands
-  before each commit. If a typecheck, lint, or build command is unavailable or not relevant,
-  report that it was skipped. A failing available check means the commit is incomplete.
-- **Never amend or squash commits already pushed to the configured upstream** unless explicitly
-  instructed. Rewriting public history breaks the branch for everyone.
-
-## Example of a good commit
-
-```
-fix(validation): reject unsafe URL schemes
-
-Reject `javascript:` and `data:` URLs in the request schema for
-user-controlled links.
-
-Mirror the existing validation used by the related display component.
+```bash
+git log -1 --format="%cn <%ce>"
 ```
 
-## Another good example, with a breaking change
+## Strict message validation
 
+When strict mode requires Conventional Commits:
+
+- validate `type`
+- validate `scope` only when required
+- validate imperative summary style
+- validate prohibited words from resolved policy
+- reject em dash characters
+- reject emojis
+- validate body/footer requirements
+- validate breaking-change metadata when applicable
+- validate trailer syntax against the repository's policy
+
+Do not reject a scope merely because it is absent unless policy requires a scope.
+
+Do not invent a scope to satisfy a generic template.
+
+## Strict staging validation
+
+Before commit:
+
+```bash
+git diff --cached --name-status
+git diff --cached --stat
+git diff --cached --check
 ```
-feat(api)!: rename checkout endpoint
 
-BREAKING CHANGE: clients on `/v1/orders` must migrate to `/v1/checkout`
-before the documented sunset date. The old route returns 410 after that date.
+The staged file set must match the approved scope.
 
-Consolidates the order flow into one checkout resource so clients only
-have one endpoint to poll for status.
+An unexpected path is a stop condition, not a minor warning.
+
+## Strict verification
+
+Run every relevant repository-required check that is available and authorized.
+
+For each check report:
+
+- command
+- pass/fail/skipped/not-applicable
+- material error when failed or skipped
+
+If a mandatory check cannot run, do not represent the commit as fully verified.
+
+## Strict signing
+
+When policy requires signed commits:
+
+1. inspect effective signing configuration
+2. create the commit using the configured signer
+3. verify the signature before push
+4. verify every commit in the push range when more than one commit is being published
+
+Follow `commit-signing.md`.
+
+Never switch keys or keyrings to make verification appear successful.
+
+## Strict history safety
+
+Do not amend, rebase, squash, force-push, delete remote branches, or rewrite history unless that
+specific operation has been explicitly authorized.
+
+Never rewrite a commit that has already been pushed merely to satisfy strict message or author rules.
+
+## Strict branch/upstream safety
+
+Before a push:
+
+```bash
+git status --short --branch
+git branch --show-current
+git rev-parse --abbrev-ref --symbolic-full-name '@{upstream}' 2>/dev/null || true
+git remote -v
 ```
 
-## Example of a bad commit (do not do this)
+A missing or unexpected upstream is a stop condition when strict policy requires a specific destination.
 
-```
-refactor: combine unrelated maintenance changes
+Do not create tracking configuration merely to make the command work.
 
-Security:
-- Remove an unrelated note from a feedback form
-- Add URL scheme guards for user-controlled links
+## Strict failure behavior
 
-Bug fixes:
-- Wire filter variants into a brand filter
-- Replace inconsistent shape tokens across several components
-...
-```
+On any failed required check, hook, signature, author validation, staged-scope validation, or push:
 
-Several unrelated changes in one commit, with no useful scope. Split
-them into focused commits, each describing one logical change.
+- stop the mutation sequence
+- preserve the repository state
+- report the exact failure
+- do not bypass the failing control automatically
+- do not use destructive recovery commands
+
+## Strict mode does not mean "clean harder"
+
+A dirty working tree containing user-owned changes is valid.
+
+Strict mode requires correct ownership reporting and scope control. It does not permit deleting,
+restoring, cleaning, or resetting unrelated work.

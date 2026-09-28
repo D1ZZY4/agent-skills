@@ -1,46 +1,84 @@
 # Commit Signing
 
-How to handle signed commits when a repository requires them, from inspection through
-verification before push.
+Signed commits are repository-specific requirements. Do not turn signing into a universal default.
 
 ## When signing applies
 
-Signed commits are repository-specific policy, not a portable default. Check the repository's
-Git configuration before assuming:
+Inspect the effective configuration before assuming how commits are signed:
 
 ```bash
-git config --get commit.gpgSign
-git config --get gpg.format
-git config --get user.signingkey
+git config --show-origin --get commit.gpgSign
+git config --show-origin --get gpg.format
+git config --show-origin --get user.signingkey
 ```
 
-- `commit.gpgSign` true means new commits are signed automatically.
-- If repository policy requires a signature for your commits, pass `-S` on the commit.
-- If the repository does not require signing, leave signing alone. Do not add it as a default.
+When relevant to the configured signing format, inspect additional signer configuration without
+changing it.
 
-## Signing mechanics
+Interpretation:
 
-- Keep the environment's signing setup intact. If the host resolves gpg through a wrapper,
-  `GNUPGHOME`, or a specific `gpg.program`, use that same tool for both signing and
-  verification. Switching to a different keyring only makes the key look missing.
-- Preserve the repository's configured `user.signingkey`. Never sign with an invented key or
-  substitute your own key unless the user explicitly configures it.
+- `commit.gpgSign=true` enables signing for new commits by default
+- a repository policy may require signing even when that boolean is not set
+- `-S` requests signing for a particular commit
+- do not add signing merely because the skill can sign
+
+## Preserve the existing signer
+
+Do not replace:
+
+- `user.signingkey`
+- `gpg.format`
+- `gpg.program`
+- SSH signing configuration
+- signer environment variables or keyrings
+
+merely to make a commit succeed.
+
+If the configured signer cannot produce a valid signature:
+
+1. report the actual failure
+2. do not silently substitute another key
+3. obtain explicit authorization before changing signing configuration
+
+## Keyring and program consistency
+
+Use the same signing environment for signing and verification.
+
+For example, if the environment depends on a configured GPG program, SSH signer, keyring, or
+`GNUPGHOME`, do not switch to a different environment just for verification.
 
 ## Verify before push
+
+For the commit or commit range that will be pushed:
+
+```bash
+git log --show-signature --oneline <range>
+```
+
+For a single latest commit:
 
 ```bash
 git log --show-signature -1
 ```
 
-- Report "Good signature" with the actual key when it verifies.
-- Report the real failure when it does not. Never invent a trust model or a signature result.
-- Only push a signed commit whose signature reports a good result, unless the user explicitly
-  accepts an unsigned or failed-signature push after being told how the repository is
-  configured.
+A successful local signature check proves that Git could verify the cryptographic signature under the
+active environment. It does not by itself guarantee that a hosting provider will display a "verified"
+badge under its own account or trust rules.
 
-## Safety boundary
+Report the actual result. Never invent a key, trust relationship, or provider verification state.
 
-Changing signing configuration (identity, keys, `gpg.program`, `commit.gpgSign`, credentials)
-is a separate mutation. Explain the change, confirm the target, and get explicit approval
-first. Never change global config to satisfy a local policy. See `policy-configuration.md` for
-where signing fits in the policy precedence order.
+## Unsigned or failed signatures
+
+If repository policy requires valid signatures, do not push an unsigned or locally failed commit
+unless the user explicitly authorizes the exception after being told what is wrong.
+
+That exception does not change the repository policy.
+
+## Configuration changes
+
+Changing signer identity, signing keys, `gpg.program`, `commit.gpgSign`, credentials, or related
+configuration is a separate mutation.
+
+Explain the intended change, confirm the target, and obtain explicit authorization before changing it.
+
+Never change global configuration merely to satisfy a repository-local requirement.

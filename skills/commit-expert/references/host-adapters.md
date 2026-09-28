@@ -1,39 +1,85 @@
 # Host and Upstream Adapters
 
-The core skill is Git-provider neutral. This reference records optional conventions that may
-apply when a repository uses a particular hosting service or workflow.
+The core skill is Git-provider neutral. Provider-specific behavior belongs here so the core workflow
+does not accidentally assume GitHub, GitLab, Bitbucket, or a particular self-hosted service.
 
-## Generic rule
+## Generic repository adapter
 
-Use the repository's configured remote and upstream branch:
+Start with ordinary Git state:
 
 ```bash
 git remote -v
 git branch --show-current
-git rev-parse --abbrev-ref --symbolic-full-name '@{upstream}'
+git rev-parse --abbrev-ref --symbolic-full-name '@{upstream}' 2>/dev/null || true
 ```
 
-Do not assume the remote is named `origin`, the default branch is `main`, or the host is GitHub.
-Do not rewrite public history on a protected or shared branch without explicit instruction.
+Do not assume:
 
-## GitHub-style trailers
+- remote name `origin`
+- branch name `main`
+- a configured upstream
+- a specific hosting provider
+- a provider CLI is installed
 
-Some hosts recognize `Co-authored-by: Name <email>` trailers. Use one only when:
+## Determine the host from configured data
 
-- the repository or user explicitly allows co-author trailers,
-- the provider supplied the identity for this purpose, and
-- the email is verified and wrapped in angle brackets.
+Use the repository's configured remote to identify the provider when needed.
 
-Never invent a provider email or infer one from a username.
+Do not print credentials embedded in remote URLs.
 
-## Provider-specific behavior
+Provider detection is descriptive only. It does not change the permission model.
 
-GitHub, GitLab, Bitbucket, and self-hosted Git servers may differ in protected branches,
-review requirements, trailer handling, and push permissions. Treat those details as adapters.
-Read the repository's own contribution or hosting instructions before pushing or creating a
-pull request.
+## Hosting-specific rules
+
+GitHub, GitLab, Bitbucket, and self-hosted Git servers can differ in:
+
+- protected branch settings
+- required reviews
+- required status checks
+- server-side hooks
+- signed-commit display
+- push permissions
+- merge and pull request workflows
+- branch naming and protection conventions
+
+Treat these as adapter behavior.
+
+Read repository contribution and hosting guidance before pushing or creating a pull request.
+
+## Provider CLIs
+
+Do not assume `gh`, `glab`, `bb`, or another provider CLI exists.
+
+If a provider CLI is available and repository policy explicitly uses it, use it only within the
+authorized operation. A provider CLI does not bypass the Git skill's authorization boundaries.
+
+## Trailers and hosting display
+
+Commit-message trailers are part of Git's message model. A hosting service may display or interpret
+some trailers specially.
+
+Only add a co-author identity when the repository/user permits it and the provider actually supplied
+the identity.
+
+Use standard form:
+
+```text
+Co-authored-by: Name <email>
+```
+
+Never invent an email or infer one from a username.
 
 ## Identity changes
 
-Changing `user.name`, `user.email`, signing configuration, credentials, or remotes is a separate
-mutating operation. Explain the change, confirm the target, and get explicit approval first.
+Changing any of the following is a separate mutation:
+
+- `user.name`
+- `user.email`
+- signing configuration
+- signing keys
+- credentials
+- remotes
+- push/fetch refspecs
+- branch tracking configuration
+
+Explain the intended target and obtain explicit authorization before changing them.

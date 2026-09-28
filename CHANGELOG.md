@@ -61,6 +61,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated the non-reference content note to point at `.cursor-plugin/plugin.json`
   instead of the removed `.cursor-plugin/marketplace.json`.
 
+### commit-expert
+
+- Bumped metadata.version to 1.18.0.
+- Restructured `SKILL.md` from six steps to eight and replaced the loose
+  authorization wording with an operation-specific table mapping each user
+  instruction to the side effects it covers. "commit" no longer implies "push",
+  and "push" no longer implies "create a commit".
+- Added detection for in-progress merge, cherry-pick, revert, and rebase state,
+  so an ordinary task commit is never created on top of an active operation.
+- Added a status vocabulary to `verification-and-failure.md` covering
+  `skipped` and `not applicable` alongside the existing not-checked, passed, and
+  failed states, and a section separating verification from authorization.
+- Widened signature and pre-push checks from the latest commit only to the full
+  range that will be pushed, and documented that a local signature result does
+  not imply a provider displays a verified badge.
+- Documented that `git push -u` changes tracking configuration, so it is not
+  used as a hidden side effect of an ordinary push.
+- Added submodule and nested-repository scope handling, generated-file guidance,
+  and an explicit ban on `git add -f` for ignored files in
+  `staging-and-gitignore.md`.
+- Known issue: the sentence in `commit-execution.md` warning against literal
+  `\n` in a shell string lost its escape sequence during editing, leaving a
+  stray backtick and a split sentence. The rule still reads correctly, but the
+  example it referred to is gone. The worked failure examples in
+  `examples.md` were also dropped, leaving that reference with good-case
+  examples only.
+
 ## [1.15.0] - 2026-09-18
 
 <details>

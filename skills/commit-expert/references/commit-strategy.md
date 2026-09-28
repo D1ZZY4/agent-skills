@@ -1,56 +1,57 @@
 # Commit Strategy
 
-Commit strategy controls how the agent groups changes into commits and constructs commit
-messages. The default is `auto`.
+Commit strategy controls how changes are grouped, how messages are formatted, and which optional
+metadata is attached. Those are separate dimensions and must not be conflated.
 
-Repository policy or explicit user instructions can override the default. A user may also
-specify a one-off strategy for a single task.
+The default grouping strategy is `auto`.
 
 ## Resolution order
 
 1. Explicit user instruction for this task.
-2. Repository policy: the `strategy` field in the repository policy, or a documented repository
-   convention.
-3. Default: `auto`.
+2. Repository policy or documented repository convention.
+3. Portable default: `auto`.
+
+A strategy may not authorize a mutation by itself. Authorization comes from the user request and
+the main skill workflow.
 
 ## Strategy dimensions
 
-Commit behavior has three separate dimensions:
+Resolve these independently:
 
 1. Grouping: how changes are divided into commits.
-2. Message format: how commit messages are written.
-3. Metadata: additional information such as scope or breaking-change markers.
+2. Message format: how each commit is written.
+3. Metadata: scope, breaking-change markers, trailers, or similar details.
 
-Do not treat message format or metadata as grouping rules unless explicitly requested.
+For example, `scope` is message metadata. It is not a reason to split a commit.
 
 ## Grouping strategies
 
-| Value            | What the agent does                                                                                                                                                                                                         |
-| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `auto`           | Analyze the working set and choose the most sensible grouping. Prefer one logical change per commit, preserve repository conventions, and do not split a coherent change merely because it spans multiple files or modules. |
-| `atomic-commit`  | Create one commit per logical change. Separate distinct changes when they can stand independently.                                                                                                                          |
-| `focused-commit` | Keep all changes belonging to the same task or issue together, even when they span multiple modules. Do not split them merely because they affect different files.                                                          |
-| `concern-commit` | Group changes by distinct engineering concerns such as authentication, moderation, database, localization, UI, API, or deployment. Split unrelated concerns when they can be committed independently.                       |
-| `commit-type`    | Group clearly separable changes by change type such as `feat`, `fix`, `docs`, `test`, or `chore`. Do not force a split when different types are inherently part of the same logical change.                                 |
+| Value | Behavior |
+| --- | --- |
+| `auto` | Analyze the actual diff. Keep one coherent logical change together. Split independent changes when they can stand alone. Preserve repository conventions. |
+| `atomic-commit` | Create one commit per independent logical change. |
+| `focused-commit` | Keep all changes required for the same task, issue, or objective together, even across modules. |
+| `concern-commit` | Group by independent engineering concern such as auth, database, localization, API, UI, or deployment. |
+| `commit-type` | Group clearly separable changes by semantic type such as `feat`, `fix`, `docs`, `test`, or `chore`, without splitting changes that are inherently one logical unit. |
 
 ## Message strategies
 
-| Value                 | What the agent does                                                                                                                             |
-| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| `conventional-commit` | Format each commit message using Conventional Commits, such as `type(scope): summary`. Add a body when useful or required by repository policy. |
+| Value | Behavior |
+| --- | --- |
+| `conventional-commit` | Use Conventional Commits syntax such as `type(scope): summary`, with body/footer structure according to repository policy. |
 
-## Message metadata
+Do not infer a message strategy from a grouping strategy.
 
-| Value             | What the agent does                                                                                                                                                                                                                       |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `scope`           | Add a meaningful scope to Conventional Commit messages when the affected subsystem can be identified without inventing a scope.                                                                                                           |
-| `breaking-change` | Mark a commit as breaking when it changes an established interface or behavior in a way that can break consumers. Use `!` after the type and document the change with a `BREAKING CHANGE:` footer when required by repository convention. |
+## Metadata strategies
+
+| Value | Behavior |
+| --- | --- |
+| `scope` | Add a meaningful scope when repository policy or user preference calls for it and the affected area can be identified without inventing terminology. |
+| `breaking-change` | Mark a compatibility-breaking change with `!` when the convention uses it and explain the break in the message/footer as required by repository policy. |
 
 ## Combining values
 
-Grouping, message format, and metadata can be combined.
-
-For example:
+Grouping, message format, and metadata can be combined:
 
 ```text
 [atomic-commit, conventional-commit, scope]
@@ -58,121 +59,88 @@ For example:
 
 means:
 
-* split changes into atomic logical commits
-* use Conventional Commits
-* include a meaningful scope
+- split independent logical changes
+- use Conventional Commits
+- include a meaningful scope when one is justified
 
 Another example:
 
 ```text
-[concern-commit, conventional-commit, scope]
+[focused-commit, conventional-commit]
 ```
 
 means:
 
-* group independent changes by engineering concern
-* use Conventional Commits
-* include a meaningful scope
+- keep one task or issue together
+- use Conventional Commits
 
-`auto` is the standalone default. Other values may be used as explicit preferences inside
-auto mode when the repository policy or user instruction allows them.
+Do not treat `scope` or `breaking-change` as grouping instructions.
 
-Do not interpret `scope` or `breaking-change` as instructions to split commits.
+## The logical-change test
 
-## Grouping principles
+The primary grouping unit is the logical change, not the file, folder, or line count.
 
-The primary unit of grouping is the **logical change**, not the file, directory, or line count.
+A single logical change may span:
 
-A single logical change may legitimately span:
+- multiple files
+- multiple directories
+- multiple modules
+- implementation and tests
+- implementation and required documentation
+- configuration and code when the configuration is required for that code to work
 
-* multiple files
-* multiple directories
-* multiple modules
-* implementation and tests
-* implementation and required documentation
+Keep changes together when they are causally linked, reviewed together, and would be incomplete or
+misleading if separated.
 
-Do not create separate commits solely because those changes live in different files or modules.
+Split changes when they have independent purpose and can be reviewed, reverted, or understood
+independently.
 
-Conversely, changes should be split when they represent independent concerns, behaviors, or purposes
-and can be reviewed, reverted, or understood independently.
+## Dependency ordering
 
-## What `auto` does not do
+When several commits are necessary, prefer an order that keeps each earlier commit valid.
 
-* `auto` does not ban large commits. A large commit is acceptable when it represents one coherent
-  logical change.
-* `auto` does not force one commit per file.
-* `auto` does not force one commit per directory.
-* `auto` does not automatically split tests, documentation, or configuration from an implementation
-  change when they are required parts of the same logical change.
-* `auto` does not override an explicit user instruction.
-* `auto` should preserve existing repository commit conventions when they are clear and consistent.
+For example:
 
-Examples of explicit user instructions:
+1. introduce a shared API or schema
+2. update consumers
+3. update tests or migration follow-up when independently meaningful
 
-```text
-commit everything as one
-split independent changes into separate commits
-keep this feature in one commit
-split commits by concern
-```
+Do not force an artificial split when the repository's history convention prefers one coherent change.
 
-Follow the user's instruction for the current task unless it conflicts with repository policy or a
-higher-priority requirement.
+## `auto` does not mean arbitrary
 
-## Signals of weak grouping
+`auto` does not:
 
-A grouping may be worth reconsidering when:
+- force one commit per file
+- force one commit per directory
+- forbid large commits
+- automatically split tests from implementation
+- automatically split documentation from implementation
+- override explicit user instructions
+- override repository policy
 
-* the commit contains unrelated behavioral changes
-* the commit mixes independent refactors with feature or bug-fix work
-* the commit cannot be described without repeatedly using "and also"
-* parts of the commit could be reverted independently
-* parts of the commit have different purposes and no dependency on each other
+A large commit is acceptable when it is cohesive and intentionally one change.
 
-The phrase "and also" is only a heuristic, not a hard rule. A coherent change can legitimately
-contain several related modifications.
+## Signals that a grouping needs reconsideration
 
-## Large commits
+Reconsider the grouping when:
 
-Commit size alone does not determine whether a commit is good or bad.
+- the commit contains unrelated behavior
+- it mixes an independent refactor with feature work
+- parts can be reverted independently
+- parts have different purposes and no dependency
+- the message requires repeated "and also" constructions
+- one subset would be meaningful on its own
 
-Prefer:
+"And also" is a heuristic, not a hard rule.
 
-```text
-one coherent logical change
-```
+## Large diffs
 
-over:
+Size alone does not define quality.
 
-```text
-many small commits with arbitrary boundaries
-```
+A large, cohesive change is better represented by one coherent commit than by arbitrary micro-commits.
 
-and prefer:
+A large, mixed change should be split when the concerns are independent.
 
-```text
-several independent logical commits
-```
-
-over:
-
-```text
-one unrelated mega-commit
-```
-
-A large commit is acceptable when its changes are cohesive, reviewable, and intentionally part of
-the same logical change.
-
-## Terminology
-
-The following terms describe different properties and should not be treated as interchangeable:
-
-* **Atomic commit**: one commit represents one logical change.
-* **Focused commit**: one commit stays focused on one task or objective.
-* **Concern-based commit**: commits are separated by independent engineering concerns.
-* **Conventional Commit**: a standardized commit-message format.
-* **Commit type**: the semantic category of a commit, such as `feat`, `fix`, or `refactor`.
-* **Scope**: the subsystem or area named in a Conventional Commit message.
-* **Breaking change**: a change that can break compatibility for existing consumers.
-* **Mega commit**: informal terminology for an unusually large or overly mixed commit. It is not a
-  Git or Conventional Commits concept.
+Use repository-defined thresholds first. When none exist, a large multi-file diff is a signal to inspect
+more carefully, not permission to rush.
