@@ -3,6 +3,7 @@
 .cache/
 .config/
 .agents/*
+!.agents/plugins/
 .claude/
 attached_assets/
 prompt/

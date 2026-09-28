@@ -1,0 +1,24 @@
+{
+  "name": "agent-skills",
+  "version": "1.15.0",
+  "description": "Custom expert skills, ready to use in your coding agent.",
+  "keywords": [
+    "skills",
+    "documentation",
+    "context7",
+    "copywriting",
+    "readme",
+    "diagrams",
+    "mermaid",
+    "git",
+    "commit",
+    "redis",
+    "research",
+    "audit",
+    "review"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Agent Skills"
+  }
+}

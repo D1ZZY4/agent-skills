@@ -48,7 +48,7 @@ Keep the name short and descriptive, for example `fix-readme-typo` or `add-docke
 
 ### 3. Make your change
 
-Skill sources live in the tracked directories under `skills/` (`skills/context7-expert/`, `skills/copywriting-expert/`, and so on). The copies under `.agents/skills/` are local agent state, ignored by git. Do not edit those. Do not add anything under ignored paths such as `.local/`, `.cache/`, `.config/`, or `gpg-key-backup/`.
+Skill sources live in the tracked directories under `skills/` (`skills/context7-expert/`, `skills/copywriting-expert/`, and so on). The copies under `.agents/skills/` are local agent state, ignored by git. Do not edit those. Do not add anything under ignored paths such as `.local/`, `.cache/`, `.config/`, or `gpg-key-backup/`. The one tracked path under `.agents/` is `.agents/plugins/`, which holds the portable Agent Plugins manifest. When you bump a version, update that manifest and `.codex-plugin/plugin.json` alongside `.claude-plugin/plugin.json`, `.cursor-plugin/plugin.json`, and `gemini-extension.json`.
 
 A skill is one directory with this shape:
 

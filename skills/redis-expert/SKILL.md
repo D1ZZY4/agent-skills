@@ -13,7 +13,7 @@ description: >
   into one skill so the right domain loads automatically without picking between separate ones.
 license: SSPL-1.0
 metadata:
-  version: 1.5.3
+  version: 1.5.4
   author: D1ZZY4
   priority: low
 ---
@@ -201,7 +201,7 @@ Organized by domain, matching the upstream official skills plus the Iris agent-m
 - No evaluation suite is bundled in this aggregate. Validate Redis-specific guidance against the
   target Redis version, modules, client library, and deployment model before treating it as an
   authoritative implementation contract.
-- Cursor plugin packaging lives at the project level (`.cursor-plugin/marketplace.json`),
+- Cursor plugin packaging lives at the project level (`.cursor-plugin/plugin.json`),
   covering every skill in this repository rather than this skill alone.
 
 The target Redis version and deployment documentation remain the authority for runtime behavior.

@@ -1,0 +1,28 @@
+{
+  "name": "agent-skills",
+  "displayName": "Agent Skills",
+  "description": "Custom expert skills, ready to use in your coding agent.",
+  "version": "1.15.0",
+  "author": {
+    "name": "D1ZZY4",
+    "url": "https://github.com/D1ZZY4"
+  },
+  "homepage": "https://github.com/D1ZZY4/agent-skills",
+  "repository": "https://github.com/D1ZZY4/agent-skills",
+  "license": "SSPL-1.0",
+  "keywords": [
+    "skills",
+    "documentation",
+    "context7",
+    "copywriting",
+    "readme",
+    "diagrams",
+    "mermaid",
+    "git",
+    "commit",
+    "redis",
+    "research",
+    "audit",
+    "review"
+  ]
+}

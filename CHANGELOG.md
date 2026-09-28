@@ -10,6 +10,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Repository
+
+- Grouped plugin manifests per host so each agent reads its own file: moved the
+  portable Agent Plugins manifest from the repository root to
+  `.agents/plugins/plugin.json`, added `.codex-plugin/plugin.json` as the Codex
+  native manifest, and left `.claude-plugin/` and `.cursor-plugin/` at the paths
+  their specs require.
+- Replaced `.cursor-plugin/marketplace.json` with `.cursor-plugin/plugin.json`.
+  The marketplace listed seven entries whose `source` paths had no matching
+  per-plugin manifest, so Cursor skipped the manifest step for every entry and
+  the per-skill `version`, `category`, and `tags` never took effect. It also
+  made the documented `/add-plugin agent-skills` command unresolvable, because
+  no entry carried that name. One plugin bundling every skill matches how the
+  Claude, Gemini, and Agent Plugins channels already treat this repository, and
+  Cursor finds the skills through default `skills/` discovery. Install a single
+  skill in Cursor through `npx skills add --skill <name>`.
+  Per-skill `category` and `tags` are dropped with the marketplace; each
+  `SKILL.md` keeps its own `name` and `description` frontmatter.
+- Added a Plugin manifests table to `README.md` recording the manifest, the host
+  that reads it, and the spec it follows.
+- Added `!.agents/plugins/` to `.gitignore` so the relocated manifest stays
+  tracked while the rest of `.agents/` remains ignored local state.
+- Known regression: GitHub Copilot reads the Agent Plugins manifest at the
+  repository root, so it no longer discovers this repository. Codex still works
+  through `.codex-plugin/plugin.json`. Restoring a root `plugin.json` is a
+  one-line fix if Copilot support is needed.
+
+### redis-expert
+
+- Bumped metadata.version to 1.5.4.
+- Updated the non-reference content note to point at `.cursor-plugin/plugin.json`
+  instead of the removed `.cursor-plugin/marketplace.json`.
+
 ## [1.15.0] - 2026-09-18
 
 <details>

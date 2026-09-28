@@ -46,12 +46,28 @@ hermes skills install D1ZZY4/agent-skills/context7-expert
 # Cline: install from the repo
 cline skill install D1ZZY4/agent-skills
 
-# Cursor: add the marketplace, then install from chat
-# marketplace file: .cursor-plugin/marketplace.json in this repo
+# Cursor: add the plugin, then install from chat
+# plugin file: .cursor-plugin/plugin.json in this repo
 /add-plugin agent-skills
 ```
 
-Cursor, Codex, and GitHub Copilot read the `plugin.json` Agent Plugins manifest at the repo root. Antigravity, OpenCode, Windsurf, and Amp have no public marketplace. For those, use `npx skills add` above.
+Antigravity, OpenCode, Windsurf, and Amp have no public marketplace. For those, use `npx skills add` above.
+
+### Plugin manifests
+
+Each agent reads its manifest from the path its own plugin spec defines, so the manifests are grouped per host:
+
+| Manifest | Read by | Spec |
+|---|---|---|
+| `.codex-plugin/plugin.json` | Codex | Codex plugin layout, discovered as `.codex-plugin/plugin.json` |
+| `.claude-plugin/plugin.json` | Claude Code | Claude Code plugin manifest |
+| `.claude-plugin/marketplace.json` | Claude Code | Claude Code marketplace index |
+| `.cursor-plugin/plugin.json` | Cursor | Cursor Plugin manifest, one plugin bundling every skill |
+| `.agents/plugins/plugin.json` | Portable Agent Plugins hosts | Agent Plugins 1.0.0 manifest |
+| `gemini-extension.json` | Gemini CLI | Gemini extension manifest (root path is required) |
+| `skills.sh.json` | skills.sh | skills.sh grouping (root path is required) |
+
+Codex reads `.codex-plugin/plugin.json`, so it stays discoverable. GitHub Copilot expects the Agent Plugins manifest at the repository root, so it no longer finds one now that the portable manifest lives in `.agents/plugins/`. Restore a root `plugin.json` if Copilot support matters to you.
 
 If your harness installs from a URL, point it at a raw skill file. Replace `<skill>` with any name from the table below:
 

@@ -26,7 +26,10 @@ Each skill is a standard directory containing `SKILL.md` and optional `reference
 - `README.md` - project overview and usage
 - `CONTRIBUTING.md` - contributor guide for humans
 - `skills.sh.json` - skills.sh directory grouping
-- `plugin.json`, `gemini-extension.json`, `.claude-plugin/` - official agent marketplace manifests
+- `.agents/plugins/plugin.json` - portable Agent Plugins 1.0.0 manifest
+- `.codex-plugin/plugin.json` - Codex native plugin manifest
+- `.claude-plugin/`, `.cursor-plugin/` - Claude Code and Cursor marketplace manifests
+- `gemini-extension.json` - Gemini CLI extension manifest, root path is required
 - `assets/logos/` - verified agent logos used by the README
 - `LICENSE` - SSPL-1.0 License, Copyright (c) 2026 D1ZZY4
 
