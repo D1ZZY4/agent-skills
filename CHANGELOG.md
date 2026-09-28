@@ -37,6 +37,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   through `.codex-plugin/plugin.json`. Restoring a root `plugin.json` is a
   one-line fix if Copilot support is needed.
 - Ignored `art/` and `skills-lock.json` as local working state.
+- Documented why Cline has no row in the manifest table. A Cline plugin is a
+  TypeScript or JavaScript module exporting an `AgentPlugin`, discovered through
+  a `cline` field in `package.json` or a scan for `.ts` and `.js` files, so a
+  repository of markdown `SKILL.md` files has no manifest to publish.
+  `cline skill install` remains the supported path and takes the same
+  `--skill` flag.
 
 ### redis-expert
 
@@ -165,20 +171,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   marketplace tags so every skill is findable by feature terms (library-docs,
   mcp, ux-writing, microcopy, onboarding, flowcharts, c4,
   conventional-commits, caching, clustering, review, verification).
+- Added project-level Cursor plugin marketplace at `.cursor-plugin/marketplace.json`
+  covering all seven skills with per-skill versions, categories, and tags.
+- Removed the per-skill `.cursor-plugin/` packaging from `skills/redis-expert/`
+  (merged manifest plus seven upstream per-domain manifests); Cursor packaging now
+  lives in one place at the repository root.
 
 ### redis-expert
 
 - Bumped metadata.version to 1.5.1.
 - Dropped the per-skill `.cursor-plugin/` packaging pointers from `SKILL.md`
   following the move to project-level Cursor packaging.
-
-### Repository
-
-- Added project-level Cursor plugin marketplace at `.cursor-plugin/marketplace.json`
-  covering all seven skills with per-skill versions, categories, and tags.
-- Removed the per-skill `.cursor-plugin/` packaging from `skills/redis-expert/`
-  (merged manifest plus seven upstream per-domain manifests); Cursor packaging now
-  lives in one place at the repository root.
 
 </details>
 
@@ -686,9 +689,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Improved changelog navigation with back-to-top links.
 - Skill versions now reflect actual commit age rather than being uniform.
 - Major version starts at 1 across all skills; minor increases by skill maturity.
-
-### Changed
-
 - Consolidated project rules into AGENTS.md.
 - Created symlinks so CLAUDE.md and replit.md both point to AGENTS.md.
 
@@ -773,8 +773,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 | 1.13.0 | 2026-09-15 | 7 | Project Cursor marketplace, discovery keyword expansion, redis-expert 1.5.1 |
 | 1.12.0 | 2026-09-15 | 7 | New deep-research-expert skill, redis-expert Iris domain and Vector Sets, mermaid-diagrams-expert new types, changelog collapsibles, plugin keyword expansion |
 | 1.11.0 | 2026-09-14 | 6 | Agent marketplace manifests, skills/ move, commit-expert rename, CONTRIBUTING, agent logos, README polish, create-readme-expert diagrams reference |
+| 1.10.0 | 2026-09-13 | 6 | SKILL.md Purpose sections and proactive trigger style unification, commit-expert signing and commit-strategy references, create-readme-expert W011 security response, mermaid diagram syntax corrections |
 | 1.9.0 | 2026-09-13 | 6 | context7-expert W011 response, skills.sh.json schema fix, README selective install docs |
 | 1.8.0 | 2026-09-13 | 6 | context7-expert security hardening, SSPL-1.0 relicensing, README install fix |
+| 1.7.0 | 2026-08-16 | 1 | create-readme-expert reference loading and unsupported-claim corrections, AGENTS.md workflow rules |
 | 1.6.0 | 2026-08-16 | 1 | create-readme-expert review feedback: scope control, missing info handling, audience id, inspection checklist, voice preservation, unsupported claims example |
 | 1.5.0 | 2026-08-16 | 1 | create-readme-expert review fixes, evidence-based examples, version bump to 1.3.0 |
 | 1.4.0 | 2026-08-16 | 1 | create-readme-expert examples additions, version bump to 1.2.0 |
@@ -873,6 +875,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.5.4 | 2026-09-28 | Non-reference note repointed at `.cursor-plugin/plugin.json` after the Cursor marketplace was replaced |
 | 1.5.3 | 2026-09-18 | Iris and whole-skill attribution removals, runtime rule kept |
 | 1.5.2 | 2026-09-18 | Summary-level LLM primitives removal from redisvl client reference |
 | 1.5.1 | 2026-09-15 | Dropped per-skill Cursor packaging pointers following the move to project-level packaging |

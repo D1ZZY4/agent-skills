@@ -44,6 +44,7 @@ hermes skills tap add D1ZZY4/agent-skills
 hermes skills install D1ZZY4/agent-skills/context7-expert
 
 # Cline: install from the repo
+# Cline plugins are TypeScript modules, so this repo ships as skills
 cline skill install D1ZZY4/agent-skills
 
 # Cursor: add the plugin, then install from chat
@@ -68,6 +69,8 @@ Each agent reads its manifest from the path its own plugin spec defines, so the 
 | `skills.sh.json` | skills.sh | skills.sh grouping (root path is required) |
 
 Codex reads `.codex-plugin/plugin.json`, so it stays discoverable. GitHub Copilot expects the Agent Plugins manifest at the repository root, so it no longer finds one now that the portable manifest lives in `.agents/plugins/`. Restore a root `plugin.json` if Copilot support matters to you.
+
+Cline has no row because it has no manifest to read. A Cline plugin is a TypeScript or JavaScript module that exports an `AgentPlugin`, and the installer discovers entry points from a `cline` field in `package.json` or, failing that, by scanning for `.ts` and `.js` files. This repository ships markdown `SKILL.md` files, so `cline skill install` is the supported path. That command aliases `npx skills add` and takes the same `--skill` flag, so a single skill installs with `cline skill install D1ZZY4/agent-skills --skill <name>`.
 
 If your harness installs from a URL, point it at a raw skill file. Replace `<skill>` with any name from the table below:
 

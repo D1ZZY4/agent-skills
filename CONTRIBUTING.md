@@ -2,7 +2,7 @@
 
 Everyone is welcome here. Whether you fix a typo, improve a skill, or propose a whole new one, your contribution matters to this repo.
 
-An honest note first: this repository is still young and has plenty of rough edges. Only `context7-expert` has a full comparison against its upstream original so far; the same treatment for the other skills is still pending. Docs may be uneven and conventions are still settling. If you see a gap, that is not a reason to stay away. It is a reason to open an issue or send a pull request.
+An honest note first: this repository is still young and has plenty of rough edges. `context7-expert`, `deep-research-expert`, and `commit-expert` have a full comparison against their upstream originals; the same treatment for the remaining four skills is still pending. Docs may be uneven and conventions are still settling. If you see a gap, that is not a reason to stay away. It is a reason to open an issue or send a pull request.
 
 ## Ways to contribute
 
@@ -104,7 +104,7 @@ git commit -S -m "docs(readme): fix setup pointer" -m "- One line about what cha
 - One line about why"
 ```
 
-Common types in this history are `docs`, `feat`, `fix`, `refactor`, and `chore`, with an optional scope such as `docs(readme)`. Match the surrounding history rather than inventing a new format.
+Common types in this history are `docs`, `feat`, `fix`, `refactor`, `chore`, and `style`, with an optional scope such as `docs(readme)`. Match the surrounding history rather than inventing a new format.
 
 ### 7. Push to your fork and open a pull request
 
