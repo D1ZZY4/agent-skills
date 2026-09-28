@@ -1,90 +1,121 @@
 # Skills Management via ctx7
 
-Not triggered by documentation questions. Use only when the user explicitly asks to install,
-search, suggest, list, remove, or generate AI coding skills through the `ctx7` CLI. Skills here
-are Markdown files that teach AI coding agents best practices, patterns, and workflows for a
-specific library or task, the same shape as this skill itself. Covers install, search, suggest,
-generate, list, remove, and info commands.
+Use only when the user explicitly asks to search, install, suggest, list, inspect, generate, or remove
+AI coding skills through the `ctx7` CLI.
 
-Command names and short aliases below follow the current CLI; aliases can shift between CLI
-releases, so confirm with `ctx7 --help` when a command is not recognized.
+This reference is separate from ordinary documentation lookup because skills management may both access
+remote content and write or delete local files.
 
-Installation, suggestion, generation, and removal commands are mutating operations. Confirm the
-requested target and scope before running them, and review the write controls in
-`references/security.md` before any mutating command. Search, list, and info commands are
-read-only inspection unless the CLI version documents otherwise. Never add `--all`, `--global`,
-or a removal command based only on a dependency scan or a proactive suggestion.
+## Command verification
+
+CLI aliases and flags can change. If a command is not recognized, inspect the installed CLI's help rather
+than guessing an alias or flag.
+
+The current upstream CLI documents these command families:
+
+```text
+ctx7 skills install /owner/repo [name]
+ctx7 skills search <keywords>
+ctx7 skills suggest
+ctx7 skills list
+ctx7 skills remove <name>
+ctx7 skills generate
+ctx7 skills info /owner/repo
+```
+
+Use the installed CLI version's actual help output as the command reference when it conflicts with this
+document.
+
+## Read-only does not always mean non-networked
+
+`skills list` may inspect local installations, while `skills search`, `skills suggest`, and `skills info`
+may access remote registry or repository data. Treat any command that transmits data as subject to the
+same query-confirmation rules in `security.md`.
+
+In particular, `skills suggest` can inspect project dependency manifests. Do not run it as an innocent
+background convenience when the resulting dependency names would be transmitted to a third party.
 
 ## Install
 
-Repository format is always `/owner/repo`.
+Repository identifiers use the `/owner/repo` form.
 
 ```bash
-npx ctx7@latest skills install /owner/repository             # interactive, pick from a list
-npx ctx7@latest skills install /owner/repository skill-name  # install a specific skill
-npx ctx7@latest skills install /owner/repository --all       # install everything, no prompts
+ctx7 skills install /owner/repository
+ctx7 skills install /owner/repository skill-name
 ```
 
-Target a specific agent only through a currently supported host adapter, otherwise let the CLI
-prompt interactively. Treat the target flag and install directory as adapter details, not a
-universal skill location. Read `agent-adapters.md` before selecting one. Do not copy a flag from
-another host into a different agent's command:
+Before installation, confirm:
 
-```bash
-npx ctx7@latest skills install /owner/repository skill-name <host-adapter-flags>
-```
+- source repository and skill name
+- exact target agent
+- project-local or user-global scope
+- expected installation path
+- whether authentication or network access is required
 
-Alias: `ctx7 si /owner/repository skill-name`
+Target flags belong to the host adapter. Read `agent-adapters.md` rather than copying a flag from an
+unrelated agent integration.
+
+Do not use `--all` unless the user explicitly approves installing every skill from the repository.
+Do not use `--global` unless the user explicitly chooses global scope.
 
 ## Search
 
+Search terms are outbound data when the CLI queries the registry.
+
 ```bash
-npx ctx7@latest skills search pdf
-npx ctx7@latest skills search typescript testing
+ctx7 skills search typescript testing
 ```
 
-Alias: `ctx7 ss pdf`
+Propose and confirm the search terms before transmission when they contain project-specific information.
 
 ## Suggest
 
-Auto-detects the current project's dependencies (reads `package.json`, `requirements.txt`,
-`pyproject.toml`, `Cargo.toml`, `go.mod`, `Gemfile`) and recommends relevant skills from the
-registry. Falls back to suggesting a manual `skills search` if no dependencies are detected.
+Suggestion may inspect files such as `package.json`, `requirements.txt`, `pyproject.toml`, `Cargo.toml`,
+`go.mod`, or `Gemfile` and may use dependency information to query a registry.
 
 ```bash
-npx ctx7@latest skills suggest           # scan current project, install to project
-npx ctx7@latest skills suggest --global  # install suggestions globally
+ctx7 skills suggest
 ```
 
-Alias: `ctx7 ssg`
+This command is not a harmless passive scan. Confirm the target scope and outbound-data implications
+before running it.
 
-## Generate (AI-powered, requires login)
+## Generate
+
+Generation is AI-powered and currently requires login according to the upstream CLI documentation.
+Treat it as both network activity and a mutating operation because the resulting skill is written locally.
+
+Before generating, confirm:
+
+- requested expertise
+- selected libraries, if any
+- target scope
+- expected output path
+- authentication requirement
+
+Do not silently log in to enable generation.
+
+## List, info, and remove
 
 ```bash
-npx ctx7@latest skills generate
-npx ctx7@latest skills generate <host-adapter-flags>
+ctx7 skills list
+ctx7 skills info /owner/repository
+ctx7 skills remove skill-name
 ```
 
-Interactive flow: describe the expertise wanted, select relevant libraries from search
-results, answer a few clarifying questions, review the generated skill, choose where to
-install it. Free accounts get a limited number of generations per week, paid accounts get
-more, check current limits with the CLI itself since these change.
+Treat `remove` as destructive. Never remove a skill based only on an automated suggestion or stale
+inventory.
 
-Aliases: `ctx7 skills gen`, `ctx7 skills g`
+After removal or installation, inspect the actual filesystem changes and report them.
 
-## List, remove, info
+## Post-operation checks
 
-```bash
-npx ctx7@latest skills list                   # current project, all detected agents
-npx ctx7@latest skills list <host-adapter-flags>
+After a mutating command:
 
-npx ctx7@latest skills remove pdf             # uninstall by name
-npx ctx7@latest skills remove skill-name <host-adapter-flags>
+1. confirm the command's exit status
+2. inspect created, modified, or removed files
+3. verify the target scope
+4. report any partial failure
+5. do not assume rollback happened unless verified
 
-npx ctx7@latest skills info /owner/repository  # preview a repo's skills without installing
-```
-
-Aliases for remove: `ctx7 skills rm`, `ctx7 skills delete`
-
-Add `--global` to any flag to install in the home directory instead of the current project.
-Without a flag, the CLI prompts interactively for one or more targets.
+Never claim that a skill was installed, generated, or removed merely because the command was attempted.

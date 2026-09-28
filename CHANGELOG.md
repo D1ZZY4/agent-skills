@@ -58,20 +58,38 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### redis-expert
 
 - Bumped metadata.version to 1.5.4.
-- Standardized `references/proactive-trigger.md` on the four sections every skill now uses. The file previously ended without any offer guidance, so a how-to-offer section was added that names the single relevant domain instead of listing all eight.
 - Updated the non-reference content note to point at `.cursor-plugin/plugin.json`
   instead of the removed `.cursor-plugin/marketplace.json`.
 
 ### context7-expert
 
 - Bumped metadata.version to 1.14.0.
-- Standardized `references/proactive-trigger.md` on the four sections every skill now uses: when to act, when to stay quiet, confidence rule, and how to offer. Added the missing stay-quiet section, covering an explicit decline in the same conversation and an answer already present in local project files.
 - Replaced the `Priority order` section with `Core principles` and
   `Authorization model`, matching the structure `commit-expert` adopted in
   1.18.0. The existing five-level conflict resolution is kept inside the
   authorization section.
 - Added `Failure handling` covering failed lookups, including the rule that a
   failed lookup is a valid outcome while an invented answer is not.
+- Standardized `references/proactive-trigger.md` on the four sections every
+  skill now uses: when to act, when to stay quiet, confidence rule, and how to
+  offer. Added the missing stay-quiet section, covering an explicit decline in
+  the same conversation and an answer already present in local project files.
+- Bumped metadata.version to 1.15.0.
+- Rewrote the workflow to separate five distinct version facts: declared,
+  resolved, installed, Context7 indexed, and vendor current release. The
+  previous version treated them as interchangeable, so a Context7 result could
+  be read as proof of what the project actually runs.
+- Require confirmation of the final redacted query that will actually be
+  transmitted, not merely the user's original wording, and state that any retry
+  which changes the transmitted query needs a new confirmation.
+- Split the authorization table so "go ahead" covers only the proposed lookup
+  batch, and added a separate row for "use the latest docs", which authorizes the
+  version strategy only after the library and final query are shown.
+- Added provenance fields to retain for implementation-affecting answers:
+  library ID, indexed version, exact query, access mode, and lookup date.
+- Tightened the reference set: per-shell CLI probes for PowerShell and cmd.exe,
+  an explicit npx execution boundary, and separate rule-precedence and
+  stop-condition sections.
 
 ### copywriting-expert
 
@@ -884,6 +902,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### context7-expert
 
+| 1.15.0 | 2026-09-28 | Separated declared, resolved, installed, indexed, and vendor current versions; redacted-query confirmation; provenance fields; per-shell CLI probes |
 <details>
 <summary>context7-expert version history</summary>
 

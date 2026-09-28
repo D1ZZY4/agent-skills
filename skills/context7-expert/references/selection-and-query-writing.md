@@ -1,83 +1,96 @@
 # Library Selection and Query Writing
 
-Shared by both `mcp-mode.md` and `cli-mode.md`. The resolve/fetch mechanics differ by mode, but
-the selection criteria and query-writing rules are identical in both.
+This reference is shared by MCP and CLI modes. The transport differs; library identity, version fit,
+and query quality do not.
 
-## Result fields to weigh
+## Result fields
 
-Each resolved library result typically includes:
+Resolved library results may include:
 
-- **Library ID**: the Context7-compatible identifier, format `/org/project`.
-- **Name**: the library or package name.
-- **Description**: a short summary.
-- **Code Snippets**: how many code examples are available.
-- **Source Reputation**: authority indicator, High, Medium, Low, or Unknown.
-- **Benchmark Score**: quality indicator, 100 is the highest.
-- **Versions**: available versions, if any. Use one matching what the user specified, format
-  `/org/project/version`.
+- library ID, usually `/org/project`
+- library name and description
+- code-snippet coverage
+- source reputation
+- benchmark or quality score
+- available indexed versions
+
+Treat any result field as evidence about the Context7 index, not as proof of package installation or
+vendor endorsement.
 
 ## Selection process
 
-1. Analyze the query to understand what library or package the user actually wants.
-2. Select the best match based on:
-   - Name similarity to the query, exact matches prioritized
-   - Description relevance to the query's intent
-   - Package scope and ecosystem: distinguish scoped packages from similarly named but unrelated ones (for example, `react-router` vs `react-router-dom`, or `tensorflow` vs `tensorflow-lite`).
-   - Documentation coverage, prefer libraries with higher code snippet counts
-   - Source reputation, prefer High or Medium over Low or Unknown
-   - Benchmark score, higher is better
-3. If multiple good matches exist, acknowledge that briefly and present the best candidates as
-   options to the user when the choice could change the answer, rather than silently picking one.
-4. If no good match exists, say so clearly and suggest query refinements instead of guessing.
-5. For genuinely ambiguous queries (the library name alone could mean two unrelated things),
-   ask for clarification before proceeding with a best-guess match.
-6. When multiple matches are otherwise similar, prefer the official or primary package over
-   community forks.
-7. If the user mentioned a version, prefer a version-specific library ID when one's available
-   from the resolution results.
+1. Identify the ecosystem and intended product from the user's task.
+2. Exclude candidates that do not match the requested package, scope, or platform.
+3. Prefer an exact name match when it is consistent with the ecosystem and task.
+4. Prefer official or primary projects over mirrors, forks, and unrelated packages.
+5. Prefer an indexed version that matches the confirmed version strategy.
+6. Use documentation coverage, source reputation, and benchmark score as supporting signals, not as
+   replacements for identity and version fit.
+7. If two candidates could materially change the answer, stop and show the candidates before fetching.
+8. If no candidate is trustworthy enough, report that and propose a better query instead of guessing.
 
-## Confirm target and version with the user
+A high benchmark score never rescues an identity mismatch.
 
-Before resolving or fetching anything, present the lookup parameters and let the user confirm
-them. This is a security control as much as a quality control: every query is transmitted to
-the Context7 service, so the user must approve what is sent. See `references/security.md`.
+## Version strategy
 
-Present, compactly:
+Use the most relevant strategy explicitly:
 
-- **Package or library**: the exact context7-compatible name you intend to query, especially
-  when the name alone is ambiguous.
-- **Version strategy**:
-  - *Latest*: use when the question is "what does the current release do" or "what changed
-    recently".
-  - *Project pinned*: use when the repository's lockfile or manifest pins a version; prefer
-    this whenever the project will consume the answer.
-  - *User specified*: when the user names a concrete version.
-- **Mode**: MCP when available, otherwise the installed CLI.
+- **Project-resolved**: use the version selected by the lockfile when the answer will guide the current
+  project.
+- **User-specified**: use the concrete version the user named.
+- **Latest indexed**: use when the question is specifically about what Context7 currently indexes, or
+  when no project version is relevant and the user accepts that distinction.
+- **Vendor current release**: do not label this as proven by Context7 alone. Verify the official release
+  source when the distinction matters.
 
-Give one recommendation where it is genuinely better, then wait for the user to accept or
-adjust it. If the user declines the lookup, skip it and answer from project-local
-documentation or training knowledge with the uncertainty flagged.
+If the exact requested version is not indexed, do not silently substitute. Present the closest relevant
+indexed version and explain the compatibility limitation before fetching if it could change the answer.
 
-## Writing good queries
+## Confirmation payload
 
-The query directly affects result quality, in both the resolve step and the fetch step.
+Before the first network request, present:
 
-- Be specific and describe what to look up in the library's documentation, not the broader
-  task you're trying to accomplish.
-- Keep each query to a single concept. If the question spans multiple distinct topics, run a
-  separate fetch call per concept instead of combining them, unless the question is
-  specifically about how the concepts interact with each other.
-- Redact before you query: strip API keys, passwords, credentials, personal data, proprietary
-  code, and internal infrastructure details. Queries are transmitted to the Context7 service;
-  see `references/security.md` for the full data-flow rules.
+- exact library name
+- version strategy and target version if known
+- Context7 library ID if already resolved
+- access mode
+- final redacted query
+- short transmission note when needed
+
+The confirmation applies to that payload. Do not materially rewrite it after confirmation.
+
+## Query writing
+
+Queries should describe one concrete documentation need, not the entire software task.
+
+Prefer:
+
+- a named API or configuration area
+- the behavior being verified
+- relevant version or feature context when already safe to transmit
+- one concept per request
+
+Avoid:
+
+- one-word queries such as `auth` or `hooks`
+- broad multi-topic requests when separate focused fetches are practical
+- pasting raw logs, source files, or environment dumps
+- speculative API names copied from unverified memory
+
+Examples:
 
 | Quality | Example |
-|---------|---------|
-| Good | "How to set up authentication with JWT in Express.js" |
-| Good | "React useEffect cleanup function with async operations" |
-| Bad, too vague | "auth" |
-| Bad, too vague | "hooks" |
-| Bad, too broad | "routing and auth and caching in Next.js" |
+| --- | --- |
+| Good | `How does JWT authentication configure middleware in Express.js?` |
+| Good | `How does React effect cleanup behave with an async subscription?` |
+| Bad | `auth` |
+| Bad | `hooks` |
+| Bad | `routing and auth and caching in Next.js` |
 
-Vague one-word queries return generic, low-value results. Multi-topic queries dilute ranking
-and return shallow results for every topic at once instead of a deep result for one.
+## Sensitive context
+
+Abstract sensitive project details before the confirmation step. Prefer descriptions such as "a private
+internal API" over real hostnames or service names when they are not required to identify the library.
+
+If the sensitive detail is necessary to disambiguate the library itself, say so explicitly and let the
+user decide whether that exposure is acceptable.

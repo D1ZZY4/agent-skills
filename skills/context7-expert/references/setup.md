@@ -1,68 +1,85 @@
 # Setup
 
-Not triggered by documentation questions. Use only when the user explicitly asks to set up or
-configure Context7 for their editor or coding agent. Covers setup modes, authentication, what
-gets written, and how to choose between MCP and CLI modes.
+Use only when the user explicitly asks to install, configure, authenticate, or remove Context7 setup for
+an editor or coding agent. A documentation question alone does not authorize setup.
 
-## ctx7 setup
+## Supported setup modes
 
-One-time command that configures Context7 for an AI coding agent. On first run it prompts for
-a mode:
+The current upstream CLI documents two setup modes:
 
-- **MCP server**: registers the Context7 MCP server so the agent can call its tools natively.
-  This is what makes `mcp-mode.md` applicable afterward.
-- **CLI + Skills**: installs a `find-docs`-style skill that guides the agent to use `ctx7` CLI
-  commands directly, no MCP server required. This is what makes `cli-mode.md` applicable.
+- **MCP**: configure a Context7 MCP server for the target agent.
+- **CLI + Skills**: install a `find-docs`-style skill that guides the agent to use the `ctx7` CLI.
 
-These are reference commands only. Do not run setup, change agent configuration, install a
-skill, or authenticate merely because a documentation task mentions Context7. Perform setup
-only after the user explicitly requests it and confirms the target and mode. Do not use
-`--yes` by default. The exact target flags and configuration locations are host-specific.
-Read `agent-adapters.md`, the write controls in `references/security.md`, and the target
-agent's own documentation before running one. The agent's documented config path and skill
-directory are the source of truth; do not assume a universal location.
+Reference command shapes:
 
-```bash
-npx ctx7@latest setup                     # interactive, prompts for mode then agent/target
-npx ctx7@latest setup --mcp               # skip the prompt, use MCP server mode
-npx ctx7@latest setup --cli               # skip the prompt, use CLI + Skills mode
-npx ctx7@latest setup --project           # configure the current project instead of globally
-npx ctx7@latest remove                    # undo a generated setup later
+```text
+ctx7 setup
+ctx7 setup --mcp
+ctx7 setup --cli
+ctx7 setup --project
 ```
 
-To configure manually, use the Context7 server URL `https://mcp.context7.com/mcp` with the
-MCP client and pass the API key via the `Authorization: Bearer` header. See the
-client-specific setup instructions linked under Sources checked below.
+Target flags and paths are host-specific. See `agent-adapters.md` and verify against the installed CLI's
+help when necessary.
 
-## Authentication options
+## Authentication
 
-Authentication is also an explicit user action. Never put an API key in a shell command or
-commit it to a file; use the workspace's secret flow when a key is required. Do not initiate
-login, logout, OAuth, or credential changes during a normal documentation lookup.
+The current upstream setup flow supports browser-based OAuth and API-key-based authentication. Login,
+OAuth, logout, and credential changes are separate user actions.
 
-Without `--api-key` or `--oauth`, setup opens a browser for OAuth login. MCP mode additionally
-generates a new API key after login. `--oauth` only applies to MCP mode.
+Security rules still apply:
 
-## What gets written
+- never ask for a real API key in chat
+- never paste a real key into a command or committed file
+- prefer the host's secret store or supported environment/credential mechanism
+- do not run setup merely because a normal documentation lookup failed
 
-**MCP mode:**
-- An MCP server entry in the target agent's documented config file
-- A Context7 rule file instructing the agent to use Context7 for library docs
-- A `context7-mcp`-style skill in the agent's skills directory
+The upstream CLI currently documents `ctx7 login`, `ctx7 logout`, and `ctx7 whoami`. Treat login/logout
+as mutations of authentication state and `whoami` as an inspection command unless the installed CLI
+documents otherwise.
 
-**CLI + Skills mode:**
-- A `find-docs`-style skill in the chosen agent's skills directory, guiding it to use
-  `ctx7 library` and `ctx7 docs` commands
+## Confirmation before setup
 
-## Which mode to recommend
+Before running setup, confirm:
 
-If the user hasn't specified a preference, MCP mode is generally lower friction once set up,
-since tools are called natively without shelling out. CLI + Skills mode is the better fit when
-the environment doesn't support MCP servers, or when the user is working somewhere with tighter
-constraints around what can be installed or configured (for example, a mobile terminal
-environment where a persistent MCP server process isn't practical). Ask if genuinely unsure,
-don't default silently to one over the other when the tradeoff actually matters for the setup.
+- target agent
+- MCP or CLI + Skills mode
+- project-local or user-global scope
+- expected files/configuration entries
+- authentication method, if needed
+- any package execution path such as `npx`
+
+Do not use `--yes` by default. Skipping confirmation is itself a user-controlled choice.
+
+## What may be written
+
+MCP setup can write an MCP server entry and related Context7 rule or skill files. CLI + Skills setup can
+write a `find-docs`-style skill.
+
+The exact file names and locations are host-specific. Do not assume the paths shown by another agent
+integration apply here.
+
+## Post-setup verification
+
+After an authorized setup:
+
+1. inspect the files or config entries actually written
+2. verify the requested scope
+3. verify the target agent can see the configuration when possible
+4. record any generated or modified files
+5. report failures honestly
+
+A setup command returning success does not by itself prove the agent is connected or authenticated.
+
+## Removal
+
+Removal is also a mutation. Confirm the exact generated files or configuration entries to remove before
+running a removal command.
+
+Never delete unrelated configuration merely because it was adjacent to Context7 setup.
 
 ## Sources checked
 
-- https://github.com/upstash/context7 (setup flows, `--cursor` / `--claude` / `--opencode` target flags, OAuth + API key auth, MIT license)
+- https://github.com/upstash/context7/tree/master/packages/cli
+- https://github.com/upstash/context7/tree/master/skills/context7-cli
+- https://github.com/upstash/context7/tree/master/skills/context7-cli/references/setup.md

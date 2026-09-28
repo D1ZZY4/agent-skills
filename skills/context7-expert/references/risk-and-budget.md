@@ -1,8 +1,21 @@
 # Risk and Operation Budget
 
-Context7 lookups need a finite budget, but one fixed number is not appropriate for every
-question. Choose the smallest budget that can answer the question reliably. Replaces any
-hardcoded budget rule with a risk-tiered approach.
+Use a finite budget for Context7 documentation operations. The goal is not to maximize calls; it is to
+obtain enough evidence to answer reliably while limiting network exposure and repeated tool use.
+
+## What counts
+
+Count each outbound documentation operation:
+
+- library resolution
+- documentation fetch
+- relevance retry
+- alternate candidate check
+- alternate mode or source check when it changes the remote request
+
+User confirmation, local file inspection, and local reasoning do not consume the Context7 lookup budget.
+Setup, authentication, and skills-management mutations are separate operations with their own explicit
+approval. Do not use this budget to justify them.
 
 ## Risk tiers
 
@@ -10,53 +23,73 @@ hardcoded budget rule with a risk-tiered approach.
 
 Examples:
 
-- one library, one stable concept
-- a general API usage question with a clearly specified version
-- a documentation lookup where a single fetch is likely to answer the question
+- one library and one stable API concept
+- one clearly pinned version
+- a lookup expected to resolve and fetch once
 
-Use a budget of up to **3 operations**:
+Budget: up to 3 outbound operations.
 
-1. resolve the library, unless an exact ID was provided
-2. fetch the documentation
-3. one focused retry or second concept only when necessary
+Typical path:
+
+1. resolve, unless exact ID is supplied
+2. fetch
+3. one focused retry only if justified
 
 ### Medium risk
 
 Examples:
 
-- framework configuration
-- version-sensitive setup
-- an error involving a specific library
-- two tightly related concepts in one library
+- version-sensitive framework configuration
+- library-specific errors
+- closely related concepts whose interaction matters
+- migration guidance that affects code structure
 
-Use a budget of up to **5 operations** when the extra calls have a clear purpose. State what
-remains unchecked if the budget runs out.
+Budget: up to 5 outbound operations when each extra call has a stated purpose.
 
 ### High risk
 
 Examples:
 
-- production deployment or infrastructure changes
-- database migration or schema changes
-- authentication, authorization, or security-sensitive configuration
-- a breaking-version migration
-- payments, billing, or financial integrations
-- multiple libraries whose compatibility matters
+- security-sensitive configuration
+- authentication or authorization
+- production deployment or infrastructure behavior
+- breaking migrations
+- database schema or data migration guidance
+- payments or other high-impact integrations
+- multi-library compatibility decisions
 
-Use a budget of up to **7 operations** only when the extra verification is necessary. Prefer
-official or version-specific documentation, and state which version and source were checked.
+Budget: up to 7 outbound operations when necessary. Prefer exact-version and official sources.
 
-## Minimum-fetch rule
+## Retry rules
 
-Fetch only the documentation needed to answer the question. Do not pull broad overviews,
-multiple topic areas, or unrelated sections to save a later round trip. If the first focused
-fetch does not contain the answer, make a narrower second fetch rather than widening the first.
+A retry is justified only when the previous result was plausibly a relevance failure, not merely because
+the desired answer was inconvenient.
 
-## Rules for increasing the budget
+- Do not repeat the identical failed query more than once.
+- A changed query is a new outbound payload and requires a new confirmation.
+- A different library, version, or mode requires a new proposal and confirmation.
+- Do not increase the budget merely because the first query was poorly written.
 
-- Do not increase the budget merely because a query was vague or poorly written.
-- Do not retry the same failed query more than once without changing the query or mode.
-- Count resolution, fetches, retries, and alternate-library checks as operations.
-- Stop when the remaining uncertainty is not worth another call, then report it honestly.
-- Never use the adaptive budget to bypass approval for network access, setup, installation, or
-  authentication.
+## Stop conditions
+
+Stop when:
+
+- the requested evidence is established sufficiently
+- the remaining uncertainty is not worth another call
+- the budget is exhausted
+- the service is unavailable
+- the available indexed version cannot support the requested claim
+
+Report what was verified and what remains unresolved.
+
+## Budget and security
+
+A larger budget never overrides:
+
+- user consent for network transmission
+- query redaction
+- npx execution approval
+- setup or authentication approval
+- prompt-injection boundaries
+
+Do not use the budget as a reason to keep probing after the user has declined further lookup.
