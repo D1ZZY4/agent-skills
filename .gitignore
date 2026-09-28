@@ -9,6 +9,8 @@ attached_assets/
 prompt/
 PROGRESS.md
 gpg-key-backup/
+skills-lock.json
+art/
 
 # --- Replit-specific ---
 .replit

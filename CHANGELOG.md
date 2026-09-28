@@ -36,6 +36,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   repository root, so it no longer discovers this repository. Codex still works
   through `.codex-plugin/plugin.json`. Restoring a root `plugin.json` is a
   one-line fix if Copilot support is needed.
+- Ignored `art/` and `skills-lock.json` as local working state.
 
 ### redis-expert
 
