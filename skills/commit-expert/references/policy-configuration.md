@@ -5,7 +5,7 @@ This reference separates repository-specific policy from portable Git safety.
 The skill must work even when no dedicated policy file exists. Do not manufacture a policy file,
 commit convention, author identity, remote name, branch name, or prohibited-word list.
 
-## Priority order
+## Priority and policy resolution
 
 Resolve applicable settings in this order:
 

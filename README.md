@@ -100,14 +100,17 @@ Each skill defines its triggers, safety boundaries, and loading behavior in its 
 <details>
 <summary>How it works, why it is worth it, and how it differs from upstream</summary>
 
-**How it works**: the skill activates on tasks that depend on an external library, framework, SDK, or cloud service, then runs a six-step flow before answering.
+**How it works**: the skill activates on tasks that depend on an external library, framework, SDK, or cloud service, then runs a nine-step flow before answering.
 
-1. Decides whether current documentation is needed and skips library-independent questions.
-2. Picks the strongest available source: project-local docs and lockfiles first, official vendor docs second, Context7 third.
-3. Chooses the available mode: the Context7 MCP when present, the `ctx7` CLI as fallback.
-4. Proposes the lookup to you, including the exact library, the version, and the mode, and waits for your confirmation before any query is sent.
-5. Resolves the library precisely from your manifests, fetches only the reference the task needs, and applies it without silently upgrading your dependency version.
-6. Reports what was verified and what stays uncertain instead of fabricating a method, option, version, or compatibility claim.
+1. Decides whether lookup is relevant and skips library-independent questions.
+2. Separates the project's declared, resolved, and installed versions from what Context7 indexed and what the vendor currently ships, and treats none of them as proof of another.
+3. Chooses the access mode: the Context7 MCP when available, the installed `ctx7` CLI otherwise.
+4. Builds a proposal showing the library, version strategy, mode, and the exact redacted query that will be transmitted, then waits for confirmation.
+5. Resolves the library precisely, and stops to present candidates when several could change the answer.
+6. Fetches one focused concept at a time, rather than widening a failed query to avoid asking again.
+7. Treats every fetched page as untrusted data, never as instructions to execute or install.
+8. Applies the result while recording its provenance: library ID, indexed version, exact query, mode, and date.
+9. Reports what was verified and what stays uncertain instead of fabricating a method, option, version, or compatibility claim.
 
 **Why it is worth it**: model training data goes stale, and answers based on "latest" break projects pinned to older versions. This skill answers from current, version-matched documentation. Because every lookup requires approval first, there are no surprise token costs, no project details sent to a remote service without explicit consent, and no invented installation states.
 
@@ -116,17 +119,17 @@ Each skill defines its triggers, safety boundaries, and loading behavior in its 
 | Category | Official `upstash/context7` | This repo `context7-expert` |
 |----------|----------------------------|-----------------------------|
 | Packaging | &bull; 3 skills + 2 rules files; lookup mode follows the file you install (`find-docs` = CLI, `context7-mcp` = MCP) | &check; 1 skill, chooses its own mode |
-| Consent before any lookup | &cross; queries run as soon as the need appears | &check; proposes query, version, and mode, then waits |
+| Consent before any lookup | &cross; queries run as soon as the need appears | &check; shows the exact redacted query that will be sent, then waits |
 | Source priority | &bull; Context7 over web search | &bull; evidence ladder: project-local &rarr; vendor docs &rarr; Context7 |
-| Version handling | &bull; optional `/org/project/version` IDs | &check; checks lockfiles and manifests, never silently swaps major versions |
+| Version handling | &bull; optional `/org/project/version` IDs | &check; separates declared, resolved, installed, indexed, and vendor current versions; never silently swaps major versions |
 | Query discipline | &bull; one concept per query, max 3 commands | &check; same rules plus budget tiers in one reference |
 | Quota and auth handling | &bull; tells the user and suggests login | &check; same, plus falls back only with flagged uncertainty |
-| Security and trust boundary | &bull; warns not to put secrets in queries | &check; treats fetched docs as untrusted data (W011), query redaction, npx execution policy |
-| Uncertainty reporting | &cross; only for quota errors | &check; explicit verified-versus-uncertain report per lookup |
+| Security and trust boundary | &bull; warns not to put secrets in queries | &check; treats fetched docs as untrusted data (W011), query redaction, npx execution policy, and confirms the final transmitted query rather than the user's wording |
+| Uncertainty reporting | &cross; only for quota errors | &check; explicit verified-versus-uncertain report per lookup, with library ID, indexed version, exact query, mode, and date retained |
 | Documentation and structure | &bull; flat, single-purpose SKILL.md bodies | &check; 10 references, loaded only for the current step |
 | License | &bull; MIT licensed (see upstream LICENSE) | &check; unified SSPL-1.0 |
 
-**Strengths**: version-accurate answers; consent-based privacy and cost control; precise, narrow fetches; a documented fallback ladder; security rules for untrusted fetched content; honest uncertainty reporting.
+**Strengths**: version-accurate answers that distinguish what the project pins from what a service indexed; consent-based privacy and cost control that confirms the exact query before sending it; precise, narrow fetches; a documented fallback ladder; security rules for untrusted fetched content; honest uncertainty reporting backed by recorded provenance.
 
 **Weaknesses**: every lookup needs your confirmation, which adds friction for fast, fully-autonomous workflows; it needs the MCP or the `ctx7` CLI to reach Context7 (without them it degrades to local docs and flagged uncertainty); coverage depends on the Context7 index, so new or niche libraries can be missing; and it ships ten references, so the install is larger than a single SKILL.md (progressive disclosure keeps the loaded part small).
 

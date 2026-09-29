@@ -90,6 +90,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tightened the reference set: per-shell CLI probes for PowerShell and cmd.exe,
   an explicit npx execution boundary, and separate rule-precedence and
   stop-condition sections.
+- Updated the `context7-expert` comparison block in `README.md`. The how-it-works
+  list described a six-step flow while the skill now runs nine, and three table
+  rows still described the pre-1.15.0 consent, version, and provenance behavior.
+  The reference count and every claim about upstream were left unchanged because
+  they remain accurate.
+- Renamed the `Priority order` heading in
+  `commit-expert/references/policy-configuration.md` to match the same heading
+  in its `SKILL.md`.
 
 ### copywriting-expert
 
