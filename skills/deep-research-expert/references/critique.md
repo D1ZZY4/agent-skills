@@ -1,48 +1,46 @@
-# Critique Loop
+# Critique and Falsification Loop
 
-One adversarial pass over a finished draft, used by Deep mode and extended by
-Adversarial mode (see `depth-modes.md`). The loop re-attacks the weakest findings
-with delta queries, then the audit delivers. One iteration maximum. Forensic and
-high-stakes reviews may borrow the same loop; Spot, Standard, Comparative,
-Exhaustive, and Decision do not run it unless the plan explicitly escalates to Deep
-or Adversarial.
+Use one bounded challenge pass. The purpose is to test the evidence chain, not to generate endless
+contrarian prose.
 
-## The three personas
+## Three personas
 
-Run each persona against the draft findings, not against the raw scope:
+Run each against the draft findings and claim ledger:
 
-- **Skeptic.** Asks for the missing control: which rival explanation fits the
-  same evidence, which claim rests on a single source wearing two hats.
-- **Adversary.** Tries to break the verdict: the counterexample, the version
-  where the claim fails, the URL that moved.
-- **Implementer.** Asks what happens on contact with reality: which
-  recommendation costs more than stated, which step assumes access nobody has.
+- **Skeptic**: identify missing controls, unsupported leaps, shared source origins, and plausible rival
+  explanations.
+- **Adversary**: search for direct contradictions, version-specific failures, edge cases, incidents,
+  regressions, and moved or removed sources.
+- **Implementer**: test whether the recommendation works under the stated constraints, permissions,
+  dependencies, and operational conditions.
 
-## Delta queries
+Each persona must end with concrete retrieval or verification tasks. Do not accept vague requests for
+"more research".
 
-Each persona output must end in concrete follow-up checks, phrased as
-retrieval tasks ("fetch the 8.x migration notes for the DIALECT default",
-"confirm the alias list in the current CLI help"). Run them, fold the results
-into the findings, and re-grade anything they touch. Findings that survive all
-three personas keep their grade; findings that fall get downgraded or cut,
-with the reason recorded.
+## Deep mode
 
-## Falsification checklist (Adversarial mode)
+Deep runs the three personas once against the weakest or most consequential findings. Execute the
+resulting delta checks, then re-grade only the claims they touched.
 
-Deep runs the personas once against the draft. Adversarial adds an active hunt
-for disconfirmation before the personas close:
+A finding survives when the new evidence continues to support it. It is downgraded or removed when the
+challenge exposes a material weakness. Record the reason.
 
-- contradictory evidence (sources that state the opposite)
-- negative evidence (absence where presence is claimed)
-- edge cases and known failures (open issues, incidents, breaking changes)
-- competing explanations that fit the same evidence
-- source incentives, bias, or single-origin repetition across sites
+## Adversarial mode
 
-Each item needs a query or fetch on record. A verdict of "safe", "ready", or
-"best" without a failed falsification attempt stays Partially verified at best.
+Before closing the loop, actively seek disconfirmation in these classes:
+
+- contradictory primary or independent evidence
+- negative evidence where absence is meaningful under a declared coverage method
+- edge cases and known failures
+- competing explanations
+- version or date boundaries
+- source incentives, shared ownership, and duplicate reporting
+
+Record what was attempted even when nothing contradictory was found. A failed falsification attempt is
+evidence about the search performed, not proof that the claim is universally true.
 
 ## Stopping rule
 
-The loop ends after one pass regardless of outcome, in Deep and in Adversarial. Leftover doubts become
-Remaining gaps in the report, not a second loop. If the gaps cluster around
-one claim, say which claim and what would settle it.
+Run at most one critique/falsification cycle per research task. Remaining doubts become Remaining gaps,
+not a second loop. If one unresolved claim dominates the result, name it explicitly and state what would
+settle it.

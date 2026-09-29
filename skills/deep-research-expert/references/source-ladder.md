@@ -1,79 +1,92 @@
-# Source Ladder
+# Source Authority and Retrieval
 
-Sources in strength order for technical claims. A weaker rung never overrules a
-stronger one on the same claim. When two strong sources disagree, report both and
-let recency plus authority decide, stated explicitly.
+No universal source ranking can answer every technical question. Choose authority based on the
+claim's subject, then record why the selected source can prove that claim.
 
-## The ladder, strongest first
+## Claim authority matrix
 
-1. **Live official documentation.** The vendor's current docs site (fetched, not
-   snippeted). Proves: current syntax, version gates, deprecation status.
-   Example: a command reference page showing `"since": "8.4.0"`.
-2. **Official repositories and APIs.** Source files, release tags, package
-   registries, machine-readable directory listings. Proves: what actually ships,
-   file existence, exact structure. Example: a GitHub API listing proving a
-   directory holds exactly three skills.
-3. **Project-local evidence.** Lockfiles, manifests, changelogs, the checked-out
-   code itself. Proves: what this project pins, uses, and claims. Always the
-   authority for project-specific facts.
-4. **Maintainer and community channels.** Release announcements, changelogs,
-   maintainer blogs, issue threads. Proves: intent, timelines, known issues.
-   Treat dates and promises as provisional.
-5. **General web search.** Discovery only. A snippet is a pointer to a source,
-   never the source. Fetch the target before citing it.
-6. **Training memory.** Last resort. Usable only for stable, long-settled facts,
-   always flagged as unverified when it matters.
+| Claim class | Preferred authority | Useful cross-check |
+| --- | --- | --- |
+| What this checked-out project uses or pins | Project-local code, lockfile, manifest, CI | Release notes or upstream docs |
+| What a vendor documents as supported behavior | Current official documentation | Official repository or release artifact |
+| What a release actually ships | Official release artifact, tag, registry, repository | Official changelog or docs |
+| Historical behavior or migration | Release notes, tags, diffs, archived official docs | Maintainer issue or announcement |
+| Security weakness or incident | Official advisory, CVE record, incident report | Independent technical analysis |
+| Benchmark or quantitative comparison | Original benchmark data/methodology | Independent reproduction |
+| Academic or scientific claim | Primary study, systematic review, authoritative dataset | Independent replication or synthesis |
+| Community experience or known limitation | Maintainer issue, technical discussion | Independent reports and reproduction |
+| Market/vendor claim | Vendor documentation for the claim itself | Independent sources for comparative claims |
 
-## Routing to context7-expert
+## Authority rules
 
-When the question is library-specific (API signatures, version behavior, migration),
-do not rebuild documentation lookup here. If the `context7-expert` skill is
-installed, route through it: it owns the consent gate, mode selection, and budget
-rules for Context7 transmission. This skill owns the audit around it (scope,
-cross-verification, grading, reporting).
+- Project-local evidence is strongest for project-local facts. Do not use it as automatic proof of
+  vendor-wide behavior.
+- Current official documentation is usually strongest for documented current behavior, but it may not
+  prove what an installed artifact actually implements.
+- A source can be authoritative for one claim and irrelevant to another. Record the claim-source fit.
+- Recency does not automatically beat authority. A current secondary article cannot silently override
+  a current primary source without explaining the conflict.
+- When two strong sources disagree, preserve both, identify the source revisions and dates, and explain
+  the claim-specific basis for the conclusion or leave it unresolved.
 
-If that skill is not installed on the current harness, fetch it from its canonical
-raw URL instead of guessing the lookup workflow:
+## Discovery versus evidence
 
-```text
-https://raw.githubusercontent.com/D1ZZY4/agent-skills/refs/heads/main/skills/context7-expert/SKILL.md
-```
+Search results, snippets, summaries, social posts, generated answers, cached previews, and model memory
+are discovery aids. They become evidence only after the underlying source has been retrieved and checked.
 
-Reference files follow the same pattern. Replace `SKILL.md` with the reference path,
-for example `references/cli-mode.md`.
+A URL that was never fetched must not appear in the report as though it was verified. A fetch failure is
+recorded as a failure, not converted into proof that the source or feature is absent.
 
-## Practical rules
+## Independence and deduplication
 
-- Fetch the page; do not cite a search excerpt. A fetch that fails (bot wall,
-  404, redirect) is itself a finding: record it as a fetch failure, not as proof.
-- Prefer primary URLs over mirrors and scrapers. If only a mirror loads, say so.
-- For documentation sites that reorganize (path migrations), verify the new
-  location for at least two or three samples before rewriting every link.
-- Never transmit secrets, tokens, personal data, or proprietary code to reach a
-  source. Redact queries first or ask.
+Count sources by origin, not by number of pages. Three articles reproducing one vendor announcement
+are one source origin. An issue linking to the same release note is not an independent confirmation of
+the release note's contents.
+
+For important claims, prefer a second source with a genuinely different origin, method, dataset, or
+observation. Independence can be impossible for some vendor-specific facts; say so instead of faking
+triangulation.
+
+## Provenance record
+
+For every load-bearing source, capture as available:
+
+- canonical URL
+- source title
+- publisher or repository owner
+- source type
+- revision, tag, commit, release, or document version
+- publication or update date
+- retrieval date
+- exact locator such as section, heading, line range, or API field
+- whether the content was fetched directly or through an intermediate tool
+- known limitations or access failures
+
+For GitHub-hosted evidence, prefer immutable commit or tag permalinks when a historical or reproducible
+reference matters. Branch URLs can change as the branch advances. GitHub documents commit-based
+permalinks as the way to preserve the exact file version being referenced.
 
 ## Retrieval discipline
 
-- Establish the current date before time-sensitive research so recency claims
-  ("latest", "new", "deprecated") anchor to something real.
-- Retrieve independent sources in parallel where the harness allows it; batch
-  the fetches, then triangulate. Parallel calls share nothing until the
-  comparison step, which keeps one source from framing the others.
-- Take structured notes per source (claim, quote or locator, source strength)
-  as you go. A claim ledger in the report (see `report-format.md`) is built
-  from these notes, not reconstructed from memory at the end.
-- Deduplicate by origin: three pages quoting the same upstream announcement
-  count as one source, not three.
+1. Establish the research date when recency matters.
+2. Define the claim before choosing the fetch.
+3. Fetch the primary source that can prove the claim.
+4. Capture the relevant locator and revision.
+5. Add independent corroboration when the claim's risk or uncertainty warrants it.
+6. Deduplicate shared origins.
+7. Record failures and gaps rather than silently substituting a nearby source.
 
-## Mode notes
+## External lookup and sensitive context
 
-- **Exhaustive coverage targets.** Declare the target classes up front: official
-  docs, repos, registries, changelogs, issue trackers, academic sources,
-  independent sources. Mark each as met, waived with reason, or open. Do not
-  claim full coverage from a sampled sweep.
-- **Forensic provenance.** Record origin, date, and strength per timeline link.
-  Prefer primary URLs over mirrors and scrapers. If only a mirror loads, say so.
-  Preserve contradictions side by side instead of merging them.
-- **Comparative symmetry.** Run the same query template and the same source
-  classes per candidate. Fill the matrix row by row across candidates, not one
-  candidate fully before the next.
+Never place secrets, tokens, personal data, or proprietary code into a remote query merely to make a
+search more precise. Prefer public identifiers, URLs, package names, commit IDs, and redacted summaries.
+When a local code excerpt is necessary to explain the question, minimize the transmitted content and
+obtain authorization when the environment requires it.
+
+## AI-specific provenance
+
+For AI system research, record the model, tool, retrieval context, and evaluation conditions when they
+materially affect the result. Provenance is part of the evidence chain, not decorative metadata.
+Standards and risk-management frameworks for generative AI treat provenance tracking, and documenting
+its limitations, as a useful practice. Cite such a source only after retrieving it, with its locator
+and revision, under the same rules as any other load-bearing reference.

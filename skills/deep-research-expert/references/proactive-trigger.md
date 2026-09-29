@@ -1,55 +1,42 @@
 # Proactive Trigger
 
-When to offer deep research without being asked, and when to stay quiet. Research costs
-time and network calls, so the offer must earn its keep. Default mode is auto; the
-offer names the resolved mode from `depth-modes.md` plus its stopping rule.
+Offer research when verification materially reduces the risk of a wrong answer. Do not offer it merely
+as a generic quality upgrade.
 
-## When to act
+## Trigger conditions
 
-- The user questions whether something is accurate, current, or complete ("is this still
-  true", "is this real", "check against the official docs").
-- A claim carries version, URL, syntax, or compatibility risk: a wrong answer breaks a
-  build, ships a dead link, or misconfigures production.
-- A skill, guide, or doc set is about to be published, bumped in version, or presented
-  as authoritative.
-- The same surface has drifted before (an upstream repo restructured, a docs site
-  migrated paths, a preview feature went GA).
-- A branch, PR, or work-in-progress change is up for review, especially with a
-  spec or issue to check against: load `code-review.md` and run its two-axis
-  flow instead of a generic read-through.
-- The user compares options (A vs B, library or architecture candidates): offer
-  Comparative with a symmetry requirement, not a generic deep dive.
-- The user must pick an option (build vs buy, migration, framework or vendor
-  selection): offer Decision with a decision matrix.
-- The user investigates an incident, regression, or disputed history: offer Forensic
-  with a timeline and provenance chain.
-- The user asserts production readiness, security, compliance, or a controversial
-  best claim: offer Adversarial falsification.
-- The user asks for full coverage (landscape scan, full repo audit, every candidate
-  meeting constraints): offer Exhaustive with explicit coverage targets.
+- The user asks whether a claim is current, accurate, complete, or real.
+- A statement depends on a version, URL, API shape, compatibility boundary, pricing, deprecation, or
+  current release state.
+- A skill, guide, architecture note, or technical document is about to be published or treated as
+  authoritative.
+- A source has recently migrated, been replaced, or shown signs of drift.
+- A branch, PR, or work-in-progress needs a fixed-point review against a spec.
+- The user compares candidates or asks for a selection. Use Comparative or Decision rather than an
+  unstructured deep dive.
+- An incident, regression, or disputed history requires reconstruction.
+- The user asks for a security, readiness, safety, or controversial claim to be challenged.
+- The user explicitly requests full coverage.
 
-## When to stay quiet
+## Stay quiet when
 
-- The question is small, stable, and fully answerable from verified local material.
-- The user asked for speed over certainty and accepted the risk explicitly.
-- The same scope was audited earlier and nothing about it has changed; say so instead
-  of re-running the work.
-- The offer would require transmitting confidential material, and the user has not approved sending
-  it. Report what can be checked locally instead.
+- The question is small, stable, and answerable from verified local material.
+- The user explicitly prefers speed and accepts the resulting verification limit.
+- The same scope was recently audited and a current evidence basis shows no material change.
+- External retrieval would require transmitting confidential material that has not been authorized.
 
-## Confidence rule
+## Freshness rule
 
-The offer must earn its keep. Offer research only when being wrong would cost real effort, for
-example a wrong version gate, a dead documentation link, or an invented API.
-
-Do not offer research as a general quality upgrade, and do not offer a mode heavier than the
-question needs. Name the resolved mode and its stopping rule in the offer so the user can judge the
-cost before agreeing.
+Do not assume that a prior audit is still current merely because the URL is unchanged. Reuse prior work
+only when its source revision, retrieval date, and the task's freshness requirement make that reuse valid.
+Otherwise, verify the load-bearing portion again.
 
 ## How to offer
 
-Name the scope, the sources, the resolved mode, and the stopping rule in one short
-proposal: "I can deep check the 14 links in this skill against the live docs and
-report dead ones in Standard mode, one pass, no critique loop. Proceed?" For ambiguous
-scope, name the auto pick plus one alternative (depth versus specialized) and let the
-user pick. For review tasks, name the fixed point and the spec source before starting.
+State the scope, likely mode, source classes, and stopping rule in one compact proposal. Avoid promising
+an unbounded investigation. Example:
+
+> I can verify the current CLI behavior against the official docs and shipped release, then report any
+> mismatch in Spot mode. The run stops after the claim is resolved or the source fetch fails.
+
+For large or sensitive work, state the transmission boundary and approval requirement before retrieval.

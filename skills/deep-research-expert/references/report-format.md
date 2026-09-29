@@ -1,77 +1,64 @@
 # Report Format
 
-Every deep research report follows the same shape so findings stay comparable
-across audits. Short reports keep every section; they just keep each one brief.
+Use a stable structure so readers can compare research runs without guessing what was checked.
 
 ## Shape
 
-1. **Verdict first.** One paragraph: what was audited, the overall judgment, and
-   the count of HIGH findings. If there are zero HIGH findings, say so.
-2. **Methodology.** What was read in full (file counts), what was fetched live
-   (named sources), the resolved mode (for auto, write "auto -> X") and whether it
-   is a depth or specialized mode, and the material assumptions the work rests on.
-   No checked-looking claims about unchecked work.
-3. **Strengths.** What verified as correct and current, with the source that
-   confirms each. This is evidence, not praise.
-4. **Findings by severity.** HIGH first, then MEDIUM, then LOW. Each finding:
-   the claim, the source that contradicts or confirms it, and the concrete fix.
-5. **Claim ledger.** A compact table of every load-bearing claim with its grade
-   and sources, so nothing verified mid-audit goes missing from the record:
+1. **Executive conclusion.** State the research question, what the evidence establishes, what remains
+   unresolved, and the count of material findings. Do not overstate certainty.
+2. **Scope and methodology.** State files or targets read, source classes fetched, resolved mode, research
+   date, exclusions, material assumptions, and stopping rule. Distinguish actual work from planned work.
+3. **Verified facts.** Present the source-backed facts that anchor the conclusion.
+4. **Findings.** Order by severity and impact. Each finding includes the claim, evidence state, source
+   or locator, why it matters, and the concrete implication or fix.
+5. **Claim ledger.** Compact table of load-bearing claims:
 
-   | Claim | Grade | Sources |
-   |---|---|---|
-   | DIALECT 1 remains the server default | Verified | redis.io dialects page (fetched), Context7 snippet |
-   | All four README URLs live | Verified | four raw fetches (dates recorded in the report) |
-6. **Remaining gaps.** Honest leftovers: sampled-but-unverified items, paywalled
-   sources, judgments that need a human call. Include a short counterevidence
-   note: the strongest evidence found against the verdict, why it does not
-   overturn it, and what would change that assessment.
-7. **Recommendations.** Numbered, ordered by severity, each one actionable.
-8. **Metadata footer.** Resolved mode, source count, fetch date, and validation status
-   (which checklist items passed, which were waived and why), so a later
-   reader can judge the report without rerunning it.
+   | ID | Claim | State | Grade | Evidence |
+   | --- | --- | --- | --- | --- |
+   | C01 | Version gate | Verified | HIGH confidence | Official docs, release artifact |
+6. **Counterevidence and remaining gaps.** State the strongest evidence against the current synthesis,
+   unresolved claims, inaccessible sources, and what would change the conclusion.
+7. **Recommendations.** Only when requested or clearly part of the task. Tie each recommendation to
+   requirements, evidence, constraints, and trade-offs.
+8. **Metadata.** Resolved mode, source count by origin, research date, relevant revisions, validation
+   status, and any explicit waivers.
 
 ## Per-mode add-ons
 
-Keep the base shape above in every mode. Add one block when the mode needs it:
-
-- **Forensic:** timeline table with date, event, and source per link, plus a
-  provenance note for conflicting links.
-- **Comparative:** symmetry matrix. Rows are evidence categories, columns are
-  candidates, cells carry grade plus source. State the asymmetry explicitly when
-  a cell cannot be filled.
-- **Adversarial:** falsification section. List what was attacked, what survived,
-  what fell, and the queries or fetches behind each attempt.
-- **Exhaustive:** coverage table. Rows are source classes, columns are target,
-  status (met, waived, open), and key sources.
-- **Decision:** decision matrix. Rows are requirements R1 to Rn, columns are
-  options with per-cell evidence grades, then trade-offs, risks, and the numbered
-  recommendation that follows from the matrix.
-- **Spot, Standard, Deep:** no add-on, except Deep keeps the counterevidence note
-  in Remaining gaps.
+- **Forensic:** timeline with date, event, source, revision, and provenance state.
+- **Comparative:** symmetry matrix with the same evidence rows across candidates and explicit gaps.
+- **Adversarial:** falsification log showing each attack category, query or fetch, and result.
+- **Exhaustive:** coverage ledger showing every source class or candidate universe target as Met, Waived,
+  or Open.
+- **Decision:** requirement matrix with R1 to Rn, evidence per option, constraints, trade-offs, and
+  recommendation traceability.
+- **Deep:** one critique-round delta and resulting grade changes.
+- **Code review:** use the aggregate shape from `code-review.md`, with Standards and Spec kept separate.
 
 ## Long reports
 
-When the report outgrows one comfortable delivery, emit it section by section
-instead of shrinking the content: one complete section per message or file
-write, each passing `quality-checklist.md` on its own, bibliography assembled
-last from the ledger. Never compress by truncating; compress by narrowing the
-scope in Step 0 instead.
+When the output exceeds a practical delivery size, split by complete sections. Do not replace missing
+content with truncation markers. Assemble the claim ledger and bibliography only after all sections have
+been verified.
 
-## Tone rules
+## Tone
 
-- Clear, direct, developer-facing. No marketing filler, no cleverness where
-  precision matters.
-- Facts carry the weight; adjectives do not. Write "the page returns 404" not
-  "the page is completely broken".
-- Never use AI filler ("delve", "leverage", "seamless") or essay signposting
-  ("It's important to note that"). The report documents its own anti-patterns
-  by avoiding them.
-- No em dashes in the report. Use commas, colons, periods, or parentheses.
+Clear, direct, technical, and neutral. Facts carry the argument. Use adjectives sparingly.
+
+Avoid AI filler, essay signposting, and promotional language. Prefer:
+
+> The current documentation lists X, while the checked release artifact contains Y.
+
+over:
+
+> Research shows that X is obviously the best modern approach.
+
+No em dashes in the report.
 
 ## Forbidden content
 
-- URLs that were never fetched successfully.
-- Versions, flags, or compatibility claims from a single weak source.
-- Certainty language over sampled or indirect evidence.
-- Verdicts about files that were listed but never opened.
+- URLs that were never fetched successfully
+- invented versions, flags, benchmarks, or compatibility claims
+- certainty language that exceeds the recorded evidence state
+- conclusions about files or candidates that were not actually inspected
+- claims of complete coverage when the coverage ledger is open

@@ -10,6 +10,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### deep-research-expert
+
+- Bumped metadata.version to 1.7.0.
+- Replace the single universal source ladder with a claim authority matrix. The
+  previous ladder ranked sources once and applied that order everywhere, which
+  gives the wrong answer for academic, historical, and project-local claims where
+  the authoritative source differs.
+- Add principles that two copies of one upstream statement count as a single
+  origin rather than two independent sources, and that a negative claim needs a
+  declared coverage basis before absence becomes meaningful.
+- Add a research contract covering question, scope, exclusions, date basis, mode,
+  deliverable, and the stopping condition before retrieval begins.
+- Add a claim ledger with stable identifiers, so a conclusion stays traceable to
+  the evidence that produced it.
+- Classify evidence states explicitly, including Partially verified, Contradicted,
+  and Fetch failed, and state that "not found" is not an evidence state.
+- Classify verification failures into six named classes with a required response,
+  including the rule that a command failure is not automatically a product
+  failure.
+- Give the critique loop a hard stopping rule of one cycle per task, so remaining
+  doubts become recorded gaps instead of a second search pass.
+- Record mode transitions and require an outline check that reports when more
+  than half the report structure had to change, instead of implying the original
+  framing was followed.
+- Require an inventory before claiming full coverage, and forbid reporting "all
+  reviewed" when the inventory holds unread or inaccessible items.
+- Drop the unresolvable source markup appended to the AI provenance note in
+  `source-ladder.md` and replace the named reference with a rule to cite such
+  material only after retrieving it.
+
 ### copywriting-expert
 
 - Bumped metadata.version to 1.9.0.
@@ -1099,6 +1129,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.7.0 | 2026-09-29 | Claim authority matrix replacing the universal ladder, research contract, claim ledger, six evidence states, failure classification, one-cycle critique limit, mode transitions, coverage inventory |
 | 1.6.0 | 2026-09-29 | Core principles, Authorization model, and Failure handling sections aligned with the commit-expert 1.18.0 structure |
 | 1.5.2 | 2026-09-18 | Quality-gates attribution removal from quality-checklist |
 | 1.5.1 | 2026-09-18 | Sources-checked block removal from code-review |
