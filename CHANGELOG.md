@@ -55,12 +55,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   and 1.5.0 remain absent because no release section records a bump to
   either.
 
-### redis-expert
-
-- Bumped metadata.version to 1.5.4.
-- Updated the non-reference content note to point at `.cursor-plugin/plugin.json`
-  instead of the removed `.cursor-plugin/marketplace.json`.
-
 ### context7-expert
 
 - Bumped metadata.version to 1.14.0.
@@ -139,6 +133,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### redis-expert
 
+- Bumped metadata.version to 1.5.4.
+- Updated the non-reference content note to point at `.cursor-plugin/plugin.json`
+  instead of the removed `.cursor-plugin/marketplace.json`.
 - Bumped metadata.version to 1.6.0.
 - Standardized `references/proactive-trigger.md` on the four sections every skill now uses. The file previously ended without any offer guidance, so a how-to-offer section was added that names the single relevant domain instead of listing all eight.
 - Added `Core principles`, `Authorization model`, and `Failure handling`
