@@ -53,12 +53,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   repeating the manifest path, the deep-research-expert sources paragraph no
   longer ends on a dangling "the same way", and `caveman-commit`-style takes
   the hyphen it needs as a compound modifier.
-- Removed a phantom `context7-expert` 1.5.0 row from the per-skill table. No
-  release section ever recorded that version, and its description was a
-  verbatim copy of the 1.2.0 row. Added the 1.6.0 and 1.9.0 rows the table was
-  missing, sourced from the 1.6.0 and 1.8.0 release sections. Versions 1.4.0
-  and 1.5.0 remain absent because no release section records a bump to
-  either.
+- Removed a phantom `context7-expert` 1.5.0 row from the per-skill table. The
+  row's description was a verbatim copy of the 1.2.0 row. Added the 1.6.0 and
+  1.9.0 rows the table was missing, sourced from the 1.6.0 and 1.8.0 release
+  sections. Version 1.4.0 remains absent because no commit ever carried it.
+- Reconstructed ten per-skill version rows that the tables had lost, by
+  replaying `metadata.version` across all 151 commits. The skills lived at the
+  repository root before the move into `skills/`, which is why the gap was not
+  visible from the current tree. Restored: `context7-expert` 1.5.0, 1.7.0,
+  1.7.1, and 1.8.0; `copywriting-expert` 1.3.1; `create-readme-expert` 1.7.0,
+  1.9.0, and 1.12.0; `mermaid-diagrams-expert` 1.2.1; and `redis-expert` 1.2.0.
+  Every restored row is dated and described from the commit that introduced
+  that version, not inferred.
 
 ### context7-expert
 
@@ -927,7 +933,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 | 1.11.0 | 2026-09-13 | Snyk W011 response: propose lookup to the user before any query, auto-load without auto-query, MCP preferred over CLI, version options presented as choices |
 | 1.10.0 | 2026-09-13 | Security audit response: trust boundaries, npx execution policy, query redaction, indirect prompt injection handling, skills management write controls; repo license moved to SSPL-1.0 |
 | 1.9.0 | 2026-09-13 | Priority hierarchy for conflict resolution, concrete risk classification, environment detection, explicit do-not-use-Context7 boundaries, setup.md defers to agent documentation |
+| 1.8.0 | 2026-08-16 | Priority hierarchy introduced, risk rules strengthened |
+| 1.7.1 | 2026-08-16 | Metadata version bump after documentation lookup boundary work |
+| 1.7.0 | 2026-08-16 | Strengthened documentation lookup boundaries |
 | 1.6.0 | 2026-08-16 | Risk-tiered operation budget, traceability requirements, agent-adapters.md for host generalization, tightened setup safety boundaries, verification-and-failure rewrite |
+| 1.5.0 | 2026-08-16 | Version metadata, license, self-contained references, and proactive trigger |
 | 1.3.0 | 2026-08-16 | License, metadata, self-contained references, verification-and-failure reference |
 | 1.2.0 | 2026-08-11 | Evidence hierarchy, version-awareness, MCP/CLI mode selection, proactive trigger |
 | 1.1.0 | 2026-07-13 | Initial release |
@@ -949,6 +959,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 | 1.6.0 | 2026-09-13 | SKILL.md style unification: Purpose section |
 | 1.5.0 | 2026-09-13 | Anti-AI-sounding patterns, domain adaptation, codebase copy discovery, navigation/loading/permission surfaces, copywork-specific verification, expanded examples |
 | 1.4.0 | 2026-09-13 | CLI output copy reference, vocabulary lookup hygiene, link and alternate text guidance, SKILL.md description expansion, broken placeholder token fix, frontmatter cleanup |
+| 1.3.1 | 2026-08-16 | Reviewer fixes across references and formatting |
 | 1.3.0 | 2026-08-16 | Accessibility/localization strengthening, proactive trigger, self-contained references, verification-and-failure reference |
 | 1.2.0 | 2026-08-11 | Accessibility/localization strengthening, proactive trigger, self-contained references |
 | 1.1.0 | 2026-07-13 | Initial release |
@@ -995,6 +1006,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 | 1.4.1 | 2026-09-13 | Modernized against Mermaid v12 docs: flowchart shape swap and @{ shape } syntax, sequence bidirectional arrows/box/rect/critical/create-destroy/autonumber, class relationship and classifier fixes plus namespaces, xychart/gantt/gitgraph/state/pie corrections, architecture align, C4 dynamic and deployment types, full theme and look lists |
 | 1.4.0 | 2026-09-13 | Documented ERD cardinality and relationship-line corrections, PK/FK/UK key rules, %%{init}%% directives replaced with frontmatter config, example and wording cleanups |
 | 1.3.0 | 2026-09-13 | SKILL.md style unification: Purpose section |
+| 1.2.1 | 2026-08-16 | Reviewer fixes across references and formatting |
 | 1.2.0 | 2026-08-11 | Renderer/version compatibility, proactive trigger, misc diagram types |
 | 1.1.0 | 2026-07-13 | Initial release |
 
@@ -1017,6 +1029,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 | 1.5.0 | 2026-09-15 | Iris agent-memory domain, native Vector Sets reference, DIALECT accuracy fix, redis.io link migration, HEXPIRE gate |
 | 1.4.0 | 2026-09-13 | Proactive trigger moved to a dedicated reference file, style aligned with the other skills |
 | 1.3.0 | 2026-09-13 | SKILL.md style unification: Purpose section, anti-patterns heading aligned |
+| 1.2.0 | 2026-08-16 | Reviewer fixes across references and formatting |
 | 1.1.0 | 2026-07-13 | Initial release |
 
 [⬆ Back to top](#changelog)
@@ -1034,8 +1047,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 | 1.14.1 | 2026-09-15 | Verified external README URLs with checked dates, GitHub alerts docs source |
 | 1.14.0 | 2026-09-14 | Diagrams reference with mermaid-diagrams-expert routing and canonical raw URL fallback |
 | 1.13.0 | 2026-09-13 | Proactive trigger reference modernization: consistent headings, how-to-offer section |
+| 1.12.0 | 2026-09-13 | SKILL.md structure and style unified across all skills |
 | 1.11.0 | 2026-09-13 | GitHub-style alert callouts example for secrets and destructive actions, callout rules in formatting-and-punctuation, example wired into SKILL.md steps |
 | 1.10.0 | 2026-09-13 | W011 response: user consent before external README fetches, security.md with untrusted content rules, anti-pattern additions |
+| 1.9.0 | 2026-08-16 | Reviewer final candidate fixes |
+| 1.7.0 | 2026-08-16 | Project versus skill versioning rules documented |
 | 1.6.0 | 2026-08-16 | Change scope control, missing info handling, audience id, repository inspection checklist, preserve README voice, unsupported claims example, release trigger, dependency rule |
 | 1.4.0 | 2026-08-16 | External README sources moved to references, Step 4 conditional loading, placeholder warning |
 | 1.3.0 | 2026-08-16 | Evidence-based examples, conditional Step 4 loading, proactive trigger narrowing, placeholder warning |
