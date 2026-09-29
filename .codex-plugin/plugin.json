@@ -1,6 +1,6 @@
 {
   "name": "agent-skills",
-  "version": "1.15.0",
+  "version": "1.16.0",
   "description": "Custom expert skills, ready to use in your coding agent.",
   "keywords": [
     "skills",

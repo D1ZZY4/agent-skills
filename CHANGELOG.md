@@ -10,6 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.16.0] - 2026-09-29
+
+<details>
+<summary>1.16.0 - 2026-09-29</summary>
+
 ### Repository
 
 - Grouped plugin manifests per host so each agent reads its own file: moved the
@@ -170,6 +175,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   example it referred to is gone. The worked failure examples in
   `examples.md` were also dropped, leaving that reference with good-case
   examples only.
+
+</details>
+
+---
 
 ## [1.15.0] - 2026-09-18
 
@@ -885,6 +894,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Version comparison
 
 | Version | Date | Skills | Key changes |
+| 1.16.0 | 2026-09-29 | 7 | Plugin manifests grouped per host, commit-expert authorization model, skill structure aligned across all seven, context7-expert version separation and redacted-query consent, README compare refresh |
 |---------|------|--------|-------------|
 | 1.15.0 | 2026-09-18 | 3 | deep-research-expert auto plus 8 modes and attribution removals, mermaid and redisvl trims, README compare sync |
 | 1.14.0 | 2026-09-15 | 2 | deep-research-expert review mode and quality checklist, commit-expert compare block and spec source |
