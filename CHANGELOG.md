@@ -894,8 +894,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Version comparison
 
 | Version | Date | Skills | Key changes |
-| 1.16.0 | 2026-09-29 | 7 | Plugin manifests grouped per host, commit-expert authorization model, skill structure aligned across all seven, context7-expert version separation and redacted-query consent, README compare refresh |
 |---------|------|--------|-------------|
+| 1.16.0 | 2026-09-29 | 7 | Plugin manifests grouped per host, commit-expert authorization model, skill structure aligned across all seven, context7-expert version separation and redacted-query consent, README compare refresh |
 | 1.15.0 | 2026-09-18 | 3 | deep-research-expert auto plus 8 modes and attribution removals, mermaid and redisvl trims, README compare sync |
 | 1.14.0 | 2026-09-15 | 2 | deep-research-expert review mode and quality checklist, commit-expert compare block and spec source |
 | 1.13.0 | 2026-09-15 | 7 | Project Cursor marketplace, discovery keyword expansion, redis-expert 1.5.1 |
@@ -914,13 +914,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### context7-expert
 
-| 1.15.0 | 2026-09-28 | Separated declared, resolved, installed, indexed, and vendor current versions; redacted-query confirmation; provenance fields; per-shell CLI probes |
 <details>
 <summary>context7-expert version history</summary>
 
 | Version | Date | Changes |
 |---------|------|---------|
-| 1.14.0 | 2026-09-28 | Core principles, Authorization model, and Failure handling sections aligned with the commit-expert 1.18.0 structure |
+| 1.15.0 | 2026-09-29 | Separated declared, resolved, installed, indexed, and vendor current versions; redacted-query confirmation; provenance fields; per-shell CLI probes |
+| 1.14.0 | 2026-09-29 | Core principles, Authorization model, and Failure handling sections aligned with the commit-expert 1.18.0 structure |
 | 1.13.1 | 2026-09-15 | Node.js 18 prerequisite, ctx7 remove and MCP server URL, alias drift note, official source links |
 | 1.13.0 | 2026-09-13 | Proactive trigger reference style alignment: consistent headings, comma-splice cleanup |
 | 1.12.0 | 2026-09-13 | SKILL.md style unification: Purpose section, priority heading renamed to Priority order |
@@ -943,7 +943,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
-| 1.8.0 | 2026-09-28 | Core principles, Authorization model, and Failure handling sections aligned with the commit-expert 1.18.0 structure |
+| 1.8.0 | 2026-09-29 | Core principles, Authorization model, and Failure handling sections aligned with the commit-expert 1.18.0 structure |
 | 1.7.1 | 2026-09-15 | Em dash default clarifier, official language source links (KBBI, EYD, Merriam-Webster, Oxford) |
 | 1.7.0 | 2026-09-13 | Proactive trigger reference modernization: consistent headings and copy cleanup |
 | 1.6.0 | 2026-09-13 | SKILL.md style unification: Purpose section |
@@ -964,7 +964,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
-| 1.18.0 | 2026-09-28 | Authorization model separating policy from permission, in-progress Git state detection, widened signature verification |
+| 1.18.0 | 2026-09-29 | Authorization model separating policy from permission, in-progress Git state detection, widened signature verification |
 | 1.17.1 | 2026-09-15 | Conventional Commits specification source in message-style reference |
 | 1.17.0 | 2026-09-13 | Proactive trigger reference style alignment: heading naming and prose cleanup |
 | 1.16.0 | 2026-09-13 | Punctuation ban clarified (em dash only), bulleted-list body rule, bulleted-body example |
@@ -988,7 +988,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
-| 1.6.0 | 2026-09-28 | Core principles, Authorization model, and Failure handling sections aligned with the commit-expert 1.18.0 structure |
+| 1.6.0 | 2026-09-29 | Core principles, Authorization model, and Failure handling sections aligned with the commit-expert 1.18.0 structure |
 | 1.5.1 | 2026-09-18 | Trimmed generic web content from advanced-features reference |
 | 1.5.0 | 2026-09-15 | New diagram types reference (venn, ishikawa, kanban, packet, radar, treemap), security reference, renderer platform matrix, v11.13.0 label fix |
 | 1.4.2 | 2026-09-13 | Proactive trigger reference style alignment: consistent headings and tightened prose |
@@ -1009,8 +1009,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
-| 1.6.0 | 2026-09-28 | Core principles, Authorization model, and Failure handling sections added, domain sections kept as the body |
-| 1.5.4 | 2026-09-28 | Non-reference note repointed at `.cursor-plugin/plugin.json` after the Cursor marketplace was replaced |
+| 1.6.0 | 2026-09-29 | Core principles, Authorization model, and Failure handling sections added, domain sections kept as the body |
+| 1.5.4 | 2026-09-29 | Non-reference note repointed at `.cursor-plugin/plugin.json` after the Cursor marketplace was replaced |
 | 1.5.3 | 2026-09-18 | Iris and whole-skill attribution removals, runtime rule kept |
 | 1.5.2 | 2026-09-18 | Summary-level LLM primitives removal from redisvl client reference |
 | 1.5.1 | 2026-09-15 | Dropped per-skill Cursor packaging pointers following the move to project-level packaging |
@@ -1030,7 +1030,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
-| 1.15.0 | 2026-09-28 | Core principles, Authorization model, and Failure handling sections aligned with the commit-expert 1.18.0 structure |
+| 1.15.0 | 2026-09-29 | Core principles, Authorization model, and Failure handling sections aligned with the commit-expert 1.18.0 structure |
 | 1.14.1 | 2026-09-15 | Verified external README URLs with checked dates, GitHub alerts docs source |
 | 1.14.0 | 2026-09-14 | Diagrams reference with mermaid-diagrams-expert routing and canonical raw URL fallback |
 | 1.13.0 | 2026-09-13 | Proactive trigger reference modernization: consistent headings, how-to-offer section |
@@ -1053,7 +1053,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
-| 1.6.0 | 2026-09-28 | Core principles, Authorization model, and Failure handling sections aligned with the commit-expert 1.18.0 structure |
+| 1.6.0 | 2026-09-29 | Core principles, Authorization model, and Failure handling sections aligned with the commit-expert 1.18.0 structure |
 | 1.5.2 | 2026-09-18 | Quality-gates attribution removal from quality-checklist |
 | 1.5.1 | 2026-09-18 | Sources-checked block removal from code-review |
 | 1.5.0 | 2026-09-18 | Auto default plus eight modes, per-mode routing, falsification and symmetry add-ons |
