@@ -1,81 +1,93 @@
 # Error Messages
 
-Defines the structure of a good error message: state what happened, explain why when useful, say
-what to do next. Covers tone, severity matching, recoverable vs unrecoverable framing, and privacy
-boundaries.
+Copy that accurately describes a user-visible failure without blaming the user, leaking sensitive information, or pretending a recovery path exists.
 
-## The three things a good error message does
+## Core structure
 
-1. **States what happened**, in plain language, without technical jargon or internal system
-   terms leaking through. "We couldn't save your changes" not "PUT /api/v2/documents/save
-   returned 503."
-2. **Explains why, when the reason is useful and knowable.** Not every error needs a reason (a
-   generic network failure often doesn't have one worth stating), but when there is a specific,
-   actionable reason, state it: "This file is too large (max 10MB)" is far more useful than
-   "Upload failed."
-3. **Says what to do next, when there's something the user can actually do.** "Try again in a
-   few minutes" or "Check your internet connection" gives the user a next step. If there's
-   genuinely nothing the user can do (a server-side outage, for example), don't invent a fake
-   action, say so honestly and, if relevant, point to a status page or support contact instead.
+When information is available and useful, use this order:
 
-## Never blame the user
+1. What happened?
+2. Why did it happen?
+3. What can the user do next?
 
-Neutral framing describes the problem without implying fault:
+Example:
 
-- Not: "You entered an invalid email"
-- Yes: "That email address doesn't look right"
+```text
+We couldn't save your changes.
+Your connection was interrupted. Try again.
+```
 
-The difference is subtle but real, the first frames the user as having made a mistake, the
-second frames the situation as a fact to be corrected together. This matters even more for
-errors that aren't actually the user's fault at all (a server error, a timeout), where blaming
-language is not just unkind but factually wrong.
+Do not force all three parts into every message. A reason or next step that is unknown or unavailable should be omitted rather than invented.
 
-## Match severity of language to severity of the problem
+## Describe the user-visible state
 
-A minor validation issue ("This field can't be empty") shouldn't use alarming language
-("Critical error: field required"). Reserve strong language (words like "critical", "fatal",
-"failed") for situations that actually warrant it, overusing severe language for minor issues
-trains users to ignore it when something genuinely serious happens.
+Translate internal failures into the language of the task:
 
-## Don't expose internals, but don't be so vague it's useless either
+```text
+We couldn't save your changes.
+```
 
-There's a middle ground between "PUT /api/v2/documents/save returned 503 Service Unavailable"
-and "Something went wrong." Aim for language that's specific about the user-facing impact
-without leaking implementation detail: "We couldn't save your changes, try again in a moment."
-If an error code or reference ID is useful for support purposes, it's fine to include it, but
-as a small secondary detail, not as the primary message the user reads first.
+not:
 
-Keep privacy and security boundaries in mind as well. Do not reveal whether an account exists,
-personal data belonging to another user, internal paths, secrets, tokens, authorization details,
-or operational clues that would help an attacker. For authentication and permission failures,
-use the least revealing message that still gives the legitimate user a safe next step.
+```text
+PUT /api/v2/documents returned 503.
+```
 
-## Recoverable vs unrecoverable errors need different framing
+Technical details can be secondary diagnostics when they help support or debugging and are safe to expose.
 
-- **Recoverable** (a form field is wrong, a temporary network blip): frame it as something to
-  fix and retry, give the specific fix if known.
-- **Unrecoverable in the moment** (a permissions issue, a resource that no longer exists): be
-  honest that retrying won't help, and point toward the actual resolution path (contact an
-  admin, request access, go back) instead of implying a retry button will fix it.
+## Avoid blame and false certainty
 
-## Permission and access-denied copy
+Prefer neutral framing:
 
-Access failures use the same "state, why, next step" pattern with careful boundaries:
+```text
+That email address doesn't look right.
+```
 
-- Say what the user can't reach, why (when knowable without leaking), and what path restores
-  access: "You don't have access to this project. Ask an admin to add you."
-- Do not reveal what exists behind the permission barrier. A denied page must not hint at
-  data the user could not otherwise know exists.
-- Separate "you lack permission" from "this resource no longer exists". They need different
-  next steps and different copy, see `empty-states.md` for the error-as-empty overlap.
+over:
 
-## Example set
+```text
+You entered an invalid email.
+```
+
+For system failures, do not imply the user caused the problem.
+
+Do not say "try again" when retrying cannot resolve the underlying state.
+
+## Match severity
+
+Use strong terms only when the user-facing consequence warrants them. A missing required field is not a "critical error".
+
+High-severity copy should be calm and exact. Do not soften a serious consequence with jokes or casual phrasing.
+
+## Recovery paths
+
+Classify the failure before offering an action:
+
+- recoverable now: retry, correct, reconnect, or undo
+- recoverable elsewhere: request access, contact an administrator, restore a resource
+- not actionable by the user: acknowledge the failure and point to status/support information when appropriate
+
+Never invent a support channel, status page, recovery action, or expected recovery time.
+
+## Permission and privacy
+
+Authorization failures require special care. Tell legitimate users what they can safely do without revealing protected resource existence, another user's data, internal paths, secrets, tokens, or authorization details.
+
+Distinguish known states such as "you do not have access" from "this resource no longer exists" only when the product is allowed to make that distinction to the current user.
+
+## Dynamic values
+
+Do not echo arbitrary user-controlled values into errors without considering privacy, escaping, and whether the value is appropriate to expose.
+
+Use locale-aware formatting for counts, dates, sizes, and currencies. Preserve stable diagnostic identifiers only where the project supports them.
+
+## Examples
 
 | Situation | Weak | Better |
-|---|---|---|
-| Empty required field | "Error: field required" | "Enter your project name" |
-| Wrong password | "Invalid credentials" | "That password doesn't match. Try again or reset it." |
-| Network failure | "Something went wrong" | "We couldn't connect. Check your internet and try again." |
-| File too large | "Upload failed" | "This file is too large. Max size is 10MB." |
-| No permission | "Access denied" | "You don't have permission to view this. Ask an admin for access." |
-| Server error | "Error 500" | "Something's wrong on our end, we're looking into it. Try again shortly." |
+| --- | --- | --- |
+| Required field | `Error: field required` | `Enter your project name` |
+| Wrong password | `Invalid credentials` | `That password doesn't match. Try again or reset it.` |
+| Network failure | `Something went wrong` | `We couldn't connect. Check your internet and try again.` |
+| File too large | `Upload failed` | `This file is too large. The maximum is 10 MB.` |
+| No permission | `Access denied` | `You don't have permission to view this project. Ask an admin for access.` |
+| Unknown server failure | `Error 500` | `We couldn't load your projects. Try again shortly.` |

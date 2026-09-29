@@ -10,6 +10,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### copywriting-expert
+
+- Bumped metadata.version to 1.9.0.
+- Rewrote the workflow around the distinction between copy content and copy
+  implementation. Accessibility and localization remain content requirements, but
+  copy alone cannot certify focus management, semantics, or announcement
+  behavior, so the skill now flags implementation defects instead of implying a
+  string change fixes them.
+- Add an operating-modes table separating draft, rewrite, audit, implementation,
+  and review, each with its own mutation boundary, so an audit is not read as
+  permission to rewrite.
+- Add principles for preserving placeholders, variables, product names, and
+  markup exactly, and for treating user-controlled data as data so secrets in an
+  error or example are never reproduced.
+- Expand the empty-state reference into a six-state table that separates genuine
+  absence from filters, user actions, permission limits, loading, and fetch
+  failure, so a failed request cannot be reported as an empty workspace.
+- Expand the component reference with a list of non-display uses for a string,
+  including analytics identifiers, localization keys, test fixtures, and parser
+  input, so a rename is not treated as presentation-only.
+- Add a `partially verified` evidence state and separate accessibility and
+  localization verification into distinct questions.
+- Add a `Confidence and claims` section to the voice reference covering
+  unverified guarantees such as `always`, `instant`, and `fully secure`.
+- Note the two rules dropped from `verification-and-failure.md` in review: the
+  instruction to record assumptions that materially affect the output, and the
+  requirement to obtain authorization when verification would cause a side
+  effect. Neither is stated anywhere in the rewritten file.
+
 ## [1.16.0] - 2026-09-29
 
 <details>
@@ -953,6 +982,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.9.0 | 2026-09-29 | Operating modes with mutation boundaries, content versus implementation defects, empty-state state table, string non-display uses, partially verified evidence state, confidence and claims rules |
 | 1.8.0 | 2026-09-29 | Core principles, Authorization model, and Failure handling sections aligned with the commit-expert 1.18.0 structure |
 | 1.7.1 | 2026-09-15 | Em dash default clarifier, official language source links (KBBI, EYD, Merriam-Webster, Oxford) |
 | 1.7.0 | 2026-09-13 | Proactive trigger reference modernization: consistent headings and copy cleanup |

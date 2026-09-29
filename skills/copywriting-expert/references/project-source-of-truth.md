@@ -1,70 +1,69 @@
 # Project-Specific Source of Truth
 
-How to find and apply project-specific copywriting conventions before falling back to portable
-defaults. Explains what to look for, where to look, and how to resolve conflicts between project
-guidance and this skill's defaults.
-
-## Why this matters
-
-Some projects already have a design system with its own documented voice, tone, and copy
-patterns. The original version of this skill was built entirely around one such file
-(`apps/design-system/content/docs/copywriting.mdx`), which meant it did nothing useful in any
-project that didn't happen to have that exact file at that exact path. This skill now works
-natively everywhere by default, but a project's own documented conventions should still win
-when they exist, since they reflect decisions already made and agreed on for that codebase.
+How to discover, prioritize, and apply project-specific content guidance without treating every existing string as automatically correct.
 
 ## What to look for
 
-Before applying the general defaults in the rest of this skill, check for a project-specific
-content style guide in likely locations:
+Inspect project-owned sources such as:
+
+- content style guides
+- design-system content documentation
+- localization guidance and glossaries
+- terminology files
+- contribution or product-writing rules
+- legal or compliance-approved language
+- component documentation with copy conventions
+
+Do not assume a specific path exists.
+
+A targeted search can start with:
 
 ```bash
 find . \
-  \( -iname "*copywriting*" -o -iname "*content-style*" -o -iname "*voice-and-tone*" \
-     -o -iname "CONTENT_GUIDE.md" -o -iname "STYLE_GUIDE.md" \
-     -o -iname "CONTRIBUTING.md" \) \
-  -not -path "./.git/*" \
-  -not -path "./node_modules/*" \
-  -not -path "./dist/*" \
-  -not -path "./build/*" \
+  \( -iname '*copywriting*' -o -iname '*content-style*' -o -iname '*voice-and-tone*' \
+     -o -iname 'CONTENT_GUIDE.md' -o -iname 'STYLE_GUIDE.md' \
+     -o -iname 'CONTRIBUTING.md' -o -iname '*glossary*' -o -iname '*terminology*' \) \
+  -not -path './.git/*' \
+  -not -path './node_modules/*' \
+  -not -path './dist/*' \
+  -not -path './build/*' \
   -print 2>/dev/null
 ```
 
-Common places these live:
+Adapt the search to the repository's tooling and shell conventions. Do not modify files merely because the search finds them.
 
-- A design system package's docs folder (`apps/design-system/content/docs/`,
-  `packages/ui/docs/`, or similar).
-- A dedicated content style guide (`docs/content-style.md`, `CONTENT_GUIDE.md`).
-- A section inside a broader contributing or style guide (`CONTRIBUTING.md`,
-  `STYLE_GUIDE.md`).
-- A host-specific agent rules or conventions file, if the project's agent integration documents
-  one.
+## Authority order
 
-## If no style guide exists: read the project anyway
+When guidance overlaps, prefer:
 
-Even without a documented style guide, a project's existing code and docs are its de facto
-copy standards:
+1. legally or contractually controlled wording
+2. project-approved content and terminology guidance
+3. locale-specific translation or terminology guidance
+4. component and design-system conventions
+5. established nearby product copy
+6. portable defaults from this skill
 
-- Read the README and any docs folders to learn the product's domain, terminology, and the
-  register it already uses.
-- Grep for existing UI strings (button labels, error messages, empty states) in the codebase
-  and read a sample. These show the real house voice far more reliably than intuition.
-- Identify the domain and audience: who reads this copy, and what vocabulary do they already
-  use? A developer experience tool writes differently than a consumer finance app.
-- Carry forward house terms verbatim. If the product already says "workspace", do not
-  introduce "project space" for the same concept.
+If sources conflict, prefer the higher-authority source and note the conflict when it materially affects the result.
 
-These de facto standards override portable defaults, exactly as a documented style guide would.
+## Existing copy as evidence
 
-## How to apply it
+Existing strings reveal real house terminology, but repetition does not prove correctness. Look for the same concept across several nearby surfaces before declaring a phrase established.
 
-- If a project-specific guide exists and addresses something directly (a specific tone
-  decision, a house term for a feature, a specific error-message format), follow it exactly,
-  it overrides the defaults in this skill's other reference files.
-- If the project's guide is silent on something (it covers buttons but not empty states, for
-  example), fall back to this skill's defaults for whatever it doesn't cover.
-- If no project-specific guide exists at all, use this skill's defaults as-is, that's the
-  normal case for most projects and nothing further is needed.
-- Never assume a project has a specific guide without checking, and never skip checking just
-  because a previous session in the same project didn't find one, conventions get added over
-  time.
+Watch for terms that are:
+
+- overloaded across different concepts
+- legacy names left for compatibility
+- temporary implementation text
+- copied from another product area with a different audience
+
+## No documented style guide
+
+Read enough of the README, docs, UI strings, and relevant flows to infer the local register and terminology.
+
+Infer only what the evidence supports. Do not manufacture a brand personality, legal promise, accessibility behavior, or localization convention.
+
+## Scope
+
+A project style guide may cover only some surfaces. Apply its rules where they are actually specified, then use portable defaults for the gaps.
+
+Do not turn the discovery process into a reason to rewrite unrelated copy.

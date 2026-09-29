@@ -1,57 +1,58 @@
 # CLI Output Copy
 
-Copy for command-line interfaces: help text, flag descriptions, deprecation warnings,
-non-interactive errors, and progress lines. The same principles that apply to UI copy apply
-here, but terminal output has tighter constraints and a different reading context.
+User-facing copy for command-line interfaces, including help, flags, prompts, errors, progress, results, and deprecation notices.
 
-## Help text and flag descriptions
+## Help and usage
 
-- Name the command, what it does, and the state the user ends up in, in plain language.
-  "Generates a build report from project metadata" beats "A tool".
-- Describe each flag by its effect, not by restating its name. For an `--quiet` flag,
-  "Suppress progress output" beats "Quiet mode".
-- Show the flag's expected value with a placeholder that matches the project's convention,
-  for example `--out <path>` or `--out=path`, and keep that placeholder consistent across
-  every occurrence.
-- Keep the whole help screen scannable: short descriptions, related flags grouped, a short
-  example near the end.
+- Describe what the command does and the result or state it produces.
+- Describe flags by effect, not by echoing the flag name.
+- Match placeholder syntax to the project's existing CLI convention, such as `--out <path>` or `--out=path`.
+- Keep usage scannable. Group related options and include a realistic example when useful.
+- Preserve literal flags, environment variable names, commands, paths, and identifiers exactly. These are interfaces, not prose.
+- Document defaults, required values, constraints, and mutually exclusive options when users need that information to invoke the command correctly.
 
-## Non-interactive errors
+## Errors
 
-Terminal errors follow the error-message pattern in `error-messages.md` (state what happened,
-explain why when useful, give the next step) with tighter constraints:
+Use the same core pattern as `error-messages.md`:
 
-- Lead with the failing fact, not a stack trace or internal symbol. Move reference IDs and
-  trace details to a later line where support can use them.
-- Match the message to the failing operation. A usage problem explains what to fix; it does
-  not say "panic: unexpected error".
-- Keep each line parseable: one clear sentence of meaning, no information carried only by
-  color or ANSI styling. If color is used, the same meaning must hold when output is
-  redirected to a file.
-- Never print secrets, tokens, URLs with credentials, or whole environment dumps in error
-  output.
+1. state what failed in user terms
+2. explain the cause when known and useful
+3. give the next action when one exists
 
-## Deprecation warnings
+Do not lead with stack traces, internal function names, request payloads, or raw provider responses. Put diagnostic IDs or technical detail after the user-facing explanation when they are useful for support.
 
-- Say what is deprecated and what to use instead, with a version or date when known.
-  "`--follow` is deprecated in 3.0, use `--tail` instead."
-- Do not print deprecation noise on every run. Emit one clear warning at a point the user
-  will see it.
+Never print secrets, access tokens, credential-bearing URLs, private keys, full environment dumps, or other sensitive values.
 
-## Progress and result lines
+## Exit state and progress
 
-- Use a consistent, simple prefix symbol per state, and never rely on color or spinner
-  animation alone: a failed step must still read as failed when output is captured to a log.
-- End long-running operations with an explicit final state instead of silence.
-- Keep lines reasonably short and avoid wrapping mid-token in log-friendly output.
+- A long-running command should end with a clear success, partial-success, or failure state.
+- Do not rely on color, spinners, symbols, or animation to communicate state. Output must remain meaningful when redirected to a file or captured in CI logs.
+- If the command can partially succeed, state what completed and what remains.
+- Avoid progress messages that imply completion before the operation actually finishes.
+- Keep lines readable in narrow terminals and avoid breaking long identifiers unnecessarily.
 
-## Localization and tone
+## Deprecation
 
-- CLI strings are user-facing copy too. Translate and pluralize them with the same care as UI
-  strings, using named placeholders such as `{count}` for values instead of relying on word
-  order.
-- Plain and precise; zero cleverness in errors and destructive confirmations, matching
-  `voice-and-tone.md`.
-- Follow the repository's em dash preference in generated help text and output. When no
-  project rule exists, the ban in `formatting-and-punctuation.md` is the strong default,
-  not an optional style choice.
+- Name the deprecated command or option and the replacement.
+- Include a version or date only when verified.
+- Avoid repeating the same warning on every invocation when a less noisy documented pattern exists.
+- Do not claim removal timing unless the project has actually committed to it.
+
+## Interactive prompts
+
+For CLI prompts that can change or delete data:
+
+- describe the affected object and consequence
+- use a specific confirmation response when ambiguity matters
+- never require users to infer what `y` or `n` means from hidden context
+- preserve non-interactive behavior required by CI and scripting
+
+## Localization and formatting
+
+CLI output can be localized, but many tools intentionally keep commands, flags, and diagnostics stable across locales. Follow the project's established model rather than translating identifiers or machine-readable output.
+
+Keep human-readable copy separate from machine-readable output when the CLI supports both. Stable parsers should not have to scrape prose intended for people.
+
+## Unicode hygiene
+
+Do not replace ASCII hyphens in flags, options, paths, or identifiers with typographic dash characters. For generated prose, follow the project punctuation policy in `formatting-and-punctuation.md`.

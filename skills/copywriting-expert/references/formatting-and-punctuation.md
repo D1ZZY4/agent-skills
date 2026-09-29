@@ -1,68 +1,64 @@
 # Formatting and Punctuation
 
-Punctuation and formatting rules for generated UI copy: em dash avoidance, sentence case, ellipses,
-Oxford comma, exclamation points, numbers, and contractions.
+Portable defaults for generated copy. Project-specific style guides, locale rules, and quoted source text take precedence.
 
 ## Em dash policy
 
-This repository's project preference is to avoid em dashes (Unicode U+2014) in generated UI copy.
-When no project-specific rule exists, treat this as a strong default, but follow an explicit
-project style guide for quoted, legal, or localized content that must preserve the character.
-When a sentence seems to want an em dash, restructure it instead:
+This project preference avoids em dash U+2014 in generated UI copy.
 
-- Use a period and split into two sentences.
-- Use a comma if the pause is light.
-- Use a colon if what follows explains or elaborates on what came before.
-- Use parentheses if it's a genuine aside.
+When no project rule exists, prefer periods, commas, colons, or parentheses. Do not alter an exact quoted legal, language, product, or source string merely to satisfy this default.
 
-A unicode dash (U+2013) anywhere in a technical
-string, identifier, command, or flag breaks when copied into a terminal, so keep literal
-commands, flags, paths, and identifiers on their exact ASCII hyphens.
+Do not replace required ASCII hyphens in commands, flags, identifiers, paths, URLs, or version strings with typographic dash characters.
 
-Example: "Your file was too large, try compressing it first" instead of a version built
-around an em dash. If a rewrite keeps reaching for an em dash no matter how it's restructured,
-that's usually a sign the sentence is trying to do too much, split it into two shorter
-sentences instead.
+When a technical string contains Unicode punctuation, preserve it exactly when the string is an external contract.
 
-## Sentence case for UI text
+## Sentence case
 
-Capitalize only the first word and proper nouns in buttons, labels, headings, and menu items,
-unless the project's own style guide specifies Title Case. See `voice-and-tone.md` and
-`project-source-of-truth.md`.
+Use sentence case for UI controls, headings, labels, and menu items unless the project uses another documented convention.
+
+Consistency matters more than a claim that one capitalization style is universally correct.
 
 ## Ellipses
 
-Use an ellipsis (three periods, or the single-character variant) only to indicate an action
-that requires further input before completing, most commonly on a button or menu item that
-opens a dialog or requires more steps: "Export...", "Rename...". Don't use an ellipsis for
-dramatic pause or trailing-off effect in UI copy, that's a stylistic device for prose, not a
-functional signal for an interface.
+Use an ellipsis when the project uses it to signal that an action opens another step or dialog, for example `Export...`. Do not use ellipses merely for dramatic pauses in functional UI copy.
+
+Follow the project's Unicode convention for `...` versus `…`.
 
 ## Oxford comma
 
-Use the Oxford comma (the comma before "and" or "or" in a list of three or more items) for
-clarity: "Save, export, or discard your changes." This is the same rule as English formal
-writing generally, and it prevents genuine ambiguity in a way that matters more in short UI
-copy than in longer prose, where there's less surrounding context to disambiguate.
+Treat the Oxford comma as a project and locale convention, not a universal law. Use it when the project style guide requires it or when it materially improves clarity.
 
-## Exclamation points, sparingly
+## Exclamation points
 
-Reserve exclamation points for genuine, warranted enthusiasm (a first-time success moment, a
-milestone), not as a default energy booster on routine confirmations. A save confirmation
-that fires on every single save doesn't need "Saved!" every time, "Saved" is enough, save the
-exclamation point for something that's actually a bit special.
+Use sparingly. Reserve them for product moments where enthusiasm is intentional and appropriate. Routine status messages generally do not need one.
 
 ## Numbers
 
-Spell out numbers zero through nine in prose-style copy, use numerals for 10 and above,
-except when a numeral is more scannable in context (counts, statistics, anything in a table
-or a badge) or the project's own convention differs. Always use numerals for anything the
-user needs to scan quickly rather than read as prose (a file count, a price, a percentage).
+Do not apply a blanket "spell out 0 through 9" rule to every UI surface.
+
+Use numerals when users need to scan a count, measurement, price, percentage, version, date, time, or other structured value. Use the project's prose convention elsewhere.
+
+Always consider locale-aware formatting for numbers, currencies, dates, times, and units.
 
 ## Contractions
 
-Contractions ("don't", "can't", "you'll") are generally fine and often preferable for UI copy
-since they read as more natural and conversational, matching the direct-address principle in
-`voice-and-tone.md`. The exception is in formal, high-stakes copy (legal text, security
-warnings, an irreversible-action confirmation) where the slightly more formal uncontracted
-form can underscore that the moment matters.
+Contractions are fine when consistent with the project's register. High-stakes, legal, regulated, or formal copy may use uncontracted forms when that matches the project convention.
+
+## Placeholders and markup
+
+Treat placeholders, variables, interpolation syntax, Markdown, HTML, escape sequences, and CLI flags as structural data.
+
+Examples that must remain intact unless the task explicitly changes them:
+
+```text
+{count}
+{{projectName}}
+${amount}
+--output <path>
+```
+
+Do not translate variable names, alter shell syntax, or move markup across grammatical boundaries without checking the rendering and localization implications.
+
+## Final Unicode check
+
+Before finalizing generated copy, check for accidental non-ASCII punctuation in technical strings, invisible characters, mismatched quotation marks, and malformed interpolation syntax.

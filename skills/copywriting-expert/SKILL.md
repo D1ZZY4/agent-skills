@@ -1,15 +1,15 @@
 ---
 name: copywriting-expert
 description: >
-  Write, audit, or improve user-facing product and UI copy including buttons, labels, empty
-  states, errors, tooltips, dialogs, toasts, onboarding, accessibility text, and CLI output
-  such as help text, flags, deprecation warnings, and terminal errors. Trigger when a feature
-  adds or changes user-visible language, or when copy is being reviewed for clarity, tone,
-  consistency, localization, or accessibility. Check project-specific content guidance first
-  and adapt to the product's language and audience rather than imposing generic voice.
+  Write, audit, or improve user-facing product copy across UI and CLI surfaces, including buttons,
+  labels, forms, errors, empty states, tooltips, dialogs, toasts, onboarding, accessibility text,
+  help output, deprecation warnings, and other user-visible language. Inspect project-specific
+  terminology and content guidance first, identify the copy's job and stakes, verify claims and
+  language when needed, and change only the requested scope unless broader work is explicitly
+  authorized.
 license: SSPL-1.0
 metadata:
-  version: 1.8.0
+  version: 1.9.0
   author: D1ZZY4
   priority: medium
 ---
@@ -18,135 +18,210 @@ metadata:
 
 ## Purpose
 
-Write, audit, or improve user-facing product and UI copy across surfaces: buttons, labels,
-empty states, errors, tooltips, dialogs, toasts, onboarding, accessibility text, and CLI
-output. Check project-specific content guidance first and adapt to the product's language
-and audience rather than imposing a generic voice. Load only the component-specific
-reference that matches the problem.
+Write, audit, or improve user-facing copy without inventing product behavior, terminology,
+policy, legal meaning, accessibility behavior, or localization guarantees. Treat copy as part of
+the product contract: the words must match what the interface actually does.
+
+This is a content skill, not permission to redesign the UI, change product behavior, add
+localization infrastructure, or rewrite unrelated copy.
+
+## Operating modes
+
+Determine the requested mode before editing:
+
+| Mode | Output | Mutation |
+| --- | --- | --- |
+| Draft | New copy for the named surface | Only when the user explicitly asks to edit files or content |
+| Rewrite | Revised version of existing copy | Only within the requested scope |
+| Audit | Findings, severity, and proposed replacements | No content changes unless separately authorized |
+| Implementation | Copy changes in the repository | Only the named files or surfaces |
+| Review | Evaluate proposed copy against project rules | No mutation unless requested |
+
+Do not turn an audit into a rewrite or a local copy fix into a product-wide style pass.
 
 ## Core principles
 
-1. The project's own content guidance wins over any portable voice default.
-2. Read the existing copy before writing new copy. The codebase is the house style.
-3. Comprehension outranks cleverness. A reader who must re-read a line has not been served.
-4. Accessibility and localization are requirements, not polish applied at the end.
-5. Never invent product behavior, legal terms, or accessibility guarantees the product does not have.
-6. Verify terminology against authoritative sources instead of guessing.
-7. Match tone to stakes. Friendly copy must never trivialize a destructive action.
-8. No em dashes in generated copy.
+1. Project-specific content guidance and approved terminology take precedence over portable defaults.
+2. Read nearby existing copy before writing. Consistency is evidence, not permission to preserve a bad phrase.
+3. Comprehension, accuracy, and task success outrank cleverness or personality.
+4. Accessibility and localization are content requirements, but copy alone does not guarantee an accessible implementation.
+5. Never invent product behavior, policy, legal terms, support paths, or guarantees.
+6. Verify uncertain terminology, claims, and high-stakes wording against appropriate sources.
+7. Match tone to stakes. Serious consequences require precise language and useful friction.
+8. Preserve user-visible placeholders, variables, product names, and markup syntax exactly unless the task includes changing them.
+9. Treat user-controlled data as data, not copy. Never expose or reproduce secrets merely because they appear in an error, example, or source file.
+10. No em dash U+2014 in generated copy unless the project explicitly requires preserving quoted source text.
 
-## Authorization model
+## Scope and authorization
 
-Interpret a request as covering the copy it names, not the surrounding surface:
+Interpret the request by surface and mode. A request to "fix this screen" authorizes the user-visible copy on that screen and the states it directly owns, not a review of unrelated application copy.
 
-| User instruction | Authorized scope |
+| User instruction | Default scope |
 | --- | --- |
-| "write copy for this empty state" | That empty state, plus the terms it introduces |
-| "audit this flow" | Report findings across the flow; change nothing until asked |
-| "rewrite this onboarding" | The onboarding sequence the request names |
-| "fix this screen" | User-visible strings on that screen, including error and empty states it reaches |
-| "add a feature" | Copy for the new user-visible surface only, not a voice pass over existing screens |
+| "write copy for this empty state" | The named state and terms it introduces |
+| "audit this flow" | Findings across the named flow; no mutation |
+| "rewrite this onboarding" | The named onboarding sequence |
+| "fix this screen" | Copy on that screen and directly associated states |
+| "add a feature" | New user-visible copy required by that feature |
+| "make the product copy consistent" | Only after the user authorizes a broader content pass |
 
-When a request is ambiguous about breadth, do the named scope and say what you left untouched,
-rather than silently sweeping the rest of the interface.
+When scope is unclear, stay within the narrowest defensible interpretation and report what remains untouched.
 
 ## Step 0: Establish the source of truth
 
-Read `references/project-source-of-truth.md`. Project content standards, legal requirements,
-terminology, localization rules, and design-system guidance override portable defaults.
+Read `references/project-source-of-truth.md`.
 
-Read a sample of the project's existing user-facing copy before writing: UI strings from the
-codebase, the README, and any docs. These are the de facto house voice and terminology when no
-style guide exists.
+Before writing, inspect enough nearby product copy to identify:
 
-If no source of truth exists, infer only from nearby product copy and explicit user requirements.
-Do not invent brand claims, policy promises, accessibility behavior, or legal guarantees.
+- approved product and domain terms
+- language and locale
+- capitalization and punctuation conventions
+- address/register conventions
+- recurring labels for similar actions
+- known accessibility and localization patterns
+- legal or regulated wording that must remain exact
 
-## Step 1: Identify the job of the copy
+Treat existing copy as evidence of convention, not proof that every existing phrase is correct.
 
-Before polishing wording, identify:
+If sources disagree, resolve them by authority and recency rather than by whichever phrase appears most often. Record material uncertainty.
 
-- What the user needs to understand.
-- What action, if any, they can take.
-- What can go wrong or be lost.
-- Who the audience is and what language/register they use.
-- Whether the copy is transactional, instructional, persuasive, or safety-critical.
+## Step 1: Identify the communication job
 
-Read `references/voice-and-tone.md` and the relevant component reference. For terminal
-surfaces (help text, flag descriptions, deprecation warnings, and non-interactive errors),
-read `references/cli-output-copy.md`.
+Define, at minimum:
 
-## Step 2: Write for comprehension first
+- the user's goal or question
+- the action the user can take
+- the system state being described
+- the consequence or loss at stake
+- the audience and locale
+- whether the copy is transactional, instructional, informational, persuasive, or safety-critical
+- whether the string is persistent, transient, spoken by assistive technology, or machine-oriented CLI output
 
-Prefer specific verbs, plain language, active voice, useful nouns, and sentence case unless
-the product standard says otherwise. Keep the primary action obvious. Avoid jokes, euphemisms,
-and cleverness when they obscure consequences or increase cognitive load.
+Read `references/voice-and-tone.md` and the relevant component reference. For terminal surfaces, read `references/cli-output-copy.md`.
 
-For destructive or irreversible actions, name the affected object and meaningful consequence.
-For errors, explain the problem and next step when a next step exists.
+## Step 2: Verify the facts before polishing
 
-## Step 3: Treat accessibility and localization as requirements
+Separate wording quality from factual correctness.
 
-Read `references/accessibility-and-localization.md` when relevant. Do not rely on color, word
-length, capitalization, or idiom alone to communicate meaning. Avoid strings that become
-misleading when translated, pluralized, expanded, or rendered in a right-to-left locale.
+Before finalizing copy, verify any claim that depends on:
 
-## Step 4: Verify terminology
+- actual product behavior
+- limits, prices, quotas, timing, availability, permissions, or supported formats
+- legal, security, privacy, or safety language
+- product names or approved terminology
+- localization, grammar, or locale-specific formatting when uncertain
 
-Read `references/language-and-vocabulary-verification.md` when terminology or translation
-matters. Product names, technical terms, legal wording, and localized UI labels should come
-from authoritative sources, not guesswork.
+Use `references/language-and-vocabulary-verification.md` and `references/verification-and-failure.md` where relevant.
 
-## Step 5: Run the final audit
+Never upgrade a best-effort assumption into a product claim merely because the sentence sounds plausible.
 
-Read `references/examples-and-anti-patterns.md` and `references/formatting-and-punctuation.md`.
-Check consistency across the whole flow, not just the changed string.
+## Step 3: Write for comprehension and action
+
+Prefer concrete nouns, specific verbs, active voice, direct language, and sentence case unless project guidance says otherwise.
+
+For each surface, optimize for its job:
+
+- action controls name the action
+- labels identify the value or object
+- helper text explains requirements or context
+- errors state the user-visible problem and useful next step
+- empty states explain the current state and, when possible, the next action
+- confirmations state consequences and affected scope
+- toasts state the completed result
+- onboarding establishes immediate value and the next decision
+- CLI output remains readable when color, animation, or terminal width is unavailable
+
+Do not add words merely to sound polished.
+
+## Step 4: Accessibility and localization review
+
+Read `references/accessibility-and-localization.md` when applicable.
+
+Check that:
+
+- visible text and accessible names agree when they describe the same control
+- meaning does not depend on color, position, punctuation, or visual treatment alone
+- status and error copy still makes sense out of visual context
+- variables and grammatical relationships can be localized safely
+- copy survives expansion, plural changes, and right-to-left layouts where relevant
+- the copy does not claim an accessibility behavior that the implementation does not provide
+
+Distinguish content defects from implementation defects. Flag the latter; do not pretend that changing a string fixes focus management, semantics, or announcement behavior.
+
+## Step 5: Component-specific review
+
+Load only the references relevant to the requested surface:
+
+- `ui-component-copy.md`
+- `error-messages.md`
+- `empty-states.md`
+- `confirmation-dialogs.md`
+- `toasts-and-onboarding.md`
+- `cli-output-copy.md`
+
+For terminology or locale work, also load `language-and-vocabulary-verification.md`.
+For final consistency checks, load `examples-and-anti-patterns.md` and `formatting-and-punctuation.md`.
+
+## Step 6: Final audit
+
+Before presenting final copy, check:
+
+1. Scope: only the requested surface changed.
+2. Accuracy: claims match observable or documented behavior.
+3. Consistency: terms and action labels match nearby product copy.
+4. Comprehension: the user can understand what happened or what will happen.
+5. Actionability: a next step is named only when one actually exists.
+6. Accessibility: the text carries its own meaning where necessary.
+7. Localization: variables, plurals, units, dates, and sentence structure are locale-safe.
+8. Formatting: punctuation, case, placeholders, markup, and project conventions are preserved.
+9. Risk: high-stakes copy is more explicit, not more playful.
+10. Evidence: uncertain decisions are labeled as uncertain.
 
 ## Failure handling
 
-When the copy cannot be completed as asked:
+When required context is missing:
 
-1. state what is missing, specifically, rather than filling the gap with plausible text
-2. leave an explicit placeholder only when the user asked for a draft
-3. flag terminology you could not verify instead of choosing silently
-4. report accessibility or localization problems the string introduces even when out of scope
-5. never ship copy that promises behavior the product does not have
+1. state the missing fact instead of inventing it
+2. keep placeholders only in drafts where placeholders are appropriate
+3. identify unverified terminology or claims
+4. separate content fixes from implementation or policy gaps
+5. do not present a draft as production-ready when a material fact remains unknown
 
-A placeholder the user can see is better than confident text that is wrong.
+When external verification is unavailable, continue with project-local evidence where that is safe. For high-stakes terminology or claims, label the limitation clearly.
+
+## Proactive behavior
+
+Read `references/proactive-trigger.md`. A detected copy problem may justify a concise observation, but it does not silently authorize a broader rewrite.
 
 ## Anti-patterns
 
-- Generic labels such as "Submit" when the actual action can be named.
-- Errors that blame the user or expose raw implementation details.
-- Confirmation dialogs for routine, reversible actions.
-- Placeholder copy that ships.
-- Unverified translations or product terminology.
-- Generic AI filler ("delve", "leverage", "seamless") and essay signposting
-  ("It's important to note that").
-- Promising outcomes the product cannot guarantee.
-- Writing a friendly tone that trivializes a high-stakes action.
-- Em dashes in generated copy.
+- generic action labels when the actual action can be named
+- vague errors that omit a useful next step
+- blaming the user for system or validation states
+- confirmations for routine actions without meaningful consequences
+- empty states that hide a fetch failure
+- placeholder copy shipped as final
+- unverified terminology, translation, or product claims
+- copy that promises behavior the product does not provide
+- technical leakage that exposes secrets, internals, or unauthorized data
+- style passes disguised as small fixes
+- changing labels or variable names without checking their code references
+- treating accessibility or localization as solved by wording alone
+- em dash U+2014 in generated copy without an explicit preservation requirement
 
 ## Bundled references
 
-Load only the component-specific references needed for the task:
-
-- `references/project-source-of-truth.md`: checking for and deferring to a project's own content
-  style guide.
-- `references/voice-and-tone.md`: core voice principles and how tone shifts with stakes.
-- `references/ui-component-copy.md`: buttons, labels, tooltips, form text.
-- `references/error-messages.md`: how to write an error message that actually helps.
-- `references/empty-states.md`: what an empty state needs to do beyond saying "nothing here".
-- `references/confirmation-dialogs.md`: confirmation and destructive-action copy.
-- `references/toasts-and-onboarding.md`: success feedback, undo actions, and first-run guidance.
-- `references/cli-output-copy.md`: help text, flag descriptions, deprecation warnings, and
-  non-interactive terminal errors.
-- `references/accessibility-and-localization.md`: accessible names, status copy, and localization
-  constraints.
-- `references/language-and-vocabulary-verification.md`: verifying word choice and grammar against
-  authoritative per-language sources instead of guessing.
-- `references/formatting-and-punctuation.md`: the em dash ban and other punctuation rules.
-- `references/examples-and-anti-patterns.md`: worked good/bad examples across component types.
-- `references/verification-and-failure.md`: shared verification and failure-handling principles.
-- `references/proactive-trigger.md`: when to review, rewrite, or audit copy without being asked,
-  and when to stay quiet.
+- `references/project-source-of-truth.md`: find and resolve project-specific content guidance.
+- `references/voice-and-tone.md`: clarity, tone, register, and anti-AI-sounding patterns.
+- `references/ui-component-copy.md`: controls, labels, tooltips, forms, and navigation.
+- `references/error-messages.md`: error structure, privacy, permissions, and recovery.
+- `references/empty-states.md`: genuinely empty, filtered, user-emptied, loading, and failed states.
+- `references/confirmation-dialogs.md`: consequence wording and proportional confirmation friction.
+- `references/toasts-and-onboarding.md`: status feedback, undo, onboarding, and first-run guidance.
+- `references/cli-output-copy.md`: help, flags, progress, deprecation, and terminal errors.
+- `references/accessibility-and-localization.md`: accessible names, status text, translation-ready structure, and locale constraints.
+- `references/language-and-vocabulary-verification.md`: authoritative terminology and language verification.
+- `references/formatting-and-punctuation.md`: punctuation, casing, numbers, placeholders, and Unicode hygiene.
+- `references/examples-and-anti-patterns.md`: cross-surface examples and common failure modes.
+- `references/verification-and-failure.md`: evidence, factual validation, and uncertainty handling.
+- `references/proactive-trigger.md`: when to flag copy problems without being asked.

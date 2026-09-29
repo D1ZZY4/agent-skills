@@ -1,70 +1,78 @@
 # UI Component Copy
 
-Writing copy for specific UI surfaces: buttons, labels, tooltips, and form text including
-placeholders, helper text, and inline validation.
+Copy rules for controls, labels, tooltips, forms, navigation, and other common interface surfaces.
 
-## Buttons
+## Buttons and actions
 
-- Lead with a verb naming the actual action: "Save changes", "Delete project", "Send invite",
-  not "OK", "Submit", or "Yes" for anything beyond the most trivial, unambiguous action.
-- Keep it to 1 to 3 words when possible, buttons aren't sentences. If the action genuinely
-  needs more context to be unambiguous, that context belongs in the surrounding text or the
-  dialog body, not crammed into the button.
-- The primary and secondary buttons in a pair should read as clear opposites at a glance:
-  "Delete" and "Cancel" work, "Delete" and "Go back" is slightly weaker but fine, "Delete" and
-  "No" is too vague about what "No" refers to.
-- Never use the same label for buttons that do different things in different contexts within
-  the same flow, "Continue" meaning something different on two different screens confuses
-  users who are pattern-matching on the label, not reading closely each time.
+- Lead with the actual action: `Save changes`, `Delete project`, `Send invite`.
+- Keep labels concise, generally 1 to 3 words when the action remains unambiguous.
+- Move explanatory context into surrounding copy when the button would otherwise become a sentence.
+- Avoid generic `OK`, `Submit`, or `Yes` when the action can be named.
+- In a pair, make the consequences of the primary and secondary actions easy to distinguish.
+- Do not use the same label for materially different actions in the same flow unless the project has a deliberate navigation convention.
 
 ## Labels
 
-- Name the field by what it is, not by an instruction about it: "Email" not "Enter your
-  email". The placeholder or helper text is where instructions or format hints go, not the
-  label itself.
-- Keep required/optional marking consistent across the whole form: either mark required
-  fields or mark optional fields, don't do both inconsistently in the same form.
-- Avoid abbreviations unless they're truly universal in context ("ZIP" is fine for a US
-  address form, an internal system abbreviation is not).
+- Name the field or concept, not the instruction: `Email` rather than `Enter your email`.
+- Keep required/optional marking consistent across the same form.
+- Avoid internal abbreviations unless they are genuinely understood by the intended audience.
+- Preserve established product terms even when a synonym seems more natural.
+
+## Placeholders
+
+Use placeholders for examples or format hints, not essential instructions.
+
+```text
+Label: Repository URL
+Placeholder: https://github.com/org/repo
+```
+
+Placeholders disappear when the user types. Anything they need while editing belongs in a label or persistent helper text.
+
+## Helper text
+
+Use helper text for persistent constraints, audience context, or format requirements:
+
+```text
+Visible to everyone with access to this workspace.
+```
+
+Avoid repeating the label without adding information.
+
+## Validation
+
+State the actual issue and the correction when it is knowable:
+
+```text
+Repository name must contain only letters, numbers, and hyphens.
+```
+
+Do not rely on red text or a green border alone to communicate state.
 
 ## Tooltips
 
-- A tooltip should add information that isn't already visible, not restate the label. A
-  tooltip on a button labeled "Archive" that just says "Archives the item" adds nothing, one
-  that says "Moves it out of your active list without deleting it, you can restore it later"
-  actually helps.
-- Keep tooltips short enough to read in the time a cursor naturally hovers, one sentence in
-  most cases, two only when genuinely necessary.
-- Don't use a tooltip to hide information that should be visible by default. If something is
-  important enough that most users need to know it before acting, it belongs in visible text,
-  not behind a hover state some users will never trigger.
+- Add information that is not already obvious from the control.
+- Keep tooltips short, generally one sentence.
+- Do not hide essential consequences or instructions behind hover-only UI.
+- Ensure tooltip language does not become the only accessible description of a control when the control needs a persistent name.
 
-## Form text (placeholders, helper text, validation)
+## Navigation
 
-- **Placeholders** show a format example, not an instruction: "you@example.com" is a good
-  placeholder for an email field, "Enter your email address" is not, that's what the label is
-  for. Placeholders disappear the moment the user starts typing, so they should never contain
-  information the user needs to remember.
-- **Helper text** (persistent text below a field) is for format requirements or context that
-  stays relevant while the user is filling out the field: "Must be at least 8 characters",
-  "This will be visible to other members."
-- **Inline validation** should confirm success as clearly as it flags failure. A field that
-  silently turns green isn't as reassuring as one that briefly shows "Looks good" alongside
-  the visual change, especially for fields where the format isn't obviously self-evident.
-- Validation messages state the actual problem and, where possible, the fix: "Password needs
-  at least one number" not "Invalid password." See `error-messages.md` for the full pattern.
+- Use nouns for destinations and verbs for actions, consistently within the same control group.
+- Keep tabs or filters structurally parallel.
+- Name breadcrumbs as the path through the product, not as implementation actions.
+- Do not use `Recommended` as decorative praise. Use it only when the product has a documented basis for the recommendation.
 
-## Navigation copy
+## Copy and implementation contracts
 
-- Menu items, tabs, and breadcrumbs name the destination or section, not the action taken in
-  the code, "Settings", "Billing", "Team members". Keep labels short and consistent with the
-  section heading they lead to.
-- Breadcrumbs read as a path from root to current page: "Projects / Q3 Roadmap". Omit levels
-  that add no meaning.
-- Keep a set of tabs or filters parallel in structure: all nouns ("Projects, Reports, Team")
-  or all verbs ("Create, Import, Export"), never a mix within the same group.
-- In a tab or filter set, one option is the implicit default. Do not mark a default with
-  "Recommended" unless it is genuinely recommended over alternatives.
-- Avoid the same label meaning different things in different navigation levels ("Home" as a
-  top-level tab and as a breadcrumb root can both work, but a second "Home" under them is
-  ambiguous).
+Before renaming a string, check whether it is also used as:
+
+- an analytics identifier
+- a localization key
+- a test fixture
+- a parser input
+- a keyboard shortcut label
+- an accessibility name
+- a URL or command value
+
+Do not assume a user-visible string is presentation-only.

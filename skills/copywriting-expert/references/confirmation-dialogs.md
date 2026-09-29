@@ -1,55 +1,80 @@
 # Confirmation and Destructive-Action Dialogs
 
-Confirmation dialog copy: naming the specific consequence, button labels that name the action,
-scaling friction to severity and reversibility, and when to skip confirmation entirely.
+Copy for consequential actions. The goal is informed confirmation, not ritual friction.
 
-## Name the specific consequence, not just the action
+## Confirm only when confirmation adds information
 
-A confirmation dialog exists to make sure the user understands what's about to happen before
-it happens, irreversibly in many cases. State the actual consequence, not a generic warning:
+Do not show a confirmation dialog merely because an operation exists. Prefer a direct action plus undo when an action is low-risk and easily reversible.
 
-- Weak: "Are you sure?"
-- Better: "This will permanently delete the project and all its files. This cannot be undone."
+A confirmation is justified when the user benefits from a clear pause before a meaningful consequence.
 
-Generic confirmation copy trains users to click through without reading, since it never tells
-them anything they didn't already know from clicking the button. Specific copy earns the
-pause.
+## State the consequence
 
-## The confirm button names the action, never just "OK" or "Yes"
+Name:
 
-- Weak: "OK" / "Cancel"
-- Better: "Delete project" / "Cancel"
+- the object affected
+- the action that will occur
+- whether it can be undone
+- any important secondary effects
+- who else loses access or data, when relevant
 
-This matters for two reasons: it reduces the chance of an accidental confirm click (reading
-"Delete project" registers differently than reading "OK"), and it means the dialog is
-understandable on its own even if someone only skims the buttons without reading the body
-text.
+Weak:
 
-## Scale the friction to the severity and reversibility
+```text
+Are you sure?
+```
 
-- **Reversible, low-stakes** (archiving something that can be restored): a lightweight
-  confirmation, sometimes none at all if the action is easily undoable via a toast with an
-  "Undo" option instead of a blocking dialog.
-- **Reversible, but not obviously so**: confirm, and say that it's reversible and how ("You
-  can restore this from the trash within 30 days").
-- **Irreversible, low-impact** (removing yourself from a shared doc you can rejoin): a
-  standard confirmation naming the consequence.
-- **Irreversible, high-impact** (deleting an account, removing a team's only admin, deleting
-  production data): the highest friction available, consider requiring the user to type the
-  resource's name or a confirmation phrase, not just click a button, and state consequences in
-  full, including anything else that gets affected (other users losing access, data that
-  can't be recovered, billing implications).
+Better:
 
-## Don't confirm things that don't need confirming
+```text
+Delete this project?
+This permanently deletes the project and its files. You cannot undo this.
+```
 
-Overusing confirmation dialogs for low-stakes, easily reversible actions trains users to
-click through them without reading, which defeats the purpose for the times it actually
-matters. Reserve dialogs for genuinely consequential actions, use lighter patterns (an undo
-toast, an inline warning) for everything else.
+Do not invent permanence. Verify reversibility from the actual product behavior.
 
-## State who or what else is affected, not just the immediate object
+## Name the confirm action
 
-"Delete this project" undersells the stakes if deleting it also removes 4 other people's
-access and 200 files. When a destructive action has a blast radius beyond the object being
-acted on, name that explicitly: "This will delete the project and remove access for all 4
-members."
+Prefer:
+
+```text
+Delete project / Cancel
+```
+
+over:
+
+```text
+OK / Cancel
+```
+
+The destructive control should make the consequence recognizable without requiring the user to reread the entire dialog.
+
+## Scale friction to risk
+
+Use progressively stronger friction for actions that are more consequential, less reversible, or have a larger blast radius.
+
+| Risk | Copy treatment |
+| --- | --- |
+| Low-risk and easily reversible | Usually no blocking confirmation; prefer undo |
+| Reversible but surprising | State how and when it can be restored |
+| Irreversible but narrow | State exactly what is lost |
+| Irreversible or high-impact | State full scope and important secondary effects; consider explicit confirmation input if the product uses that pattern |
+
+Do not assume a typed-name confirmation is appropriate just because an action is destructive. Match the pattern to the product's existing security and interaction model.
+
+## Blast radius
+
+When more than the named object is affected, say so:
+
+```text
+Remove this member?
+They will lose access to all projects in this workspace.
+```
+
+Do not use a person's name, count, or resource detail unless the product actually knows it and is allowed to expose it.
+
+## Button order and escape behavior
+
+Copy should remain understandable regardless of platform-specific button placement. Do not encode meaning only as "left button" or "right button" guidance.
+
+If keyboard dismissal or escape can trigger an action, verify the implementation before writing copy that assumes a particular cancellation behavior.

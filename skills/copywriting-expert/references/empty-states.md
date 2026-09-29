@@ -1,62 +1,75 @@
 # Empty States
 
-How to write empty-state copy that orients the user, explains why the space is empty, and prompts
-the next action. Distinguishes genuinely-new, filtered-empty, user-emptied, and
-error-masquerading-as-empty cases.
+How to distinguish genuine absence from filters, user actions, loading, and failures, then write the minimum useful orientation and next step.
 
-## An empty state has to do more than announce absence
+## First determine the state
 
-"No items yet" is technically accurate and almost entirely useless. A good empty state
-answers three questions in order of priority:
+An empty presentation is not automatically an empty state. Identify the state machine first:
 
-1. **What would normally be here?** Orient the user to what this space is for, especially
-   important for a section they haven't encountered before.
-2. **Why is it empty right now?** Distinguish between genuinely-new-and-nothing-created-yet,
-   filtered-to-nothing, and an error state that happens to look empty. These need different
-   copy, see below.
-3. **What can the user do about it, if anything?** If there's a clear next action (create the
-   first item, adjust a filter, invite a teammate), say it and make it actionable, don't just
-   describe the action in text if a button can do it directly.
+| State | Meaning | Copy direction |
+| --- | --- | --- |
+| New | Nothing has been created yet | Explain what belongs here and how to create it |
+| Filtered | Existing content is hidden by search or filters | State that no items match and offer a way back |
+| User-emptied | The user archived or deleted content | Acknowledge what happened and explain recovery when available |
+| Permission-limited | Content exists but is not visible to the user | Use access-denied copy, not "nothing here" |
+| Loading | Data has not arrived yet | Describe the loading state, not absence |
+| Failed | The fetch or operation failed | Use error copy |
 
-## Different kinds of empty aren't the same
+Never hide a fetch failure behind a generic empty message.
 
-- **Genuinely new, nothing created yet**: this is the friendliest empty state, an opportunity
-  to orient and prompt the first action. "Create your first project to get started" with a
-  clear call-to-action button.
-- **Filtered or searched to zero results**: the user had content, then took an action that
-  hid it all. Say that plainly and offer a way back: "No results match your filters" with a
-  visible way to clear them, not a generic empty-state illustration that implies there was
-  never anything here.
-- **Emptied by the user's own action** (archived everything, deleted everything): acknowledge
-  what happened rather than treating it identically to brand-new: "You've archived all your
-  tasks" reads very differently from "No tasks yet" even though the visible state is the same.
-- **An error masquerading as empty** (a failed fetch that renders as zero items): this is not
-  actually an empty state and shouldn't use empty-state copy at all, it needs error copy, see
-  `error-messages.md`. Conflating a fetch failure with genuine emptiness hides real problems
-  from both users and whoever's debugging support tickets later.
+## What a genuine empty state should answer
 
-## Keep the call-to-action specific
+1. What belongs in this space?
+2. Why is it empty now?
+3. What can the user do next, if anything?
 
-"Get started" as a button label is weaker than "Create your first project", the second tells
-the user exactly what will happen before they click. Prefer the specific version whenever the
-empty state has one clear primary action.
+The third point is optional. Do not invent an action when the user cannot change the state.
 
-## Don't overdo the personality
+## Action labels
 
-Empty states are a common place for products to lean into playful copy ("Nothing to see
-here... yet!"), which is fine in genuinely low-stakes contexts but should still clearly answer
-the three questions above. Personality that replaces the actual information the user needs
-(what is this, why is it empty, what can I do) has failed at the job even if it's charming.
+Use a button or link that names the actual action:
 
-## Loading and transitional states
+```text
+Create your first project
+```
 
-A loading state is not yet an empty state. Copy should say what is happening without claiming
-the space is empty:
+is stronger than:
 
-- Show what will appear, not an apology: "Loading your projects", not "Please wait".
-- If a load is slow enough that users worry, add a reason or progress ("Still loading, this is
-  a large report"), and on failure switch to `error-messages.md` copy instead of leaving a
-  spinner forever.
-- A bare skeleton or spinner is fine for fast loads. Once the absence is noticeable, shift
-  from loading copy to the correct empty-state or error copy rather than letting the skeleton
-  linger.
+```text
+Get started
+```
+
+when project terminology and behavior support the specific label.
+
+## Filtered empty
+
+Say that the current query or filters produced zero results:
+
+```text
+No projects match these filters.
+Clear filters
+```
+
+Do not imply that the workspace contains no projects when the product only knows that the current query returned none.
+
+## User-emptied state
+
+Reflect the known action:
+
+```text
+You've archived all your tasks.
+View archived tasks
+```
+
+Only mention recovery or archive behavior when the product actually provides it.
+
+## Loading and transitions
+
+- Use loading copy only when it adds value beyond the loading indicator.
+- Say what is loading, not that the content is empty.
+- If loading fails, switch to the correct error state.
+- Do not let stale empty-state copy remain visible while fresh data is still being resolved.
+
+## Personality
+
+Personality may be useful in low-stakes empty states, but it must not replace orientation, state explanation, or the next useful action.

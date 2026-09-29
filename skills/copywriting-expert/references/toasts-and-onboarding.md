@@ -1,29 +1,37 @@
 # Toasts and Onboarding
 
-Toast and success-feedback copy, plus onboarding and first-run guidance. Toasts state the
-completed result plainly and include undo actions only when relevant. Onboarding explains immediate
-value, asks for information only when needed, and keeps each step focused.
+Copy for transient success feedback, undo actions, onboarding, and first-run guidance.
 
-## Toasts and success feedback
+## Toasts and status feedback
 
-- State the completed result plainly: "Project saved", not "Success".
-- Include the next useful action only when it is genuinely relevant, such as an `Undo` action
-  for a reversible change.
-- Do not put essential information only in a transient toast. Keep durable status in the page or
-  control when the user may need it later.
-- Use an assertive status pattern that the project's accessibility system exposes to assistive
-  technology. Do not rely on color or animation alone.
-- Avoid interrupting the user for routine success messages. Reserve prominent alerts for failures,
-  consequences, or actions that require attention.
+- State the completed result plainly: `Project saved` rather than `Success`.
+- Offer an action only when the action exists and is relevant, such as `Undo` for a real undo operation.
+- Do not put information the user may need later only in a transient toast.
+- Use the project's accessible status pattern so the result can be perceived without relying on color or animation.
+- Avoid interruptive success feedback for routine operations.
+- If the operation only partially completed, say so. Do not report global success when the result is partial.
+- Distinguish a request being accepted from the work actually completing. For asynchronous work, use the state the user can know at that moment.
 
-## Onboarding and first-run guidance
+## Undo
 
-- Explain the immediate value and the next action before listing every available feature.
-- Use the product's real terminology and examples, not placeholder tours that become stale.
-- Let users skip or dismiss non-essential education, and provide a way to revisit it later when
-  the product supports that pattern.
-- Ask for information only when it is needed for the next step. Defer optional setup.
-- Keep each step focused on one decision or action, and state progress when the flow has multiple
-  required steps.
-- Verify that onboarding copy still matches the current UI, localization rules, and permission
-  model before shipping.
+Only offer `Undo` when the product actually supports reversing the completed state.
+
+Do not describe an undo as available merely because the previous operation could theoretically be repeated in reverse.
+
+## Onboarding
+
+- Explain immediate value before listing the entire feature set.
+- Use real product terminology and current UI examples.
+- Ask only for information required for the next step.
+- Let users skip or dismiss optional education when the product supports it.
+- Keep each step focused on one decision or action.
+- State progress for multi-step required flows when users benefit from knowing where they are.
+- Avoid promises such as "set up in seconds" unless the product can support the claim consistently.
+
+## Revisitability
+
+When education is optional and important, provide a documented way to discover it again where the product supports that pattern.
+
+## Verification before shipping
+
+Check onboarding copy against the current UI, permission model, feature availability, localization, and actual first-run path. Stale onboarding is worse than concise onboarding because it teaches a false product model.

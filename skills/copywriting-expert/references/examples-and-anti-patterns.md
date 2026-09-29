@@ -1,103 +1,114 @@
 # Examples and Anti-Patterns
 
-Consolidated good/bad pairs across component types. Check new or audited copy against these
-patterns before finalizing.
+Use these as review patterns, not as universal strings. Project terminology, behavior, locale, and accessibility requirements take precedence.
 
 ## Buttons
 
 | Weak | Better | Why |
-|---|---|---|
-| OK | Delete project | Names the actual action |
-| Submit | Send invite | Specific verb, not generic |
-| Yes / No | Delete / Cancel | Clear opposites naming the action |
+| --- | --- | --- |
+| `OK` | `Delete project` | Names the action |
+| `Submit` | `Send invite` | Names the result |
+| `Yes / No` | `Delete / Cancel` | Removes ambiguity |
 
-## Error messages
+## Errors
 
-See the full table in `error-messages.md`. Core pattern: state the problem plainly, explain
-why when useful, say what to do next when there's something to do, never blame the user.
+| Weak | Better | Why |
+| --- | --- | --- |
+| `Something went wrong` | `We couldn't save your changes. Try again.` | States impact and real recovery path |
+| `Invalid input` | `Enter a valid repository name.` | Identifies the correction |
+| `Error 403` | `You don't have permission to edit this project.` | Translates the relevant state |
 
 ## Empty states
 
 | Weak | Better | Why |
-|---|---|---|
-| No items yet | Create your first project to get started | Orients and prompts action |
-| No results | No results match your filters. Clear filters? | Distinguishes filtered-empty from genuinely-empty |
-| (blank, no copy at all) | You've archived all your tasks | Acknowledges the actual situation |
+| --- | --- | --- |
+| `No items yet` | `Create your first project` | Orients and acts |
+| `No results` | `No projects match these filters.` | Preserves the distinction between filtering and absence |
+| blank | `You've archived all your tasks.` | Explains the current state |
 
-## Confirmation dialogs
+## Confirmations
 
-| Weak | Better | Why |
-|---|---|---|
-| Are you sure? | This will permanently delete the project and all its files. This can't be undone. | States the actual consequence |
-| OK / Cancel | Delete project / Cancel | Confirm button names the action |
-| Remove member? | Remove Aby from this project? They'll lose access immediately. | Names who and what's affected |
+```text
+Delete this project?
+This permanently deletes "Q3 Roadmap" and its 12 files. You cannot undo this.
+
+Delete project / Cancel
+```
+
+Only use the specific name and count when the product actually knows and may display them.
 
 ## Toasts
 
 | Weak | Better | Why |
-|---|---|---|
-| Success | Project saved | States the completed result |
-| Your changes have been successfully saved | Saved. Undo | Result plus the one relevant action |
+| --- | --- | --- |
+| `Success` | `Project saved` | States the result |
+| `Your changes have been successfully saved` | `Saved` | Removes filler |
+| `Saved` | `Saved. Undo` | Adds a real action only when undo exists |
 
 ## Onboarding
 
-| Weak | Better | Why |
-|---|---|---|
-| Welcome to the app! Let's get you set up. | Create your first report to see live metrics | Shows immediate value before asking anything |
-
-## CLI output
-
-| Weak | Better | Why |
-|---|---|---|
-| ERROR: failed to process request | Couldn't load reports. Check your connection and retry | Plain language, cause, next step |
-| Generating... | Generated 12 reports in 4s | Explicit final state, not just progress |
-
-## Navigation
-
-| Weak | Better | Why |
-|---|---|---|
-| Click here to access settings | Open settings | Link text names the destination |
-| Projects / New | Projects / Create project | Breadcrumb names the actual current step |
-
-## A full before/after, combining multiple fixes at once
-
-**Before:**
+```text
+Create your first report
+See live metrics from your connected data.
 ```
+
+The value claim must match the actual product behavior.
+
+## CLI
+
+Weak:
+
+```text
+ERROR: failed to process request
+```
+
+Better:
+
+```text
+Couldn't load reports.
+Check your connection and try again.
+```
+
+For machine-readable output, do not replace a stable schema with prose.
+
+## Accessibility and localization anti-patterns
+
+- visible label says `Delete`, accessible name says `Remove this thing` without a reason
+- `1 item(s)` instead of locale-aware pluralization
+- sentence fragments concatenated in English order
+- essential status conveyed only by a toast that is not exposed to assistive technology
+- translated strings that preserve a source-language pun but lose the intended meaning
+
+## Scope anti-patterns
+
+- turning a one-string fix into a product-wide rewrite
+- changing an established product term because a synonym looks nicer
+- changing a copy string that is also a parser, test fixture, analytics key, or API value without inspecting its references
+- reviewing unrelated screens merely because they use similar copy
+
+## Claim anti-patterns
+
+- "Never lose your work" when recovery is not guaranteed
+- "Secure" or "private" without a documented basis
+- "Instant" or "real-time" when latency varies materially
+- exact limits, time windows, or availability without evidence
+
+## Full review example
+
+Before:
+
+```text
 Title: Confirm
-Body: Are you sure you want to do this? This action is permanent, it cannot be undone.
+Body: Are you sure you want to do this? This action is permanent and cannot be undone.
 Buttons: Yes / No
 ```
 
-Three problems: generic title and body that could apply to any action, buttons that don't
-name the action, and (not shown literally here since this skill won't paste one even as an
-illustration) the original draft used an em dash between "permanent" and "it cannot be
-undone" instead of the comma shown above.
+After:
 
-**After:**
-```
+```text
 Title: Delete this project?
-Body: This will permanently delete "Q3 Roadmap" and all 12 files inside it. This can't be
-undone.
+Body: This permanently deletes "Q3 Roadmap" and its 12 files. You cannot undo this.
 Buttons: Delete project / Cancel
 ```
 
-## Anti-patterns, consolidated
-
-- **Vague generic copy** that could apply to any situation ("Something went wrong", "Are you
-  sure?") instead of naming the specific thing that happened.
-- **Blaming language** in error copy ("You entered an invalid value") instead of neutral
-  framing ("That value doesn't look right").
-- **Technical leakage**: internal error codes, stack traces, or system terminology surfacing
-  directly in user-facing text without translation into plain language.
-- **Inconsistent register**: mixing formal and casual tone within the same flow, or switching
-  conventions (Title Case in one dialog, sentence case in the next) without a documented
-  reason.
-- **Unverified language-specific word choice**: shipping a translation or a specific term
-  without checking it against the authoritative source for that language, see
-  `language-and-vocabulary-verification.md`.
-- **Em dashes**, anywhere, ever. See `formatting-and-punctuation.md`.
-- **Confirmation fatigue**: dialogs on every minor action train users to click through without
-  reading, which defeats the one dialog that actually needs their attention.
-- **Copy as an afterthought**: writing the UI first and filling in placeholder text like "Lorem
-  ipsum" or "TBD" that ships unreviewed, instead of treating copy as part of the
-  feature from the start.
+The improvement works because it names the operation, the target, the consequence, and the actual confirm action. It does not add claims beyond the known behavior.

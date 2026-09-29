@@ -1,124 +1,88 @@
 # Language and Vocabulary Verification
 
-When and how to verify word choice, spelling, idiom, and grammar against authoritative sources
-instead of relying on training-data intuition. Covers Indonesian (KBBI), English
-(Merriam-Webster / Oxford), other languages, and fallback behavior when lookup is unavailable.
+How to verify uncertain terminology, spelling, grammar, register, and localization choices against authoritative or project-approved sources.
 
-## The general principle
+## Verification hierarchy
 
-When writing or auditing copy in any language, and the word choice, spelling, idiom, register,
-or grammatical construction is anything less than fully certain, look it up against an actual
-authoritative source for that specific language rather than proceeding on instinct. "Fully
-certain" means genuinely certain, not just familiar-sounding, the same confidence bar used
-elsewhere for factual claims. This is especially true for:
+Use the strongest applicable source in this order:
 
-- Loanwords and borrowed terms (tech terminology borrowed into a language often has a
-  specific, sometimes non-obvious, correctly absorbed spelling)
-- Formal vs informal register distinctions that don't exist the same way in every language
-- Regional spelling or usage variants
-- Idiomatic phrasing that a literal translation would get wrong
-- Any word that could plausibly have more than one accepted spelling
+1. project-approved glossary, terminology database, or exact product wording
+2. legal or regulatory source when the wording is legally controlled
+3. official language authority or authoritative dictionary
+4. reputable domain-specific terminology source
+5. general reference material for supplementary context only
 
-## Indonesian (Bahasa Indonesia)
+A common word does not require a citation merely because it is common. Verify when uncertainty could change correctness, meaning, safety, or consistency.
 
-The authoritative source is **KBBI** (Kamus Besar Bahasa Indonesia), maintained by Badan
-Bahasa (Indonesia's national language authority, under Kemdikbud). This is not optional
-background knowledge, general familiarity with Indonesian is not the same as verified
-correctness against KBBI, since the language has absorbed loanwords, undergone spelling reform
-(EYD, now EYD Edisi V), and has specific rules around affixation (imbuhan) that are easy to
-get subtly wrong.
+## Indonesian
 
-- Official online dictionary: `kbbi.kemdikbud.go.id`. Search for the specific word or phrase
-  in question, don't assume based on how it's commonly written informally, since informal and
-  spoken usage frequently diverges from the standardized correct form.
-- For spelling and punctuation rules more broadly (not just individual word entries),
-  Indonesia's spelling standard is EYD Edisi V (Ejaan yang Disempurnakan, current edition),
-  also published by Badan Bahasa.
-- Common trap: loanwords from English are often spelled differently once absorbed into formal
-  Indonesian (for example, "sistem" not "system", "aktivitas" not "activitas"), verify these
-  rather than keeping the English spelling or guessing at the absorbed form.
-- Common trap: prefix/suffix combinations (imbuhan) can change a root word's spelling in ways
-  that aren't always intuitive, check the full inflected form in KBBI, not just the root.
-- For UI copy specifically, formal written Indonesian (bahasa baku) is usually the right
-  register even when the product's overall voice is casual, check the project's own voice
-  guide (`project-source-of-truth.md`) for whether informal Indonesian is intentionally used.
+For Indonesian, use the current official KBBI Daring and EYD resources maintained by Badan Pengembangan dan Pembinaan Bahasa.
+
+Current official references:
+
+- KBBI VI Daring: https://kbbi.kemendikdasmen.go.id/
+- EYD V: https://ejaan.kemendikdasmen.go.id/
+
+The official KBBI portal identifies itself as the official online KBBI search service and reports a latest update in April 2026. The EYD portal is the official fifth-edition spelling guidance site. Verify the live source when a current term or spelling matters.
+
+Do not treat informal usage on social media, search snippets, or frequency alone as proof of standard spelling.
+
+For product copy, project vocabulary still takes precedence when the product intentionally uses an informal register, brand term, or established technical loanword.
 
 ## English
 
-Even for English, don't treat fluency as the same thing as verified correctness for anything
-genuinely uncertain, spelling variants (American vs British), less common words, and newer
-terminology all have edge cases worth checking.
+Check the project's locale first, especially American versus British spelling. Use an appropriate dictionary or project style guide for genuinely uncertain spellings, register, or uncommon terms.
 
-- A proper dictionary (Merriam-Webster for American English, Oxford for British English) is
-  the authority, not a general web search result or an encyclopedia entry.
-- Check which variant (American vs British spelling) the project already uses elsewhere before
-  introducing new copy, consistency within one product matters more than which variant is
-  "more correct" in the abstract.
+Do not change a deliberate product term merely because another dictionary lists a synonym.
 
 ## Other languages
 
-The same principle applies regardless of which language is in play: identify the actual
-authoritative source for that language, not just any website that happens to come up.
+Identify the locale and the project's intended register before choosing an authority. Prefer official language academies or standard-setting bodies where they exist. Otherwise use a reputable dictionary or domain source appropriate to the target locale.
 
-- If uncertain which source is authoritative for a given language, search for it directly
-  (for example, "official dictionary [language name]" or "[language name] language academy"),
-  most languages with an official standardizing body have one: Real Academia Española for
-  Spanish, the Académie Française and associated dictionaries for French, the Duden for
-  German, and so on. Use the actual national or academic authority when one exists.
-- If no single official body exists for a language, prefer a well-established, widely
-  recognized dictionary for that language over a general web search snippet or a
-  crowd-edited source.
+Avoid treating machine translation output as authoritative language verification.
 
-## Wikipedia and general web sources: supplementary, not authoritative for language itself
+## Translation is not word substitution
 
-Wikipedia and general reference sites are useful for confirming facts, terminology in a
-specific technical domain, or how a proper noun is conventionally written, but they are
-encyclopedias, not dictionaries, and are not the right source for verifying spelling, grammar,
-or standard word choice. Use them to supplement, for example checking how a company or product
-name is conventionally styled, but defer to the actual language authority (KBBI, a proper
-dictionary, a national language academy) for anything about the language itself.
+For translated UI copy, verify:
 
-## If authoritative lookup is unavailable
+- meaning and user intent
+- formality and register
+- technical terminology
+- grammatical agreement
+- pluralization and gender where relevant
+- date, number, currency, and unit formatting
+- whether the phrase is natural in the target locale
 
-Do not present uncertain wording as verified. Use this fallback order:
+A literal translation can be grammatically correct and still be wrong for the product.
 
-1. The project's approved terminology and existing product copy.
-2. A trusted local dictionary or language resource already available in the environment.
-3. A clearly labeled best-effort suggestion with the uncertain term or construction flagged.
+## Existing project terms
 
-Report that authoritative verification was not available and ask for review when the wording
-affects legal meaning, safety, accessibility, localization quality, or a high-visibility
-surface. Never invent a citation or imply that a source was consulted when it was not.
+Search the repository for established labels before introducing a new synonym. A repeated term is evidence of a house convention, but check whether the same word is used for multiple concepts.
 
-## Keep the lookup minimal and transparent
+If two existing terms conflict, do not silently pick one. Identify the ambiguity and use a documented project source or user decision to resolve it.
 
-A vocabulary lookup is a normal, expected step, not something to skip to save a network call.
-Two hygiene rules apply whenever one runs:
+## Lookup hygiene
 
-- **Query the bare term.** Send just the word or short phrase plus the source name (for
-  example, "sistem KBBI"), never the surrounding copy, user data, or project context wrapped
-  around it.
-- **Mention the lookup when it may carry context.** If the term alone could reveal a sensitive
-  or proprietary project detail, note briefly that the term is transmitted and confirm before
-  sending it.
+When external lookup is needed:
 
-Prefer an authoritative source already available in the environment over a fresh fetch when
-one exists. Never claim a lookup happened when it did not.
+- send the smallest necessary term or phrase
+- avoid transmitting surrounding proprietary copy when the term alone is sufficient
+- do not include secrets, personal data, or hidden project context in the lookup
+- record which authority was checked when the result materially affects the final copy
 
-## How to actually do this in practice
+## When lookup is unavailable
 
-Use an available authoritative lookup mechanism rather than answering from memory when verification
-is warranted. This can be an approved web search or fetch tool, a dictionary database, or a
-trusted language resource already available in the environment. Search for the specific word or
-construction plus the authority's name, such as "sistem KBBI" or "loanword spelling KBBI", rather
-than relying on a generic result. This is a normal, expected part of writing or auditing copy in
-any language other than pure, common-knowledge English, not an extra step to skip for speed.
-Getting a single word wrong in shipped UI copy is a visible, repeated, permanent mistake in a way
-that few other kinds of errors are.
+Fall back in this order:
 
-## Sources checked
+1. project-approved terminology and nearby existing copy
+2. trusted language resources already available locally
+3. clearly labeled best-effort wording
 
-- KBBI Daring Edisi V (official): https://kbbi.kemdikbud.go.id (Badan Bahasa; use for word entries)
-- EYD Edisi V spelling standard (official): https://ejaan.kemdikbud.go.id (SK Kepala Badan Bahasa 0424/I/BS.00.01/2022; use for spelling and punctuation rules)
-- Merriam-Webster (American English): https://www.merriam-webster.com
-- Oxford English Dictionary (British English): https://www.oed.com
+For legal, safety-critical, high-visibility, or materially ambiguous wording, state that authoritative verification was unavailable instead of presenting the choice as verified.
+
+## Sources
+
+- KBBI VI Daring: https://kbbi.kemendikdasmen.go.id/
+- EYD V: https://ejaan.kemendikdasmen.go.id/
+- Merriam-Webster: https://www.merriam-webster.com/
+- Oxford English Dictionary: https://www.oed.com/
